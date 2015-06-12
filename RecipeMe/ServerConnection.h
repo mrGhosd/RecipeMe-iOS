@@ -18,4 +18,5 @@ typedef void(^requestErrorBlock)(NSError *);
 @property (nonatomic, copy) requestErrorBlock errored;
 
 + (id) sharedInstance;
+- (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition;
 @end
