@@ -25,6 +25,12 @@ describe(@"#sharedInstance", ^{
         ServerConnection *con = [ServerConnection sharedInstance];
         [[connection should] equal:con];
     });
+    
+    it(@"Standart object initialization doesn't create a singleton object", ^{
+        ServerConnection *connection = [ServerConnection sharedInstance];
+        ServerConnection *con = [[ServerConnection alloc] init];
+        [[connection shouldNot] equal:con];
+    });
 });
 describe(@"#getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition", ^(void){
     
