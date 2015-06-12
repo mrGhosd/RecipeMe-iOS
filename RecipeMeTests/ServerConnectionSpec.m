@@ -32,6 +32,7 @@ describe(@"#sharedInstance", ^{
         [[connection shouldNot] equal:con];
     });
 });
+
 describe(@"#getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition", ^(void){
     __block ServerConnection *connection;
     __block BOOL result;
@@ -101,5 +102,76 @@ describe(@"#getTokenWithParameters:(NSDictionary *)params andComplition:(Respons
             [[expectFutureValue(serverData) shouldEventually] equal:@[@"data"]];
         });
     });
+});
+
+describe(@"sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition", ^{
+    
+    __block ServerConnection *connection;
+    __block BOOL result;
+    __block id serverData;
+    
+    afterEach(^{
+        [OHHTTPStubs removeAllStubs];
+    });
+    
+    context(@"success request", ^{
+        it(@"return true if status 200", ^{
+            [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+                return YES;
+            } withStubResponse:^(NSURLRequest *request){
+                return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+            }];
+            [[ServerConnection sharedInstance] sendDataToURL:@"/recipes" parameters:@{@"foo": @"bar"} requestType:@"GET" andComplition:^(id data, BOOL success){
+                result = success;
+            }];
+            
+            [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
+        });
+        
+        it(@"return success data if status true", ^{
+            [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+                return YES;
+            } withStubResponse:^(NSURLRequest *request){
+                return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+            }];
+            
+            [[ServerConnection sharedInstance] sendDataToURL:@"/recipes" parameters:@{@"foo": @"bar"} requestType:@"GET" andComplition:^(id data, BOOL success){
+                serverData = data;
+            }];
+            
+            [[expectFutureValue(serverData) shouldEventually] equal:@[@"data"]];
+        });
+    });
+    
+    context(@"failed request", ^{
+        it(@"return false if status 404", ^{
+            [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+                return YES;
+            } withStubResponse:^(NSURLRequest *request){
+                return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
+            }];
+            [[ServerConnection sharedInstance] sendDataToURL:@"/recipes" parameters:@{@"foo": @"bar"} requestType:@"GET" andComplition:^(id data, BOOL success){
+                result = success;
+            }];
+            
+            [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
+        });
+        
+        it(@"return error if request failed", ^{
+            [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+                return YES;
+            } withStubResponse:^(NSURLRequest *request){
+                return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
+            }];
+            
+            [[ServerConnection sharedInstance] sendDataToURL:@"/recipes" parameters:@{@"foo": @"bar"} requestType:@"GET" andComplition:^(id data, BOOL success){
+                serverData = data;
+            }];
+            
+            [[expectFutureValue(serverData) shouldEventually] beKindOfClass:[NSDictionary class]];
+            [[expectFutureValue(serverData[@"error"]) shouldEventually] beKindOfClass:[NSError class]];
+        });
+    });
+    
 });
 SPEC_END

@@ -19,4 +19,5 @@ typedef void(^requestErrorBlock)(NSError *);
 
 + (id) sharedInstance;
 - (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition;
+- (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition;
 @end

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMeTests/ServerConnectionSpec.m"
-            timestampString = "455818593.523882"
+            timestampString = "455819952.288464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "describe()"
             landmarkType = "6">
          </BreakpointContent>
