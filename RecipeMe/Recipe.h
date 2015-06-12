@@ -12,6 +12,7 @@
 @property (nonatomic, retain) NSNumber *id;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * description;
+@property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSNumber * rate;

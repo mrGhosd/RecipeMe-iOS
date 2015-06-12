@@ -26,8 +26,23 @@ describe(@"initWithParameters: (NSDictionary *) params", ^{
     beforeAll(^{
         recipe = [[Recipe alloc] initWithParameters:recipeParams];
     });
-    it(@"set parameters to new object", ^{
-        [[recipe.id should] equal:recipeParams[@"id"]];
+    
+    context(@"attribute is set", ^{
+        it(@"set parameters to new object", ^{
+            [[recipe.id should] equal:recipeParams[@"id"]];
+            [[recipe.userId should] equal:recipeParams[@"user_id"]];
+            [[recipe.categoryId should] equal:recipeParams[@"category_id"]];
+            [[recipe.title should] equal:recipeParams[@"title"]];
+            [[recipe.description should] equal:recipeParams[@"description"]];
+        });
+    });
+    
+    context(@"attribute is empty", ^{
+        it(@"return nil", ^{
+            [[recipe.commentsCount should] beNil];
+            [[recipe.stepsCount should] beNil];
+            [[recipe.imageUrl should] beNil];
+        });
     });
 });
 SPEC_END
