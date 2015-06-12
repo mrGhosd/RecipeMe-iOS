@@ -33,7 +33,7 @@ describe(@"initWithParameters: (NSDictionary *) params", ^{
             [[recipe.userId should] equal:recipeParams[@"user_id"]];
             [[recipe.categoryId should] equal:recipeParams[@"category_id"]];
             [[recipe.title should] equal:recipeParams[@"title"]];
-            [[recipe.description should] equal:recipeParams[@"description"]];
+            [[recipe.desc should] equal:recipeParams[@"description"]];
         });
     });
     

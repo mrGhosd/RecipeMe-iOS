@@ -17,6 +17,7 @@
 		643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBBA1B2B72DE0090BC68 /* RecipesListTableViewCell.m */; };
 		643AFBBD1B2B72DE0090BC68 /* RecipesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBBB1B2B72DE0090BC68 /* RecipesListTableViewCell.xib */; };
+		643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBBE1B2B89D90090BC68 /* kartofel.jpg */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -49,6 +50,7 @@
 		643AFBB91B2B72DE0090BC68 /* RecipesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesListTableViewCell.h; sourceTree = "<group>"; };
 		643AFBBA1B2B72DE0090BC68 /* RecipesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesListTableViewCell.m; sourceTree = "<group>"; };
 		643AFBBB1B2B72DE0090BC68 /* RecipesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipesListTableViewCell.xib; sourceTree = "<group>"; };
+		643AFBBE1B2B89D90090BC68 /* kartofel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kartofel.jpg; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				647031F81B2AF0420084D58A /* ViewController.m */,
 				647031FA1B2AF0420084D58A /* Main.storyboard */,
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
+				643AFBBE1B2B89D90090BC68 /* kartofel.jpg */,
 				647031FF1B2AF0420084D58A /* LaunchScreen.xib */,
 				647031F01B2AF0420084D58A /* Supporting Files */,
 			);
@@ -335,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,

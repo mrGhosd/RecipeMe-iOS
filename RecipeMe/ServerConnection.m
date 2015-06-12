@@ -80,4 +80,8 @@ static ServerConnection *sharedSingleton_ = nil;
     [requestAPI start];
 }
 
+- (NSString *)returnCorrectUrlPrefix:(NSString *)string{
+    return [NSString stringWithFormat:@"%@%@", MAIN_URL, string];
+}
+
 @end

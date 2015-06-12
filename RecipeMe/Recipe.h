@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Recipe : NSObject
 @property (nonatomic, retain) NSNumber *id;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * description;
+@property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * categoryId;
@@ -22,4 +23,5 @@
 @property (nonatomic, retain) NSNumber * persons;
 @property (nonatomic, retain) NSString * difficult;
 - (instancetype) initWithParameters: (NSDictionary *) params;
+- (UIImage *) image;
 @end

@@ -17,6 +17,7 @@
 #import <OHHTTPStubsResponse.h>
 
 #import "ServerConnection.h"
+#import "Recipe.h"
 
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"#sharedInstance", ^{
@@ -173,5 +174,13 @@ describe(@"sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)par
         });
     });
     
+});
+
+describe(@"returnCorrectUrlPrefix:(NSString *)string", ^{
+    
+    it(@"return url for recipe image with adding an MAIN_URL constant", ^{
+        [[[[ServerConnection sharedInstance] returnCorrectUrlPrefix:@"/1"] should] equal:@"http://localhost:3000/1"];
+        
+    });
 });
 SPEC_END

@@ -26,6 +26,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2Ik-9L-UEZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

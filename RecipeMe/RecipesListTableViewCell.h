@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Recipe.h"
 
 @interface RecipesListTableViewCell : UITableViewCell
-
+@property (strong, nonatomic) IBOutlet UIImageView *recipeImage;
+- (void) initWithRecipe: (Recipe *) recipe;
 @end

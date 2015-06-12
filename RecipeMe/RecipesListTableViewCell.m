@@ -20,4 +20,9 @@
     // Configure the view for the selected state
 }
 
+- (void) initWithRecipe: (Recipe *) recipe{
+    UIImage *recipeImg = [recipe image];
+    if(recipeImg) self.recipeImage.image = [recipe image];
+}
+
 @end
