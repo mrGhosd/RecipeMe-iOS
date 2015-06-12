@@ -12,13 +12,14 @@
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
+		643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBAB1B2B45FB0090BC68 /* Recipe.m */; };
+		643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB01B2B468B0090BC68 /* RecipeSpec.m */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
-		647876031B2B0DDA00401720 /* RecipeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 647876021B2B0DDA00401720 /* RecipeSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,9 @@
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
+		643AFBAA1B2B45FB0090BC68 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		643AFBAB1B2B45FB0090BC68 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		643AFBB01B2B468B0090BC68 /* RecipeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeSpec.m; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -49,7 +53,6 @@
 		647032001B2AF0420084D58A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		647876021B2B0DDA00401720 /* RecipeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeSpec.m; sourceTree = "<group>"; };
 		A03A9DE5F479A1981245B8DF /* libPods-RecipeMe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeMe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A481FD8DD02C38121CA82199 /* Pods-RecipeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.release.xcconfig"; sourceTree = "<group>"; };
 		A9B5E53A283533F0ADF9BF76 /* Pods-RecipeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +94,23 @@
 				643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */,
 			);
 			name = ServerConnection;
+			sourceTree = "<group>";
+		};
+		643AFBA91B2B45E70090BC68 /* recipe */ = {
+			isa = PBXGroup;
+			children = (
+				643AFBAA1B2B45FB0090BC68 /* Recipe.h */,
+				643AFBAB1B2B45FB0090BC68 /* Recipe.m */,
+			);
+			name = recipe;
+			sourceTree = "<group>";
+		};
+		643AFBAD1B2B46590090BC68 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				643AFBB01B2B468B0090BC68 /* RecipeSpec.m */,
+			);
+			name = Recipe;
 			sourceTree = "<group>";
 		};
 		647031E41B2AF0420084D58A = {
@@ -143,9 +163,9 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				643AFBAD1B2B46590090BC68 /* Recipe */,
 				643AFBA51B2B31AD0090BC68 /* ServerConnection */,
 				6470320A1B2AF0420084D58A /* Supporting Files */,
-				647876021B2B0DDA00401720 /* RecipeSpec.m */,
 			);
 			path = RecipeMeTests;
 			sourceTree = "<group>";
@@ -161,6 +181,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				643AFBA91B2B45E70090BC68 /* recipe */,
 				643AFBA11B2B30740090BC68 /* ServerConnection */,
 			);
 			name = Models;
@@ -377,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
+				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				647031F31B2AF0420084D58A /* main.m in Sources */,
@@ -388,8 +410,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
-				647876031B2B0DDA00401720 /* RecipeSpec.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
+				643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

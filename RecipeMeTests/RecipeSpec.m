@@ -16,3 +16,18 @@
 #import <OHHTTPStubs.h>
 #import <OHHTTPStubsResponse.h>
 
+#import "Recipe.h"
+
+SPEC_BEGIN(RecipeSpec)
+describe(@"initWithParameters: (NSDictionary *) params", ^{
+    __block Recipe *recipe;
+    __block NSDictionary *recipeParams = @{@"id": @1, @"user_id": @1, @"category_id": @1, @"title": @"Title", @"description": @"Desc"};
+    
+    beforeAll(^{
+        recipe = [[Recipe alloc] initWithParameters:recipeParams];
+    });
+    it(@"set parameters to new object", ^{
+        [[recipe.id should] equal:recipeParams[@"id"]];
+    });
+});
+SPEC_END
