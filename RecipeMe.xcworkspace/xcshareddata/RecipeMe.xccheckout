@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5735A75C-A3CC-476D-90DF-883F6447FE70</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RecipeMe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</key>
+		<string>github.com:mrGhosd/RecipeMe-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RecipeMe.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:mrGhosd/RecipeMe-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RecipeMe</string>
+		</dict>
+	</array>
+</dict>
+</plist>
