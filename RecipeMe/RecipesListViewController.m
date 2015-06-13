@@ -29,10 +29,20 @@
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
+    [self setNavigationAttributes];
     [self loadRecipesList];
     // Do any additional setup after loading the view.
 }
-
+- (void) setNavigationAttributes{
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:2.51 green:.28 blue:.56 alpha:1];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.topItem.title = @"Recipes";
+    [self setNeedsStatusBarAppearanceUpdate];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                                     [UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
+    
+}
 - (void) loadRecipesList{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
@@ -87,13 +97,18 @@
 //    cell.recipeImage.image = img;
 //    cell
 //    cell.imageView.contentMode = UIViewContentModeScaleToFill;
-//    cell.imageView.clipsToBounds = YES;
+    cell.recipeImage.clipsToBounds = YES;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 250;
-}/*
+}
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

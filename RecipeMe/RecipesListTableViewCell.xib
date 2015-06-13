@@ -14,16 +14,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zWW-b0-obB">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWW-b0-obB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="zWW-b0-obB" secondAttribute="bottom" constant="-8" id="8Oi-7Z-MEk"/>
-                    <constraint firstItem="zWW-b0-obB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="SHO-Cv-nkp"/>
-                    <constraint firstItem="zWW-b0-obB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="wNb-Ws-nZJ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="zWW-b0-obB" secondAttribute="trailing" constant="-8" id="zMp-gI-9gb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zWW-b0-obB" secondAttribute="trailing" constant="-16" id="YOh-vC-fBS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="zWW-b0-obB" secondAttribute="bottom" constant="-8" id="h46-1F-fiP"/>
+                    <constraint firstItem="zWW-b0-obB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="tDx-bH-0PF"/>
+                    <constraint firstItem="zWW-b0-obB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="typ-uM-fC8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
