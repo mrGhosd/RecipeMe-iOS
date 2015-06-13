@@ -12,12 +12,15 @@
 #import "Recipe.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UIImageView+AFNetworking.h>
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface RecipesListViewController (){
     ServerConnection *connection;
     NSMutableArray *recipes;
-    UISearchBar *searchBarMain;
     NSArray *searchResults;
+    NSNumber *pageNumber;
+    UIRefreshControl *refreshControl;
+    UISearchBar *searchBarMain;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -27,13 +30,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageNumber = @1;
     recipes = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
     [self setNavigationAttributes];
+    [self refreshInit];
     [self loadRecipesList];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInteger:[pageNumber integerValue] + 1];
+        [self loadRecipesList];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void) setNavigationAttributes{
@@ -46,10 +58,28 @@
                                                                      [UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
     
 }
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadLatestRecipes) forControlEvents:UIControlEventValueChanged];
+}
+- (void) loadLatestRecipes{
+    recipes = [NSMutableArray new];
+    pageNumber = @1;
+    [self loadRecipesList];
+}
+
 - (void) loadRecipesList{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    [connection sendDataToURL:@"/recipes" parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
+    [refreshControl endRefreshing];
+    [connection sendDataToURL:@"/recipes" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseRecipes:data];
         } else {
@@ -58,11 +88,13 @@
     }];
 }
 - (void) parseRecipes: (id) data{
-    for(NSDictionary *recipe in data){
-        Recipe *rec = [[Recipe alloc] initWithParameters:recipe];
-        [recipes addObject:rec];
+    if(data != [NSNull null]){
+        for(NSDictionary *recipe in data){
+            Recipe *rec = [[Recipe alloc] initWithParameters:recipe];
+            [recipes addObject:rec];
+        }
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
