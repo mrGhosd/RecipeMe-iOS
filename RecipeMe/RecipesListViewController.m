@@ -71,20 +71,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"recipeCell";
     Recipe *recipe = recipes[indexPath.row];
-    __weak RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     NSURL *url = [NSURL URLWithString:recipe.imageUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"kartofel.jpg"];
-    [cell.imageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        cell.imageView.image = image;
-        cell.imageView.contentMode = UIViewContentModeScaleToFill;
-        cell.imageView.clipsToBounds = YES;
+    UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
+    [cell.recipeImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        cell.recipeImage.image = image;
         
     } failure:nil];
+//    UIImage *img = [recipe image];
+//    cell.recipeImage.image = img;
+//    cell
+//    cell.imageView.contentMode = UIViewContentModeScaleToFill;
+//    cell.imageView.clipsToBounds = YES;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
