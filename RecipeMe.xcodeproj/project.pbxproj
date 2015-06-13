@@ -24,6 +24,7 @@
 		643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBC81B2C1FF40090BC68 /* personsIcon.png */; };
 		643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBCA1B2C22310090BC68 /* timeIcon.png */; };
 		643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBD71B2C30410090BC68 /* Localizable.strings */; };
+		643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -66,6 +67,7 @@
 		643AFBD61B2C30410090BC68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBD81B2C30440090BC68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBD91B2C30450090BC68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searcIcon.png; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				647031F81B2AF0420084D58A /* ViewController.m */,
 				647031FA1B2AF0420084D58A /* Main.storyboard */,
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
+				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
 				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
 				643AFBC81B2C1FF40090BC68 /* personsIcon.png */,
 				643AFBC61B2C1C5C0090BC68 /* difficultIcon.png */,
@@ -372,6 +375,7 @@
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
+				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
 				643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */,

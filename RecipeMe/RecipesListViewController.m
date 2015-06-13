@@ -16,6 +16,8 @@
 @interface RecipesListViewController (){
     ServerConnection *connection;
     NSMutableArray *recipes;
+    UISearchBar *searchBarMain;
+    UISearchDisplayController *searchDisplayController;
 }
 
 @end
@@ -108,4 +110,31 @@
 }
 */
 
+- (IBAction)showSearchBar:(id)sender {
+    if(!searchBarMain){
+        searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
+        searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
+        searchBarMain.delegate = self;
+        searchDisplayController.delegate = self;
+        searchDisplayController.searchResultsDataSource = self;
+        
+        self.tableView.tableHeaderView = searchBarMain;
+        
+        [self.searchDisplayController.searchBar becomeFirstResponder];
+    } else {
+        self.tableView.tableHeaderView = nil;
+        searchBarMain = nil;
+        [searchBarMain removeFromSuperview];
+    }
+    
+}
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+
+}
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.tableView.tableHeaderView = nil;
+    [self.searchDisplayController.searchBar resignFirstResponder];
+    searchBarMain = nil;
+    [searchBar removeFromSuperview];
+}
 @end

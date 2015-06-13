@@ -50,7 +50,8 @@
     NSString *key = [NSString stringWithFormat:@"recipes_difficult_%@", recipe.difficult];
     self.recipeDifficult.text = NSLocalizedString(key, nil);
     self.recipePersons.text = [NSString stringWithFormat:@"%@", recipe.persons];
-    self.recipeTime.text = [NSString stringWithFormat:@"%@ min.", recipe.time];
+    NSString *timeKey = NSLocalizedString(@"recipes_time", nil);
+    self.recipeTime.text = [NSString stringWithFormat:@"%@ %@", recipe.time, timeKey];
     [self setUserAvatarSize];
 }
 

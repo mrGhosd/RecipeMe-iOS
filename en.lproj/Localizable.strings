@@ -9,3 +9,4 @@
 "recipes_difficult_easy" = "Easy";
 "recipes_difficult_medium" = "Medium";
 "recipes_difficult_hard" = "Hard";
+"recipes_time" = "min.";

@@ -9,3 +9,4 @@
 "recipes_difficult_easy" = "Легко";
 "recipes_difficult_medium" = "Средне";
 "recipes_difficult_hard" = "Тяжело";
+"recipes_time" = "мин.";

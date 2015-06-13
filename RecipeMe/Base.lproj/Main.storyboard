@@ -25,12 +25,28 @@
                             <outlet property="delegate" destination="vXZ-lx-hvc" id="x2g-Zv-jq7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2Ik-9L-UEZ"/>
+                    <navigationItem key="navigationItem" id="2Ik-9L-UEZ">
+                        <barButtonItem key="rightBarButtonItem" image="searcIcon.png" id="akr-xD-eBd">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="showSearchBar:" destination="vXZ-lx-hvc" id="xYg-oc-pcO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="searchDisplayController" destination="13H-wA-GtN" id="19V-Um-LLk"/>
                         <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="13H-wA-GtN">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="ZPZ-RA-Gew"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="Owq-9Q-XUB"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="tRK-Fs-Dir"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="SLX-0M-a4v"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1117" y="328"/>
         </scene>
@@ -53,4 +69,7 @@
             <point key="canvasLocation" x="307" y="328"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="searcIcon.png" width="22" height="22"/>
+    </resources>
 </document>
