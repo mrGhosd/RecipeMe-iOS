@@ -20,9 +20,18 @@
     // Configure the view for the selected state
 }
 
-- (void) initWithRecipe: (Recipe *) recipe{
-    UIImage *recipeImg = [recipe image];
-    if(recipeImg) self.recipeImage.image = [recipe image];
+- (void) setInfoView{
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//    UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+//    effectView.frame = self.infoView.bounds;
+//    
+//    UIVisualEffectView *vibrantView = [[UIVisualEffectView alloc]initWithEffect:vibrancy];
+//    effectView.frame = self.infoView.bounds;
+//
+//    
+//    [self.infoView addSubview:effectView];
+//    [self.imageView addSubview:vibrantView];
+    self.infoView.layer.opacity = 0.9;
 }
-
 @end

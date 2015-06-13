@@ -93,13 +93,11 @@
         cell.recipeImage.image = image;
         
     } failure:nil];
-//    UIImage *img = [recipe image];
-//    cell.recipeImage.image = img;
-//    cell
-//    cell.imageView.contentMode = UIViewContentModeScaleToFill;
     cell.recipeImage.clipsToBounds = YES;
+    [cell setInfoView];
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 250;
