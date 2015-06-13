@@ -17,6 +17,7 @@
     ServerConnection *connection;
     NSMutableArray *recipes;
     UISearchBar *searchBarMain;
+    NSArray *searchResults;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -76,13 +77,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return recipes.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return searchResults.count;
+    } else {
+        return recipes.count;
+    }
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"recipeCell";
-    Recipe *recipe = recipes[indexPath.row];
+    Recipe *recipe;
+    if (tableView == self.searchDisplayController.searchResultsTableView){
+        recipe = searchResults[indexPath.row];
+    } else {
+        recipe = recipes[indexPath.row];
+    }
+    
     RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
@@ -124,17 +136,39 @@
     } else {
         self.tableView.tableHeaderView = nil;
         searchBarMain = nil;
+        [self.searchDisplayController.searchBar resignFirstResponder];
         [searchBarMain removeFromSuperview];
     }
     
 }
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"title contains[c] %@",
+                                    searchText];
+    
+    searchResults = [recipes filteredArrayUsingPredicate:resultPredicate];
+}
 
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
 }
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.tableView.tableHeaderView = nil;
     [self.searchDisplayController.searchBar resignFirstResponder];
     searchBarMain = nil;
     [searchBar removeFromSuperview];
+}
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    tableView.rowHeight = 250
+    ; // or some other height
 }
 @end
