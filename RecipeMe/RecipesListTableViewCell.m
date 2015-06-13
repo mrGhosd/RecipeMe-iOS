@@ -47,7 +47,8 @@
 - (void) setInfoViewData: (Recipe *) recipe{
     self.infoView.layer.opacity = 0.95;
     self.recipeTitle.text = recipe.title;
-    self.recipeDifficult.text = recipe.difficult;
+    NSString *key = [NSString stringWithFormat:@"recipes_difficult_%@", recipe.difficult];
+    self.recipeDifficult.text = NSLocalizedString(key, nil);
     self.recipePersons.text = [NSString stringWithFormat:@"%@", recipe.persons];
     self.recipeTime.text = [NSString stringWithFormat:@"%@ min.", recipe.time];
     [self setUserAvatarSize];

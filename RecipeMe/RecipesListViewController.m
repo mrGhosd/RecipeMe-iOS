@@ -36,7 +36,7 @@
 - (void) setNavigationAttributes{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.topItem.title = @"Recipes";
+    self.navigationController.navigationBar.topItem.title = NSLocalizedString(@"recipes", nil);
     [self setNeedsStatusBarAppearanceUpdate];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,

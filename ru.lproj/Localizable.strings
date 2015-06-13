@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  RecipeMe
+
+  Created by vsokoltsov on 13.06.15.
+  Copyright (c) 2015 vsokoltsov. All rights reserved.
+*/
+"recipes" = "Рецепты";
+"recipes_difficult_easy" = "Легко";
+"recipes_difficult_medium" = "Средне";
+"recipes_difficult_hard" = "Тяжело";
