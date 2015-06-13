@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *recipePersons;
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
 @property (strong, nonatomic) IBOutlet UILabel *recipeTitle;
+@property (strong, nonatomic) IBOutlet UIImageView *heartIcon;
 - (void) setInfoView;
 - (void) initWithRecipe: (Recipe *) recipe;
 @property (strong, nonatomic) IBOutlet UIView *infoView;

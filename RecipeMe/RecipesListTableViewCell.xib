@@ -81,22 +81,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qx4-D8-FgO" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="0sM-3C-GbG"/>
-                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="7bK-xf-uPL"/>
-                            <constraint firstItem="qx4-D8-FgO" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="8" id="9C3-2k-1mA"/>
-                            <constraint firstAttribute="bottom" secondItem="Thn-Hs-NxZ" secondAttribute="bottom" constant="17" id="IMf-CB-NbG"/>
+                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="5Yn-3q-10X"/>
+                            <constraint firstItem="Jpm-0D-a7Y" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="8" id="AT3-57-Veg"/>
+                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="leading" secondItem="Thn-Hs-NxZ" secondAttribute="trailing" constant="2" id="Ltd-IQ-YX8"/>
                             <constraint firstItem="Jpm-0D-a7Y" firstAttribute="top" secondItem="Goj-iI-FD6" secondAttribute="top" constant="8" id="R6G-HP-TKo"/>
-                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="TWk-qN-LcE"/>
-                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="leading" secondItem="Thn-Hs-NxZ" secondAttribute="trailing" constant="2" id="Ufs-0o-x2v"/>
-                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="leading" secondItem="qx4-D8-FgO" secondAttribute="trailing" constant="2" id="UhC-Gg-qjI"/>
-                            <constraint firstAttribute="bottom" secondItem="qx4-D8-FgO" secondAttribute="bottom" constant="17" id="cs1-qs-b83"/>
+                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="WRq-E4-aK2"/>
+                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="leading" secondItem="qx4-D8-FgO" secondAttribute="trailing" constant="2" id="Y89-A5-Wdw"/>
                             <constraint firstItem="0lf-e5-RWI" firstAttribute="leading" secondItem="Goj-iI-FD6" secondAttribute="leading" constant="8" id="d4Q-zA-t5G"/>
                             <constraint firstAttribute="bottom" secondItem="0lf-e5-RWI" secondAttribute="bottom" constant="15" id="drV-4F-2Vf"/>
                             <constraint firstAttribute="trailing" secondItem="Jpm-0D-a7Y" secondAttribute="trailing" constant="8" id="lpT-dW-VvA"/>
-                            <constraint firstAttribute="bottom" secondItem="4Ce-U3-aNI" secondAttribute="bottom" constant="17" id="pfW-QZ-CTr"/>
-                            <constraint firstItem="Jpm-0D-a7Y" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="8" id="vZO-mD-wqx"/>
+                            <constraint firstAttribute="bottom" secondItem="Thn-Hs-NxZ" secondAttribute="bottom" constant="17" id="oHN-hk-Mqu"/>
+                            <constraint firstItem="qx4-D8-FgO" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="2" id="ohf-Aw-rPE"/>
+                            <constraint firstAttribute="bottom" secondItem="qx4-D8-FgO" secondAttribute="bottom" constant="17" id="rJg-Fg-lKx"/>
+                            <constraint firstItem="qx4-D8-FgO" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="uZC-Zh-rdf"/>
+                            <constraint firstAttribute="bottom" secondItem="4Ce-U3-aNI" secondAttribute="bottom" constant="17" id="z5W-CO-rrj"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="heartIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZGu-GY-eoa">
+                        <rect key="frame" x="260" y="23" width="35" height="25"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -105,11 +108,14 @@
                     <constraint firstItem="Goj-iI-FD6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="V8W-nL-Mdf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zWW-b0-obB" secondAttribute="trailing" constant="-16" id="YOh-vC-fBS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="zWW-b0-obB" secondAttribute="bottom" constant="-8" id="h46-1F-fiP"/>
+                    <constraint firstItem="ZGu-GY-eoa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="ph6-NJ-t3l"/>
                     <constraint firstItem="zWW-b0-obB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="tDx-bH-0PF"/>
                     <constraint firstItem="zWW-b0-obB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="typ-uM-fC8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ZGu-GY-eoa" secondAttribute="trailing" constant="15" id="vHY-9c-Gbn"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heartIcon" destination="ZGu-GY-eoa" id="N05-eU-vhb"/>
                 <outlet property="infoView" destination="Goj-iI-FD6" id="SbX-1R-r9F"/>
                 <outlet property="recipeDifficult" destination="CFR-VC-ode" id="HHC-gH-o59"/>
                 <outlet property="recipeImage" destination="zWW-b0-obB" id="dRv-wZ-U9p"/>
@@ -123,6 +129,7 @@
     </objects>
     <resources>
         <image name="difficultIcon.png" width="16" height="14"/>
+        <image name="heartIcon.png" width="35" height="29"/>
         <image name="personsIcon.png" width="13" height="14"/>
         <image name="timeIcon.png" width="11" height="14"/>
     </resources>
