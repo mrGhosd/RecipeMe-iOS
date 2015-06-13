@@ -23,7 +23,7 @@
 - (void) initWithRecipe: (Recipe *) recipe{
     [self setMainImage:recipe];
     [self setAvatarImage:recipe];
-    [self setInfoView];
+    [self setInfoViewData:recipe];
 }
 - (void) setMainImage: (Recipe *) recipe{
     NSURL *url = [NSURL URLWithString:recipe.imageUrl];
@@ -44,20 +44,20 @@
     } failure:nil];
     self.userAvatar.clipsToBounds = YES;
 }
-- (void) setInfoView{
-//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-//    UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
-//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
-//    effectView.frame = self.infoView.bounds;
-//    
-//    UIVisualEffectView *vibrantView = [[UIVisualEffectView alloc]initWithEffect:vibrancy];
-//    effectView.frame = self.infoView.bounds;
-//
-//    
-//    [self.infoView addSubview:effectView];
-//    [self.imageView addSubview:vibrantView];
+- (void) setInfoViewData: (Recipe *) recipe{
     self.infoView.layer.opacity = 0.95;
+    self.recipeTitle.text = recipe.title;
+    self.recipeDifficult.text = recipe.difficult;
+    self.recipePersons.text = [NSString stringWithFormat:@"%@", recipe.persons];
+    self.recipeTime.text = [NSString stringWithFormat:@"%@ min.", recipe.time];
+    [self setUserAvatarSize];
+}
+
+- (void) setUserAvatarSize{
     self.userAvatar.backgroundColor = [UIColor whiteColor];
-//    self.userAvatar.layer.zPosition = 100;
+    self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
+    self.userAvatar.layer.masksToBounds = YES;
+    self.userAvatar.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.userAvatar.layer.borderWidth = 2.5;
 }
 @end

@@ -11,8 +11,11 @@
 
 @interface RecipesListTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *recipeImage;
+@property (strong, nonatomic) IBOutlet UILabel *recipeDifficult;
+@property (strong, nonatomic) IBOutlet UILabel *recipeTime;
+@property (strong, nonatomic) IBOutlet UILabel *recipePersons;
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
-@property (strong, nonatomic) IBOutlet UIView *placeholderView;
+@property (strong, nonatomic) IBOutlet UILabel *recipeTitle;
 - (void) setInfoView;
 - (void) initWithRecipe: (Recipe *) recipe;
 @property (strong, nonatomic) IBOutlet UIView *infoView;

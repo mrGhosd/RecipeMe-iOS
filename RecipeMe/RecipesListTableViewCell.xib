@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="RecipesListTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="318" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -17,15 +17,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWW-b0-obB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
                     </imageView>
-                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Goj-iI-FD6">
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Goj-iI-FD6">
                         <rect key="frame" x="0.0" y="179" width="320" height="70"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpm-0D-a7Y">
-                                <rect key="frame" x="101" y="8" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0lf-e5-RWI">
                                 <rect key="frame" x="8" y="-26" width="88" height="88"/>
                                 <constraints>
@@ -33,11 +27,74 @@
                                     <constraint firstAttribute="width" constant="88" id="KTC-sz-ZYx"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpm-0D-a7Y">
+                                <rect key="frame" x="104" y="8" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qx4-D8-FgO">
+                                <rect key="frame" x="104" y="37" width="57" height="16"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="difficultIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ldx-pN-wlp">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="16"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFR-VC-ode">
+                                        <rect key="frame" x="22" y="1" width="35" height="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Thn-Hs-NxZ">
+                                <rect key="frame" x="169" y="37" width="52" height="16"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="personsIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qoL-9K-IHN">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="16"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2G-sG-36a">
+                                        <rect key="frame" x="22" y="-2" width="30" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ce-U3-aNI">
+                                <rect key="frame" x="229" y="37" width="72" height="16"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timeIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-aG-OjK">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="16"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wd-DC-te8">
+                                        <rect key="frame" x="18" y="0.0" width="46" height="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qx4-D8-FgO" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="0sM-3C-GbG"/>
+                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="7bK-xf-uPL"/>
+                            <constraint firstItem="qx4-D8-FgO" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="8" id="9C3-2k-1mA"/>
+                            <constraint firstAttribute="bottom" secondItem="Thn-Hs-NxZ" secondAttribute="bottom" constant="17" id="IMf-CB-NbG"/>
+                            <constraint firstItem="Jpm-0D-a7Y" firstAttribute="top" secondItem="Goj-iI-FD6" secondAttribute="top" constant="8" id="R6G-HP-TKo"/>
+                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="top" secondItem="Jpm-0D-a7Y" secondAttribute="bottom" constant="8" id="TWk-qN-LcE"/>
+                            <constraint firstItem="4Ce-U3-aNI" firstAttribute="leading" secondItem="Thn-Hs-NxZ" secondAttribute="trailing" constant="5" id="Ufs-0o-x2v"/>
+                            <constraint firstItem="Thn-Hs-NxZ" firstAttribute="leading" secondItem="qx4-D8-FgO" secondAttribute="trailing" constant="2" id="UhC-Gg-qjI"/>
+                            <constraint firstAttribute="bottom" secondItem="qx4-D8-FgO" secondAttribute="bottom" constant="17" id="cs1-qs-b83"/>
                             <constraint firstItem="0lf-e5-RWI" firstAttribute="leading" secondItem="Goj-iI-FD6" secondAttribute="leading" constant="8" id="d4Q-zA-t5G"/>
                             <constraint firstAttribute="bottom" secondItem="0lf-e5-RWI" secondAttribute="bottom" constant="15" id="drV-4F-2Vf"/>
+                            <constraint firstAttribute="trailing" secondItem="Jpm-0D-a7Y" secondAttribute="trailing" constant="8" id="lpT-dW-VvA"/>
+                            <constraint firstAttribute="bottom" secondItem="4Ce-U3-aNI" secondAttribute="bottom" constant="17" id="pfW-QZ-CTr"/>
+                            <constraint firstItem="Jpm-0D-a7Y" firstAttribute="leading" secondItem="0lf-e5-RWI" secondAttribute="trailing" constant="8" id="vZO-mD-wqx"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,10 +111,19 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="infoView" destination="Goj-iI-FD6" id="SbX-1R-r9F"/>
+                <outlet property="recipeDifficult" destination="CFR-VC-ode" id="HHC-gH-o59"/>
                 <outlet property="recipeImage" destination="zWW-b0-obB" id="dRv-wZ-U9p"/>
+                <outlet property="recipePersons" destination="g2G-sG-36a" id="mhi-bu-5GP"/>
+                <outlet property="recipeTime" destination="9Wd-DC-te8" id="RnO-On-ofB"/>
+                <outlet property="recipeTitle" destination="Jpm-0D-a7Y" id="hdc-tf-gPZ"/>
                 <outlet property="userAvatar" destination="0lf-e5-RWI" id="mLc-th-DmC"/>
             </connections>
-            <point key="canvasLocation" x="305" y="449"/>
+            <point key="canvasLocation" x="304" y="449"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="difficultIcon.png" width="16" height="14"/>
+        <image name="personsIcon.png" width="13" height="14"/>
+        <image name="timeIcon.png" width="11" height="14"/>
+    </resources>
 </document>
