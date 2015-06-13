@@ -46,6 +46,7 @@
 }
 - (void) setInfoViewData: (Recipe *) recipe{
     self.infoView.layer.opacity = 0.95;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.recipeTitle.text = recipe.title;
     NSString *key = [NSString stringWithFormat:@"recipes_difficult_%@", recipe.difficult];
     self.recipeDifficult.text = NSLocalizedString(key, nil);
