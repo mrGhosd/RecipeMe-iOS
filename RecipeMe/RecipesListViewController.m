@@ -86,15 +86,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    NSURL *url = [NSURL URLWithString:recipe.imageUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
-    [cell.recipeImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        cell.recipeImage.image = image;
-        
-    } failure:nil];
-    cell.recipeImage.clipsToBounds = YES;
-    [cell setInfoView];
+    [cell initWithRecipe:recipe];
     return cell;
 }
 

@@ -26,20 +26,28 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-i0-Vn0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0lf-e5-RWI">
                                 <rect key="frame" x="8" y="-26" width="88" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="KEu-6Q-alN"/>
+                                    <constraint firstAttribute="width" constant="88" id="KTC-sz-ZYx"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0lf-e5-RWI" firstAttribute="leading" secondItem="Goj-iI-FD6" secondAttribute="leading" constant="8" id="d4Q-zA-t5G"/>
+                            <constraint firstAttribute="bottom" secondItem="0lf-e5-RWI" secondAttribute="bottom" constant="15" id="drV-4F-2Vf"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="Goj-iI-FD6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="1aa-SL-E4m"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Goj-iI-FD6" secondAttribute="trailing" constant="-16" id="Urw-eL-LHn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Goj-iI-FD6" secondAttribute="trailing" constant="-16" id="B1u-E2-uxG"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Goj-iI-FD6" secondAttribute="bottom" constant="-8" id="GID-sG-EFw"/>
+                    <constraint firstItem="Goj-iI-FD6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="V8W-nL-Mdf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zWW-b0-obB" secondAttribute="trailing" constant="-16" id="YOh-vC-fBS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="zWW-b0-obB" secondAttribute="bottom" constant="-8" id="h46-1F-fiP"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Goj-iI-FD6" secondAttribute="bottom" constant="-8" id="r4z-1M-q78"/>
                     <constraint firstItem="zWW-b0-obB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="tDx-bH-0PF"/>
                     <constraint firstItem="zWW-b0-obB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="typ-uM-fC8"/>
                 </constraints>
@@ -47,6 +55,7 @@
             <connections>
                 <outlet property="infoView" destination="Goj-iI-FD6" id="SbX-1R-r9F"/>
                 <outlet property="recipeImage" destination="zWW-b0-obB" id="dRv-wZ-U9p"/>
+                <outlet property="userAvatar" destination="0lf-e5-RWI" id="mLc-th-DmC"/>
             </connections>
             <point key="canvasLocation" x="305" y="449"/>
         </tableViewCell>

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface Recipe : NSObject
 @property (nonatomic, retain) NSNumber *id;
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) NSNumber * time;
 @property (nonatomic, retain) NSNumber * persons;
 @property (nonatomic, retain) NSString * difficult;
+@property (nonatomic, retain) User *user;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 @end
