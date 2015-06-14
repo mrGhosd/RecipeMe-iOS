@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X3o-v8-7nm">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Recipes List View Controller-->
@@ -36,6 +37,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="13H-wA-GtN" id="19V-Um-LLk"/>
                         <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
+                        <segue destination="DLe-8j-NgS" kind="show" identifier="recipeDetail" id="9jT-f3-207"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -49,6 +51,114 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1117" y="328"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="LcA-jt-AKl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="DLe-8j-NgS" customClass="RecipeDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WST-3c-IX9"/>
+                        <viewControllerLayoutGuide type="bottom" id="bTC-iG-bcy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ra4-lE-euV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-pe-xBR" userLabel="recipeInfoTableView">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" id="CfY-Y3-7HQ">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CfY-Y3-7HQ" id="U5s-Vn-01h">
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <sections/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="DLe-8j-NgS" id="eML-tg-kwH"/>
+                                                    <outlet property="delegate" destination="DLe-8j-NgS" id="mPK-sH-Rig"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-dy-ZL3" userLabel="ingridientsTableView">
+                                                <rect key="frame" x="0.0" y="250" width="600" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="at8-7a-Pbz"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingridientsCell" id="bNW-XB-lUW">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bNW-XB-lUW" id="22C-5I-Pai">
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="DLe-8j-NgS" id="bMh-aM-f5Q"/>
+                                                    <outlet property="delegate" destination="DLe-8j-NgS" id="95Q-iM-rPb"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
+                                                <rect key="frame" x="0.0" y="358" width="600" height="68"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hLl-hX-uAp">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hLl-hX-uAp" id="k38-MY-tzR">
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="600" id="9uD-fV-v3Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="M6s-tb-eN2"/>
+                                            <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="Tb0-ze-W4J"/>
+                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="top" secondItem="T9a-pe-xBR" secondAttribute="bottom" id="VaU-pk-Dw8"/>
+                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="aUX-7a-Pfe"/>
+                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="cSh-8u-Owa"/>
+                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="eYm-hY-ln4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="8ld-hV-qdV" secondAttribute="trailing" id="FWb-hs-eSu"/>
+                                    <constraint firstItem="8ld-hV-qdV" firstAttribute="leading" secondItem="tbr-NR-yW8" secondAttribute="leading" id="M4F-ch-PYo"/>
+                                    <constraint firstItem="8ld-hV-qdV" firstAttribute="width" secondItem="tbr-NR-yW8" secondAttribute="width" id="RvU-gV-ag5"/>
+                                    <constraint firstAttribute="bottom" secondItem="8ld-hV-qdV" secondAttribute="bottom" id="acn-xQ-upV"/>
+                                    <constraint firstItem="8ld-hV-qdV" firstAttribute="top" secondItem="tbr-NR-yW8" secondAttribute="top" id="ytB-uB-dL1"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="tbr-NR-yW8" secondAttribute="trailing" constant="-16" id="B4y-sG-L1C"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="tbr-NR-yW8" secondAttribute="bottom" constant="-64" id="GYr-tj-A5F"/>
+                            <constraint firstItem="tbr-NR-yW8" firstAttribute="leading" secondItem="ra4-lE-euV" secondAttribute="leadingMargin" constant="-16" id="PfG-lr-g6Q"/>
+                            <constraint firstItem="tbr-NR-yW8" firstAttribute="top" secondItem="WST-3c-IX9" secondAttribute="bottom" id="sui-IA-S84"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ingiridnetsTableHeightConstraint" destination="at8-7a-Pbz" id="k6D-xh-R7q"/>
+                        <outlet property="ingridientsTableView" destination="sVg-dy-ZL3" id="XGH-nx-K1H"/>
+                        <outlet property="recipeInfoTableView" destination="T9a-pe-xBR" id="CLh-ss-3aX"/>
+                        <outlet property="scrollView" destination="tbr-NR-yW8" id="7qX-cJ-uJm"/>
+                        <outlet property="viewHeightConstraint" destination="9uD-fV-v3Y" id="7FT-7E-zd2"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1881" y="328"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="guC-ue-zeK">

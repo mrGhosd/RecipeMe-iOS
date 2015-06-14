@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		220BA50B8AA07A2589BED8B7 /* libPods-RecipeMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03A9DE5F479A1981245B8DF /* libPods-RecipeMe.a */; };
 		34F75A056DFF53A57FBD3AEC /* libPods-RecipeMeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E191853DFC22572833285A4 /* libPods-RecipeMeTests.a */; };
+		6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */; };
 		64101E1E1B2C557B006D516D /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64101E1D1B2C557B006D516D /* heartIcon.png */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
@@ -48,6 +49,8 @@
 /* Begin PBXFileReference section */
 		4E191853DFC22572833285A4 /* libPods-RecipeMeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeMeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		615E452ACEAC29CBF7F2D650 /* Pods-RecipeMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMeTests/Pods-RecipeMeTests.release.xcconfig"; sourceTree = "<group>"; };
+		6404CBFE1B2DB511005B5A0D /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
+		6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 			children = (
 				643AFBB21B2B70A20090BC68 /* RecipesListViewController.h */,
 				643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */,
+				6404CBFE1B2DB511005B5A0D /* RecipeDetailViewController.h */,
+				6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
+				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,

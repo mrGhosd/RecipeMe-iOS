@@ -13,6 +13,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <UIImageView+AFNetworking.h>
 #import <UIScrollView+InfiniteScroll.h>
+#import "RecipeDetailViewController.h"
 
 @interface RecipesListViewController (){
     ServerConnection *connection;
@@ -21,6 +22,7 @@
     NSNumber *pageNumber;
     UIRefreshControl *refreshControl;
     UISearchBar *searchBarMain;
+    Recipe *selectedRecipe;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -51,6 +53,7 @@
 - (void) setNavigationAttributes{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.topItem.title = NSLocalizedString(@"recipes", nil);
     [self setNeedsStatusBarAppearanceUpdate];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -118,7 +121,8 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+    selectedRecipe = recipes[indexPath.row];
+    [self performSegueWithIdentifier:@"recipeDetail" sender:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,18 +147,22 @@
 {
     return 250;
 }
+
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"recipeDetail"]){
+        RecipeDetailViewController *view = segue.destinationViewController;
+        view.recipe = selectedRecipe;
+    }
+}
+
 /*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 */
 
 - (IBAction)showSearchBar:(id)sender {
@@ -206,4 +214,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
     tableView.rowHeight = 250
     ; // or some other height
 }
+
+
 @end
