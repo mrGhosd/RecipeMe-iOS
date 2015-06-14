@@ -61,13 +61,14 @@
 
 - (void) refreshInit{
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
     
     refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor whiteColor];
-    refreshControl.backgroundColor = [UIColor grayColor];
-    [refreshView addSubview:refreshControl];
+    refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
+//    [refreshView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(loadLatestRecipes) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
 }
 - (void) loadLatestRecipes{
     recipes = [NSMutableArray new];

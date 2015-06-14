@@ -32,6 +32,7 @@
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
+		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -482,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */,
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
 				643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */,
