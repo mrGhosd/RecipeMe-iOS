@@ -12,6 +12,7 @@
 @interface RecipeDetailViewController (){
     NSMutableArray *ingridients;
     NSMutableArray *steps;
+    NSMutableArray *comments;
 }
 
 @end
@@ -25,6 +26,7 @@
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3"]];
     steps = [NSMutableArray arrayWithArray:@[@"step 1", @"step 2", @"step 3", @"step 4", @"step 5", @"step 6"]];
+    comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
     
     [self setIngridientsTableViewHeight];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
@@ -35,7 +37,8 @@
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + 320;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 44.0;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,8 +51,10 @@
         return 1;
     } else if([tableView isEqual:self.ingridientsTableView]){
         return ingridients.count;
-    } else {
+    } else if([tableView isEqual:self.stepsTableView]){
         return steps.count;
+    } else {
+        return comments.count;
     }
 }
 
@@ -74,13 +79,17 @@
         UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.textLabel.text = ingridients[indexPath.row];
         return cell;
-    } else {
+    } else if([tableView isEqual:self.stepsTableView]){
         static NSString *CellIdentifier = @"stepCell";
         UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.textLabel.text = steps[indexPath.row];
         return cell;
+    } else {
+        static NSString *CellIdentifier = @"commentCell";
+        UITableViewCell *cell = [self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.textLabel.text = comments[indexPath.row];
+        return cell;
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

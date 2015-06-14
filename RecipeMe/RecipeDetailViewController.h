@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *stepTableViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *ingiridnetsTableHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewHeightConstraint;
+@property (strong, nonatomic) IBOutlet UITableView *commentsTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentsTableViewHeightConstraint;
 @property (strong, nonatomic) Recipe *recipe;
 @end

@@ -70,7 +70,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-pe-xBR" userLabel="recipeInfoTableView">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-pe-xBR" userLabel="recipeInfoTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -87,7 +87,7 @@
                                                     <outlet property="delegate" destination="DLe-8j-NgS" id="mPK-sH-Rig"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-dy-ZL3" userLabel="ingridientsTableView">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-dy-ZL3" userLabel="ingridientsTableView">
                                                 <rect key="frame" x="0.0" y="250" width="600" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -106,7 +106,7 @@
                                                     <outlet property="delegate" destination="DLe-8j-NgS" id="95Q-iM-rPb"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
                                                 <rect key="frame" x="0.0" y="358" width="600" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -125,9 +125,12 @@
                                                     <outlet property="delegate" destination="DLe-8j-NgS" id="aKK-iM-KRt"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-ud-EHw" userLabel="commentsTableView">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-ud-EHw" userLabel="commentsTableView">
                                                 <rect key="frame" x="0.0" y="434" width="600" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="T70-j6-PCo"/>
+                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="vwh-kH-vTL">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -136,6 +139,9 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="DLe-8j-NgS" id="i1k-gn-nsu"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,6 +181,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentsTableView" destination="4FI-ud-EHw" id="0em-vr-UKc"/>
+                        <outlet property="commentsTableViewHeightConstraint" destination="T70-j6-PCo" id="W1z-Hn-MII"/>
                         <outlet property="ingiridnetsTableHeightConstraint" destination="at8-7a-Pbz" id="k6D-xh-R7q"/>
                         <outlet property="ingridientsTableView" destination="sVg-dy-ZL3" id="XGH-nx-K1H"/>
                         <outlet property="recipeInfoTableView" destination="T9a-pe-xBR" id="CLh-ss-3aX"/>
