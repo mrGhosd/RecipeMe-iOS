@@ -18,6 +18,7 @@
 
 #import "ServerConnection.h"
 #import "Recipe.h"
+#import "RecipesListViewController.h"
 
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"#sharedInstance", ^{
