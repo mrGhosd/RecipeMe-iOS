@@ -107,17 +107,24 @@
                                                     <outlet property="delegate" destination="DLe-8j-NgS" id="95Q-iM-rPb"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
                                                 <rect key="frame" x="0.0" y="358" width="600" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="kUV-G0-CfH"/>
+                                                </constraints>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hLl-hX-uAp">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stepCell" id="hLl-hX-uAp">
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hLl-hX-uAp" id="k38-MY-tzR">
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="DLe-8j-NgS" id="yXr-AX-5IT"/>
+                                                    <outlet property="delegate" destination="DLe-8j-NgS" id="aKK-iM-KRt"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,9 +133,12 @@
                                             <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="M6s-tb-eN2"/>
                                             <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="Tb0-ze-W4J"/>
                                             <constraint firstItem="sVg-dy-ZL3" firstAttribute="top" secondItem="T9a-pe-xBR" secondAttribute="bottom" id="VaU-pk-Dw8"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" id="XAp-hg-7Lh"/>
                                             <constraint firstItem="T9a-pe-xBR" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="aUX-7a-Pfe"/>
                                             <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="cSh-8u-Owa"/>
                                             <constraint firstItem="sVg-dy-ZL3" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="eYm-hY-ln4"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="ffH-mL-miV"/>
+                                            <constraint firstAttribute="trailing" secondItem="dQb-Dc-Yma" secondAttribute="trailing" id="gs4-So-KWb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -154,6 +164,8 @@
                         <outlet property="ingridientsTableView" destination="sVg-dy-ZL3" id="XGH-nx-K1H"/>
                         <outlet property="recipeInfoTableView" destination="T9a-pe-xBR" id="CLh-ss-3aX"/>
                         <outlet property="scrollView" destination="tbr-NR-yW8" id="7qX-cJ-uJm"/>
+                        <outlet property="stepTableViewHeightConstraint" destination="kUV-G0-CfH" id="8o6-ef-k2F"/>
+                        <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
                         <outlet property="viewHeightConstraint" destination="9uD-fV-v3Y" id="7FT-7E-zd2"/>
                     </connections>
                 </viewController>

@@ -13,6 +13,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *recipeInfoTableView;
 @property (strong, nonatomic) IBOutlet UITableView *ingridientsTableView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UITableView *stepsTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *stepTableViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *ingiridnetsTableHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewHeightConstraint;
 @property (strong, nonatomic) Recipe *recipe;

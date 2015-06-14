@@ -11,6 +11,7 @@
 
 @interface RecipeDetailViewController (){
     NSMutableArray *ingridients;
+    NSMutableArray *steps;
 }
 
 @end
@@ -23,6 +24,8 @@
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3"]];
+    steps = [NSMutableArray arrayWithArray:@[@"step 1", @"step 2", @"step 3", @"step 4", @"step 5", @"step 6"]];
+    
     [self setIngridientsTableViewHeight];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
@@ -31,7 +34,8 @@
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + 320;
+    self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + 320;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -42,10 +46,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if([tableView isEqual:self.recipeInfoTableView]){
         return 1;
-    } else {
+    } else if([tableView isEqual:self.ingridientsTableView]){
         return ingridients.count;
+    } else {
+        return steps.count;
     }
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -64,10 +69,15 @@
         }
         [cell initWithRecipe:self.recipe];
         return cell;
-    } else {
+    } else if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
         UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.textLabel.text = ingridients[indexPath.row];
+        return cell;
+    } else {
+        static NSString *CellIdentifier = @"stepCell";
+        UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.textLabel.text = steps[indexPath.row];
         return cell;
     }
     
