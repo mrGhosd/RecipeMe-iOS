@@ -25,7 +25,7 @@
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3"]];
-    steps = [NSMutableArray arrayWithArray:@[@"step 1", @"step 2", @"step 3", @"step 4", @"step 5", @"step 6"]];
+    steps = [NSMutableArray arrayWithArray:@[@"step 1", @"step 2", @"step 3", @"step 4", @"step 5", @"step 6", @"step 1", @"step 1", @"step 1", @"step 1"]];
     comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
     
     [self setIngridientsTableViewHeight];
@@ -37,7 +37,7 @@
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 44.0;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 60.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 - (void)didReceiveMemoryWarning {
