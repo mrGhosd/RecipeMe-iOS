@@ -37,7 +37,7 @@
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 60.0;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 - (void)didReceiveMemoryWarning {
@@ -47,6 +47,11 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
     if([tableView isEqual:self.recipeInfoTableView]){
         return 1;
     } else if([tableView isEqual:self.ingridientsTableView]){
@@ -56,11 +61,6 @@
     } else {
         return comments.count;
     }
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
     
 }
 
@@ -101,6 +101,39 @@
     }
     
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if([tableView isEqual:self.commentsTableView]){
+        return 30;
+    } else {
+        return 0;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if([tableView isEqual:self.commentsTableView]){
+        return 100;
+    } else {
+        return 0;
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if([tableView isEqual:self.commentsTableView]){
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];
+        view.backgroundColor = [UIColor greenColor];
+        return view;
+    } else {
+        return nil;
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if([tableView isEqual:self.commentsTableView]){
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];
+        view.backgroundColor = [UIColor redColor];
+        return view;
+    } else {
+        return nil;
+    }
+}
+
 
 /*
 #pragma mark - Navigation

@@ -141,6 +141,7 @@
                                                 </prototypes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="DLe-8j-NgS" id="i1k-gn-nsu"/>
+                                                    <outlet property="delegate" destination="DLe-8j-NgS" id="KZD-tx-cqi"/>
                                                 </connections>
                                             </tableView>
                                         </subviews>

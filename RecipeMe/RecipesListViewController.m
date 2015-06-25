@@ -215,5 +215,4 @@ shouldReloadTableForSearchString:(NSString *)searchString
     ; // or some other height
 }
 
-
 @end
