@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "Step.h"
 
 @interface Recipe : NSObject
 @property (nonatomic, retain) NSNumber *id;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSNumber * persons;
 @property (nonatomic, retain) NSString * difficult;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) NSMutableArray *steps;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 @end

@@ -27,6 +27,8 @@
 		643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBCA1B2C22310090BC68 /* timeIcon.png */; };
 		643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBD71B2C30410090BC68 /* Localizable.strings */; };
 		643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */; };
+		6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B11B3BE1FF0013872F /* StepSpec.m */; };
+		6455C3B51B3BE2480013872F /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B41B3BE2480013872F /* Step.m */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -74,6 +76,9 @@
 		643AFBD81B2C30440090BC68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBD91B2C30450090BC68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searcIcon.png; sourceTree = "<group>"; };
+		6455C3B11B3BE1FF0013872F /* StepSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSpec.m; sourceTree = "<group>"; };
+		6455C3B31B3BE2480013872F /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
+		6455C3B41B3BE2480013872F /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -165,6 +170,23 @@
 			name = user;
 			sourceTree = "<group>";
 		};
+		6455C3AF1B3BE1D50013872F /* step */ = {
+			isa = PBXGroup;
+			children = (
+				6455C3B31B3BE2480013872F /* Step.h */,
+				6455C3B41B3BE2480013872F /* Step.m */,
+			);
+			name = step;
+			sourceTree = "<group>";
+		};
+		6455C3B01B3BE1ED0013872F /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				6455C3B11B3BE1FF0013872F /* StepSpec.m */,
+			);
+			name = Step;
+			sourceTree = "<group>";
+		};
 		647031E41B2AF0420084D58A = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +245,7 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				6455C3B01B3BE1ED0013872F /* Step */,
 				643AFBAD1B2B46590090BC68 /* Recipe */,
 				643AFBA51B2B31AD0090BC68 /* ServerConnection */,
 				6470320A1B2AF0420084D58A /* Supporting Files */,
@@ -241,6 +264,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6455C3AF1B3BE1D50013872F /* step */,
 				643AFBC21B2C10550090BC68 /* user */,
 				643AFBA91B2B45E70090BC68 /* recipe */,
 				643AFBA11B2B30740090BC68 /* ServerConnection */,
@@ -478,6 +502,7 @@
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
+				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
@@ -491,6 +516,7 @@
 			files = (
 				64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */,
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
+				6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
 				643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */,
 			);
