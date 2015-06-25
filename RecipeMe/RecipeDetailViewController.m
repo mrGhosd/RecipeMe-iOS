@@ -12,6 +12,7 @@
 #import <MBProgressHUD.h>
 #import "ServerConnection.h"
 #import "Step.h"
+#import "Ingridient.h"
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 
 @interface RecipeDetailViewController (){
@@ -28,10 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
-    ingridients = [NSMutableArray arrayWithArray:@[@"Ingridient 1", @"ingridient 2", @"ingridient 3",
-                                                   @"Ingridient 1", @"ingridient 2", @"ingridient 3",
-                                                   @"Ingridient 1", @"ingridient 2", @"ingridient 3",
-                                                   @"Ingridient 1", @"ingridient 2", @"ingridient 3"]];
     comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
     [self loadRecipe];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
@@ -66,8 +63,9 @@
     if(data != [NSNull null]){
         self.recipe = [[Recipe alloc] initWithParameters:data];
         steps = [NSMutableArray arrayWithArray:self.recipe.steps];
+        ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
 //        [steps addObjectsFromArray:self.recipe.steps];
-//        [steps insertObject:@"Шаги" atIndex:0];
+        [ingridients insertObject:@"Ингридиенты" atIndex:0];
         [self.recipeInfoTableView reloadData];
         [self.stepsTableView reloadData];
         [self.ingridientsTableView reloadData];
@@ -112,9 +110,16 @@
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
+        if(indexPath.row ==0){
+            UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            cell.textLabel.text = ingridients[0];
+            return cell;
+        } else {
+        Ingridient *ingridient = ingridients[indexPath.row];
         UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.textLabel.text = ingridients[indexPath.row];
+        cell.textLabel.text = ingridient.name;
         return cell;
+        }
     } else if([tableView isEqual:self.stepsTableView]){
         static NSString *CellIdentifier = @"stepCell";
 //        if(indexPath.row == 0){
