@@ -9,6 +9,7 @@
 #import "RecipeDetailViewController.h"
 #import "RecipesListTableViewCell.h"
 #import "StepTableViewCell.h"
+#import "StepHeaderTableViewCell.h"
 #import "IngridientsTableViewCell.h"
 #import "IngridientHeaderTableViewCell.h"
 #import <MBProgressHUD.h>
@@ -18,6 +19,8 @@
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 
 @interface RecipeDetailViewController (){
+    int selectedIndex;
+    float currentCellHeight;
     ServerConnection *connection;
     NSMutableArray *ingridients;
     NSMutableArray *steps;
@@ -30,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    selectedIndex = -1;
     connection = [ServerConnection sharedInstance];
     comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
     [self loadRecipe];
@@ -39,6 +43,10 @@
     [self.stepsTableView registerClass:[StepTableViewCell class] forCellReuseIdentifier:@"stepCell"];
     [self.stepsTableView registerNib:[UINib nibWithNibName:@"StepTableViewCell" bundle:nil]
                    forCellReuseIdentifier:@"stepCell"];
+    
+    [self.stepsTableView registerClass:[StepHeaderTableViewCell class] forCellReuseIdentifier:@"stepHeaderCell"];
+    [self.stepsTableView registerNib:[UINib nibWithNibName:@"StepHeaderTableViewCell" bundle:nil]
+              forCellReuseIdentifier:@"stepHeaderCell"];
     
     [self.ingridientsTableView registerClass:[IngridientsTableViewCell class] forCellReuseIdentifier:@"ingridientsCell"];
     [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientsTableViewCell" bundle:nil]
@@ -54,7 +62,7 @@
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 70.0;
     self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 290;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 325;
 }
 
 - (void) loadRecipe{
@@ -75,6 +83,7 @@
         steps = [NSMutableArray arrayWithArray:self.recipe.steps];
         ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
 //        [steps addObjectsFromArray:self.recipe.steps];
+        [steps insertObject:@"Шаги" atIndex:0];
         [ingridients insertObject:@"Ингридиенты" atIndex:0];
         [self.recipeInfoTableView reloadData];
         [self.stepsTableView reloadData];
@@ -137,12 +146,13 @@
         return cell;
         }
     } else if([tableView isEqual:self.stepsTableView]){
-        static NSString *CellIdentifier = @"stepCell";
-//        if(indexPath.row == 0){
-//            UITableViewCell *cell = (UITableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//            cell.textLabel.text = steps[0];
-//            return cell;
-//        } else {
+        if(indexPath.row == 0){
+            static NSString *CellIdentifier = @"stepHeaderCell";
+            StepHeaderTableViewCell *cell = (StepHeaderTableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            cell.title.text = steps[0];
+            return cell;
+        } else {
+            static NSString *CellIdentifier = @"stepCell";
             Step *step = steps[indexPath.row];
             StepTableViewCell *cell = (StepTableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if(cell == nil){
@@ -150,8 +160,11 @@
                 cell = [nib objectAtIndex:0];
             }
             [cell setStepData:step];
-        return cell;
-//        }
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
+            [tap setNumberOfTapsRequired:1];
+            [cell.stepDescription addGestureRecognizer:tap];
+            return cell;
+        }
     } else {
         static NSString *CellIdentifier = @"commentCell";
         UITableViewCell *cell = [self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -159,14 +172,51 @@
         return cell;
     }
 }
-
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if([tableView isEqual:self.stepsTableView]){
+    [self.view endEditing:YES];
+    if(selectedIndex == indexPath.row){
+        selectedIndex = -1;
+        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        return;
+    }
+    
+    if(selectedIndex != -1){
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        selectedIndex = indexPath.row;
+        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    selectedIndex = indexPath.row;
+    [self changeAnswerTextHeightAt:indexPath];
+    [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+- (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
+    CGSize size = [[steps[path.row] desc] sizeWithAttributes:nil];
+    currentCellHeight = size.width / 10;
+//    self.stepTableViewHeightConstraint.constant += currentCellHeight;
+//    self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant;
+    [self.stepsTableView cellForRowAtIndexPath:path];
+}
+-(void)tapped:(UITapGestureRecognizer *)recognizer{
+    NSIndexPath *path = [self.stepsTableView indexPathForCell:[[recognizer.view superview] superview]];
+    [self.stepsTableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([tableView isEqual:self.recipeInfoTableView]){
         return 250;
-    } else if([tableView isEqual:self.recipeInfoTableView]){
-        return 70;
+    } else if([tableView isEqual:self.stepsTableView]){
+        if(indexPath.row == 0){
+            return 44;
+        } else {
+            if(selectedIndex == indexPath.row){
+                return currentCellHeight + 70;
+            } else {
+                return 70;
+            }
+        }
     } else {
         return 44;
     }

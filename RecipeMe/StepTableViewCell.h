@@ -11,5 +11,6 @@
 @interface StepTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *stepImage;
 @property (strong, nonatomic) IBOutlet UITextView *stepDescription;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *descHeightConstraint;
 - (void) setStepData:(Step *) step;
 @end

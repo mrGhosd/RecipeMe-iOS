@@ -37,6 +37,10 @@
 		6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3C91B3C03C60013872F /* IngridientsTableViewCell.xib */; };
 		6455C3CF1B3C09FF0013872F /* IngridientHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3CD1B3C09FF0013872F /* IngridientHeaderTableViewCell.m */; };
 		6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3CE1B3C09FF0013872F /* IngridientHeaderTableViewCell.xib */; };
+		6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3D21B3C0C230013872F /* StepHeaderTableViewCell.m */; };
+		6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3D31B3C0C230013872F /* StepHeaderTableViewCell.xib */; };
+		6455C3D71B3C0FC60013872F /* ingridientsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3D61B3C0FC60013872F /* ingridientsIcon.png */; };
+		6455C3D91B3C10850013872F /* stepsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3D81B3C10850013872F /* stepsIcon.png */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -99,6 +103,11 @@
 		6455C3CC1B3C09FF0013872F /* IngridientHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngridientHeaderTableViewCell.h; sourceTree = "<group>"; };
 		6455C3CD1B3C09FF0013872F /* IngridientHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngridientHeaderTableViewCell.m; sourceTree = "<group>"; };
 		6455C3CE1B3C09FF0013872F /* IngridientHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngridientHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		6455C3D11B3C0C230013872F /* StepHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepHeaderTableViewCell.h; sourceTree = "<group>"; };
+		6455C3D21B3C0C230013872F /* StepHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepHeaderTableViewCell.m; sourceTree = "<group>"; };
+		6455C3D31B3C0C230013872F /* StepHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		6455C3D61B3C0FC60013872F /* ingridientsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ingridientsIcon.png; path = ../../../Downloads/ingridientsIcon.png; sourceTree = "<group>"; };
+		6455C3D81B3C10850013872F /* stepsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stepsIcon.png; path = ../../../Downloads/stepsIcon.png; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -213,6 +222,9 @@
 				6455C3B71B3BEFDF0013872F /* StepTableViewCell.h */,
 				6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */,
 				6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */,
+				6455C3D11B3C0C230013872F /* StepHeaderTableViewCell.h */,
+				6455C3D21B3C0C230013872F /* StepHeaderTableViewCell.m */,
+				6455C3D31B3C0C230013872F /* StepHeaderTableViewCell.xib */,
 			);
 			name = steps;
 			sourceTree = "<group>";
@@ -280,6 +292,8 @@
 				647031F81B2AF0420084D58A /* ViewController.m */,
 				647031FA1B2AF0420084D58A /* Main.storyboard */,
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
+				6455C3D81B3C10850013872F /* stepsIcon.png */,
+				6455C3D61B3C0FC60013872F /* ingridientsIcon.png */,
 				64101E1D1B2C557B006D516D /* heartIcon.png */,
 				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
 				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
@@ -469,11 +483,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6455C3D91B3C10850013872F /* stepsIcon.png in Resources */,
 				6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
+				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
+				6455C3D71B3C0FC60013872F /* ingridientsIcon.png in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
@@ -565,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
+				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
