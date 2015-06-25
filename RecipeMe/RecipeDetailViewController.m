@@ -173,30 +173,30 @@
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if([tableView isEqual:self.stepsTableView]){
-    [self.view endEditing:YES];
-    if(selectedIndex == indexPath.row){
-        selectedIndex = -1;
-        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        return;
-    }
-    
-    if(selectedIndex != -1){
-        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
-        selectedIndex = indexPath.row;
-        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    
-    selectedIndex = indexPath.row;
-    [self changeAnswerTextHeightAt:indexPath];
-    [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+//    if([tableView isEqual:self.stepsTableView]){
+//    [self.view endEditing:YES];
+//    if(selectedIndex == indexPath.row){
+//        selectedIndex = -1;
+//        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        return;
+//    }
+//    
+//    if(selectedIndex != -1){
+//        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+//        selectedIndex = indexPath.row;
+//        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
+//    
+//    selectedIndex = indexPath.row;
+//    [self changeAnswerTextHeightAt:indexPath];
+//    [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
 }
 - (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
     CGSize size = [[steps[path.row] desc] sizeWithAttributes:nil];
     currentCellHeight = size.width / 10;
-//    self.stepTableViewHeightConstraint.constant += currentCellHeight;
-//    self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant;
+    self.stepTableViewHeightConstraint.constant += currentCellHeight;
+    self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant;
     [self.stepsTableView cellForRowAtIndexPath:path];
 }
 -(void)tapped:(UITapGestureRecognizer *)recognizer{

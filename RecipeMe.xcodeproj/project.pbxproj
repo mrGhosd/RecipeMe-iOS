@@ -48,6 +48,8 @@
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
+		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
+		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,9 @@
 		647032001B2AF0420084D58A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
 		A03A9DE5F479A1981245B8DF /* libPods-RecipeMe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeMe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A481FD8DD02C38121CA82199 /* Pods-RecipeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.release.xcconfig"; sourceTree = "<group>"; };
 		A9B5E53A283533F0ADF9BF76 /* Pods-RecipeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +324,7 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				64FFCD3E1B3C317300A4DDCC /* Comment */,
 				6455C3C01B3BFF870013872F /* Ingridient */,
 				6455C3B01B3BE1ED0013872F /* Step */,
 				643AFBAD1B2B46590090BC68 /* Recipe */,
@@ -339,6 +345,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64FFCD3A1B3C307100A4DDCC /* comment */,
 				6455C3BC1B3BFF620013872F /* ingridient */,
 				6455C3AF1B3BE1D50013872F /* step */,
 				643AFBC21B2C10550090BC68 /* user */,
@@ -386,6 +393,23 @@
 				615E452ACEAC29CBF7F2D650 /* Pods-RecipeMeTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		64FFCD3A1B3C307100A4DDCC /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				64FFCD3B1B3C308800A4DDCC /* Comment.h */,
+				64FFCD3C1B3C308800A4DDCC /* Comment.m */,
+			);
+			name = comment;
+			sourceTree = "<group>";
+		};
+		64FFCD3E1B3C317300A4DDCC /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */,
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 		FA7D341202A684A2FB45CA1D /* Frameworks */ = {
@@ -588,6 +612,7 @@
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
+				64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
@@ -608,6 +633,7 @@
 				6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */,
 				6455C3C21B3BFF960013872F /* IngridientSpec.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
+				64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */,
 				643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

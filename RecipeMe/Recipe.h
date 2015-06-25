@@ -27,6 +27,7 @@
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSMutableArray *steps;
 @property (nonatomic, retain) NSMutableArray *ingridients;
+@property (nonatomic, retain) NSMutableArray *comments;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 @end

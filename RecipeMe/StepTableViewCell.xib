@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-At-2jL">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-At-2jL">
                         <rect key="frame" x="8" y="7" width="55" height="55"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="FVx-i5-Zqj"/>
@@ -39,7 +39,9 @@
                     <constraint firstItem="7Bl-At-2jL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="Jc3-8z-dvg"/>
                     <constraint firstItem="7Bl-At-2jL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="LN6-qH-uWo"/>
                     <constraint firstItem="Nzp-xC-6em" firstAttribute="leading" secondItem="7Bl-At-2jL" secondAttribute="trailing" constant="8" id="M35-ni-ga5"/>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="MwC-SX-Kcs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Nzp-xC-6em" secondAttribute="bottom" constant="-8" id="RqR-wY-PF6"/>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="yvg-tp-Rp4"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

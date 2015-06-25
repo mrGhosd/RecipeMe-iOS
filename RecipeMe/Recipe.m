@@ -9,6 +9,7 @@
 #import "Recipe.h"
 #import "ServerConnection.h"
 #import "Ingridient.h"
+#import "Comment.h"
 
 @implementation Recipe
 - (instancetype) initWithParameters: (NSDictionary *) params{
@@ -33,6 +34,7 @@
     if(params[@"difficult"]) self.difficult = params[@"difficult"];
     if(params[@"user"]) self.user = [[User alloc] initWithParams:params[@"user"]];
     if(params[@"steps_list"]) self.steps = [Step initializeFromArray:params[@"steps_list"]];
+    if(params[@"comments_list"]) self.comments = [Comment initializeFromArray:params[@"comments_list"]];
     if(params[@"ingridients_list"]) self.ingridients = [Ingridient initializeFromArray:params[@"ingridients_list"]];
 }
 
