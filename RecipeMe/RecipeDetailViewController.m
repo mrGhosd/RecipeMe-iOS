@@ -12,6 +12,7 @@
 #import <MBProgressHUD.h>
 #import "ServerConnection.h"
 #import "Step.h"
+#import <NYTPhotoViewer/NYTPhotosViewController.h>
 
 @interface RecipeDetailViewController (){
     ServerConnection *connection;
@@ -128,7 +129,7 @@
                 cell = [nib objectAtIndex:0];
             }
             [cell setStepData:step];
-            return cell;
+        return cell;
 //        }
     } else {
         static NSString *CellIdentifier = @"commentCell";
@@ -137,6 +138,7 @@
         return cell;
     }
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -147,6 +149,7 @@
     }
     
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
         return 30;

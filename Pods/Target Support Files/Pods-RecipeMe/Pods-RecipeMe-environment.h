@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
 
+// NYTPhotoViewer
+#define COCOAPODS_POD_AVAILABLE_NYTPhotoViewer
+#define COCOAPODS_VERSION_MAJOR_NYTPhotoViewer 0
+#define COCOAPODS_VERSION_MINOR_NYTPhotoViewer 1
+#define COCOAPODS_VERSION_PATCH_NYTPhotoViewer 2
+
 // RDRStickyKeyboardView
 #define COCOAPODS_POD_AVAILABLE_RDRStickyKeyboardView
 #define COCOAPODS_VERSION_MAJOR_RDRStickyKeyboardView 0

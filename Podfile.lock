@@ -23,6 +23,7 @@ PODS:
   - BENTagsView (0.9.0)
   - Kiwi (2.3.1)
   - MBProgressHUD (0.9.1)
+  - NYTPhotoViewer (0.1.2)
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - BENTagsView
   - Kiwi
   - MBProgressHUD
+  - NYTPhotoViewer
   - OCMockito
   - OHHTTPStubs
   - RDRStickyKeyboardView
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   BENTagsView: 1a6ade3a65b7e677ea7482c1c08983ab4db532d5
   Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  NYTPhotoViewer: 874a57dd833238b52ab2e8d1c827356c763626c3
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
@@ -60,4 +63,4 @@ SPEC CHECKSUMS:
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
   UIScrollView-InfiniteScroll: cfa860f96f5a2e3b4575d59fe6d08d337093ac2a
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

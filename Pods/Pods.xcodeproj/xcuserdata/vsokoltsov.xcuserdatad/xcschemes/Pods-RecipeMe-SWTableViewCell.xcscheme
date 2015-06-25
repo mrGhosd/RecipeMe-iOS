@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "554C787A74BAD709B8D0BA55"
+               BlueprintIdentifier = "B14F2993AE6F2C3EC228EECE"
                BuildableName = "libPods-RecipeMe-SWTableViewCell.a"
                BlueprintName = "Pods-RecipeMe-SWTableViewCell"
                ReferencedContainer = "container:Pods.xcodeproj">
