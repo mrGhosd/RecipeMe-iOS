@@ -8,8 +8,10 @@
 
 #import "RecipeDetailViewController.h"
 #import "RecipesListTableViewCell.h"
+#import "StepTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "ServerConnection.h"
+#import "Step.h"
 
 @interface RecipeDetailViewController (){
     ServerConnection *connection;
@@ -29,28 +31,29 @@
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3"]];
-    steps = [NSMutableArray arrayWithArray:@[@"step 1", @"step 2", @"step 3", @"step 4", @"step 5", @"step 6", @"step 1", @"step 1", @"step 1", @"step 1"]];
     comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
-    
-    [self setIngridientsTableViewHeight];
+    [self loadRecipe];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
-    [self loadRecipe];
+    [self.stepsTableView registerClass:[StepTableViewCell class] forCellReuseIdentifier:@"stepCell"];
+    [self.stepsTableView registerNib:[UINib nibWithNibName:@"StepTableViewCell" bundle:nil]
+                   forCellReuseIdentifier:@"stepCell"];
+
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
     self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 290;
 }
 
 - (void) loadRecipe{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
 //    [refreshControl endRefreshing];
-    [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@", self.recipe.id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@", self.recipe.id] parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseRecipe:data];
         } else {
@@ -60,14 +63,16 @@
 }
 - (void) parseRecipe: (id) data{
     if(data != [NSNull null]){
-        for(NSDictionary *recipe in data){
-            self.recipe = [[Recipe alloc] initWithParameters:recipe];
-        }
+        self.recipe = [[Recipe alloc] initWithParameters:data];
+        steps = [NSMutableArray arrayWithArray:self.recipe.steps];
+//        [steps addObjectsFromArray:self.recipe.steps];
+//        [steps insertObject:@"Шаги" atIndex:0];
         [self.recipeInfoTableView reloadData];
         [self.stepsTableView reloadData];
         [self.ingridientsTableView reloadData];
         [self.commentsTableView reloadData];
     }
+    [self setIngridientsTableViewHeight];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
@@ -111,9 +116,20 @@
         return cell;
     } else if([tableView isEqual:self.stepsTableView]){
         static NSString *CellIdentifier = @"stepCell";
-        UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.textLabel.text = steps[indexPath.row];
-        return cell;
+//        if(indexPath.row == 0){
+//            UITableViewCell *cell = (UITableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            cell.textLabel.text = steps[0];
+//            return cell;
+//        } else {
+            Step *step = steps[indexPath.row];
+            StepTableViewCell *cell = (StepTableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if(cell == nil){
+                NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StepTableViewCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            [cell setStepData:step];
+            return cell;
+//        }
     } else {
         static NSString *CellIdentifier = @"commentCell";
         UITableViewCell *cell = [self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];

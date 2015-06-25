@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="StepTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-At-2jL">
+                        <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="69" id="q6e-ZF-oAm"/>
+                            <constraint firstAttribute="width" constant="69" id="rbo-41-Tql"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzp-xC-6em">
+                        <rect key="frame" x="77" y="0.0" width="235" height="69"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="7VN-HA-yhp"/>
+                    <constraint firstItem="Nzp-xC-6em" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="B4V-02-CLb"/>
+                    <constraint firstItem="Nzp-xC-6em" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="GU9-iw-vQx"/>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="KZI-Tv-uMF"/>
+                    <constraint firstItem="Nzp-xC-6em" firstAttribute="leading" secondItem="7Bl-At-2jL" secondAttribute="trailing" constant="8" id="M35-ni-ga5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nzp-xC-6em" secondAttribute="bottom" constant="-8" id="RqR-wY-PF6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7Bl-At-2jL" secondAttribute="bottom" constant="-8" id="yhb-9U-O1E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="stepDescription" destination="Nzp-xC-6em" id="gaE-Kc-iDq"/>
+                <outlet property="stepImage" destination="7Bl-At-2jL" id="lZS-0z-yGk"/>
+            </connections>
+            <point key="canvasLocation" x="273" y="281"/>
+        </tableViewCell>
+    </objects>
+</document>

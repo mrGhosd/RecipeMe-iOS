@@ -29,6 +29,8 @@
 		643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */; };
 		6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B11B3BE1FF0013872F /* StepSpec.m */; };
 		6455C3B51B3BE2480013872F /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B41B3BE2480013872F /* Step.m */; };
+		6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */; };
+		6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -79,6 +81,9 @@
 		6455C3B11B3BE1FF0013872F /* StepSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSpec.m; sourceTree = "<group>"; };
 		6455C3B31B3BE2480013872F /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		6455C3B41B3BE2480013872F /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
+		6455C3B71B3BEFDF0013872F /* StepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepTableViewCell.h; sourceTree = "<group>"; };
+		6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepTableViewCell.m; sourceTree = "<group>"; };
+		6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepTableViewCell.xib; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,6 +192,16 @@
 			name = Step;
 			sourceTree = "<group>";
 		};
+		6455C3B61B3BEFC50013872F /* steps */ = {
+			isa = PBXGroup;
+			children = (
+				6455C3B71B3BEFDF0013872F /* StepTableViewCell.h */,
+				6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */,
+				6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */,
+			);
+			name = steps;
+			sourceTree = "<group>";
+		};
 		647031E41B2AF0420084D58A = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +298,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6455C3B61B3BEFC50013872F /* steps */,
 				643AFBB51B2B71350090BC68 /* recipes */,
 			);
 			name = Views;
@@ -407,6 +423,7 @@
 			files = (
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
+				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
@@ -503,6 +520,7 @@
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
+				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
