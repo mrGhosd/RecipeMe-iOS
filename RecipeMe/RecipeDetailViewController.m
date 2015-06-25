@@ -8,8 +8,11 @@
 
 #import "RecipeDetailViewController.h"
 #import "RecipesListTableViewCell.h"
+#import <MBProgressHUD.h>
+#import "ServerConnection.h"
 
 @interface RecipeDetailViewController (){
+    ServerConnection *connection;
     NSMutableArray *ingridients;
     NSMutableArray *steps;
     NSMutableArray *comments;
@@ -21,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    connection = [ServerConnection sharedInstance];
     ingridients = [NSMutableArray arrayWithArray:@[@"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
                                                    @"Ingridient 1", @"ingridient 2", @"ingridient 3",
@@ -32,6 +36,7 @@
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
+    [self loadRecipe];
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
@@ -39,6 +44,31 @@
     self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
     self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
+}
+
+- (void) loadRecipe{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+//    [refreshControl endRefreshing];
+    [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@", self.recipe.id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseRecipe:data];
+        } else {
+            
+        }
+    }];
+}
+- (void) parseRecipe: (id) data{
+    if(data != [NSNull null]){
+        for(NSDictionary *recipe in data){
+            self.recipe = [[Recipe alloc] initWithParameters:recipe];
+        }
+        [self.recipeInfoTableView reloadData];
+        [self.stepsTableView reloadData];
+        [self.ingridientsTableView reloadData];
+        [self.commentsTableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -20,7 +20,7 @@
 SPEC_BEGIN(StepSpec)
 describe(@"initWithParameters: (NSDictionary *) params", ^{
     __block Recipe *recipe;
-    __block NSDictionary *recipeParams = @{@"id": @1, @"user_id": @1, @"category_id": @1, @"title": @"Title", @"description": @"Desc", @"steps": @[@{@"id": @1, @"description": @"Desc"}]};
+    __block NSDictionary *recipeParams = @{@"id": @1, @"user_id": @1, @"category_id": @1, @"title": @"Title", @"description": @"Desc", @"steps_list": @[@{@"id": @1, @"description": @"Desc"}]};
     
     beforeAll(^{
         recipe = [[Recipe alloc] initWithParameters:recipeParams];
@@ -33,7 +33,7 @@ describe(@"initWithParameters: (NSDictionary *) params", ^{
     });
     
     context(@"attribute is empty", ^{
-        __block NSDictionary *recipeParams = @{@"id": @1, @"user_id": @1, @"category_id": @1, @"title": @"Title", @"description": @"Desc", @"steps": @[]};
+        __block NSDictionary *recipeParams = @{@"id": @1, @"user_id": @1, @"category_id": @1, @"title": @"Title", @"description": @"Desc", @"steps_list": @[]};
         beforeAll(^{
             recipe = [[Recipe alloc] initWithParameters:recipeParams];
             

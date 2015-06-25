@@ -31,7 +31,7 @@
     if(params[@"persons"]) self.persons = params[@"persons"];
     if(params[@"difficult"]) self.difficult = params[@"difficult"];
     if(params[@"user"]) self.user = [[User alloc] initWithParams:params[@"user"]];
-    if(params[@"steps"]) self.steps = [Step initializeFromArray:params[@"steps"]];
+    if(params[@"steps_list"]) self.steps = [Step initializeFromArray:params[@"steps_list"]];
 }
 
 - (UIImage *) image{
