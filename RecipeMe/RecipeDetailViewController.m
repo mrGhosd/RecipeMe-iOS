@@ -9,6 +9,8 @@
 #import "RecipeDetailViewController.h"
 #import "RecipesListTableViewCell.h"
 #import "StepTableViewCell.h"
+#import "IngridientsTableViewCell.h"
+#import "IngridientHeaderTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "ServerConnection.h"
 #import "Step.h"
@@ -37,12 +39,20 @@
     [self.stepsTableView registerClass:[StepTableViewCell class] forCellReuseIdentifier:@"stepCell"];
     [self.stepsTableView registerNib:[UINib nibWithNibName:@"StepTableViewCell" bundle:nil]
                    forCellReuseIdentifier:@"stepCell"];
+    
+    [self.ingridientsTableView registerClass:[IngridientsTableViewCell class] forCellReuseIdentifier:@"ingridientsCell"];
+    [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientsTableViewCell" bundle:nil]
+              forCellReuseIdentifier:@"ingridientsCell"];
+    
+    [self.ingridientsTableView registerClass:[IngridientHeaderTableViewCell class] forCellReuseIdentifier:@"ingridientsHeaderCell"];
+    [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientHeaderTableViewCell" bundle:nil]
+                    forCellReuseIdentifier:@"ingridientsHeaderCell"];
 
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
-    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 44.0;
-    self.stepTableViewHeightConstraint.constant = steps.count * 44.0;
+    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0;
+    self.stepTableViewHeightConstraint.constant = steps.count * 70.0;
     self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 290;
 }
@@ -109,15 +119,21 @@
         [cell initWithRecipe:self.recipe];
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
-        static NSString *CellIdentifier = @"ingridientsCell";
         if(indexPath.row ==0){
-            UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            cell.textLabel.text = ingridients[0];
+            static NSString *CellIdentifier = @"ingridientsHeaderCell";
+            IngridientHeaderTableViewCell *cell = (IngridientHeaderTableViewCell *)[self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            cell.title.text = ingridients[0];
             return cell;
         } else {
+        static NSString *CellIdentifier = @"ingridientsCell";
         Ingridient *ingridient = ingridients[indexPath.row];
-        UITableViewCell *cell = [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.textLabel.text = ingridient.name;
+        IngridientsTableViewCell *cell = (IngridientsTableViewCell *)[self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil){
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"IngridientsTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+            cell.ingridientName.text = ingridient.name;
+            cell.ingridientSize.text = ingridient.size;
         return cell;
         }
     } else if([tableView isEqual:self.stepsTableView]){
@@ -149,6 +165,8 @@
 {
     if([tableView isEqual:self.recipeInfoTableView]){
         return 250;
+    } else if([tableView isEqual:self.recipeInfoTableView]){
+        return 70;
     } else {
         return 44;
     }
