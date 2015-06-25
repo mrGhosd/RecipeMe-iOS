@@ -31,6 +31,8 @@
 		6455C3B51B3BE2480013872F /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B41B3BE2480013872F /* Step.m */; };
 		6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */; };
 		6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */; };
+		6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3BE1B3BFF790013872F /* Ingridient.m */; };
+		6455C3C21B3BFF960013872F /* IngridientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3C11B3BFF960013872F /* IngridientSpec.m */; };
 		647031F31B2AF0420084D58A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F21B2AF0420084D58A /* main.m */; };
 		647031F61B2AF0420084D58A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F51B2AF0420084D58A /* AppDelegate.m */; };
 		647031F91B2AF0420084D58A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647031F81B2AF0420084D58A /* ViewController.m */; };
@@ -84,6 +86,9 @@
 		6455C3B71B3BEFDF0013872F /* StepTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepTableViewCell.h; sourceTree = "<group>"; };
 		6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepTableViewCell.m; sourceTree = "<group>"; };
 		6455C3B91B3BEFDF0013872F /* StepTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepTableViewCell.xib; sourceTree = "<group>"; };
+		6455C3BD1B3BFF790013872F /* Ingridient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ingridient.h; sourceTree = "<group>"; };
+		6455C3BE1B3BFF790013872F /* Ingridient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ingridient.m; sourceTree = "<group>"; };
+		6455C3C11B3BFF960013872F /* IngridientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngridientSpec.m; sourceTree = "<group>"; };
 		647031ED1B2AF0420084D58A /* RecipeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		647031F11B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		647031F21B2AF0420084D58A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -202,6 +207,23 @@
 			name = steps;
 			sourceTree = "<group>";
 		};
+		6455C3BC1B3BFF620013872F /* ingridient */ = {
+			isa = PBXGroup;
+			children = (
+				6455C3BD1B3BFF790013872F /* Ingridient.h */,
+				6455C3BE1B3BFF790013872F /* Ingridient.m */,
+			);
+			name = ingridient;
+			sourceTree = "<group>";
+		};
+		6455C3C01B3BFF870013872F /* Ingridient */ = {
+			isa = PBXGroup;
+			children = (
+				6455C3C11B3BFF960013872F /* IngridientSpec.m */,
+			);
+			name = Ingridient;
+			sourceTree = "<group>";
+		};
 		647031E41B2AF0420084D58A = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +282,7 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				6455C3C01B3BFF870013872F /* Ingridient */,
 				6455C3B01B3BE1ED0013872F /* Step */,
 				643AFBAD1B2B46590090BC68 /* Recipe */,
 				643AFBA51B2B31AD0090BC68 /* ServerConnection */,
@@ -279,6 +302,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6455C3BC1B3BFF620013872F /* ingridient */,
 				6455C3AF1B3BE1D50013872F /* step */,
 				643AFBC21B2C10550090BC68 /* user */,
 				643AFBA91B2B45E70090BC68 /* recipe */,
@@ -514,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
@@ -535,6 +560,7 @@
 				64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */,
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
 				6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */,
+				6455C3C21B3BFF960013872F /* IngridientSpec.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
 				643AFBB11B2B468B0090BC68 /* RecipeSpec.m in Sources */,
 			);

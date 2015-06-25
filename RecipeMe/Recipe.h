@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSString * difficult;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSMutableArray *steps;
+@property (nonatomic, retain) NSMutableArray *ingridients;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 @end
