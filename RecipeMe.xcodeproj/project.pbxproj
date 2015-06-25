@@ -50,6 +50,11 @@
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
+		64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD441B3C343D00A4DDCC /* CommentTableViewCell.m */; };
+		64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FFCD451B3C343D00A4DDCC /* CommentTableViewCell.xib */; };
+		64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD4C1B3C346500A4DDCC /* CommentHeaderTableViewCell.m */; };
+		64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FFCD4D1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib */; };
+		64FFCD511B3C35D100A4DDCC /* commentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FFCD501B3C35D100A4DDCC /* commentIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +130,13 @@
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
+		64FFCD431B3C343D00A4DDCC /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		64FFCD441B3C343D00A4DDCC /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		64FFCD451B3C343D00A4DDCC /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		64FFCD4B1B3C346500A4DDCC /* CommentHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderTableViewCell.h; sourceTree = "<group>"; };
+		64FFCD4C1B3C346500A4DDCC /* CommentHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderTableViewCell.m; sourceTree = "<group>"; };
+		64FFCD4D1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		64FFCD501B3C35D100A4DDCC /* commentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = commentIcon.png; path = ../../../Downloads/commentIcon.png; sourceTree = "<group>"; };
 		A03A9DE5F479A1981245B8DF /* libPods-RecipeMe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeMe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A481FD8DD02C38121CA82199 /* Pods-RecipeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.release.xcconfig"; sourceTree = "<group>"; };
 		A9B5E53A283533F0ADF9BF76 /* Pods-RecipeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMe/Pods-RecipeMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -297,6 +309,7 @@
 				647031F81B2AF0420084D58A /* ViewController.m */,
 				647031FA1B2AF0420084D58A /* Main.storyboard */,
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
+				64FFCD501B3C35D100A4DDCC /* commentIcon.png */,
 				6455C3D81B3C10850013872F /* stepsIcon.png */,
 				6455C3D61B3C0FC60013872F /* ingridientsIcon.png */,
 				64101E1D1B2C557B006D516D /* heartIcon.png */,
@@ -366,6 +379,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64FFCD411B3C341C00A4DDCC /* comments */,
 				6455C3C31B3C03560013872F /* ingridients */,
 				6455C3B61B3BEFC50013872F /* steps */,
 				643AFBB51B2B71350090BC68 /* recipes */,
@@ -410,6 +424,19 @@
 				64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */,
 			);
 			name = Comment;
+			sourceTree = "<group>";
+		};
+		64FFCD411B3C341C00A4DDCC /* comments */ = {
+			isa = PBXGroup;
+			children = (
+				64FFCD431B3C343D00A4DDCC /* CommentTableViewCell.h */,
+				64FFCD441B3C343D00A4DDCC /* CommentTableViewCell.m */,
+				64FFCD451B3C343D00A4DDCC /* CommentTableViewCell.xib */,
+				64FFCD4B1B3C346500A4DDCC /* CommentHeaderTableViewCell.h */,
+				64FFCD4C1B3C346500A4DDCC /* CommentHeaderTableViewCell.m */,
+				64FFCD4D1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib */,
+			);
+			name = comments;
 			sourceTree = "<group>";
 		};
 		FA7D341202A684A2FB45CA1D /* Frameworks */ = {
@@ -509,7 +536,9 @@
 			files = (
 				6455C3D91B3C10850013872F /* stepsIcon.png in Resources */,
 				6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */,
+				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
+				64FFCD511B3C35D100A4DDCC /* commentIcon.png in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
@@ -520,6 +549,7 @@
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
 				643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */,
+				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,
 				643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */,
 				6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */,
@@ -606,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
+				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
@@ -614,6 +645,7 @@
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
 				64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
+				64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,

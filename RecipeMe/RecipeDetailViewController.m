@@ -12,9 +12,12 @@
 #import "StepHeaderTableViewCell.h"
 #import "IngridientsTableViewCell.h"
 #import "IngridientHeaderTableViewCell.h"
+#import "CommentTableViewCell.h"
+#import "CommentHeaderTableViewCell.h"
 #import <MBProgressHUD.h>
 #import "ServerConnection.h"
 #import "Step.h"
+#import "Comment.h"
 #import "Ingridient.h"
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 
@@ -35,7 +38,7 @@
     [super viewDidLoad];
     selectedIndex = -1;
     connection = [ServerConnection sharedInstance];
-    comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
+//    comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
     [self loadRecipe];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
@@ -55,13 +58,21 @@
     [self.ingridientsTableView registerClass:[IngridientHeaderTableViewCell class] forCellReuseIdentifier:@"ingridientsHeaderCell"];
     [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientHeaderTableViewCell" bundle:nil]
                     forCellReuseIdentifier:@"ingridientsHeaderCell"];
+    
+    [self.commentsTableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:@"commentCell"];
+    [self.commentsTableView registerNib:[UINib nibWithNibName:@"CommentTableViewCell" bundle:nil]
+                    forCellReuseIdentifier:@"commentCell"];
+    
+    [self.commentsTableView registerClass:[CommentHeaderTableViewCell class] forCellReuseIdentifier:@"commentHeaderCell"];
+    [self.commentsTableView registerNib:[UINib nibWithNibName:@"CommentHeaderTableViewCell" bundle:nil]
+                    forCellReuseIdentifier:@"commentHeaderCell"];
 
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0;
     self.stepTableViewHeightConstraint.constant = steps.count * 70.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 75.0;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 105.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 325;
 }
 
@@ -82,9 +93,11 @@
         self.recipe = [[Recipe alloc] initWithParameters:data];
         steps = [NSMutableArray arrayWithArray:self.recipe.steps];
         ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
+        comments = [NSMutableArray arrayWithArray:self.recipe.comments];
 //        [steps addObjectsFromArray:self.recipe.steps];
         [steps insertObject:@"Шаги" atIndex:0];
         [ingridients insertObject:@"Ингридиенты" atIndex:0];
+        [comments insertObject:@"Комментарии" atIndex:0];
         [self.recipeInfoTableView reloadData];
         [self.stepsTableView reloadData];
         [self.ingridientsTableView reloadData];
@@ -166,10 +179,19 @@
             return cell;
         }
     } else {
-        static NSString *CellIdentifier = @"commentCell";
-        UITableViewCell *cell = [self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.textLabel.text = comments[indexPath.row];
-        return cell;
+        if(indexPath.row == 0){
+            static NSString *CellIdentifier = @"commentHeaderCell";
+            CommentHeaderTableViewCell *cell = (CommentHeaderTableViewCell *)[self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            cell.title.text = comments[0];
+            return cell;
+        } else {
+            static NSString *CellIdentifier = @"commentCell";
+            Comment *comment = comments[indexPath.row];
+            CommentTableViewCell *cell = (CommentTableViewCell *)[self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            [cell setCommentData:comment];
+            return cell;
+        }
+        
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -211,25 +233,28 @@
         if(indexPath.row == 0){
             return 44;
         } else {
-            if(selectedIndex == indexPath.row){
-                return currentCellHeight + 70;
-            } else {
-                return 70;
-            }
+            return 70;
         }
+    } else if([tableView isEqual:self.commentsTableView]){
+        if(indexPath.row == 0){
+            return 44;
+        } else {
+            return 50;
+        }
+        
     } else {
         return 44;
     }
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if([tableView isEqual:self.commentsTableView]){
-        return 30;
-    } else {
-        return 0;
-    }
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    if([tableView isEqual:self.commentsTableView]){
+//        return 30;
+//    } else {
+//        return 0;
+//    }
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if([tableView isEqual:self.commentsTableView]){
         return 100;
@@ -237,15 +262,15 @@
         return 0;
     }
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if([tableView isEqual:self.commentsTableView]){
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];
-        view.backgroundColor = [UIColor greenColor];
-        return view;
-    } else {
-        return nil;
-    }
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    if([tableView isEqual:self.commentsTableView]){
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];
+//        view.backgroundColor = [UIColor greenColor];
+//        return view;
+//    } else {
+//        return nil;
+//    }
+//}
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];

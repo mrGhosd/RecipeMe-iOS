@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface Comment : NSObject
 @property (nonatomic, retain) NSNumber *id;
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) NSNumber *userId;
 @property (nonatomic, retain) NSNumber *recipeId;
 @property (nonatomic, retain) NSNumber *rate;
+@property (nonatomic, retain) User *user;
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) commentsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 
