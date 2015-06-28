@@ -148,11 +148,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="9uD-fV-v3Y"/>
-                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" id="Dfu-zN-Xis"/>
+                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" constant="-30" id="Dfu-zN-Xis"/>
                                             <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="M6s-tb-eN2"/>
                                             <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="Tb0-ze-W4J"/>
                                             <constraint firstItem="sVg-dy-ZL3" firstAttribute="top" secondItem="T9a-pe-xBR" secondAttribute="bottom" id="VaU-pk-Dw8"/>
-                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" id="XAp-hg-7Lh"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" constant="-15" id="XAp-hg-7Lh"/>
                                             <constraint firstAttribute="trailing" secondItem="4FI-ud-EHw" secondAttribute="trailing" id="XV0-bb-bAu"/>
                                             <constraint firstItem="T9a-pe-xBR" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="aUX-7a-Pfe"/>
                                             <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="cSh-8u-Owa"/>

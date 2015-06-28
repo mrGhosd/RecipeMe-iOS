@@ -70,10 +70,10 @@
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
-    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0;
-    self.stepTableViewHeightConstraint.constant = steps.count * 70.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 105.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 325;
+    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0 + 44.0;
+    self.stepTableViewHeightConstraint.constant = steps.count * 80.0 + 44.0;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 100.0 + 44.0;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 420;
 }
 
 - (void) loadRecipe{
@@ -95,6 +95,7 @@
         ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
         comments = [NSMutableArray arrayWithArray:self.recipe.comments];
 //        [steps addObjectsFromArray:self.recipe.steps];
+        [self setIngridientsTableViewHeight];
         [steps insertObject:@"Шаги" atIndex:0];
         [ingridients insertObject:@"Ингридиенты" atIndex:0];
         [comments insertObject:@"Комментарии" atIndex:0];
@@ -103,7 +104,6 @@
         [self.ingridientsTableView reloadData];
         [self.commentsTableView reloadData];
     }
-    [self setIngridientsTableViewHeight];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
@@ -139,12 +139,14 @@
             cell = [nib objectAtIndex:0];
         }
         [cell initWithRecipe:self.recipe];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
         if(indexPath.row ==0){
             static NSString *CellIdentifier = @"ingridientsHeaderCell";
             IngridientHeaderTableViewCell *cell = (IngridientHeaderTableViewCell *)[self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.title.text = ingridients[0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
         static NSString *CellIdentifier = @"ingridientsCell";
@@ -163,6 +165,7 @@
             static NSString *CellIdentifier = @"stepHeaderCell";
             StepHeaderTableViewCell *cell = (StepHeaderTableViewCell *)[self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.title.text = steps[0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
             static NSString *CellIdentifier = @"stepCell";
@@ -183,6 +186,7 @@
             static NSString *CellIdentifier = @"commentHeaderCell";
             CommentHeaderTableViewCell *cell = (CommentHeaderTableViewCell *)[self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.title.text = comments[0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         } else {
             static NSString *CellIdentifier = @"commentCell";
@@ -257,7 +261,7 @@
 //}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if([tableView isEqual:self.commentsTableView]){
-        return 100;
+        return 110;
     } else {
         return 0;
     }
@@ -273,12 +277,12 @@
 //}
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10.0f)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110.0f)];
         view.backgroundColor = [UIColor redColor];
         return view;
     } else {
         return nil;
-    }
+    }   
 }
 
 
