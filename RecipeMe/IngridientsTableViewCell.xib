@@ -14,24 +14,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teX-ZU-la9">
-                        <rect key="frame" x="8" y="8" width="220" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teX-ZU-la9">
+                        <rect key="frame" x="62" y="8" width="188" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUO-64-AOk">
-                        <rect key="frame" x="236" y="8" width="84" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUO-64-AOk">
+                        <rect key="frame" x="258" y="8" width="62" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="teX-ZU-la9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="6Uo-oh-ajp"/>
-                    <constraint firstItem="teX-ZU-la9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Vjm-tk-xgI"/>
-                    <constraint firstItem="aUO-64-AOk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="a7v-dx-X0S"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aUO-64-AOk" secondAttribute="trailing" constant="-8" id="wpk-Sy-jCB"/>
+                    <constraint firstItem="aUO-64-AOk" firstAttribute="leading" secondItem="teX-ZU-la9" secondAttribute="trailing" constant="8" id="6kQ-1O-Htf"/>
+                    <constraint firstItem="teX-ZU-la9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="54" id="DX5-HO-PHb"/>
+                    <constraint firstItem="aUO-64-AOk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LDw-Wy-Hyb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aUO-64-AOk" secondAttribute="trailing" id="MfK-cc-QH8"/>
+                    <constraint firstItem="teX-ZU-la9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="r3o-CE-qaM"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
