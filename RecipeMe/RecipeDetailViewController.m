@@ -35,8 +35,10 @@
 
 @implementation RecipeDetailViewController
 
-float const stepHeight = 70;
-float const commentHeight = 50;
+float const stepHeight = 70.0;
+float const commentHeight = 50.0;
+float const commentFormHeight = 125.0;
+float const ingridientHeight = 50.0;
 float const defaultCellHeight = 44;
 float const recipeCellInfoHeight = 250;
 
@@ -76,10 +78,10 @@ float const recipeCellInfoHeight = 250;
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
-    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * commentHeight;
-    self.stepTableViewHeightConstraint.constant = steps.count * stepHeight;
-    self.commentsTableViewHeightConstraint.constant = comments.count * defaultCellHeight;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
+    self.ingiridnetsTableHeightConstraint.constant = (ingridients.count + 1) * ingridientHeight;
+    self.stepTableViewHeightConstraint.constant = (steps.count + 1) * stepHeight;
+    self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight + commentFormHeight;
+    self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 
 - (void) loadRecipe{

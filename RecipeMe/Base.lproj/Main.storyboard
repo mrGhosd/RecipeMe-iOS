@@ -64,10 +64,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T9a-pe-xBR" userLabel="recipeInfoTableView">
@@ -150,10 +150,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="600" id="0o0-C4-32C"/>
                                             <constraint firstItem="4FI-ud-EHw" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="1sc-1T-jwW"/>
                                             <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="FdA-Kk-7T8"/>
-                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" id="GYm-eR-ty1"/>
-                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" id="ITo-wD-3BP"/>
+                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" constant="-20" id="GYm-eR-ty1"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" constant="-20" id="ITo-wD-3BP"/>
                                             <constraint firstAttribute="trailing" secondItem="dQb-Dc-Yma" secondAttribute="trailing" id="Qtz-2e-4kO"/>
                                             <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="RFv-q6-iE0"/>
                                             <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="a9Y-El-j5g"/>
@@ -188,9 +189,11 @@
                         <outlet property="ingiridnetsTableHeightConstraint" destination="at8-7a-Pbz" id="k6D-xh-R7q"/>
                         <outlet property="ingridientsTableView" destination="sVg-dy-ZL3" id="XGH-nx-K1H"/>
                         <outlet property="recipeInfoTableView" destination="T9a-pe-xBR" id="CLh-ss-3aX"/>
+                        <outlet property="recipeInfoTableViewHeightConstraint" destination="4FO-CA-kqP" id="eDN-Bt-ZYg"/>
                         <outlet property="scrollView" destination="tbr-NR-yW8" id="7qX-cJ-uJm"/>
                         <outlet property="stepTableViewHeightConstraint" destination="kUV-G0-CfH" id="8o6-ef-k2F"/>
                         <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
+                        <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
