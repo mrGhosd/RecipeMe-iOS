@@ -236,17 +236,21 @@ float const recipeCellInfoHeight = 250;
 - (void) changeViewHeightOfTable: (UITableView *) tableView toValue: (float) value to: (BOOL) condition{
     if([tableView isEqual:self.stepsTableView]){
         if(condition){
+            if(value == stepHeight) return;
             self.stepTableViewHeightConstraint.constant += value;
             self.viewHeightConstraint.constant += value;
         } else {
+            if(value == stepHeight) return;
             self.stepTableViewHeightConstraint.constant -= value;
             self.viewHeightConstraint.constant -= value;
         }
     } else {
         if(condition){
+            if(value == commentHeight) return;
             self.commentsTableViewHeightConstraint.constant += value;
             self.viewHeightConstraint.constant += value;
         } else {
+            if(value == commentHeight) return;
             self.commentsTableViewHeightConstraint.constant -= value;
             self.viewHeightConstraint.constant -= value;
         }
