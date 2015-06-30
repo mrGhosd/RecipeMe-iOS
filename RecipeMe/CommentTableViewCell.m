@@ -23,6 +23,8 @@
 
 - (void) setCommentData: (Comment *) comment{
     self.commentText.text = comment.text;
+    self.commentText.editable = NO;
+    self.commentText.scrollEnabled = NO;
     NSURL *url = [NSURL URLWithString:comment.user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];

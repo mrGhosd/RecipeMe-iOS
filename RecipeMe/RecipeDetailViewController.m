@@ -37,7 +37,7 @@
 
 float const stepHeight = 70.0;
 float const commentHeight = 50.0;
-float const commentFormHeight = 125.0;
+float const commentFormHeight = 230.0;
 float const ingridientHeight = 50.0;
 float const defaultCellHeight = 44;
 float const recipeCellInfoHeight = 250;
@@ -302,7 +302,15 @@ float const recipeCellInfoHeight = 250;
         if(indexPath.row == 0){
             return defaultCellHeight;
         } else {
-            return commentHeight;
+            if(selectedIndex == indexPath.row){
+                if(currentCellHeight == commentHeight){
+                    return commentHeight;
+                } else {
+                    return currentCellHeight;
+                }
+            } else {
+                return stepHeight;
+            }
         }
         
     } else {

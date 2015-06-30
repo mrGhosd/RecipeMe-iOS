@@ -18,29 +18,30 @@
                         <rect key="frame" x="8" y="3" width="48" height="43"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="DOr-xQ-SOQ"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="GVt-tj-X07"/>
                             <constraint firstAttribute="height" constant="43" id="Vck-tl-IOf"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Y7R-R8-2Pb"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvX-jR-R3t">
-                        <rect key="frame" x="64" y="8" width="248" height="33"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4o-5z-AXi">
+                        <rect key="frame" x="64" y="3" width="248" height="43"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wvX-jR-R3t" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="1wH-t2-AFQ"/>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="2Uy-G1-xcP"/>
-                    <constraint firstItem="wvX-jR-R3t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="N6H-fd-zUH"/>
-                    <constraint firstItem="wvX-jR-R3t" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="dVS-NU-EIA"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hfw-25-DeG" secondAttribute="bottom" constant="-5" id="pnN-ni-ZuD"/>
-                    <constraint firstItem="wvX-jR-R3t" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qpb-n1-Vhg"/>
+                    <constraint firstItem="r4o-5z-AXi" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="BJZ-Xt-3Lh"/>
+                    <constraint firstItem="r4o-5z-AXi" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="M3Y-tH-9bQ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="r4o-5z-AXi" secondAttribute="bottom" constant="-5" id="Z33-Jj-l8k"/>
+                    <constraint firstItem="r4o-5z-AXi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="cMd-eC-BBK"/>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wXe-hu-PA5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentImage" destination="hfw-25-DeG" id="sRH-Gf-Rd4"/>
-                <outlet property="commentText" destination="wvX-jR-R3t" id="oP2-6w-XVi"/>
+                <outlet property="commentText" destination="r4o-5z-AXi" id="fHZ-y8-fvG"/>
             </connections>
             <point key="canvasLocation" x="272" y="309"/>
         </tableViewCell>
