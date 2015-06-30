@@ -135,6 +135,7 @@
 		647032001B2AF0420084D58A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -366,6 +367,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64B3A9071B4305BE0050F328 /* delegates */,
 				64FFCD3A1B3C307100A4DDCC /* comment */,
 				6455C3BC1B3BFF620013872F /* ingridient */,
 				6455C3AF1B3BE1D50013872F /* step */,
@@ -404,6 +406,14 @@
 				6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */,
 			);
 			name = recipes;
+			sourceTree = "<group>";
+		};
+		64B3A9071B4305BE0050F328 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */,
+			);
+			name = delegates;
 			sourceTree = "<group>";
 		};
 		64CA8EC189E6C311A2CF3B50 /* Pods */ = {

@@ -150,6 +150,10 @@ float const recipeCellInfoHeight = 250;
         }
         [cell initWithRecipe:self.recipe];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+        singleTap.numberOfTapsRequired = 1;
+        [cell.recipeImage setUserInteractionEnabled:YES];
+        [cell.recipeImage addGestureRecognizer:singleTap];
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
         if(indexPath.row ==0){
@@ -343,6 +347,11 @@ float const recipeCellInfoHeight = 250;
     comments = nil;
     steps = nil;
     ingridients = nil;
+}
+- (void) tapDetected: (UIGestureRecognizer *) recognizer{
+    UIImageView *imageView = recognizer.view;
+    NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:@[imageView.image]];
+    [self presentViewController:photosViewController animated:YES completion:nil];
 }
 
 /*

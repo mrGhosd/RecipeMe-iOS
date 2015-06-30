@@ -33,8 +33,9 @@
         self.recipeImage.image = image;
     } failure:nil];
     self.recipeImage.clipsToBounds = YES;
+    
+    
 }
-
 - (void) setAvatarImage: (Recipe *) recipe{
     NSURL *url = [NSURL URLWithString:recipe.user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
