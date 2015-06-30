@@ -14,8 +14,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzp-xC-6em">
-                        <rect key="frame" x="77" y="0.0" width="235" height="69"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-At-2jL">
+                        <rect key="frame" x="25" y="8" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="FVx-i5-Zqj"/>
+                            <constraint firstAttribute="height" constant="55" id="S0c-TO-l7W"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzp-xC-6em">
+                        <rect key="frame" x="88" y="0.0" width="211" height="69"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="69" id="vsZ-Pf-5Ne"/>
@@ -24,21 +31,14 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Bl-At-2jL">
-                        <rect key="frame" x="8" y="7" width="55" height="55"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="55" id="FVx-i5-Zqj"/>
-                            <constraint firstAttribute="height" constant="55" id="S0c-TO-l7W"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7Bl-At-2jL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7j7-Gf-23I"/>
-                    <constraint firstItem="Nzp-xC-6em" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9An-cA-npz"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Nzp-xC-6em" secondAttribute="bottom" constant="-8" id="Efw-ay-1tQ"/>
-                    <constraint firstItem="Nzp-xC-6em" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="PMK-kd-Nj7"/>
-                    <constraint firstItem="7Bl-At-2jL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="oNi-J4-5Qk"/>
-                    <constraint firstItem="Nzp-xC-6em" firstAttribute="leading" secondItem="7Bl-At-2jL" secondAttribute="trailing" constant="14" id="zVZ-nH-bcm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nzp-xC-6em" secondAttribute="bottom" id="F4u-i3-U3Q"/>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LOS-YY-6AN"/>
+                    <constraint firstItem="Nzp-xC-6em" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="QYR-gC-ggL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nzp-xC-6em" secondAttribute="trailing" id="a12-Ef-pcv"/>
+                    <constraint firstItem="Nzp-xC-6em" firstAttribute="leading" secondItem="7Bl-At-2jL" secondAttribute="trailing" constant="8" id="rXT-bx-qx2"/>
+                    <constraint firstItem="7Bl-At-2jL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="ywR-KM-aag"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -15,24 +15,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teX-ZU-la9">
-                        <rect key="frame" x="62" y="8" width="188" height="21"/>
+                        <rect key="frame" x="25" y="8" width="188" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUO-64-AOk">
-                        <rect key="frame" x="258" y="8" width="62" height="21"/>
+                        <rect key="frame" x="221" y="8" width="91" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aUO-64-AOk" firstAttribute="leading" secondItem="teX-ZU-la9" secondAttribute="trailing" constant="8" id="6kQ-1O-Htf"/>
-                    <constraint firstItem="teX-ZU-la9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="54" id="DX5-HO-PHb"/>
-                    <constraint firstItem="aUO-64-AOk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="LDw-Wy-Hyb"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aUO-64-AOk" secondAttribute="trailing" id="MfK-cc-QH8"/>
-                    <constraint firstItem="teX-ZU-la9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="r3o-CE-qaM"/>
+                    <constraint firstItem="aUO-64-AOk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6ip-x2-gHG"/>
+                    <constraint firstItem="teX-ZU-la9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="9Xq-tE-7IA"/>
+                    <constraint firstItem="teX-ZU-la9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="17" id="MFf-yB-Txt"/>
+                    <constraint firstItem="aUO-64-AOk" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dyF-ds-d2p"/>
+                    <constraint firstItem="aUO-64-AOk" firstAttribute="leading" secondItem="teX-ZU-la9" secondAttribute="trailing" constant="8" id="iJU-6L-fAU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

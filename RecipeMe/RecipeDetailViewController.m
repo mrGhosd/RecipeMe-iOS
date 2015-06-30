@@ -74,6 +74,8 @@ float const recipeCellInfoHeight = 250;
     [self.commentsTableView registerClass:[CommentHeaderTableViewCell class] forCellReuseIdentifier:@"commentHeaderCell"];
     [self.commentsTableView registerNib:[UINib nibWithNibName:@"CommentHeaderTableViewCell" bundle:nil]
                     forCellReuseIdentifier:@"commentHeaderCell"];
+    
+    self.ingridientsTableView.separatorColor = [UIColor clearColor];
 
     // Do any additional setup after loading the view.
 }
