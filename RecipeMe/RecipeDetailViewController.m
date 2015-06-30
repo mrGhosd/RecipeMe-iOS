@@ -35,11 +35,16 @@
 
 @implementation RecipeDetailViewController
 
+float const stepHeight = 70;
+float const commentHeight = 50;
+float const defaultCellHeight = 44;
+float const recipeCellInfoHeight = 250;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
     connection = [ServerConnection sharedInstance];
-//    comments = [NSMutableArray arrayWithArray:@[@"c 1", @"c 2", @"c 3", @"c 4", @"c 5", @"c 6"]];
+    
     [self loadRecipe];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
@@ -71,10 +76,10 @@
     // Do any additional setup after loading the view.
 }
 - (void) setIngridientsTableViewHeight{
-    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0 + 44.0;
-    self.stepTableViewHeightConstraint.constant = steps.count * 80.0 + 60.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 44 + 250.0;
-    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 420;
+    self.ingiridnetsTableHeightConstraint.constant = ingridients.count * commentHeight;
+    self.stepTableViewHeightConstraint.constant = steps.count * stepHeight;
+    self.commentsTableViewHeightConstraint.constant = comments.count * defaultCellHeight;
+    self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 
 - (void) loadRecipe{
@@ -200,31 +205,50 @@
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if([tableView isEqual:self.stepsTableView]){
-//    [self.view endEditing:YES];
-//    if(selectedIndex == indexPath.row){
-//        selectedIndex = -1;
-//        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        return;
-//    }
-//    
-//    if(selectedIndex != -1){
-//        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
-//        selectedIndex = indexPath.row;
-//        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
-//    
-//    selectedIndex = indexPath.row;
-//    [self changeAnswerTextHeightAt:indexPath];
-//    [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
+    if([tableView isEqual:self.stepsTableView] || [tableView isEqual:self.commentsTableView]){
+        [self rowWasSelected:tableView inIndexPAth:indexPath];
+    }
 }
-- (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
+
+- (void) rowWasSelected: (UITableView *) tableView inIndexPAth: (NSIndexPath *) indexPath{
+    if([tableView isEqual:self.stepsTableView]){
+        [self.view endEditing:YES];
+        if(selectedIndex == indexPath.row){
+            selectedIndex = -1;
+            [self changeCellTextHeightAt:indexPath withCondition:NO];
+            [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            return;
+        }
+        
+        if(selectedIndex != -1){
+            NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+            selectedIndex = indexPath.row;
+            [self changeCellTextHeightAt:indexPath withCondition:NO];
+            [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        
+        selectedIndex = indexPath.row;
+        [self changeCellTextHeightAt:indexPath withCondition:YES];
+        [self.stepsTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+
+}
+- (void) changeViewHeight: (float) value to: (BOOL) condition{
+    if(condition){
+        self.stepTableViewHeightConstraint.constant += value - 70.0;
+        self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant - 300.0;
+    } else{
+        self.stepTableViewHeightConstraint.constant -= value - 70.0;
+        self.viewHeightConstraint.constant -= self.stepTableViewHeightConstraint.constant + 424.0;
+    }
+}
+- (void) changeCellTextHeightAt:(NSIndexPath *)path withCondition: (BOOL) value{
     CGSize size = [[steps[path.row] desc] sizeWithAttributes:nil];
-    currentCellHeight = size.width / 10;
-    self.stepTableViewHeightConstraint.constant += currentCellHeight;
-    self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant;
-    [self.stepsTableView cellForRowAtIndexPath:path];
+    currentCellHeight = size.width / 9;
+    [self changeViewHeight:currentCellHeight to:value];
+//    self.stepTableViewHeightConstraint.constant += currentCellHeight;
+//    self.viewHeightConstraint.constant += self.stepTableViewHeightConstraint.constant;
+//    [self.stepsTableView cellForRowAtIndexPath:path];
 }
 -(void)tapped:(UITapGestureRecognizer *)recognizer{
     NSIndexPath *path = [self.stepsTableView indexPathForCell:[[recognizer.view superview] superview]];
@@ -233,33 +257,29 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([tableView isEqual:self.recipeInfoTableView]){
-        return 250;
+        return recipeCellInfoHeight;
     } else if([tableView isEqual:self.stepsTableView]){
         if(indexPath.row == 0){
-            return 44;
+            return defaultCellHeight;
         } else {
-            return 70;
+            if(selectedIndex == indexPath.row){
+                return currentCellHeight;
+            } else {
+                return stepHeight;
+            }
         }
     } else if([tableView isEqual:self.commentsTableView]){
         if(indexPath.row == 0){
-            return 44;
+            return defaultCellHeight;
         } else {
-            return 50;
+            return commentHeight;
         }
         
     } else {
-        return 44;
+        return defaultCellHeight;
     }
     
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    if([tableView isEqual:self.commentsTableView]){
-//        return 30;
-//    } else {
-//        return 0;
-//    }
-//}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if([tableView isEqual:self.commentsTableView]){
         return 110;
@@ -279,8 +299,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
         commentForm *form = [[[NSBundle mainBundle] loadNibNamed:@"commentFormView" owner:self options:nil] firstObject];
-//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110.0f)];
-//        view.backgroundColor = [UIColor redColor];
         return form;
     } else {
         return nil;
