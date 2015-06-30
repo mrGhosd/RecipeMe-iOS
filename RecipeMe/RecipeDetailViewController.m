@@ -19,6 +19,7 @@
 #import "Step.h"
 #import "Comment.h"
 #import "Ingridient.h"
+#import "commentForm.h"
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 
 @interface RecipeDetailViewController (){
@@ -71,8 +72,8 @@
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = ingridients.count * 50.0 + 44.0;
-    self.stepTableViewHeightConstraint.constant = steps.count * 80.0 + 44.0;
-    self.commentsTableViewHeightConstraint.constant = comments.count * 100.0 + 44.0;
+    self.stepTableViewHeightConstraint.constant = steps.count * 80.0 + 60.0;
+    self.commentsTableViewHeightConstraint.constant = comments.count * 44 + 250.0;
     self.viewHeightConstraint.constant = self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height - 420;
 }
 
@@ -277,14 +278,23 @@
 //}
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110.0f)];
-        view.backgroundColor = [UIColor redColor];
-        return view;
+        commentForm *form = [[[NSBundle mainBundle] loadNibNamed:@"commentFormView" owner:self options:nil] firstObject];
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 110.0f)];
+//        view.backgroundColor = [UIColor redColor];
+        return form;
     } else {
         return nil;
     }   
 }
-
+- (void) viewDidDisappear:(BOOL)animated{
+    self.recipe = nil;
+    self.commentsTableView = nil;
+    self.stepsTableView = nil;
+    self.ingridientsTableView = nil;
+    comments = nil;
+    steps = nil;
+    ingridients = nil;
+}
 
 /*
 #pragma mark - Navigation
