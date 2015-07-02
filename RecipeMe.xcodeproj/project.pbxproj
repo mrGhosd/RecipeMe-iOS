@@ -73,6 +73,7 @@
 /* Begin PBXFileReference section */
 		4E191853DFC22572833285A4 /* libPods-RecipeMeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeMeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		615E452ACEAC29CBF7F2D650 /* Pods-RecipeMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeMeTests/Pods-RecipeMeTests.release.xcconfig"; sourceTree = "<group>"; };
+		6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StepCellDelegate.h; sourceTree = "<group>"; };
 		6404CBFE1B2DB511005B5A0D /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
@@ -412,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */,
+				6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";

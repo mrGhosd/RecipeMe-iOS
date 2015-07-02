@@ -25,6 +25,7 @@
 //    self.stepDescription.editable = NO;
 //    self.stepDescription.selectable = YES;
 //    self.stepDescription.scrollEnabled = NO;
+    self.step = step;
     NSURL *url = [NSURL URLWithString:step.imageUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
@@ -33,6 +34,12 @@
     } failure:nil];
     self.stepImage.layer.cornerRadius = self.stepImage.frame.size.height / 2;
     self.stepImage.clipsToBounds = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.stepImage setUserInteractionEnabled:YES];
+    [self.stepImage addGestureRecognizer:singleTap];
 }
-
+- (void) imageTap: (UIGestureRecognizer *) gesture{
+    [self.delegate clickOnCellImage:self.step];
+}
 @end

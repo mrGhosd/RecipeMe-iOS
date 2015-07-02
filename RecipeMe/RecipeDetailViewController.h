@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "Recipe.h"
+#import "StepCellDelegate.h"
 
-@interface RecipeDetailViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RecipeDetailViewController : ViewController <UITableViewDataSource, UITableViewDelegate, StepCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *recipeInfoTableView;
 @property (strong, nonatomic) IBOutlet UITableView *ingridientsTableView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

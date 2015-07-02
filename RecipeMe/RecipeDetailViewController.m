@@ -191,9 +191,8 @@ float const recipeCellInfoHeight = 250;
                 cell = [nib objectAtIndex:0];
             }
             [cell setStepData:step];
-            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped:)];
-            [tap setNumberOfTapsRequired:1];
-            [cell.stepDescription addGestureRecognizer:tap];
+            cell.delegate = self;
+
             return cell;
         }
     } else {
@@ -347,7 +346,13 @@ float const recipeCellInfoHeight = 250;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
-
+- (void) clickOnCellImage: (Step *) step{
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:step.imageUrl] name:step.desc];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 
