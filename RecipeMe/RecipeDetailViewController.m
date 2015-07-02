@@ -20,7 +20,8 @@
 #import "Comment.h"
 #import "Ingridient.h"
 #import "commentForm.h"
-#import <NYTPhotoViewer/NYTPhotosViewController.h>
+#import <FSImageViewer/FSBasicImage.h>
+#import <FSImageViewer/FSBasicImageSource.h>
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -277,7 +278,7 @@ float const recipeCellInfoHeight = 250;
         if(size.width / 9 < commentHeight){
             currentCellHeight = commentHeight;
         } else {
-            currentCellHeight = size.width / 9;
+            currentCellHeight = size.width / 10;
         }
     }
     [self changeViewHeightOfTable:tableView toValue:currentCellHeight to:value];
@@ -339,19 +340,12 @@ float const recipeCellInfoHeight = 250;
         return nil;
     }   
 }
-- (void) viewDidDisappear:(BOOL)animated{
-    self.recipe = nil;
-    self.commentsTableView = nil;
-    self.stepsTableView = nil;
-    self.ingridientsTableView = nil;
-    comments = nil;
-    steps = nil;
-    ingridients = nil;
-}
 - (void) tapDetected: (UIGestureRecognizer *) recognizer{
-    UIImageView *imageView = recognizer.view;
-    NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:@[imageView.image]];
-    [self presentViewController:photosViewController animated:YES completion:nil];
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:self.recipe.imageUrl] name:self.recipe.title];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 /*

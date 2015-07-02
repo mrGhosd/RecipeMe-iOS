@@ -10,7 +10,7 @@
 #import "Comment.h"
 @interface CommentTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *commentImage;
-@property (strong, nonatomic) IBOutlet UITextView *commentText;
+@property (strong, nonatomic) IBOutlet UILabel *commentText;
 - (void) setCommentData: (Comment *) comment;
 
 @end

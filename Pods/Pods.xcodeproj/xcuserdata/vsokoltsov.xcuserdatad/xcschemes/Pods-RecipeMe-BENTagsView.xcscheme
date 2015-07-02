@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A4BFBF1EF3C3F753190D5967"
+               BlueprintIdentifier = "50BA612B627FAE4FFD70820C"
                BuildableName = "libPods-RecipeMe-BENTagsView.a"
                BlueprintName = "Pods-RecipeMe-BENTagsView"
                ReferencedContainer = "container:Pods.xcodeproj">

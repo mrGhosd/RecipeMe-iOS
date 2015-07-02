@@ -11,7 +11,7 @@ target 'RecipeMe' do
     pod 'UIImage-ResizeMagick'
     pod 'BENTagsView'
     pod 'UIScrollView-InfiniteScroll'
-    pod 'NYTPhotoViewer'
+    pod 'FSImageViewer', '~> 3.1'
 end
 
 target 'RecipeMeTests' do
