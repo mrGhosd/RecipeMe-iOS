@@ -51,6 +51,7 @@
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
+		64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD17E31B45EB4000DA2B36 /* UsersViewController.m */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -137,6 +138,9 @@
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
+		64BD17E21B45EB4000DA2B36 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
+		64BD17E31B45EB4000DA2B36 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
+		64BD17E51B45F28300DA2B36 /* UserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 		647875FF1B2B0A9000401720 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64BD17E11B45EB0800DA2B36 /* users */,
 				647876011B2B0ACE00401720 /* recipes */,
 			);
 			name = Controllers;
@@ -414,8 +419,18 @@
 			children = (
 				64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */,
 				6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */,
+				64BD17E51B45F28300DA2B36 /* UserDelegate.h */,
 			);
 			name = delegates;
+			sourceTree = "<group>";
+		};
+		64BD17E11B45EB0800DA2B36 /* users */ = {
+			isa = PBXGroup;
+			children = (
+				64BD17E21B45EB4000DA2B36 /* UsersViewController.h */,
+				64BD17E31B45EB4000DA2B36 /* UsersViewController.m */,
+			);
+			name = users;
 			sourceTree = "<group>";
 		};
 		64CA8EC189E6C311A2CF3B50 /* Pods */ = {
@@ -661,6 +676,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
+				64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */,
 				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,

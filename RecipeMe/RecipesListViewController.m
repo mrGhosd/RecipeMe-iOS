@@ -140,6 +140,7 @@
         cell = [nib objectAtIndex:0];
     }
     [cell initWithRecipe:recipe];
+    cell.delegate = self;
     return cell;
 }
 
@@ -214,5 +215,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     tableView.rowHeight = 250
     ; // or some other height
 }
-
+- (void) clickOnUserImage:(User *)user{
+    [self performSegueWithIdentifier:@"userProfile" sender:self];
+}
 @end

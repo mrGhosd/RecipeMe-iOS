@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "UserDelegate.h"
 
-@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate>
+@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)showSearchBar:(id)sender;
 

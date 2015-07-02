@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X3o-v8-7nm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X3o-v8-7nm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Users View Controller-->
+        <scene sceneID="xUq-bw-MYf">
+            <objects>
+                <viewController id="iFd-uV-tHQ" customClass="UsersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Elj-KQ-gdp"/>
+                        <viewControllerLayoutGuide type="bottom" id="qzt-gE-Nos"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8iz-eA-Qka">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="-535"/>
+        </scene>
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -38,6 +56,7 @@
                         <outlet property="searchDisplayController" destination="13H-wA-GtN" id="19V-Um-LLk"/>
                         <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeDetail" id="9jT-f3-207"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="tlU-6g-992"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -50,7 +69,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1117" y="328"/>
+            <point key="canvasLocation" x="1124" y="272"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="LcA-jt-AKl">
@@ -194,11 +213,12 @@
                         <outlet property="stepTableViewHeightConstraint" destination="kUV-G0-CfH" id="8o6-ef-k2F"/>
                         <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
                         <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="328"/>
+            <point key="canvasLocation" x="1851" y="291"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="guC-ue-zeK">
@@ -222,4 +242,7 @@
     <resources>
         <image name="searcIcon.png" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KKI-rF-QC7"/>
+    </inferredMetricsTieBreakers>
 </document>

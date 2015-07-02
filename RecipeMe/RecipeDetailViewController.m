@@ -155,6 +155,7 @@ float const recipeCellInfoHeight = 250;
         singleTap.numberOfTapsRequired = 1;
         [cell.recipeImage setUserInteractionEnabled:YES];
         [cell.recipeImage addGestureRecognizer:singleTap];
+        cell.delegate = self;
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
         if(indexPath.row ==0){
@@ -352,6 +353,9 @@ float const recipeCellInfoHeight = 250;
     FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
+- (void) clickOnUserImage:(User *)user{
+    [self performSegueWithIdentifier:@"userProfile" sender:self];
 }
 /*
 #pragma mark - Navigation

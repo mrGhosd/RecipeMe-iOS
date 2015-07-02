@@ -37,6 +37,7 @@
     
 }
 - (void) setAvatarImage: (Recipe *) recipe{
+    self.user = recipe.user;
     NSURL *url = [NSURL URLWithString:recipe.user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
@@ -44,6 +45,11 @@
         self.userAvatar.image = image;
     } failure:nil];
     self.userAvatar.clipsToBounds = YES;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.userAvatar setUserInteractionEnabled:YES];
+    [self.userAvatar addGestureRecognizer:singleTap];
 }
 - (void) setInfoViewData: (Recipe *) recipe{
     self.infoView.layer.opacity = 0.95;
@@ -63,5 +69,9 @@
     self.userAvatar.layer.masksToBounds = YES;
     self.userAvatar.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.userAvatar.layer.borderWidth = 2.5;
+}
+
+- (void) imageTap: (UIGestureRecognizer *) recognizer{
+    [self.delegate clickOnUserImage:self.user];
 }
 @end
