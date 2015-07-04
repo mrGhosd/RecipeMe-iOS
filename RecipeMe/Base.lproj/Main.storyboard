@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X3o-v8-7nm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lw9-BP-F1B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -45,6 +45,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2Ik-9L-UEZ">
+                        <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="v8E-AA-7vk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="searcIcon.png" id="akr-xD-eBd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -54,6 +57,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="13H-wA-GtN" id="19V-Um-LLk"/>
+                        <outlet property="sidebarButton" destination="v8E-AA-7vk" id="JlA-FY-PfC"/>
                         <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeDetail" id="9jT-f3-207"/>
                         <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="tlU-6g-992"/>
@@ -220,6 +224,49 @@
             </objects>
             <point key="canvasLocation" x="1851" y="291"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="S0O-uz-CNd">
+            <objects>
+                <viewController id="mE3-cN-39h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ALn-iO-NKD"/>
+                        <viewControllerLayoutGuide type="bottom" id="thm-Kl-map"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oHj-3u-DNp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hhM-Bz-Luy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-dj-vE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-159" y="-788"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="3G4-5C-8sp">
+            <objects>
+                <viewController id="Lw9-BP-F1B" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XXs-f6-eTO"/>
+                        <viewControllerLayoutGuide type="bottom" id="fdQ-YT-gN5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="slg-ne-BK2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="X3o-v8-7nm" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="QPr-PU-Tqy"/>
+                        <segue destination="mE3-cN-39h" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="FXI-ld-wH7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oJ-kh-UTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-794" y="272"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="guC-ue-zeK">
             <objects>
@@ -240,9 +287,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="menu-32.png" width="32" height="32"/>
         <image name="searcIcon.png" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KKI-rF-QC7"/>
+        <segue reference="CX9-et-KnK"/>
+        <segue reference="tlU-6g-992"/>
     </inferredMetricsTieBreakers>
 </document>

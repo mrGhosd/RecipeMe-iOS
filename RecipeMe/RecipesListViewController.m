@@ -14,6 +14,7 @@
 #import <UIImageView+AFNetworking.h>
 #import <UIScrollView+InfiniteScroll.h>
 #import "RecipeDetailViewController.h"
+#import "SWRevealViewController.h"
 
 @interface RecipesListViewController (){
     ServerConnection *connection;
@@ -35,6 +36,7 @@
     pageNumber = @1;
     recipes = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
+    [self setNavigationPanel];
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
@@ -60,6 +62,15 @@
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                                      [UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
     
+}
+-(void) setNavigationPanel{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController ){
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector(revealToggle:)];
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+        revealViewController.rightViewController = nil;
+    }
 }
 
 - (void) refreshInit{
