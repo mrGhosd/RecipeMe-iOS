@@ -55,6 +55,7 @@
 		64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */; };
 		64C5B1821B4824850043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B1811B4824850043C9D3 /* SidebarViewController.m */; };
 		64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1831B4824E60043C9D3 /* menu-32.png */; };
+		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -149,6 +150,7 @@
 		64C5B1801B4824850043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		64C5B1811B4824850043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		64C5B1831B4824E60043C9D3 /* menu-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-32.png"; sourceTree = "<group>"; };
+		64C5B1861B4828B70043C9D3 /* sidebarBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidebarBg.png; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		647031EF1B2AF0420084D58A /* RecipeMe */ = {
 			isa = PBXGroup;
 			children = (
+				64C5B1851B48286B0043C9D3 /* images */,
 				647876001B2B0A9800401720 /* Views */,
 				647875FF1B2B0A9000401720 /* Controllers */,
 				647875FE1B2B0A8700401720 /* Models */,
@@ -330,18 +333,6 @@
 				647031F81B2AF0420084D58A /* ViewController.m */,
 				647031FA1B2AF0420084D58A /* Main.storyboard */,
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
-				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
-				64C5B1831B4824E60043C9D3 /* menu-32.png */,
-				6467E0E71B42A5FD001BB1CD /* stepsIcon.png */,
-				6467E0E81B42A5FE001BB1CD /* ingridientsIcon.png */,
-				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
-				64101E1D1B2C557B006D516D /* heartIcon.png */,
-				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
-				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
-				643AFBC81B2C1FF40090BC68 /* personsIcon.png */,
-				643AFBC61B2C1C5C0090BC68 /* difficultIcon.png */,
-				643AFBBE1B2B89D90090BC68 /* kartofel.jpg */,
-				643AFBC01B2C00330090BC68 /* recipes_placeholder.png */,
 				647031FF1B2AF0420084D58A /* LaunchScreen.xib */,
 				647031F01B2AF0420084D58A /* Supporting Files */,
 			);
@@ -460,6 +451,26 @@
 				64C5B1811B4824850043C9D3 /* SidebarViewController.m */,
 			);
 			name = sidebar;
+			sourceTree = "<group>";
+		};
+		64C5B1851B48286B0043C9D3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				64C5B1861B4828B70043C9D3 /* sidebarBg.png */,
+				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
+				64C5B1831B4824E60043C9D3 /* menu-32.png */,
+				6467E0E71B42A5FD001BB1CD /* stepsIcon.png */,
+				6467E0E81B42A5FE001BB1CD /* ingridientsIcon.png */,
+				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
+				64101E1D1B2C557B006D516D /* heartIcon.png */,
+				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
+				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
+				643AFBC81B2C1FF40090BC68 /* personsIcon.png */,
+				643AFBC61B2C1C5C0090BC68 /* difficultIcon.png */,
+				643AFBBE1B2B89D90090BC68 /* kartofel.jpg */,
+				643AFBC01B2C00330090BC68 /* recipes_placeholder.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 		64CA8EC189E6C311A2CF3B50 /* Pods */ = {
@@ -617,6 +628,7 @@
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
+				64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */,
 				6467E0EB1B42A5FE001BB1CD /* ingridientsIcon.png in Resources */,
 				643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */,
 				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
