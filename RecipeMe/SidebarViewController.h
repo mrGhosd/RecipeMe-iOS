@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 vsokoltsov. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface SidebarViewController : ViewController
+@interface SidebarViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -117,7 +117,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -229,4 +228,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void) clickOnUserImage:(User *)user{
     [self performSegueWithIdentifier:@"userProfile" sender:self];
 }
+
+
 @end

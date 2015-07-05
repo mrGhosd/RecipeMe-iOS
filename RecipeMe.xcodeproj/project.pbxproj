@@ -53,9 +53,10 @@
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
 		64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD17E31B45EB4000DA2B36 /* UsersViewController.m */; };
 		64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */; };
-		64C5B1821B4824850043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B1811B4824850043C9D3 /* SidebarViewController.m */; };
 		64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1831B4824E60043C9D3 /* menu-32.png */; };
 		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
+		64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B18C1B4857690043C9D3 /* SidebarViewController.m */; };
+		64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -147,10 +148,11 @@
 		64BD17E51B45F28300DA2B36 /* UserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		64C5B17C1B481DEC0043C9D3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		64C5B1801B4824850043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
-		64C5B1811B4824850043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		64C5B1831B4824E60043C9D3 /* menu-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-32.png"; sourceTree = "<group>"; };
 		64C5B1861B4828B70043C9D3 /* sidebarBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidebarBg.png; sourceTree = "<group>"; };
+		64C5B18B1B4857690043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		64C5B18C1B4857690043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgViewSmall.png; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -447,8 +449,8 @@
 		64C5B17F1B4824720043C9D3 /* sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				64C5B1801B4824850043C9D3 /* SidebarViewController.h */,
-				64C5B1811B4824850043C9D3 /* SidebarViewController.m */,
+				64C5B18B1B4857690043C9D3 /* SidebarViewController.h */,
+				64C5B18C1B4857690043C9D3 /* SidebarViewController.m */,
 			);
 			name = sidebar;
 			sourceTree = "<group>";
@@ -456,6 +458,7 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */,
 				64C5B1861B4828B70043C9D3 /* sidebarBg.png */,
 				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
 				64C5B1831B4824E60043C9D3 /* menu-32.png */,
@@ -635,6 +638,7 @@
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,
 				643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */,
 				6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */,
+				64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */,
 				643AFBC11B2C00330090BC68 /* recipes_placeholder.png in Resources */,
 				643AFBBD1B2B72DE0090BC68 /* RecipesListTableViewCell.xib in Resources */,
 			);
@@ -738,7 +742,7 @@
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
 				647031F31B2AF0420084D58A /* main.m in Sources */,
 				6455C3CF1B3C09FF0013872F /* IngridientHeaderTableViewCell.m in Sources */,
-				64C5B1821B4824850043C9D3 /* SidebarViewController.m in Sources */,
+				64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
