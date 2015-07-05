@@ -22,6 +22,7 @@
 #import "commentForm.h"
 #import <FSImageViewer/FSBasicImage.h>
 #import <FSImageViewer/FSBasicImageSource.h>
+#import "ServerError.h"
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -30,6 +31,8 @@
     NSMutableArray *ingridients;
     NSMutableArray *steps;
     NSMutableArray *comments;
+    UIRefreshControl *refreshControl;
+    UIButton *errorButton;
 }
 
 @end
@@ -47,7 +50,7 @@ float const recipeCellInfoHeight = 250;
     [super viewDidLoad];
     selectedIndex = -1;
     connection = [ServerConnection sharedInstance];
-    
+    [self refreshInit];
     [self loadRecipe];
     [self.recipeInfoTableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.recipeInfoTableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
@@ -90,15 +93,29 @@ float const recipeCellInfoHeight = 250;
 - (void) loadRecipe{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-//    [refreshControl endRefreshing];
+    [refreshControl endRefreshing];
     [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@", self.recipe.id] parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
             [self parseRecipe:data];
         } else {
-            
+            ServerError *serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.scrollView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadRecipe) forControlEvents:UIControlEventValueChanged];
+}
+
 - (void) parseRecipe: (id) data{
     if(data != [NSNull null]){
         self.recipe = [[Recipe alloc] initWithParameters:data];
@@ -356,6 +373,20 @@ float const recipeCellInfoHeight = 250;
 }
 - (void) clickOnUserImage:(User *)user{
     [self performSegueWithIdentifier:@"userProfile" sender:self];
+}
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadRecipe) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 /*
 #pragma mark - Navigation
