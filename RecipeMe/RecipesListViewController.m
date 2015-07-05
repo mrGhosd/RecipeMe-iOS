@@ -15,6 +15,7 @@
 #import <UIScrollView+InfiniteScroll.h>
 #import "RecipeDetailViewController.h"
 #import "SWRevealViewController.h"
+#import "ServerError.h"
 
 @interface RecipesListViewController (){
     ServerConnection *connection;
@@ -24,6 +25,7 @@
     UIRefreshControl *refreshControl;
     UISearchBar *searchBarMain;
     Recipe *selectedRecipe;
+    UIButton *errorButton;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -87,6 +89,7 @@
 - (void) loadLatestRecipes{
     recipes = [NSMutableArray new];
     pageNumber = @1;
+    [self.tableView reloadData];
     [self loadRecipesList];
 }
 
@@ -96,9 +99,14 @@
     [refreshControl endRefreshing];
     [connection sendDataToURL:@"/recipes" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
+            errorButton = nil;
+            [errorButton removeFromSuperview];
             [self parseRecipes:data];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
         }
     }];
 }
@@ -228,6 +236,22 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void) clickOnUserImage:(User *)user{
     [self performSegueWithIdentifier:@"userProfile" sender:self];
 }
+
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadRecipesList) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
+
 
 
 @end
