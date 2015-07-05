@@ -57,6 +57,10 @@
 		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
 		64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B18C1B4857690043C9D3 /* SidebarViewController.m */; };
 		64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */; };
+		64F7CB6F1B491F7200D543AC /* recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB6E1B491F7200D543AC /* recipes.png */; };
+		64F7CB731B4920DD00D543AC /* reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB701B4920DD00D543AC /* reg.png */; };
+		64F7CB741B4920DD00D543AC /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB711B4920DD00D543AC /* category.png */; };
+		64F7CB751B4920DD00D543AC /* auth.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB721B4920DD00D543AC /* auth.png */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -153,6 +157,10 @@
 		64C5B18B1B4857690043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		64C5B18C1B4857690043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgViewSmall.png; sourceTree = "<group>"; };
+		64F7CB6E1B491F7200D543AC /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
+		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
+		64F7CB711B4920DD00D543AC /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
+		64F7CB721B4920DD00D543AC /* auth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auth.png; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -458,6 +466,10 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB701B4920DD00D543AC /* reg.png */,
+				64F7CB711B4920DD00D543AC /* category.png */,
+				64F7CB721B4920DD00D543AC /* auth.png */,
+				64F7CB6E1B491F7200D543AC /* recipes.png */,
 				64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */,
 				64C5B1861B4828B70043C9D3 /* sidebarBg.png */,
 				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
@@ -616,13 +628,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6467E0EA1B42A5FE001BB1CD /* stepsIcon.png in Resources */,
+				64F7CB6F1B491F7200D543AC /* recipes.png in Resources */,
 				6467E0E41B42A41E001BB1CD /* commentFormView.xib in Resources */,
 				6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */,
 				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
+				64F7CB741B4920DD00D543AC /* category.png in Resources */,
+				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
 				6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */,
+				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,

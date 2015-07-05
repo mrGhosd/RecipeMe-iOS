@@ -10,3 +10,14 @@
 "recipes_difficult_medium" = "Средне";
 "recipes_difficult_hard" = "Тяжело";
 "recipes_time" = "мин.";
+
+/*RECIPES*/
+"ingridients" = "Ингридиенты";
+"steps" = "Шаги";
+"comments" = "Комментарии";
+
+/*NAVIGATION MENU*/
+"auth" = "Авторизация";
+"reg" = "Регистрация";
+"recipes" = "Рецепты";
+"categories" = "Категории";

@@ -22,7 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menuItems = [NSMutableArray arrayWithArray:@[@"Авторизация", @"Регистрация",  @"Рецепты", @"Категории"]];
+    menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
+    menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
+    menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
     
     UIImageView *bgView = [[UIImageView alloc] init];
     [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
@@ -60,8 +62,8 @@
     UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.textLabel.text = menuItems[indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
     cell.backgroundView = bgView;
-    
     return cell;
 }
 /*

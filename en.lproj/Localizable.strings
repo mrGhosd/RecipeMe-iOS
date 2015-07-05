@@ -10,3 +10,14 @@
 "recipes_difficult_medium" = "Medium";
 "recipes_difficult_hard" = "Hard";
 "recipes_time" = "min.";
+
+/*RECIPES*/
+"ingridients" = "Ingridients";
+"steps" = "Steps";
+"comments" = "Comments";
+
+/*NAVIGATION MENU*/
+"auth" = "Sign in";
+"reg" = "Sign up";
+"recipes" = "Recipes";
+"categories" = "Categories";
