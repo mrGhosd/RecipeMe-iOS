@@ -70,4 +70,10 @@
         [self setCurrentView:@"reg"];
     }
 }
+- (void) successAuthentication:(id)user{
+
+}
+- (void) failedAuthentication:(id)error{
+    
+}
 @end

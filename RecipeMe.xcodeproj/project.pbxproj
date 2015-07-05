@@ -72,6 +72,9 @@
 		64F7CB901B4942CE00D543AC /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */; };
 		64F7CB921B49528500D543AC /* authMailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB911B49528500D543AC /* authMailIcon.png */; };
 		64F7CB941B49556400D543AC /* authPasswordField.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB931B49556400D543AC /* authPasswordField.png */; };
+		64F7CB981B496F5800D543AC /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB971B496F5800D543AC /* AuthorizationManager.m */; };
+		64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB971B496F5800D543AC /* AuthorizationManager.m */; };
+		64F7CB9C1B49703600D543AC /* AuhorizationManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB9B1B49703600D543AC /* AuhorizationManagerSpec.m */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -188,6 +191,10 @@
 		64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
 		64F7CB911B49528500D543AC /* authMailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authMailIcon.png; sourceTree = "<group>"; };
 		64F7CB931B49556400D543AC /* authPasswordField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authPasswordField.png; sourceTree = "<group>"; };
+		64F7CB961B496F5800D543AC /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthorizationManager.h; path = RecipeMeTests/AuthorizationManager.h; sourceTree = SOURCE_ROOT; };
+		64F7CB971B496F5800D543AC /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationManager.m; path = RecipeMeTests/AuthorizationManager.m; sourceTree = SOURCE_ROOT; };
+		64F7CB9B1B49703600D543AC /* AuhorizationManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuhorizationManagerSpec.m; sourceTree = "<group>"; };
+		64F7CB9D1B4972E700D543AC /* AuthorizationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorizationDelegate.h; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -388,6 +395,7 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB951B496F3900D543AC /* Authorization */,
 				64F7CB761B4923E000D543AC /* ServerError */,
 				64FFCD3E1B3C317300A4DDCC /* Comment */,
 				6455C3C01B3BFF870013872F /* Ingridient */,
@@ -410,6 +418,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB991B49701100D543AC /* authorization */,
 				64F7CB791B492A1100D543AC /* ServerError */,
 				64B3A9071B4305BE0050F328 /* delegates */,
 				64FFCD3A1B3C307100A4DDCC /* comment */,
@@ -464,6 +473,7 @@
 				6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */,
 				64BD17E51B45F28300DA2B36 /* UserDelegate.h */,
 				64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */,
+				64F7CB9D1B4972E700D543AC /* AuthorizationDelegate.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
@@ -570,6 +580,23 @@
 				64F7CB8B1B4942AE00D543AC /* RegistrationView.m */,
 				64F7CB8D1B4942C100D543AC /* AuthorizationView.xib */,
 				64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */,
+			);
+			name = authorization;
+			sourceTree = "<group>";
+		};
+		64F7CB951B496F3900D543AC /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB9B1B49703600D543AC /* AuhorizationManagerSpec.m */,
+			);
+			name = Authorization;
+			sourceTree = "<group>";
+		};
+		64F7CB991B49701100D543AC /* authorization */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB961B496F5800D543AC /* AuthorizationManager.h */,
+				64F7CB971B496F5800D543AC /* AuthorizationManager.m */,
 			);
 			name = authorization;
 			sourceTree = "<group>";
@@ -822,6 +849,7 @@
 				64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */,
 				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
+				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
@@ -855,6 +883,8 @@
 				64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */,
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
 				6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */,
+				64F7CB981B496F5800D543AC /* AuthorizationManager.m in Sources */,
+				64F7CB9C1B49703600D543AC /* AuhorizationManagerSpec.m in Sources */,
 				6455C3C21B3BFF960013872F /* IngridientSpec.m in Sources */,
 				643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */,
 				64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */,

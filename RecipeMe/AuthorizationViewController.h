@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "AuthorizationDelegate.h"
 
-@interface AuthorizationViewController : ViewController
+@interface AuthorizationViewController : ViewController <AuthorizationDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *authEmailFied;
 @property (strong, nonatomic) IBOutlet UITextField *authPasswordField;
 @property (strong, nonatomic) IBOutlet UIView *innerView;
