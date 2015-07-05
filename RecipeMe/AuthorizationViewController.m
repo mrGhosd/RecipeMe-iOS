@@ -85,15 +85,36 @@
     serverError.delegate = self;
     [serverError handle];
 }
+- (void) failedRegistration:(id)error{
+    ServerError *serverError = [[ServerError alloc] initWithData:error];
+    serverError.delegate = self;
+    [serverError handle];
+}
 - (void) handleServerErrorWithError:(id)error{
     [error showErrorMessage:[error messageText]];
 }
 - (void) signInWithParams:(NSDictionary *)params{
     [[AuthorizationManager sharedInstance] signInUserWithEmail:params[@"email"] andPassword:params[@"password"]];
 }
+- (void) signUpWithParams:(NSDictionary *)params{
+    [[AuthorizationManager sharedInstance] signUpWithParams:params];
+}
 -(void) handleServerFormErrorWithError:(id)error{
     if([[error status] isEqual:@401]){
         [error showErrorMessage:NSLocalizedString(@"user_empty_error", nil)];
+    }
+    if([[error status] isEqual:@422]){
+        NSString *fullMessage = @"";
+        NSDictionary *wrapErr = [error message];
+        if(wrapErr[@"email"]){
+            NSString *message = [NSString stringWithFormat:@"email %@", wrapErr[@"email"][0]];
+            fullMessage = [NSString stringWithFormat:@"%@", message];
+        }
+        if(wrapErr[@"password"]){
+            NSString *message = [NSString stringWithFormat:@"password %@", wrapErr[@"password"][0]];
+            fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
+        }
+        [error showErrorMessage:fullMessage];
     }
 }
 @end

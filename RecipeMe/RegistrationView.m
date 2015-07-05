@@ -8,7 +8,9 @@
 
 #import "RegistrationView.h"
 
-@implementation RegistrationView
+@implementation RegistrationView{
+    NSString *errorMessage;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -45,5 +47,28 @@
 }
 
 - (IBAction)signUp:(id)sender {
+    if([self validForm]){
+        [self.delegate signUpWithParams:@{@"email": self.emailField.text, @"password": self.passwordField.text, @"password_confirmation": self.passwordConfirmationField.text}];
+    } else {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-error-title", nil) message: errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [av show];
+    }
+}
+- (BOOL) validForm{
+    errorMessage = @"";
+    if([self.emailField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]){
+        if([self.emailField.text isEqualToString:@""]){
+            errorMessage = [NSString stringWithFormat: @"%@ \n %@", errorMessage, NSLocalizedString(@"email_empty", nil)];
+        }
+        if([self.passwordField.text isEqualToString:@""]){
+            errorMessage = [NSString stringWithFormat: @"%@ \n %@", errorMessage, NSLocalizedString(@"password_empty", nil)];
+        }
+        if([self.passwordConfirmationField.text isEqualToString:@""]){
+            errorMessage = [NSString stringWithFormat: @"%@ \n %@", errorMessage, NSLocalizedString(@"password_confirmation_empty", nil)];
+        }
+        return false;
+    } else {
+        return true;
+    }
 }
 @end

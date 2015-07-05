@@ -77,4 +77,13 @@
         }
     }];
 }
+- (void) signUpWithParams:(NSDictionary *) params{
+    [[ServerConnection sharedInstance] sendDataToURL:@"/users" parameters:@{@"user": params} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self signInUserWithEmail:params[@"email"] andPassword:params[@"password"]];
+        } else {
+            [self.delegate failedRegistration:data];
+        }
+    }];
+}
 @end

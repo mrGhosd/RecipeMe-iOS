@@ -21,4 +21,5 @@ typedef void(^requestErrorBlock)(NSError *);
 @property(strong, nonatomic) id<AuthorizationDelegate> delegate;
 + (id) sharedInstance;
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password;
+- (void) signUpWithParams:(NSDictionary *) params;
 @end
