@@ -87,7 +87,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -270,12 +270,85 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SEI-Uc-REs" id="nr5-yc-IXW"/>
-                        <segue destination="vXZ-lx-hvc" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hhM-Bz-Luy"/>
+                        <segue destination="gla-cp-LbY" kind="custom" identifier="auth" customClass="SWRevealViewControllerSeguePushController" id="tNo-vm-oAh"/>
+                        <segue destination="gla-cp-LbY" kind="custom" identifier="reg" customClass="SWRevealViewControllerSeguePushController" id="rhO-IQ-XCD"/>
+                        <segue destination="X3o-v8-7nm" kind="custom" identifier="recipes" customClass="SWRevealViewControllerSeguePushController" id="x1S-wy-2mz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-dj-vE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159" y="-788"/>
+        </scene>
+        <!--Authorization View Controller-->
+        <scene sceneID="r01-Jr-nTX">
+            <objects>
+                <viewController id="gla-cp-LbY" customClass="AuthorizationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WCm-FW-EDk"/>
+                        <viewControllerLayoutGuide type="bottom" id="3se-oj-FKP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="saj-9j-Hte">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="authFullBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="zcP-wN-ouZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cG4-Ka-0oq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kx7-M6-QND">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UAP-j0-42w">
+                                                <rect key="frame" x="8" y="118" width="600" height="200"/>
+                                            </view>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jbj-Z4-hTA">
+                                                <rect key="frame" x="239" y="82" width="123" height="29"/>
+                                                <segments>
+                                                    <segment title="Auth"/>
+                                                    <segment title="Reg"/>
+                                                </segments>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="switchViews:" destination="gla-cp-LbY" eventType="valueChanged" id="x8F-tx-8De"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="UAP-j0-42w" firstAttribute="leading" secondItem="kx7-M6-QND" secondAttribute="leading" id="F8B-ll-KA9"/>
+                                            <constraint firstItem="jbj-Z4-hTA" firstAttribute="top" secondItem="kx7-M6-QND" secondAttribute="top" constant="82" id="dJb-VM-BKX"/>
+                                            <constraint firstAttribute="centerX" secondItem="jbj-Z4-hTA" secondAttribute="centerX" id="gjR-Ce-s0s"/>
+                                            <constraint firstAttribute="trailing" secondItem="UAP-j0-42w" secondAttribute="trailing" id="gya-f4-pFs"/>
+                                            <constraint firstItem="UAP-j0-42w" firstAttribute="top" secondItem="kx7-M6-QND" secondAttribute="top" constant="118" id="l9E-Xm-S06"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kx7-M6-QND" secondAttribute="trailing" id="AeZ-gO-6ta"/>
+                                    <constraint firstItem="kx7-M6-QND" firstAttribute="leading" secondItem="cG4-Ka-0oq" secondAttribute="leading" id="IYU-Js-Vg6"/>
+                                    <constraint firstItem="kx7-M6-QND" firstAttribute="top" secondItem="cG4-Ka-0oq" secondAttribute="top" id="Wi3-vC-ibc"/>
+                                    <constraint firstItem="kx7-M6-QND" firstAttribute="width" secondItem="cG4-Ka-0oq" secondAttribute="width" id="hM9-RF-EC7"/>
+                                    <constraint firstAttribute="bottom" secondItem="kx7-M6-QND" secondAttribute="bottom" id="kND-Ic-jur"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cG4-Ka-0oq" firstAttribute="leading" secondItem="saj-9j-Hte" secondAttribute="leadingMargin" constant="-16" id="49M-by-H2A"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cG4-Ka-0oq" secondAttribute="trailing" constant="-16" id="bWq-Xc-SK5"/>
+                            <constraint firstItem="3se-oj-FKP" firstAttribute="top" secondItem="cG4-Ka-0oq" secondAttribute="bottom" id="gMw-DV-gUk"/>
+                            <constraint firstItem="cG4-Ka-0oq" firstAttribute="top" secondItem="saj-9j-Hte" secondAttribute="topMargin" id="yDF-dP-Gz7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="innerView" destination="UAP-j0-42w" id="rfp-ai-LH4"/>
+                        <outlet property="segmentControl" destination="jbj-Z4-hTA" id="Svm-fw-gAG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsT-ln-d0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="654" y="-788"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="3G4-5C-8sp">
@@ -319,12 +392,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="authFullBg.png" width="640" height="1136"/>
         <image name="menu-32.png" width="32" height="32"/>
         <image name="searcIcon.png" width="22" height="22"/>
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hhM-Bz-Luy"/>
+        <segue reference="tNo-vm-oAh"/>
+        <segue reference="x1S-wy-2mz"/>
         <segue reference="tlU-6g-992"/>
     </inferredMetricsTieBreakers>
 </document>

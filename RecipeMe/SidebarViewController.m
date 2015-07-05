@@ -9,6 +9,7 @@
 #import "SidebarViewController.h"
 #import "RecipesListViewController.h"
 #import "SWRevealViewController.h"
+#import "AuthorizationViewController.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -41,7 +42,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"auth"]){
+        AuthorizationViewController *view = segue.destinationViewController;
+        view.type = @"auth";
+    }
+    if([[segue identifier] isEqualToString:@"reg"]){
+        AuthorizationViewController *view = segue.destinationViewController;
+        view.type = @"reg";
+    }
+    if([[segue identifier] isEqualToString:@"recipes"]){
+        RecipesListViewController *view = segue.destinationViewController;
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -53,6 +66,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return menuItems.count;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+        NSString *touched = menuIds[indexPath.row];
+        [self performSegueWithIdentifier:touched sender:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -66,6 +83,7 @@
     cell.backgroundView = bgView;
     return cell;
 }
+
 /*
 #pragma mark - Navigation
 

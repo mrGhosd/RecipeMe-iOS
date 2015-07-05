@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AuthorizationView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WyY-dg-KjV">
+                    <rect key="frame" x="8" y="8" width="584" height="30"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkc-2P-ugS">
+                    <rect key="frame" x="8" y="46" width="584" height="30"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHu-F8-fXr">
+                    <rect key="frame" x="8" y="84" width="584" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.21290949279999999" blue="0.19459590090000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="signIn:" destination="iN0-l3-epB" eventType="touchUpInside" id="lvG-vC-qAQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fkc-2P-ugS" secondAttribute="trailing" constant="8" id="F4w-tI-mun"/>
+                <constraint firstItem="EHu-F8-fXr" firstAttribute="top" secondItem="fkc-2P-ugS" secondAttribute="bottom" constant="8" id="KyZ-hD-7TC"/>
+                <constraint firstItem="EHu-F8-fXr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="MSl-Ir-bIe"/>
+                <constraint firstItem="fkc-2P-ugS" firstAttribute="top" secondItem="WyY-dg-KjV" secondAttribute="bottom" constant="8" id="jEJ-Hp-Niy"/>
+                <constraint firstAttribute="trailing" secondItem="WyY-dg-KjV" secondAttribute="trailing" constant="8" id="mic-92-uwL"/>
+                <constraint firstItem="fkc-2P-ugS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="p1F-m0-Gbr"/>
+                <constraint firstItem="WyY-dg-KjV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="tp2-XW-7zx"/>
+                <constraint firstAttribute="trailing" secondItem="EHu-F8-fXr" secondAttribute="trailing" constant="8" id="vhA-8U-QF9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="emailField" destination="WyY-dg-KjV" id="tL2-x1-5HW"/>
+                <outlet property="loginButton" destination="EHu-F8-fXr" id="mkl-gD-1wV"/>
+                <outlet property="passwordField" destination="fkc-2P-ugS" id="mRX-sJ-b3k"/>
+            </connections>
+        </view>
+    </objects>
+</document>

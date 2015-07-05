@@ -63,6 +63,15 @@
 		64F7CB751B4920DD00D543AC /* auth.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB721B4920DD00D543AC /* auth.png */; };
 		64F7CB781B49291800D543AC /* ServerErrorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB771B49291800D543AC /* ServerErrorSpec.m */; };
 		64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB7B1B492A3600D543AC /* ServerError.m */; };
+		64F7CB811B4939CA00D543AC /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB801B4939CA00D543AC /* AuthorizationViewController.m */; };
+		64F7CB831B493A7E00D543AC /* authBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB821B493A7E00D543AC /* authBg.png */; };
+		64F7CB851B493BB200D543AC /* authFullBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB841B493BB200D543AC /* authFullBg.png */; };
+		64F7CB891B49429E00D543AC /* AuthorizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB881B49429E00D543AC /* AuthorizationView.m */; };
+		64F7CB8C1B4942AE00D543AC /* RegistrationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB8B1B4942AE00D543AC /* RegistrationView.m */; };
+		64F7CB8E1B4942C100D543AC /* AuthorizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB8D1B4942C100D543AC /* AuthorizationView.xib */; };
+		64F7CB901B4942CE00D543AC /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */; };
+		64F7CB921B49528500D543AC /* authMailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB911B49528500D543AC /* authMailIcon.png */; };
+		64F7CB941B49556400D543AC /* authPasswordField.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB931B49556400D543AC /* authPasswordField.png */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -167,6 +176,18 @@
 		64F7CB7A1B492A3600D543AC /* ServerError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerError.h; sourceTree = "<group>"; };
 		64F7CB7B1B492A3600D543AC /* ServerError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerError.m; sourceTree = "<group>"; };
 		64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerErrorDelegate.h; sourceTree = "<group>"; };
+		64F7CB7F1B4939CA00D543AC /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
+		64F7CB801B4939CA00D543AC /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
+		64F7CB821B493A7E00D543AC /* authBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authBg.png; sourceTree = "<group>"; };
+		64F7CB841B493BB200D543AC /* authFullBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authFullBg.png; sourceTree = "<group>"; };
+		64F7CB871B49429E00D543AC /* AuthorizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationView.h; sourceTree = "<group>"; };
+		64F7CB881B49429E00D543AC /* AuthorizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationView.m; sourceTree = "<group>"; };
+		64F7CB8A1B4942AE00D543AC /* RegistrationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationView.h; sourceTree = "<group>"; };
+		64F7CB8B1B4942AE00D543AC /* RegistrationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationView.m; sourceTree = "<group>"; };
+		64F7CB8D1B4942C100D543AC /* AuthorizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthorizationView.xib; sourceTree = "<group>"; };
+		64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
+		64F7CB911B49528500D543AC /* authMailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authMailIcon.png; sourceTree = "<group>"; };
+		64F7CB931B49556400D543AC /* authPasswordField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = authPasswordField.png; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -404,6 +425,7 @@
 		647875FF1B2B0A9000401720 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB7E1B4939A300D543AC /* auth */,
 				64C5B17F1B4824720043C9D3 /* sidebar */,
 				64C5B17B1B481DDC0043C9D3 /* SWRevealViewController */,
 				64BD17E11B45EB0800DA2B36 /* users */,
@@ -415,6 +437,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB861B49426700D543AC /* authorization */,
 				64FFCD411B3C341C00A4DDCC /* comments */,
 				6455C3C31B3C03560013872F /* ingridients */,
 				6455C3B61B3BEFC50013872F /* steps */,
@@ -475,6 +498,9 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB841B493BB200D543AC /* authFullBg.png */,
+				64F7CB911B49528500D543AC /* authMailIcon.png */,
+				64F7CB821B493A7E00D543AC /* authBg.png */,
 				64F7CB701B4920DD00D543AC /* reg.png */,
 				64F7CB711B4920DD00D543AC /* category.png */,
 				64F7CB721B4920DD00D543AC /* auth.png */,
@@ -484,6 +510,7 @@
 				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
 				64C5B1831B4824E60043C9D3 /* menu-32.png */,
 				6467E0E71B42A5FD001BB1CD /* stepsIcon.png */,
+				64F7CB931B49556400D543AC /* authPasswordField.png */,
 				6467E0E81B42A5FE001BB1CD /* ingridientsIcon.png */,
 				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
 				64101E1D1B2C557B006D516D /* heartIcon.png */,
@@ -523,6 +550,28 @@
 				64F7CB7B1B492A3600D543AC /* ServerError.m */,
 			);
 			name = ServerError;
+			sourceTree = "<group>";
+		};
+		64F7CB7E1B4939A300D543AC /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB7F1B4939CA00D543AC /* AuthorizationViewController.h */,
+				64F7CB801B4939CA00D543AC /* AuthorizationViewController.m */,
+			);
+			name = auth;
+			sourceTree = "<group>";
+		};
+		64F7CB861B49426700D543AC /* authorization */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB871B49429E00D543AC /* AuthorizationView.h */,
+				64F7CB881B49429E00D543AC /* AuthorizationView.m */,
+				64F7CB8A1B4942AE00D543AC /* RegistrationView.h */,
+				64F7CB8B1B4942AE00D543AC /* RegistrationView.m */,
+				64F7CB8D1B4942C100D543AC /* AuthorizationView.xib */,
+				64F7CB8F1B4942CE00D543AC /* RegistrationView.xib */,
+			);
+			name = authorization;
 			sourceTree = "<group>";
 		};
 		64FFCD3A1B3C307100A4DDCC /* comment */ = {
@@ -663,13 +712,18 @@
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
 				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
+				64F7CB8E1B4942C100D543AC /* AuthorizationView.xib in Resources */,
 				6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */,
 				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
+				64F7CB921B49528500D543AC /* authMailIcon.png in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
+				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
+				64F7CB831B493A7E00D543AC /* authBg.png in Resources */,
+				64F7CB941B49556400D543AC /* authPasswordField.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
@@ -679,6 +733,7 @@
 				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,
 				643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */,
+				64F7CB901B4942CE00D543AC /* RegistrationView.xib in Resources */,
 				6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */,
 				64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */,
 				643AFBC11B2C00330090BC68 /* recipes_placeholder.png in Resources */,
@@ -771,7 +826,9 @@
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
+				64F7CB811B4939CA00D543AC /* AuthorizationViewController.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
+				64F7CB891B49429E00D543AC /* AuthorizationView.m in Sources */,
 				64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */,
@@ -780,6 +837,7 @@
 				6467E0EF1B42A72F001BB1CD /* commentForm.m in Sources */,
 				64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */,
 				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
+				64F7CB8C1B4942AE00D543AC /* RegistrationView.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,

@@ -21,3 +21,12 @@
 "reg" = "Регистрация";
 "recipes" = "Рецепты";
 "categories" = "Категории";
+
+/*AUTHORIZATION*/
+"email" = "Электронная почта";
+"password" = "Пароль";
+"password_confirmation" = "Подтверждение Пароля";
+"sign_in_button" = "Логин";
+"sign_up_button" = "Регистрация";
+"segment_auth" = "Авторизация";
+"segment_reg" = "Регистрация";
