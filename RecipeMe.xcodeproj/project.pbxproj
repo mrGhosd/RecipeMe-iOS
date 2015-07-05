@@ -61,6 +61,8 @@
 		64F7CB731B4920DD00D543AC /* reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB701B4920DD00D543AC /* reg.png */; };
 		64F7CB741B4920DD00D543AC /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB711B4920DD00D543AC /* category.png */; };
 		64F7CB751B4920DD00D543AC /* auth.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB721B4920DD00D543AC /* auth.png */; };
+		64F7CB781B49291800D543AC /* ServerErrorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB771B49291800D543AC /* ServerErrorSpec.m */; };
+		64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB7B1B492A3600D543AC /* ServerError.m */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -161,6 +163,10 @@
 		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
 		64F7CB711B4920DD00D543AC /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
 		64F7CB721B4920DD00D543AC /* auth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auth.png; sourceTree = "<group>"; };
+		64F7CB771B49291800D543AC /* ServerErrorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerErrorSpec.m; sourceTree = "<group>"; };
+		64F7CB7A1B492A3600D543AC /* ServerError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerError.h; sourceTree = "<group>"; };
+		64F7CB7B1B492A3600D543AC /* ServerError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerError.m; sourceTree = "<group>"; };
+		64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerErrorDelegate.h; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -361,6 +367,7 @@
 		647032091B2AF0420084D58A /* RecipeMeTests */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB761B4923E000D543AC /* ServerError */,
 				64FFCD3E1B3C317300A4DDCC /* Comment */,
 				6455C3C01B3BFF870013872F /* Ingridient */,
 				6455C3B01B3BE1ED0013872F /* Step */,
@@ -382,6 +389,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64F7CB791B492A1100D543AC /* ServerError */,
 				64B3A9071B4305BE0050F328 /* delegates */,
 				64FFCD3A1B3C307100A4DDCC /* comment */,
 				6455C3BC1B3BFF620013872F /* ingridient */,
@@ -432,6 +440,7 @@
 				64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */,
 				6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */,
 				64BD17E51B45F28300DA2B36 /* UserDelegate.h */,
+				64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
@@ -497,6 +506,23 @@
 				615E452ACEAC29CBF7F2D650 /* Pods-RecipeMeTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		64F7CB761B4923E000D543AC /* ServerError */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB771B49291800D543AC /* ServerErrorSpec.m */,
+			);
+			name = ServerError;
+			sourceTree = "<group>";
+		};
+		64F7CB791B492A1100D543AC /* ServerError */ = {
+			isa = PBXGroup;
+			children = (
+				64F7CB7A1B492A3600D543AC /* ServerError.h */,
+				64F7CB7B1B492A3600D543AC /* ServerError.m */,
+			);
+			name = ServerError;
 			sourceTree = "<group>";
 		};
 		64FFCD3A1B3C307100A4DDCC /* comment */ = {
@@ -750,6 +776,7 @@
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
+				64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */,
 				6467E0EF1B42A72F001BB1CD /* commentForm.m in Sources */,
 				64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */,
 				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
@@ -766,6 +793,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F7CB781B49291800D543AC /* ServerErrorSpec.m in Sources */,
 				64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */,
 				643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */,
 				6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */,
