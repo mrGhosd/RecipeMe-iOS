@@ -18,4 +18,5 @@
 - (instancetype) initWithData:(id) data;
 - (void) handle;
 - (void) callErrorHandlerWithoutData;
+- (void) showErrorMessage: (NSString *) message;
 @end

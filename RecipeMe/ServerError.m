@@ -42,9 +42,13 @@
 - (void) handle{
     if([self.status  isEqual: @0]){
         [self.delegate handleServerErrorWithError:self];
-    } else if ([self.status isEqual:@422]){
+    } else if ([self.status isEqual:@422] || [self.status isEqual:@401]){
         [self.delegate handleServerFormErrorWithError:self];
     }
+}
+- (void) showErrorMessage: (NSString *) message{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-error-title", nil) message: message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [av show];
 }
 
 @end

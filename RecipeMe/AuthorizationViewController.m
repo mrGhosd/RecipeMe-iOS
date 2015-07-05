@@ -7,8 +7,10 @@
 //
 
 #import "AuthorizationViewController.h"
+#import "AuthorizationManager.h"
 #import "RegistrationView.h"
 #import "AuthorizationView.h"
+#import "ServerError.h"
 
 @interface AuthorizationViewController (){
     AuthorizationView *authView;
@@ -21,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorUserProfileDownload) name:@"errorUserProfileDownloadMessage" object:nil];
     [self setSegmentValue];
     [self setViews];
     [self setCurrentView:self.type];
@@ -36,6 +39,9 @@
 - (void) setViews{
     authView = [[[NSBundle mainBundle] loadNibNamed:@"AuthorizationView" owner:self options:nil] firstObject];
     regView = [[[NSBundle mainBundle] loadNibNamed:@"RegistrationView" owner:self options:nil] firstObject];
+    authView.delegate = self;
+    regView.delegate = self;
+    [[AuthorizationManager sharedInstance] setDelegate:self];
     [self.innerView addSubview:authView];
     [self.innerView addSubview:regView];
 }
@@ -51,6 +57,7 @@
         [self.segmentControl setSelectedSegmentIndex:1];
     }
 }
+
 /*
 #pragma mark - Navigation
 
@@ -71,9 +78,22 @@
     }
 }
 - (void) successAuthentication:(id)user{
-
+    [self performSegueWithIdentifier:@"signIn" sender:self];
 }
 - (void) failedAuthentication:(id)error{
-    
+    ServerError *serverError = [[ServerError alloc] initWithData:error];
+    serverError.delegate = self;
+    [serverError handle];
+}
+- (void) handleServerErrorWithError:(id)error{
+    [error showErrorMessage:[error messageText]];
+}
+- (void) signInWithParams:(NSDictionary *)params{
+    [[AuthorizationManager sharedInstance] signInUserWithEmail:params[@"email"] andPassword:params[@"password"]];
+}
+-(void) handleServerFormErrorWithError:(id)error{
+    if([[error status] isEqual:@401]){
+        [error showErrorMessage:NSLocalizedString(@"user_empty_error", nil)];
+    }
 }
 @end

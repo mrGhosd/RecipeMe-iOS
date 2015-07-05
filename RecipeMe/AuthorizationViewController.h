@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "AuthorizationDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface AuthorizationViewController : ViewController <AuthorizationDelegate>
+@interface AuthorizationViewController : ViewController <AuthorizationDelegate, ServerErrorDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *authEmailFied;
 @property (strong, nonatomic) IBOutlet UITextField *authPasswordField;
 @property (strong, nonatomic) IBOutlet UIView *innerView;

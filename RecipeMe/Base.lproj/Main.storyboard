@@ -73,7 +73,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1124" y="272"/>
+            <point key="canvasLocation" x="1124" y="328"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="LcA-jt-AKl">
@@ -348,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsT-ln-d0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="654" y="-788"/>
+            <point key="canvasLocation" x="730" y="-788"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="3G4-5C-8sp">

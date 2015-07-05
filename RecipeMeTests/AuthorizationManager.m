@@ -38,7 +38,6 @@
                  object:self];
             }
         }
-        
     }];
 }
 - (void) getTokenWithEmail:(NSString *) email andPassword: (NSString *)password andComplition: (ResponseCopmlition) complition{
@@ -47,6 +46,8 @@
     [[ServerConnection sharedInstance] getTokenWithParameters: @{@"grant_type":@"password",
         @"email": email, @"password": password} andComplition:^(id data, BOOL success){
             if(success){
+                [store setString:email forKey:@"email"];
+                [store setString:password forKey:@"password"];
                 [store setString:data[@"access_token"] forKey:@"access_token"];
                 response(data, YES);
             } else {
@@ -63,7 +64,7 @@
             } else {
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"currentUserWasReseived"
-                 object:self];
+                 object:data];
             }
         } else {
             if(self.delegate){

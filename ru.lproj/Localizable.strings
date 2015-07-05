@@ -11,6 +11,8 @@
 "recipes_difficult_hard" = "Тяжело";
 "recipes_time" = "мин.";
 
+"system-error-title" = "Ошибка";
+
 /*RECIPES*/
 "ingridients" = "Ингридиенты";
 "steps" = "Шаги";
@@ -30,3 +32,6 @@
 "sign_up_button" = "Регистрация";
 "segment_auth" = "Авторизация";
 "segment_reg" = "Регистрация";
+"email_empty" = "Электронная почта не может быть пустой";
+"password_empty" = "Пароль не может быть пустым";
+"user_empty_error" = "Такого пользователя не существует";

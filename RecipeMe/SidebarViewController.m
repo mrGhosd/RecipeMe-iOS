@@ -10,11 +10,13 @@
 #import "RecipesListViewController.h"
 #import "SWRevealViewController.h"
 #import "AuthorizationViewController.h"
+#import "AuthorizationManager.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
     NSArray *menuIds;
     NSArray *menuIcons;
+    AuthorizationManager *auth;
 }
 
 @end
@@ -23,10 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
     menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
     menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
     menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
-    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initSidebarData) name:@"currentUserWasReseived" object:nil];
     UIImageView *bgView = [[UIImageView alloc] init];
     [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
     self.tableView.backgroundView = bgView;
@@ -37,7 +40,13 @@
     [self.revealViewController tapGestureRecognizer];
     // Do any additional setup after loading the view.
 }
-
+- (void) initSidebarData{
+    if(auth.currentUser){
+    
+    } else {
+        
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
