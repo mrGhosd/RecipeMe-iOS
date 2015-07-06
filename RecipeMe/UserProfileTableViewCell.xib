@@ -21,17 +21,55 @@
                             <constraint firstAttribute="height" constant="100" id="Qzv-co-iBf"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIQ-pH-IQr">
+                        <rect key="frame" x="53" y="116" width="144" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CRa-fu-8qP">
+                        <rect key="frame" x="75" y="145" width="100" height="30"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapMarkerSidebar.png" translatesAutoresizingMaskIntoConstraints="NO" id="q7r-pG-UWP">
+                                <rect key="frame" x="4" y="5" width="11" height="18"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc8-Rh-0is">
+                                <rect key="frame" x="23" y="3" width="77" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="q7r-pG-UWP" firstAttribute="top" secondItem="CRa-fu-8qP" secondAttribute="top" constant="5" id="ODS-Mz-Byi"/>
+                            <constraint firstItem="kc8-Rh-0is" firstAttribute="top" secondItem="CRa-fu-8qP" secondAttribute="top" constant="3" id="UDx-XX-pKZ"/>
+                            <constraint firstAttribute="bottom" secondItem="kc8-Rh-0is" secondAttribute="bottom" constant="5" id="VL2-25-y1D"/>
+                            <constraint firstAttribute="bottom" secondItem="q7r-pG-UWP" secondAttribute="bottom" constant="7" id="abB-8j-gux"/>
+                            <constraint firstItem="q7r-pG-UWP" firstAttribute="leading" secondItem="CRa-fu-8qP" secondAttribute="leading" constant="4" id="qvx-lh-07j"/>
+                            <constraint firstItem="kc8-Rh-0is" firstAttribute="leading" secondItem="q7r-pG-UWP" secondAttribute="trailing" constant="8" id="vPl-ew-5qj"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="SIQ-pH-IQr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="45" id="20q-dF-1MF"/>
+                    <constraint firstItem="CRa-fu-8qP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="75" id="Qmo-49-8Pp"/>
                     <constraint firstItem="I3a-CS-WJd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="SJk-Um-SO3"/>
+                    <constraint firstItem="CRa-fu-8qP" firstAttribute="top" secondItem="SIQ-pH-IQr" secondAttribute="bottom" id="cA8-M4-ooU"/>
+                    <constraint firstItem="SIQ-pH-IQr" firstAttribute="top" secondItem="I3a-CS-WJd" secondAttribute="bottom" constant="8" id="fQu-D0-xLg"/>
                     <constraint firstItem="I3a-CS-WJd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jlo-Xb-Awh"/>
                     <constraint firstItem="I3a-CS-WJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="67" id="qou-8h-bfe"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cityName" destination="kc8-Rh-0is" id="s8h-7e-xwW"/>
                 <outlet property="userAvatar" destination="I3a-CS-WJd" id="WhX-ED-MEV"/>
+                <outlet property="userName" destination="SIQ-pH-IQr" id="Doq-nf-NZC"/>
+                <outlet property="userNameMarginLeft" destination="20q-dF-1MF" id="mKG-V5-3TD"/>
             </connections>
             <point key="canvasLocation" x="290" y="342"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mapMarkerSidebar.png" width="11" height="18"/>
+    </resources>
 </document>

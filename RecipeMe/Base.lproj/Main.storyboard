@@ -279,11 +279,12 @@
                         <segue destination="gla-cp-LbY" kind="custom" identifier="auth" customClass="SWRevealViewControllerSeguePushController" id="tNo-vm-oAh"/>
                         <segue destination="gla-cp-LbY" kind="custom" identifier="reg" customClass="SWRevealViewControllerSeguePushController" id="rhO-IQ-XCD"/>
                         <segue destination="X3o-v8-7nm" kind="custom" identifier="recipes" customClass="SWRevealViewControllerSeguePushController" id="x1S-wy-2mz"/>
+                        <segue destination="iQM-Fe-TbH" kind="custom" identifier="profile" customClass="SWRevealViewControllerSeguePushController" id="3kd-SA-HCi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-dj-vE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159" y="-788"/>
+            <point key="canvasLocation" x="-7" y="-1660"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="r01-Jr-nTX">
@@ -423,8 +424,8 @@
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="3kd-SA-HCi"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="tNo-vm-oAh"/>
-        <segue reference="GSM-mJ-tYE"/>
     </inferredMetricsTieBreakers>
 </document>

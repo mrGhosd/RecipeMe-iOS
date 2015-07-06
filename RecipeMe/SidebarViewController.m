@@ -12,6 +12,7 @@
 #import "AuthorizationViewController.h"
 #import "AuthorizationManager.h"
 #import "UserProfileTableViewCell.h"
+#import "UserViewController.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -74,6 +75,11 @@
     if([[segue identifier] isEqualToString:@"recipes"]){
         RecipesListViewController *view = segue.destinationViewController;
     }
+    if([[segue identifier] isEqualToString:@"profile"]){
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        UserViewController *view = (UserViewController *)navController.topViewController;
+        view.user = auth.currentUser;
+    }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -104,6 +110,7 @@
         UIImageView *bgView = [[UIImageView alloc] init];
         [bgView setImage:[UIImage imageNamed:@"bgViewSmall.png"]];
         cell.backgroundView = bgView;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         static NSString *cellIdentifier = @"navigationCell";

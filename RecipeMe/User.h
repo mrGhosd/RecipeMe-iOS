@@ -10,5 +10,13 @@
 
 @interface User : NSObject
 @property (nonatomic, retain) NSString * avatarUrl;
+@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * email;
+@property (nonatomic, retain) NSString * surname;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * nickname;
+@property (nonatomic, retain) NSString * city;
+@property (nonatomic, retain) NSDate * dateOfBirth;
 - (instancetype) initWithParams: (NSDictionary *) params;
+- (NSString *) correctNaming;
 @end

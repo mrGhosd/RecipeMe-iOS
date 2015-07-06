@@ -11,5 +11,8 @@
 
 @interface UserProfileTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *userNameMarginLeft;
+@property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UILabel *cityName;
 - (void) setUserData: (User *) user;
 @end

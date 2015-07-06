@@ -18,7 +18,12 @@
 }
 - (void) setParams: (NSDictionary *) params{
     if(params[@"avatar"] && params[@"avatar"][@"url"]) self.avatarUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"avatar"][@"url"]];;
-//    if(params[@"id"]) self.id = params[@"id"];
+    if(params[@"id"]) self.id = params[@"id"];
+    if(params[@"surname"]) self.surname = params[@"surname"];
+    if(params[@"name"]) self.name = params[@"name"];
+    if(params[@"nickname"]) self.nickname = params[@"nickname"];
+    if(params[@"date_of_birth"]) self.dateOfBirth = params[@"date_of_birth"];
+    if(params[@"city"]) self.city = params[@"city"];
 //    if(params[@"user_id"]) self.userId = params[@"user_id"];
 //    if(params[@"category_id"]) self.categoryId = params[@"category_id"];
 //    if(params[@"title"]) self.title = params[@"title"];
@@ -31,6 +36,18 @@
 //    if(params[@"persons"]) self.persons = params[@"persons"];
 //    if(params[@"difficult"]) self.difficult = params[@"difficult"];
 //    if(params[@"user"]) self.user = [[User alloc] ];
+}
+
+- (NSString *) correctNaming{
+    if(self.surname && self.name){
+        NSString *name = [NSString stringWithFormat:@"%@ %@", self.name, self.surname];
+        if(name.length > 12){
+            name = [NSString stringWithFormat:@"%@\n%@", self.name, self.surname];
+        }
+        return name;
+    } else {
+        return self.nickname;
+    }
 }
 
 @end
