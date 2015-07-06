@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentDelegate.h"
 
 @interface commentForm : UIView
-
+@property (strong, nonatomic) IBOutlet UITextView *commentTextView;
+- (IBAction)createComment:(id)sender;
+@property(strong, nonatomic) id<CommentDelegate> delegate;
 @end

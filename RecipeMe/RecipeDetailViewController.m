@@ -23,6 +23,7 @@
 #import <FSImageViewer/FSBasicImage.h>
 #import <FSImageViewer/FSBasicImageSource.h>
 #import "ServerError.h"
+#import "AuthorizationManager.h"
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -33,6 +34,7 @@
     NSMutableArray *comments;
     UIRefreshControl *refreshControl;
     UIButton *errorButton;
+    AuthorizationManager *auth;
 }
 
 @end
@@ -49,6 +51,7 @@ float const recipeCellInfoHeight = 250;
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
+    auth = [AuthorizationManager sharedInstance];
     connection = [ServerConnection sharedInstance];
     [self refreshInit];
     [self loadRecipe];
@@ -352,6 +355,7 @@ float const recipeCellInfoHeight = 250;
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
         commentForm *form = [[[NSBundle mainBundle] loadNibNamed:@"commentFormView" owner:self options:nil] firstObject];
+        form.delegate = self;
         return form;
     } else {
         return nil;
@@ -387,6 +391,10 @@ float const recipeCellInfoHeight = 250;
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
+}
+
+- (void) createComment:(NSMutableDictionary *)comment{
+    [comment addEntriesFromDictionary:@{@"user_id": auth.currentUser.id, @"recipe_id": self.recipe.id}];
 }
 /*
 #pragma mark - Navigation

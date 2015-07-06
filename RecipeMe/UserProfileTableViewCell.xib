@@ -30,7 +30,7 @@
                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CRa-fu-8qP">
                         <rect key="frame" x="75" y="145" width="100" height="30"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapMarkerSidebar.png" translatesAutoresizingMaskIntoConstraints="NO" id="q7r-pG-UWP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mapMarkerSidebar.png" translatesAutoresizingMaskIntoConstraints="NO" id="q7r-pG-UWP">
                                 <rect key="frame" x="4" y="5" width="11" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc8-Rh-0is">

@@ -7,8 +7,11 @@
 //
 
 #import "commentForm.h"
-
-@implementation commentForm
+#import "ServerError.h"
+#import "AuthorizationManager.h"
+@implementation commentForm{
+    AuthorizationManager *auth;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -18,4 +21,13 @@
 }
 */
 
+- (IBAction)createComment:(id)sender {
+    auth = [AuthorizationManager sharedInstance];
+    if([self.commentTextView.text isEqualToString:@""]){
+        [[[ServerError alloc] init] showErrorMessage:NSLocalizedString(@"comment_empty", nil)];
+    } else {
+        NSMutableDictionary *comment = [[NSMutableDictionary alloc] initWithDictionary:@{@"text": self.commentTextView.text}];
+        [self.delegate createComment:comment];
+    }
+}
 @end

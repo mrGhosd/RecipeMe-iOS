@@ -36,3 +36,6 @@
 "password_empty" = "Password can't be empty";
 "password_confirmation_empty" = "Password confirmation can't be empty";
 "user_empty_error" = "There is no such user";
+
+/*COMMENT*/
+"comment_empty" = "Comment can't be empty";

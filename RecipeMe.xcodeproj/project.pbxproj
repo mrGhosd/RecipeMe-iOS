@@ -176,6 +176,7 @@
 		64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
 		64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
 		64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapMarkerSidebar.png; sourceTree = "<group>"; };
+		64D7D3EE1B4B256700F8061E /* CommentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentDelegate.h; sourceTree = "<group>"; };
 		64F7CB6E1B491F7200D543AC /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
 		64F7CB711B4920DD00D543AC /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
@@ -482,6 +483,7 @@
 				64BD17E51B45F28300DA2B36 /* UserDelegate.h */,
 				64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */,
 				64F7CB9D1B4972E700D543AC /* AuthorizationDelegate.h */,
+				64D7D3EE1B4B256700F8061E /* CommentDelegate.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
