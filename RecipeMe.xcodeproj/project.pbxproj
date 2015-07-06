@@ -51,12 +51,13 @@
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
-		64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BD17E31B45EB4000DA2B36 /* UsersViewController.m */; };
 		64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */; };
 		64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1831B4824E60043C9D3 /* menu-32.png */; };
 		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
 		64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B18C1B4857690043C9D3 /* SidebarViewController.m */; };
 		64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */; };
+		64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */; };
+		64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */; };
 		64F7CB6F1B491F7200D543AC /* recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB6E1B491F7200D543AC /* recipes.png */; };
 		64F7CB731B4920DD00D543AC /* reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB701B4920DD00D543AC /* reg.png */; };
 		64F7CB741B4920DD00D543AC /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB711B4920DD00D543AC /* category.png */; };
@@ -75,6 +76,7 @@
 		64F7CB981B496F5800D543AC /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB971B496F5800D543AC /* AuthorizationManager.m */; };
 		64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB971B496F5800D543AC /* AuthorizationManager.m */; };
 		64F7CB9C1B49703600D543AC /* AuhorizationManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB9B1B49703600D543AC /* AuhorizationManagerSpec.m */; };
+		64F7CBA01B499A0200D543AC /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F7CB9F1B499A0200D543AC /* UserViewController.m */; };
 		64F7FCF61B2D4DCB00286053 /* RecipesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */; };
 		64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3C1B3C308800A4DDCC /* Comment.m */; };
 		64FFCD401B3C318500A4DDCC /* CommentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */; };
@@ -161,8 +163,6 @@
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
-		64BD17E21B45EB4000DA2B36 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
-		64BD17E31B45EB4000DA2B36 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		64BD17E51B45F28300DA2B36 /* UserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		64C5B17C1B481DEC0043C9D3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -171,6 +171,9 @@
 		64C5B18B1B4857690043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		64C5B18C1B4857690043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgViewSmall.png; sourceTree = "<group>"; };
+		64D7D3E71B4B053E00F8061E /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
+		64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
+		64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
 		64F7CB6E1B491F7200D543AC /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
 		64F7CB711B4920DD00D543AC /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 		64F7CB971B496F5800D543AC /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthorizationManager.m; path = RecipeMeTests/AuthorizationManager.m; sourceTree = SOURCE_ROOT; };
 		64F7CB9B1B49703600D543AC /* AuhorizationManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuhorizationManagerSpec.m; sourceTree = "<group>"; };
 		64F7CB9D1B4972E700D543AC /* AuthorizationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorizationDelegate.h; sourceTree = "<group>"; };
+		64F7CB9E1B499A0200D543AC /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		64F7CB9F1B499A0200D543AC /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		64FFCD3B1B3C308800A4DDCC /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64FFCD3C1B3C308800A4DDCC /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64FFCD3F1B3C318500A4DDCC /* CommentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentSpec.m; sourceTree = "<group>"; };
@@ -446,6 +451,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64D7D3E31B4B050E00F8061E /* sidebar */,
 				64F7CB861B49426700D543AC /* authorization */,
 				64FFCD411B3C341C00A4DDCC /* comments */,
 				6455C3C31B3C03560013872F /* ingridients */,
@@ -481,8 +487,8 @@
 		64BD17E11B45EB0800DA2B36 /* users */ = {
 			isa = PBXGroup;
 			children = (
-				64BD17E21B45EB4000DA2B36 /* UsersViewController.h */,
-				64BD17E31B45EB4000DA2B36 /* UsersViewController.m */,
+				64F7CB9E1B499A0200D543AC /* UserViewController.h */,
+				64F7CB9F1B499A0200D543AC /* UserViewController.m */,
 			);
 			name = users;
 			sourceTree = "<group>";
@@ -543,6 +549,16 @@
 				615E452ACEAC29CBF7F2D650 /* Pods-RecipeMeTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		64D7D3E31B4B050E00F8061E /* sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				64D7D3E71B4B053E00F8061E /* UserProfileTableViewCell.h */,
+				64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */,
+				64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */,
+			);
+			name = sidebar;
 			sourceTree = "<group>";
 		};
 		64F7CB761B4923E000D543AC /* ServerError */ = {
@@ -736,6 +752,7 @@
 				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */,
+				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
 				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
@@ -845,8 +862,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F7CBA01B499A0200D543AC /* UserViewController.m in Sources */,
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
-				64BD17E41B45EB4000DA2B36 /* UsersViewController.m in Sources */,
 				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
@@ -869,6 +886,7 @@
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
+				64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */,
 				647031F31B2AF0420084D58A /* main.m in Sources */,
 				6455C3CF1B3C09FF0013872F /* IngridientHeaderTableViewCell.m in Sources */,
 				64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */,

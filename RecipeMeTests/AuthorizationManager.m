@@ -59,12 +59,11 @@
     [[ServerConnection sharedInstance] sendDataToURL:@"/users/profile" parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             self.currentUser = [[User alloc] initWithParams:data];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"currentUserWasReseived"
+             object:data];
             if(self.delegate){
                 [self.delegate successAuthentication:data];
-            } else {
-                [[NSNotificationCenter defaultCenter]
-                 postNotificationName:@"currentUserWasReseived"
-                 object:data];
             }
         } else {
             if(self.delegate){

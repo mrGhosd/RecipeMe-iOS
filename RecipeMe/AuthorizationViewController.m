@@ -11,6 +11,7 @@
 #import "RegistrationView.h"
 #import "AuthorizationView.h"
 #import "ServerError.h"
+#import "UserViewController.h"
 
 @interface AuthorizationViewController (){
     AuthorizationView *authView;
@@ -78,7 +79,7 @@
     }
 }
 - (void) successAuthentication:(id)user{
-    [self performSegueWithIdentifier:@"signIn" sender:self];
+    [self performSegueWithIdentifier:@"userProfile" sender:self];
 }
 - (void) failedAuthentication:(id)error{
     ServerError *serverError = [[ServerError alloc] initWithData:error];
@@ -115,6 +116,13 @@
             fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
         }
         [error showErrorMessage:fullMessage];
+    }
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"userProfile"]){
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        UserViewController *controller = (UserViewController *)navController.topViewController;
+        controller.user = [[AuthorizationManager sharedInstance] currentUser];
     }
 }
 @end

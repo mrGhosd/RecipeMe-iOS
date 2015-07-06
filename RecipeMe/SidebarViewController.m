@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "AuthorizationViewController.h"
 #import "AuthorizationManager.h"
+#import "UserProfileTableViewCell.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -26,10 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
-    menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
-    menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
-    menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initSidebarData) name:@"currentUserWasReseived" object:nil];
+    [self initSidebarData];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn) name:@"currentUserWasReseived" object:nil];
     UIImageView *bgView = [[UIImageView alloc] init];
     [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
     self.tableView.backgroundView = bgView;
@@ -38,13 +37,25 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.revealViewController panGestureRecognizer];
     [self.revealViewController tapGestureRecognizer];
+    
+    [self.tableView registerClass:[UserProfileTableViewCell class] forCellReuseIdentifier:@"profileCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserProfileTableViewCell" bundle:nil]
+              forCellReuseIdentifier:@"profileCell"];
     // Do any additional setup after loading the view.
+}
+-(void) userSignedIn{
+    [self initSidebarData];
+    [self.tableView reloadData];
 }
 - (void) initSidebarData{
     if(auth.currentUser){
-    
+        menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
+        menuIds = @[@"profile", @"recipes", @"categories"];
+        menuIcons = @[@"auth.png", @"recipes.png", @"category.png"];
     } else {
-        
+        menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
+        menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
+        menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -70,7 +81,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    if(auth.currentUser && indexPath.row == 0){
+        return 200;
+    } else {
+        return 50;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,15 +97,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"navigationCell";
-    UIImageView *bgView = [[UIImageView alloc] init];
-    [bgView setImage:[UIImage imageNamed:@"bgViewSmall.png"]];
-    UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.textLabel.text = menuItems[indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
-    cell.backgroundView = bgView;
-    return cell;
+    if(auth.currentUser && indexPath.row == 0){
+        static NSString *cellIdentifier = @"profileCell";
+        UserProfileTableViewCell *cell = (UserProfileTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        [cell setUserData:auth.currentUser];
+        UIImageView *bgView = [[UIImageView alloc] init];
+        [bgView setImage:[UIImage imageNamed:@"bgViewSmall.png"]];
+        cell.backgroundView = bgView;
+        return cell;
+    } else {
+        static NSString *cellIdentifier = @"navigationCell";
+        UIImageView *bgView = [[UIImageView alloc] init];
+        [bgView setImage:[UIImage imageNamed:@"bgViewSmall.png"]];
+        UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        cell.textLabel.text = menuItems[indexPath.row];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+        cell.backgroundView = bgView;
+        return cell;
+    }
+    
 }
 
 /*

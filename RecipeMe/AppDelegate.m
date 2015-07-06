@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import <UICKeyChainStore.h>
+#import "AuthorizationManager.h"
+#import "ServerConnection.h"
 
-@interface AppDelegate ()
+@interface AppDelegate (){
+    UICKeyChainStore *store;
+}
 
 @end
 
@@ -17,6 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    store = [UICKeyChainStore keyChainStore];
+    if([store objectForKeyedSubscript:@"email"] && [store objectForKeyedSubscript:@"password"]){
+        [[AuthorizationManager sharedInstance] signInUserWithEmail:[store objectForKeyedSubscript:@"email"] andPassword:[store objectForKeyedSubscript:@"password"]];
+    }
     return YES;
 }
 

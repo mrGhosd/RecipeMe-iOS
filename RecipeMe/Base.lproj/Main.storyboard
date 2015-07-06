@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Users View Controller-->
+        <!--User View Controller-->
         <scene sceneID="xUq-bw-MYf">
             <objects>
-                <viewController id="iFd-uV-tHQ" customClass="UsersViewController" sceneMemberID="viewController">
+                <viewController id="iFd-uV-tHQ" customClass="UserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Elj-KQ-gdp"/>
                         <viewControllerLayoutGuide type="bottom" id="qzt-gE-Nos"/>
@@ -18,10 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="V9u-Ri-i1u">
+                        <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="spz-Lc-xBe"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton" destination="spz-Lc-xBe" id="VC6-dJ-fvx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="-535"/>
+            <point key="canvasLocation" x="2669" y="-535"/>
         </scene>
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -60,7 +66,7 @@
                         <outlet property="sidebarButton" destination="v8E-AA-7vk" id="JlA-FY-PfC"/>
                         <outlet property="tableView" destination="2Ts-2I-csK" id="eby-f0-4Lc"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeDetail" id="9jT-f3-207"/>
-                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="tlU-6g-992"/>
+                        <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="tlU-6g-992"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -217,7 +223,7 @@
                         <outlet property="stepTableViewHeightConstraint" destination="kUV-G0-CfH" id="8o6-ef-k2F"/>
                         <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
                         <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
-                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
+                        <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +350,7 @@
                     <connections>
                         <outlet property="innerView" destination="UAP-j0-42w" id="rfp-ai-LH4"/>
                         <outlet property="segmentControl" destination="jbj-Z4-hTA" id="Svm-fw-gAG"/>
+                        <segue destination="iQM-Fe-TbH" kind="custom" identifier="userProfile" customClass="SWRevealViewControllerSeguePushController" id="GSM-mJ-tYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsT-ln-d0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -390,6 +397,24 @@
             </objects>
             <point key="canvasLocation" x="307" y="328"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fTp-ee-f6j">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iQM-Fe-TbH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5SP-PN-RGa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iFd-uV-tHQ" kind="relationship" relationship="rootViewController" id="PEl-pq-Oc2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jRI-ns-iGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="-535"/>
+        </scene>
     </scenes>
     <resources>
         <image name="authFullBg.png" width="640" height="1136"/>
@@ -398,8 +423,8 @@
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tNo-vm-oAh"/>
         <segue reference="x1S-wy-2mz"/>
-        <segue reference="tlU-6g-992"/>
+        <segue reference="tNo-vm-oAh"/>
+        <segue reference="GSM-mJ-tYE"/>
     </inferredMetricsTieBreakers>
 </document>
