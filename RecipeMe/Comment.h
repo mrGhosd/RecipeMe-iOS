@@ -16,9 +16,11 @@
 @property (nonatomic, retain) NSNumber *userId;
 @property (nonatomic, retain) NSNumber *recipeId;
 @property (nonatomic, retain) NSNumber *rate;
+@property (nonatomic, retain) NSDate *createdAt;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) id<CommentDelegate> delegate;
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) commentsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (void) create: (NSMutableDictionary *) params;
+- (NSString *) friendlyCreatedAt;
 @end

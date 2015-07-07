@@ -23,6 +23,7 @@
 
 - (void) setCommentData: (Comment *) comment{
     self.commentText.text = comment.text;
+    self.commentCreatedAt.text = [comment friendlyCreatedAt];
     NSURL *url = [NSURL URLWithString:comment.user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];

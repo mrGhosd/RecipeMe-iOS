@@ -43,7 +43,7 @@
 
 float const stepHeight = 70.0;
 float const commentHeight = 50.0;
-float const commentFormHeight = 230.0;
+float const commentFormHeight = 130.0;
 float const ingridientHeight = 50.0;
 float const defaultCellHeight = 44;
 float const recipeCellInfoHeight = 250;
@@ -89,7 +89,12 @@ float const recipeCellInfoHeight = 250;
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = (ingridients.count + 1) * ingridientHeight;
     self.stepTableViewHeightConstraint.constant = (steps.count + 1) * stepHeight;
-    self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight + commentFormHeight;
+    if(auth.currentUser){
+        self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight + commentFormHeight;
+    } else {
+        self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight;
+    }
+    
     self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 
@@ -336,7 +341,7 @@ float const recipeCellInfoHeight = 250;
                     return currentCellHeight;
                 }
             } else {
-                return stepHeight;
+                return commentHeight;
             }
         }
         
@@ -394,16 +399,23 @@ float const recipeCellInfoHeight = 250;
 }
 
 - (void) createComment:(NSMutableDictionary *)comment{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     [comment addEntriesFromDictionary:@{@"user_id": auth.currentUser.id, @"recipe_id": self.recipe.id}];
     Comment *com = [[Comment alloc] initWithParameters:comment];
+    com.delegate = self;
     [com create:comment];
 }
 - (void) successCommentCreationCallback:(id)comment{
-
+    Comment *com = [[Comment alloc] initWithParameters:comment];
+    [comments insertObject:com atIndex:1];
+    [self setIngridientsTableViewHeight];
+    [self.commentsTableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void) failureCommentCreationCallback:(id)error{
-    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 /*
 #pragma mark - Navigation

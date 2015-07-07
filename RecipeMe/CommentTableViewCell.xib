@@ -23,9 +23,15 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Y7R-R8-2Pb"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-Qz-8gI">
-                        <rect key="frame" x="64" y="3" width="248" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-Qz-8gI">
+                        <rect key="frame" x="64" y="14" width="248" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxL-pA-VfD">
+                        <rect key="frame" x="238" y="3" width="74" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,13 +39,17 @@
                 <constraints>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="2Uy-G1-xcP"/>
                     <constraint firstItem="ZFf-Qz-8gI" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="CvA-od-6Jv"/>
-                    <constraint firstItem="ZFf-Qz-8gI" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="WD1-55-Pn5"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ZFf-Qz-8gI" secondAttribute="bottom" id="chE-md-02k"/>
-                    <constraint firstItem="ZFf-Qz-8gI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qo5-Uq-ZTX"/>
+                    <constraint firstItem="ZFf-Qz-8gI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="PnU-8Z-xZJ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZFf-Qz-8gI" secondAttribute="bottom" constant="6" id="ihU-Jm-1y1"/>
+                    <constraint firstItem="ZFf-Qz-8gI" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="lVi-71-Zfp"/>
+                    <constraint firstItem="FxL-pA-VfD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="lag-vq-vD5"/>
+                    <constraint firstItem="FxL-pA-VfD" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="uEE-eq-ozu"/>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wXe-hu-PA5"/>
+                    <constraint firstItem="ZFf-Qz-8gI" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="xiH-CM-XxF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="commentCreatedAt" destination="FxL-pA-VfD" id="Eqb-qj-KO0"/>
                 <outlet property="commentImage" destination="hfw-25-DeG" id="sRH-Gf-Rd4"/>
                 <outlet property="commentText" destination="ZFf-Qz-8gI" id="CVB-WI-1RX"/>
             </connections>

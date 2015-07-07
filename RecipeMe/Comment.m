@@ -31,14 +31,28 @@
     if(params[@"user"]) self.user = [[User alloc] initWithParams:params[@"user"]];
     if(params[@"recipe_id"]) self.recipeId = params[@"recipe_id"];
     if(params[@"rate"]) self.rate = params[@"rate"];
+    if(params[@"created_at"]) self.createdAt = [self correctConvertOfDate:params[@"created_at"]];
 }
 - (void) create: (NSMutableDictionary *) params{
-    [[ServerConnection sharedInstance] sendDataToURL:@"/comments" parameters:@{@"comment": params} requestType:@"POST" andComplition:^(id data, BOOL success){
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/comments", params[@"recipe_id"]] parameters:@{@"comment": params} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             [self.delegate successCommentCreationCallback:data];
         } else {
             [self.delegate failureCommentCreationCallback:data];
         }
     }];
+}
+- (NSString *) friendlyCreatedAt{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    NSDate *currentDate = [formatter dateFromString:self.createdAt];
+    formatter.dateStyle = NSDateFormatterLongStyle;
+    return [formatter stringFromDate:self.createdAt];
+}
+
+- (NSDate *) correctConvertOfDate:(NSString *) date{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *correctDate = [dateFormat dateFromString:date];
+    return correctDate;
 }
 @end
