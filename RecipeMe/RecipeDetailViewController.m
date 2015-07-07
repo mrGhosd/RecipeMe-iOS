@@ -24,6 +24,7 @@
 #import <FSImageViewer/FSBasicImageSource.h>
 #import "ServerError.h"
 #import "AuthorizationManager.h"
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -84,7 +85,11 @@ float const recipeCellInfoHeight = 250;
     
     self.ingridientsTableView.separatorColor = [UIColor clearColor];
 
-    // Do any additional setup after loading the view.
+    self.scrollView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
+    [self.scrollView addInfiniteScrollWithHandler:^(UIScrollView *scrollView){
+        [self loadCommentsList];
+        [scrollView finishInfiniteScroll];
+    }];
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = (ingridients.count + 1) * ingridientHeight;
@@ -94,7 +99,6 @@ float const recipeCellInfoHeight = 250;
     } else {
         self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight;
     }
-    
     self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
 }
 
@@ -106,6 +110,19 @@ float const recipeCellInfoHeight = 250;
         if(success){
             errorButton.hidden = YES;
             [self parseRecipe:data];
+        } else {
+            ServerError *serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
+        }
+    }];
+}
+- (void) loadCommentsList{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/comments", self.recipe.id] parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(success){
+            errorButton.hidden = YES;
+            [self parseComments:data];
         } else {
             ServerError *serverError = [[ServerError alloc] initWithData:data];
             serverError.delegate = self;
@@ -138,6 +155,21 @@ float const recipeCellInfoHeight = 250;
         [self.recipeInfoTableView reloadData];
         [self.stepsTableView reloadData];
         [self.ingridientsTableView reloadData];
+        [self.commentsTableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void) parseComments: (id) data{
+    if(data != [NSNull null]){
+        comments = [NSMutableArray arrayWithArray:[Comment initializeFromArray:data]];
+        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
+        self.viewHeightConstraint.constant -= self.commentsTableViewHeightConstraint.constant;
+        if(auth.currentUser){
+            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight + commentFormHeight;
+        } else {
+            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight;
+        }
+        self.viewHeightConstraint.constant += self.commentsTableViewHeightConstraint.constant;
         [self.commentsTableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -350,6 +382,27 @@ float const recipeCellInfoHeight = 250;
     }
     
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    if([tableView isEqual:self.commentsTableView]){
+//        return 20;
+//    } else {
+//        return 0;
+//    }
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    if([tableView isEqual:self.commentsTableView]){
+//        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.commentsTableView.frame.size.width, 20)];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.commentsTableView.frame.size.width, 20)];
+//        label.text = @"Показать все комментарии";
+//        [headerView addSubview:label];
+//
+//        return headerView;
+//    } else {
+//        return nil;
+//    }
+//}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if([tableView isEqual:self.commentsTableView]){
         return 110;
