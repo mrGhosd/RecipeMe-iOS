@@ -395,6 +395,15 @@ float const recipeCellInfoHeight = 250;
 
 - (void) createComment:(NSMutableDictionary *)comment{
     [comment addEntriesFromDictionary:@{@"user_id": auth.currentUser.id, @"recipe_id": self.recipe.id}];
+    Comment *com = [[Comment alloc] initWithParameters:comment];
+    [com create:comment];
+}
+- (void) successCommentCreationCallback:(id)comment{
+
+}
+
+- (void) failureCommentCreationCallback:(id)error{
+    
 }
 /*
 #pragma mark - Navigation

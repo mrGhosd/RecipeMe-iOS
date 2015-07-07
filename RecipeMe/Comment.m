@@ -7,6 +7,7 @@
 //
 
 #import "Comment.h"
+#import "ServerConnection.h"
 
 @implementation Comment
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) commentsList{
@@ -31,5 +32,13 @@
     if(params[@"recipe_id"]) self.recipeId = params[@"recipe_id"];
     if(params[@"rate"]) self.rate = params[@"rate"];
 }
-
+- (void) create: (NSMutableDictionary *) params{
+    [[ServerConnection sharedInstance] sendDataToURL:@"/comments" parameters:@{@"comment": params} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.delegate successCommentCreationCallback:data];
+        } else {
+            [self.delegate failureCommentCreationCallback:data];
+        }
+    }];
+}
 @end
