@@ -42,6 +42,15 @@
         }
     }];
 }
+- (void) deleteFromServer{
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/comments/%@", self.recipeId, self.id] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.delegate succesDeleteCallback:self];
+        } else {
+            [self.delegate failureDeleteCallback:self];
+        }
+    }];
+}
 - (NSString *) friendlyCreatedAt{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //    NSDate *currentDate = [formatter dateFromString:self.createdAt];

@@ -250,6 +250,7 @@ float const recipeCellInfoHeight = 250;
         } else {
             static NSString *CellIdentifier = @"commentCell";
             Comment *comment = comments[indexPath.row];
+            comment.delegate = self;
             CommentTableViewCell *cell = (CommentTableViewCell *)[self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             [cell setCommentData:comment];
             if(auth.currentUser && [comment.user.id isEqual:auth.currentUser.id]){
@@ -426,6 +427,25 @@ float const recipeCellInfoHeight = 250;
     [refreshControl endRefreshing];
 }
 
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    NSIndexPath *indexPath = [self.commentsTableView indexPathForCell:cell];
+    Comment *comment = comments[indexPath.row];
+    switch (index) {
+        case 0:{
+            break;
+        }
+        case 1:{
+            [comment deleteFromServer];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
 - (void) createComment:(NSMutableDictionary *)comment{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
@@ -465,6 +485,16 @@ float const recipeCellInfoHeight = 250;
     [comments removeObjectAtIndex:0];
     [steps removeObjectAtIndex:0];
     [ingridients removeObjectAtIndex:0];
+}
+- (void) succesDeleteCallback:(Comment *)comment{
+//    Comment *com = [[Comment alloc] initWithParameters:comment];
+    [comments removeObject:comment];
+    [self removeTitlesFromTables];
+    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void) failureDeleteCallback:(id)error{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 /*
 #pragma mark - Navigation

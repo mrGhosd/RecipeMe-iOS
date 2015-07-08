@@ -23,4 +23,5 @@
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (void) create: (NSMutableDictionary *) params;
 - (NSString *) friendlyCreatedAt;
+- (void) deleteFromServer;
 @end
