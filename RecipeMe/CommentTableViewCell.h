@@ -14,5 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentText;
 - (void) setCommentData: (Comment *) comment;
 @property (strong, nonatomic) IBOutlet UILabel *commentCreatedAt;
+@property (strong, nonatomic) IBOutlet UIView *currentUserComment;
+@property (strong, nonatomic) IBOutlet UILabel *commentRate;
 
 @end

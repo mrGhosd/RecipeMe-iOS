@@ -29,6 +29,12 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxL-pA-VfD">
+                        <rect key="frame" x="238" y="3" width="64" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0D-35-Ws2">
                         <rect key="frame" x="310" y="0.0" width="10" height="49"/>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,8 +42,15 @@
                             <constraint firstAttribute="width" constant="10" id="zIa-hs-rWP"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxL-pA-VfD">
-                        <rect key="frame" x="238" y="3" width="64" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="heart.png" translatesAutoresizingMaskIntoConstraints="NO" id="q4D-so-qNe">
+                        <rect key="frame" x="64" y="3" width="8" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="gTa-PD-YdC"/>
+                            <constraint firstAttribute="width" constant="10" id="nAr-q1-CIW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUK-ar-j65">
+                        <rect key="frame" x="84" y="3" width="42" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -45,6 +58,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="2Uy-G1-xcP"/>
+                    <constraint firstItem="BUK-ar-j65" firstAttribute="leading" secondItem="q4D-so-qNe" secondAttribute="trailing" constant="2" id="9jj-Nc-MIa"/>
                     <constraint firstItem="ZFf-Qz-8gI" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="CvA-od-6Jv"/>
                     <constraint firstItem="ZFf-Qz-8gI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="PnU-8Z-xZJ"/>
                     <constraint firstItem="H0D-35-Ws2" firstAttribute="leading" secondItem="FxL-pA-VfD" secondAttribute="trailing" constant="8" id="QNo-VD-Haw"/>
@@ -52,18 +66,27 @@
                     <constraint firstItem="H0D-35-Ws2" firstAttribute="leading" secondItem="ZFf-Qz-8gI" secondAttribute="trailing" constant="8" id="eKD-Us-9an"/>
                     <constraint firstItem="H0D-35-Ws2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-16" id="f8o-eM-RZ7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ZFf-Qz-8gI" secondAttribute="bottom" constant="6" id="ihU-Jm-1y1"/>
+                    <constraint firstItem="BUK-ar-j65" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="jsy-Vs-azH"/>
                     <constraint firstItem="ZFf-Qz-8gI" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="lVi-71-Zfp"/>
                     <constraint firstItem="FxL-pA-VfD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="lag-vq-vD5"/>
+                    <constraint firstItem="q4D-so-qNe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="lw5-XB-h7i"/>
+                    <constraint firstItem="BUK-ar-j65" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="n2A-gO-y91"/>
                     <constraint firstAttribute="bottomMargin" secondItem="H0D-35-Ws2" secondAttribute="bottom" constant="-16" id="vTb-Ia-qhK"/>
+                    <constraint firstItem="q4D-so-qNe" firstAttribute="leading" secondItem="hfw-25-DeG" secondAttribute="trailing" constant="8" id="vza-xG-m5C"/>
                     <constraint firstItem="hfw-25-DeG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wXe-hu-PA5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentCreatedAt" destination="FxL-pA-VfD" id="Eqb-qj-KO0"/>
                 <outlet property="commentImage" destination="hfw-25-DeG" id="sRH-Gf-Rd4"/>
+                <outlet property="commentRate" destination="BUK-ar-j65" id="aHp-6a-lQF"/>
                 <outlet property="commentText" destination="ZFf-Qz-8gI" id="CVB-WI-1RX"/>
+                <outlet property="currentUserComment" destination="H0D-35-Ws2" id="qaU-gi-deb"/>
             </connections>
             <point key="canvasLocation" x="272" y="309"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="heart.png" width="16" height="16"/>
+    </resources>
 </document>

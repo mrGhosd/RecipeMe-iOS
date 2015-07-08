@@ -8,6 +8,7 @@
 
 #import "CommentTableViewCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "AuthorizationManager.h"
 
 @implementation CommentTableViewCell
 
@@ -22,8 +23,15 @@
 }
 
 - (void) setCommentData: (Comment *) comment{
+    AuthorizationManager *auth = [AuthorizationManager sharedInstance];
     self.commentText.text = comment.text;
     self.commentCreatedAt.text = [comment friendlyCreatedAt];
+    if(auth.currentUser && [comment.user.id isEqual:auth.currentUser.id]){
+        self.currentUserComment.hidden = NO;
+    } else {
+        self.currentUserComment.hidden = YES;
+    }
+    self.commentRate.text = [NSString stringWithFormat:@"%@", comment.rate];
     NSURL *url = [NSURL URLWithString:comment.user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
