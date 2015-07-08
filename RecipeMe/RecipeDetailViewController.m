@@ -148,18 +148,6 @@ float const recipeCellInfoHeight = 250;
     if(data != [NSNull null]){
         self.recipe = [[Recipe alloc] initWithParameters:data];
         [self setStepsArrayWithArray:self.recipe.steps ingridietnsArrayWithArray:self.recipe.ingridients andCommentsArraWithArray:self.recipe.comments];
-//        steps = [NSMutableArray arrayWithArray:self.recipe.steps];
-//        ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
-//        comments = [NSMutableArray arrayWithArray:self.recipe.comments];
-////        [steps addObjectsFromArray:self.recipe.steps];
-//        [self setIngridientsTableViewHeight];
-//        [steps insertObject:NSLocalizedString(@"steps", nil) atIndex:0];
-//        [ingridients insertObject:NSLocalizedString(@"ingridients", nil) atIndex:0];
-//        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
-//        [self.recipeInfoTableView reloadData];
-//        [self.stepsTableView reloadData];
-//        [self.ingridientsTableView reloadData];
-//        [self.commentsTableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -168,16 +156,9 @@ float const recipeCellInfoHeight = 250;
         [self removeTitlesFromTables];
         comments = [NSMutableArray arrayWithArray:[Comment initializeFromArray:data]];
         [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
-//        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
-//        self.viewHeightConstraint.constant -= self.commentsTableViewHeightConstraint.constant;
-//        if(auth.currentUser){
-//            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight + commentFormHeight;
-//        } else {
-//            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight;
-//        }
-//        self.viewHeightConstraint.constant += self.commentsTableViewHeightConstraint.constant;
         [self.commentsTableView reloadData];
     }
+    selectedIndex = -1;
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
@@ -388,27 +369,6 @@ float const recipeCellInfoHeight = 250;
     }
     
 }
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if([tableView isEqual:self.commentsTableView]){
-//        return 20;
-//    } else {
-//        return 0;
-//    }
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    if([tableView isEqual:self.commentsTableView]){
-//        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.commentsTableView.frame.size.width, 20)];
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.commentsTableView.frame.size.width, 20)];
-//        label.text = @"Показать все комментарии";
-//        [headerView addSubview:label];
-//
-//        return headerView;
-//    } else {
-//        return nil;
-//    }
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if([tableView isEqual:self.commentsTableView]){
         return 110;
