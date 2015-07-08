@@ -24,4 +24,5 @@
 - (void) create: (NSMutableDictionary *) params;
 - (NSString *) friendlyCreatedAt;
 - (void) deleteFromServer;
+- (void) updateToServer;
 @end

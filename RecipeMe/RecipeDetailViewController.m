@@ -508,6 +508,13 @@ float const recipeCellInfoHeight = 250;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+- (void) successUpdateCallback:(id)comment{
+
+}
+
+- (void) failureUpdateCallback:(id)error{
+
+}
 /*
 #pragma mark - Navigation
 

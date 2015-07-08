@@ -52,7 +52,13 @@
     }];
 }
 - (void) updateToServer{
-
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/comments/%@", self.recipeId, self.id] parameters:@{@"user_id": self.userId, @"recipe_id": self.recipeId, @"text": self.text} requestType:@"PUT" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.delegate successUpdateCallback:self];
+        } else {
+            [self.delegate failureUpdateCallback:data];
+        }
+    }];
 }
 - (NSString *) friendlyCreatedAt{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

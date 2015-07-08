@@ -48,6 +48,8 @@
         [error showErrorMessage:NSLocalizedString(@"comment_empty", nil)];
     } else {
         self.comment.text = self.commentTextView.text;
+        [self.comment updateToServer];
+        [self performSegueWithIdentifier:@"successUpdate" sender:self];
     }
 }
 
