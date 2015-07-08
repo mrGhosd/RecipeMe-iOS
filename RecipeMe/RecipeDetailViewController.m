@@ -87,6 +87,9 @@ float const recipeCellInfoHeight = 250;
 
     self.scrollView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.scrollView addInfiniteScrollWithHandler:^(UIScrollView *scrollView){
+        selectedIndex = 0;
+        [self.stepsTableView reloadData];
+        [self.commentsTableView reloadData];
         [self loadCommentsList];
         [scrollView finishInfiniteScroll];
     }];
@@ -144,32 +147,35 @@ float const recipeCellInfoHeight = 250;
 - (void) parseRecipe: (id) data{
     if(data != [NSNull null]){
         self.recipe = [[Recipe alloc] initWithParameters:data];
-        steps = [NSMutableArray arrayWithArray:self.recipe.steps];
-        ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
-        comments = [NSMutableArray arrayWithArray:self.recipe.comments];
-//        [steps addObjectsFromArray:self.recipe.steps];
-        [self setIngridientsTableViewHeight];
-        [steps insertObject:NSLocalizedString(@"steps", nil) atIndex:0];
-        [ingridients insertObject:NSLocalizedString(@"ingridients", nil) atIndex:0];
-        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
-        [self.recipeInfoTableView reloadData];
-        [self.stepsTableView reloadData];
-        [self.ingridientsTableView reloadData];
-        [self.commentsTableView reloadData];
+        [self setStepsArrayWithArray:self.recipe.steps ingridietnsArrayWithArray:self.recipe.ingridients andCommentsArraWithArray:self.recipe.comments];
+//        steps = [NSMutableArray arrayWithArray:self.recipe.steps];
+//        ingridients = [NSMutableArray arrayWithArray:self.recipe.ingridients];
+//        comments = [NSMutableArray arrayWithArray:self.recipe.comments];
+////        [steps addObjectsFromArray:self.recipe.steps];
+//        [self setIngridientsTableViewHeight];
+//        [steps insertObject:NSLocalizedString(@"steps", nil) atIndex:0];
+//        [ingridients insertObject:NSLocalizedString(@"ingridients", nil) atIndex:0];
+//        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
+//        [self.recipeInfoTableView reloadData];
+//        [self.stepsTableView reloadData];
+//        [self.ingridientsTableView reloadData];
+//        [self.commentsTableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseComments: (id) data{
     if(data != [NSNull null]){
+        [self removeTitlesFromTables];
         comments = [NSMutableArray arrayWithArray:[Comment initializeFromArray:data]];
-        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
-        self.viewHeightConstraint.constant -= self.commentsTableViewHeightConstraint.constant;
-        if(auth.currentUser){
-            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight + commentFormHeight;
-        } else {
-            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight;
-        }
-        self.viewHeightConstraint.constant += self.commentsTableViewHeightConstraint.constant;
+        [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
+//        [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
+//        self.viewHeightConstraint.constant -= self.commentsTableViewHeightConstraint.constant;
+//        if(auth.currentUser){
+//            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight + commentFormHeight;
+//        } else {
+//            self.commentsTableViewHeightConstraint.constant = comments.count * commentHeight;
+//        }
+//        self.viewHeightConstraint.constant += self.commentsTableViewHeightConstraint.constant;
         [self.commentsTableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -272,11 +278,11 @@ float const recipeCellInfoHeight = 250;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if([tableView isEqual:self.stepsTableView] || [tableView isEqual:self.commentsTableView]){
-        [self rowWasSelected:tableView inIndexPAth:indexPath];
+        [self rowWasSelected:tableView inIndexPath:indexPath];
     }
 }
 
-- (void) rowWasSelected: (UITableView *) tableView inIndexPAth: (NSIndexPath *) indexPath{
+- (void) rowWasSelected: (UITableView *) tableView inIndexPath: (NSIndexPath *) indexPath{
         [self.view endEditing:YES];
         if(selectedIndex == indexPath.row){
             selectedIndex = -1;
@@ -462,13 +468,34 @@ float const recipeCellInfoHeight = 250;
 - (void) successCommentCreationCallback:(id)comment{
     Comment *com = [[Comment alloc] initWithParameters:comment];
     [comments insertObject:com atIndex:1];
-    [self setIngridientsTableViewHeight];
-    [self.commentsTableView reloadData];
+    [self removeTitlesFromTables];
+    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void) failureCommentCreationCallback:(id)error{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void) setStepsArrayWithArray:(NSArray *) stepsArray ingridietnsArrayWithArray:(NSArray *) ingridientsArray andCommentsArraWithArray:(NSArray *) commentsArray{
+    steps = [NSMutableArray arrayWithArray:stepsArray];
+    ingridients = [NSMutableArray arrayWithArray:ingridientsArray];
+    comments = [NSMutableArray arrayWithArray:commentsArray];;
+    [self setIngridientsTableViewHeight];
+    [steps insertObject:NSLocalizedString(@"steps", nil) atIndex:0];
+    [ingridients insertObject:NSLocalizedString(@"ingridients", nil) atIndex:0];
+    [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
+    [self reloadTableViewsData];
+}
+-(void) reloadTableViewsData{
+    [self.recipeInfoTableView reloadData];
+    [self.stepsTableView reloadData];
+    [self.ingridientsTableView reloadData];
+    [self.commentsTableView reloadData];
+};
+- (void) removeTitlesFromTables{
+    [comments removeObjectAtIndex:0];
+    [steps removeObjectAtIndex:0];
+    [ingridients removeObjectAtIndex:0];
 }
 /*
 #pragma mark - Navigation

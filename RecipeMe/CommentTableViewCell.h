@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Comment.h"
-@interface CommentTableViewCell : UITableViewCell
+#import <SWTableViewCell.h>
+@interface CommentTableViewCell : SWTableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *commentImage;
 @property (strong, nonatomic) IBOutlet UILabel *commentText;
 - (void) setCommentData: (Comment *) comment;
