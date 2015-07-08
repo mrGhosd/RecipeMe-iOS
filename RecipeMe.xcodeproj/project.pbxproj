@@ -51,6 +51,7 @@
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
+		64B6FE9F1B4DA1B800C0EFD7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */; };
 		64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C221981B4D70B80010F3F3 /* delete_sign-32.png */; };
 		64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C2219A1B4D71530010F3F3 /* edit-32.png */; };
 		64C2219D1B4D75EE0010F3F3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C2219C1B4D75EE0010F3F3 /* heart.png */; };
@@ -167,6 +168,8 @@
 		647032061B2AF0420084D58A /* RecipeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
+		64B6FE9D1B4DA1B800C0EFD7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		64BD17E51B45F28300DA2B36 /* UserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
 		64C221981B4D70B80010F3F3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_sign-32.png"; sourceTree = "<group>"; };
 		64C2219A1B4D71530010F3F3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-32.png"; sourceTree = "<group>"; };
@@ -448,6 +451,7 @@
 		647875FF1B2B0A9000401720 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64B6FE9C1B4DA1A300C0EFD7 /* comment */,
 				64F7CB7E1B4939A300D543AC /* auth */,
 				64C5B17F1B4824720043C9D3 /* sidebar */,
 				64C5B17B1B481DDC0043C9D3 /* SWRevealViewController */,
@@ -492,6 +496,15 @@
 				64D7D3EE1B4B256700F8061E /* CommentDelegate.h */,
 			);
 			name = delegates;
+			sourceTree = "<group>";
+		};
+		64B6FE9C1B4DA1A300C0EFD7 /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				64B6FE9D1B4DA1B800C0EFD7 /* CommentViewController.h */,
+				64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */,
+			);
+			name = comment;
 			sourceTree = "<group>";
 		};
 		64BD17E11B45EB0800DA2B36 /* users */ = {
@@ -902,6 +915,7 @@
 				6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */,
 				64F7CB8C1B4942AE00D543AC /* RegistrationView.m in Sources */,
 				643AFBBC1B2B72DE0090BC68 /* RecipesListTableViewCell.m in Sources */,
+				64B6FE9F1B4DA1B800C0EFD7 /* CommentViewController.m in Sources */,
 				647031F61B2AF0420084D58A /* AppDelegate.m in Sources */,
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
 				64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */,

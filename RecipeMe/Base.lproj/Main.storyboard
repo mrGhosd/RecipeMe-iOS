@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lw9-BP-F1B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lw9-BP-F1B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -28,6 +28,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669" y="-535"/>
+        </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="NOU-1r-hfK">
+            <objects>
+                <viewController id="y6t-J6-Dau" customClass="CommentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8un-Qa-gdf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ol3-Xg-eFZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xx7-0U-ek1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVk-1a-dIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="282"/>
         </scene>
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -224,6 +242,7 @@
                         <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
                         <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
                         <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
+                        <segue destination="y6t-J6-Dau" kind="show" id="bf7-Zz-ZZF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,8 +443,8 @@
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3kd-SA-HCi"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="tNo-vm-oAh"/>
+        <segue reference="KKI-rF-QC7"/>
     </inferredMetricsTieBreakers>
 </document>
