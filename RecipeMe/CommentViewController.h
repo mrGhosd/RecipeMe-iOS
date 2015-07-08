@@ -7,7 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "Comment.h"
 
 @interface CommentViewController : ViewController
-
+@property (strong, nonatomic) IBOutlet UITextView *commentTextView;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property(strong, nonatomic) Comment *comment;
+@property (strong, nonatomic) IBOutlet UIButton *cancellButton;
+- (IBAction)saveChanges:(id)sender;
+- (IBAction)cancelChanges:(id)sender;
 @end

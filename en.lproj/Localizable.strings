@@ -39,3 +39,5 @@
 
 /*COMMENT*/
 "comment_empty" = "Comment can't be empty";
+"comment_save_changes" = "Save";
+"comment_cancel_changes" = "Cancel";

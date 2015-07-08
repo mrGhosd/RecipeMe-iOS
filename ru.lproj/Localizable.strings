@@ -37,5 +37,8 @@
 "password_confirmation_empty" = "Подтверждение пароля не может быть пустым";
 "user_empty_error" = "Такого пользователя не существует";
 
+
 /*COMMENT*/
 "comment_empty" = "Комментарий не может быть пустым";
+"comment_save_changes" = "Сохранить";
+"comment_cancel_changes" = "Отменить";

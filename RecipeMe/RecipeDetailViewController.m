@@ -25,6 +25,7 @@
 #import "ServerError.h"
 #import "AuthorizationManager.h"
 #import <UIScrollView+InfiniteScroll.h>
+#import "CommentViewController.h"
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -36,6 +37,7 @@
     UIRefreshControl *refreshControl;
     UIButton *errorButton;
     AuthorizationManager *auth;
+    Comment *com;
 }
 
 @end
@@ -428,15 +430,17 @@ float const recipeCellInfoHeight = 250;
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-    [MBProgressHUD showHUDAddedTo:self.view
-                         animated:YES];
     NSIndexPath *indexPath = [self.commentsTableView indexPathForCell:cell];
     Comment *comment = comments[indexPath.row];
+    com = comment;
     switch (index) {
         case 0:{
+            [self performSegueWithIdentifier:@"editComment" sender:self];
             break;
         }
         case 1:{
+            [MBProgressHUD showHUDAddedTo:self.view
+                                 animated:YES];
             [comment deleteFromServer];
             break;
         }
@@ -495,6 +499,14 @@ float const recipeCellInfoHeight = 250;
 }
 - (void) failureDeleteCallback:(id)error{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"editComment"]){
+        CommentViewController *view = segue.destinationViewController;
+        view.comment = com;
+    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
 /*
 #pragma mark - Navigation

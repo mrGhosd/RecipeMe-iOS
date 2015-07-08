@@ -51,6 +51,9 @@
         }
     }];
 }
+- (void) updateToServer{
+
+}
 - (NSString *) friendlyCreatedAt{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //    NSDate *currentDate = [formatter dateFromString:self.createdAt];

@@ -40,12 +40,99 @@
                     <view key="view" contentMode="scaleToFill" id="Xx7-0U-ek1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-Xn-ADL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-Pq-toz">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-qT-rEM">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="B5z-qT-rEM" firstAttribute="leading" secondItem="Hxw-Pq-toz" secondAttribute="leading" id="27D-Ay-ch2"/>
+                                            <constraint firstItem="B5z-qT-rEM" firstAttribute="top" secondItem="Hxw-Pq-toz" secondAttribute="top" id="jsk-fh-ShY"/>
+                                            <constraint firstAttribute="trailing" secondItem="B5z-qT-rEM" secondAttribute="trailing" id="w1j-NJ-yrA"/>
+                                            <constraint firstAttribute="bottom" secondItem="B5z-qT-rEM" secondAttribute="bottom" constant="50" id="yDY-JF-vE4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Hxw-Pq-toz" firstAttribute="top" secondItem="lpa-Xn-ADL" secondAttribute="top" id="5D0-Cs-nWK"/>
+                                    <constraint firstItem="Hxw-Pq-toz" firstAttribute="leading" secondItem="lpa-Xn-ADL" secondAttribute="leading" id="84R-bD-NQW"/>
+                                    <constraint firstAttribute="width" secondItem="Hxw-Pq-toz" secondAttribute="width" id="A0s-iT-t00"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hxw-Pq-toz" secondAttribute="bottom" id="I9O-ab-C5D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hxw-Pq-toz" secondAttribute="trailing" id="xbn-zR-CiC"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-W5-dcP">
+                                <rect key="frame" x="0.0" y="150" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8q0-Cq-rY1">
+                                        <rect key="frame" x="8" y="8" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="teo-gR-v5j"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveChanges:" destination="y6t-J6-Dau" eventType="touchUpInside" id="Lii-8v-jkW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5P-zU-fSi">
+                                        <rect key="frame" x="492" y="8" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="XAN-dA-czU"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelChanges:" destination="y6t-J6-Dau" eventType="touchUpInside" id="aVW-hB-m2V"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="S5P-zU-fSi" firstAttribute="top" secondItem="uP5-W5-dcP" secondAttribute="top" constant="8" id="6Iq-sf-akY"/>
+                                    <constraint firstAttribute="bottom" secondItem="8q0-Cq-rY1" secondAttribute="bottom" constant="12" id="87G-Ud-Bkr"/>
+                                    <constraint firstItem="8q0-Cq-rY1" firstAttribute="top" secondItem="uP5-W5-dcP" secondAttribute="top" constant="8" id="LRl-DN-5RC"/>
+                                    <constraint firstAttribute="trailing" secondItem="S5P-zU-fSi" secondAttribute="trailing" constant="8" id="SiP-Zc-pTE"/>
+                                    <constraint firstAttribute="bottom" secondItem="S5P-zU-fSi" secondAttribute="bottom" constant="12" id="Tds-me-foL"/>
+                                    <constraint firstItem="8q0-Cq-rY1" firstAttribute="leading" secondItem="uP5-W5-dcP" secondAttribute="leading" constant="8" id="Xau-V5-GEV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lpa-Xn-ADL" firstAttribute="top" secondItem="8un-Qa-gdf" secondAttribute="bottom" id="GeS-mG-crQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lpa-Xn-ADL" secondAttribute="trailing" constant="-16" id="MBT-lv-JrE"/>
+                            <constraint firstItem="ol3-Xg-eFZ" firstAttribute="top" secondItem="uP5-W5-dcP" secondAttribute="bottom" id="cL6-NL-9EH"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="lpa-Xn-ADL" secondAttribute="bottom" id="cuo-et-GK1"/>
+                            <constraint firstItem="lpa-Xn-ADL" firstAttribute="leading" secondItem="Xx7-0U-ek1" secondAttribute="leadingMargin" constant="-16" id="cwr-xQ-dRd"/>
+                            <constraint firstItem="uP5-W5-dcP" firstAttribute="leading" secondItem="Xx7-0U-ek1" secondAttribute="leadingMargin" constant="-16" id="emh-jP-8Df"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uP5-W5-dcP" secondAttribute="trailing" constant="-16" id="flM-WS-xLF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancellButton" destination="S5P-zU-fSi" id="e00-4d-PJU"/>
+                        <outlet property="commentTextView" destination="B5z-qT-rEM" id="Nbp-7E-jBv"/>
+                        <outlet property="saveButton" destination="8q0-Cq-rY1" id="ige-9m-v0O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVk-1a-dIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="282"/>
+            <point key="canvasLocation" x="2669" y="291"/>
         </scene>
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -242,7 +329,7 @@
                         <outlet property="stepsTableView" destination="dQb-Dc-Yma" id="jNd-cb-EYE"/>
                         <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
                         <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
-                        <segue destination="y6t-J6-Dau" kind="show" id="bf7-Zz-ZZF"/>
+                        <segue destination="y6t-J6-Dau" kind="show" identifier="editComment" id="bf7-Zz-ZZF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>

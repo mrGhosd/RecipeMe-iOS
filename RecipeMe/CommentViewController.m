@@ -7,6 +7,7 @@
 //
 
 #import "CommentViewController.h"
+#import "ServerError.h"
 
 @interface CommentViewController ()
 
@@ -16,6 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.commentTextView.text = self.comment.text;
+    [self.saveButton setTitle:NSLocalizedString(@"comment_save_changes", nil) forState:UIControlStateNormal];
+    [self.cancellButton setTitle:NSLocalizedString(@"comment_cancel_changes", nil) forState:UIControlStateNormal];
+    self.saveButton.layer.cornerRadius = 8.0;
+    self.cancellButton.layer.cornerRadius = 8.0;
+    self.saveButton.backgroundColor = [UIColor greenColor];
+    self.cancellButton.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
 
@@ -34,4 +42,15 @@
 }
 */
 
+- (IBAction)saveChanges:(id)sender {
+    if([self.commentTextView.text isEqualToString:@""]){
+        ServerError *error = [[ServerError alloc] init];
+        [error showErrorMessage:NSLocalizedString(@"comment_empty", nil)];
+    } else {
+        self.comment.text = self.commentTextView.text;
+    }
+}
+
+- (IBAction)cancelChanges:(id)sender {
+}
 @end
