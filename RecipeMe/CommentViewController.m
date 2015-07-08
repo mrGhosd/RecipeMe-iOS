@@ -49,7 +49,7 @@
     } else {
         self.comment.text = self.commentTextView.text;
         [self.comment updateToServer];
-        [self performSegueWithIdentifier:@"successUpdate" sender:self];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

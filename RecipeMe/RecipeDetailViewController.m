@@ -509,11 +509,29 @@ float const recipeCellInfoHeight = 250;
     // Pass the selected object to the new view controller.
 }
 - (void) successUpdateCallback:(id)comment{
-
+    Comment *selected;
+    [self removeTitlesFromTables];
+    for(Comment *comm in comments){
+        if([comm.id isEqualToNumber:comment[@"id"]]){
+            selected = comm;
+        }
+    }
+    if(selected != [NSNull null]){
+        NSInteger index = [comments indexOfObject:selected];
+        [comments removeObject:selected];
+        Comment *newComment = [[Comment alloc] initWithParameters:comment];
+        [comments insertObject:newComment atIndex:index];
+    }
+    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
+//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void) failureUpdateCallback:(id)error{
-
+    ServerError *serverError = [[ServerError alloc] initWithData:error];
+    serverError.delegate = self;
+    [serverError handle];
 }
 /*
 #pragma mark - Navigation
