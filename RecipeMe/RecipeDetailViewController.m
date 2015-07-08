@@ -252,6 +252,15 @@ float const recipeCellInfoHeight = 250;
             Comment *comment = comments[indexPath.row];
             CommentTableViewCell *cell = (CommentTableViewCell *)[self.commentsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             [cell setCommentData:comment];
+            if(auth.currentUser && [comment.user.id isEqual:auth.currentUser.id]){
+                NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+                [rightUtilityButtons sw_addUtilityButtonWithColor:
+                 [UIColor greenColor] icon:[UIImage imageNamed:@"edit-32.png"]];
+                [rightUtilityButtons sw_addUtilityButtonWithColor:
+                 [UIColor redColor] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
+                cell.rightUtilityButtons = rightUtilityButtons;
+                cell.delegate = self;
+            }
             return cell;
         }
         

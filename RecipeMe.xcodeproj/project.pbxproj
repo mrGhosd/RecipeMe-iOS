@@ -51,6 +51,8 @@
 		647031FC1B2AF0420084D58A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647031FA1B2AF0420084D58A /* Main.storyboard */; };
 		647031FE1B2AF0420084D58A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 647031FD1B2AF0420084D58A /* Images.xcassets */; };
 		647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 647031FF1B2AF0420084D58A /* LaunchScreen.xib */; };
+		64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C221981B4D70B80010F3F3 /* delete_sign-32.png */; };
+		64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C2219A1B4D71530010F3F3 /* edit-32.png */; };
 		64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */; };
 		64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1831B4824E60043C9D3 /* menu-32.png */; };
 		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
@@ -165,6 +167,8 @@
 		6470320B1B2AF0420084D58A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
 		64BD17E51B45F28300DA2B36 /* UserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDelegate.h; sourceTree = "<group>"; };
+		64C221981B4D70B80010F3F3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_sign-32.png"; sourceTree = "<group>"; };
+		64C2219A1B4D71530010F3F3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-32.png"; sourceTree = "<group>"; };
 		64C5B17C1B481DEC0043C9D3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		64C5B17D1B481DEC0043C9D3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		64C5B1831B4824E60043C9D3 /* menu-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-32.png"; sourceTree = "<group>"; };
@@ -518,6 +522,7 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64C221981B4D70B80010F3F3 /* delete_sign-32.png */,
 				64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */,
 				64F7CB841B493BB200D543AC /* authFullBg.png */,
 				64F7CB911B49528500D543AC /* authMailIcon.png */,
@@ -536,6 +541,7 @@
 				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
 				64101E1D1B2C557B006D516D /* heartIcon.png */,
 				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
+				64C2219A1B4D71530010F3F3 /* edit-32.png */,
 				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
 				643AFBC81B2C1FF40090BC68 /* personsIcon.png */,
 				643AFBC61B2C1C5C0090BC68 /* difficultIcon.png */,
@@ -772,8 +778,10 @@
 				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
+				64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */,
 				64F7CB831B493A7E00D543AC /* authBg.png in Resources */,
 				64F7CB941B49556400D543AC /* authPasswordField.png in Resources */,
+				64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
