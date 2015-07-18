@@ -160,12 +160,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="v8E-AA-7vk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="searcIcon.png" id="akr-xD-eBd">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="showSearchBar:" destination="vXZ-lx-hvc" id="xYg-oc-pcO"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="npV-Jk-N5K"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="13H-wA-GtN" id="19V-Um-LLk"/>
@@ -199,7 +194,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -527,13 +522,12 @@
     <resources>
         <image name="authFullBg.png" width="640" height="1136"/>
         <image name="menu-32.png" width="32" height="32"/>
-        <image name="searcIcon.png" width="22" height="22"/>
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9jT-f3-207"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="tNo-vm-oAh"/>
-        <segue reference="mKy-iu-30W"/>
-        <segue reference="KKI-rF-QC7"/>
+        <segue reference="tlU-6g-992"/>
     </inferredMetricsTieBreakers>
 </document>

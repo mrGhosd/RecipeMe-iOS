@@ -45,6 +45,10 @@
     [self setNavigationAttributes];
     [self refreshInit];
     [self loadRecipesList];
+    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];
+    UIBarButtonItem *addRecipe = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addRecipe.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(addRecipe:)];
+    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[search, addRecipe]];
+//    [search setImage:searchImage];
     
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
@@ -200,6 +204,8 @@
         [searchBarMain removeFromSuperview];
     }
     
+}
+- (IBAction)addRecipe:(id)sender {
 }
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
