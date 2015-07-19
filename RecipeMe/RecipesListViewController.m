@@ -206,6 +206,7 @@
     
 }
 - (IBAction)addRecipe:(id)sender {
+    [self performSegueWithIdentifier:@"recipeForm" sender:self];
 }
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {

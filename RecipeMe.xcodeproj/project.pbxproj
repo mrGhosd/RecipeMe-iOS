@@ -12,6 +12,7 @@
 		6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */; };
 		64101E1E1B2C557B006D516D /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64101E1D1B2C557B006D516D /* heartIcon.png */; };
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
+		642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
@@ -110,6 +111,8 @@
 		6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
 		642C4CC91B5AECFA007C2783 /* addRecipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addRecipe.png; sourceTree = "<group>"; };
+		642C4CCB1B5AF046007C2783 /* RecipeFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeFormViewController.h; sourceTree = "<group>"; };
+		642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeFormViewController.m; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				643AFBB31B2B70A20090BC68 /* RecipesListViewController.m */,
 				6404CBFE1B2DB511005B5A0D /* RecipeDetailViewController.h */,
 				6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */,
+				642C4CCB1B5AF046007C2783 /* RecipeFormViewController.h */,
+				642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
+				642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
