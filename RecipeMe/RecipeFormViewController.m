@@ -17,9 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.formViewHeightConstraint.constant += 500.0;
+    [self setNamesForInputs];
     // Do any additional setup after loading the view.
 }
-
+- (void) setNamesForInputs{
+    [self.navigationBar.items[0] setTitle:@"Recipe Form"];
+    [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
+    [self.cancelButton setTitle:NSLocalizedString(@"cancel_recipe", nil)];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,4 +40,9 @@
 }
 */
 
+- (IBAction)saveRecipe:(id)sender {
+}
+
+- (IBAction)dismissForm:(id)sender {
+}
 @end

@@ -41,3 +41,8 @@
 "comment_empty" = "Comment can't be empty";
 "comment_save_changes" = "Save";
 "comment_cancel_changes" = "Cancel";
+
+/*RECIPE FORM*/
+"recipe_form_title" = "New recipe";
+"save_recipe" = "Save";
+"cancel_recipe" = "Cancel";

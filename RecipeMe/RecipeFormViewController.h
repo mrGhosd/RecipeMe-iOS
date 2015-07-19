@@ -17,5 +17,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *recipeTags;
 @property (strong, nonatomic) IBOutlet UIView *formView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *formViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+- (IBAction)saveRecipe:(id)sender;
+- (IBAction)dismissForm:(id)sender;
 
 @end

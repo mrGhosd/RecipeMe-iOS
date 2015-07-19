@@ -42,3 +42,8 @@
 "comment_empty" = "Комментарий не может быть пустым";
 "comment_save_changes" = "Сохранить";
 "comment_cancel_changes" = "Отменить";
+
+/*RECIPE FORM*/
+"recipe_form_title" = "Новый рецепт";
+"save_recipe" = "Создать";
+"cancel_recipe" = "Отменить";
