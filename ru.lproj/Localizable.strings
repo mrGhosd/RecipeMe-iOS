@@ -47,3 +47,7 @@
 "recipe_form_title" = "Новый рецепт";
 "save_recipe" = "Создать";
 "cancel_recipe" = "Отменить";
+
+"recipe_image_collection" = "Из коллекции";
+"recipe_image_camera" = "С камеры";
+"recipe_image_cancel" = "Отмена";

@@ -46,3 +46,7 @@
 "recipe_form_title" = "New recipe";
 "save_recipe" = "Save";
 "cancel_recipe" = "Cancel";
+
+"recipe_image_collection" = "Collection";
+"recipe_image_camera" = "Camera";
+"recipe_image_cancel" = "Cancel";

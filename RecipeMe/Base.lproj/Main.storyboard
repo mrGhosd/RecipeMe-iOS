@@ -473,6 +473,7 @@
                         <outlet property="navigationBar" destination="wZs-EB-R3A" id="ma0-ZB-tco"/>
                         <outlet property="recipeCategory" destination="x9Y-ae-mWZ" id="bBK-d9-TpV"/>
                         <outlet property="recipeDifficult" destination="SU0-Uf-s2z" id="Iai-0m-kve"/>
+                        <outlet property="recipeImage" destination="vJZ-fG-qG9" id="7Zm-pk-iCV"/>
                         <outlet property="recipePersons" destination="Ep5-aJ-jMx" id="Btn-Dy-596"/>
                         <outlet property="recipeTags" destination="g1N-cu-EC2" id="g8p-0j-h9g"/>
                         <outlet property="recipeTime" destination="5bh-cg-erz" id="Jns-zD-uON"/>

@@ -24,12 +24,52 @@
     [self.navigationBar.items[0] setTitle:@"Recipe Form"];
     [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
     [self.cancelButton setTitle:NSLocalizedString(@"cancel_recipe", nil)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+    [self.recipeImage setUserInteractionEnabled:YES];
+    [self.recipeImage addGestureRecognizer:singleTap];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void) tapDetected: (id) sender{
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"recipe_image_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:
+                            NSLocalizedString(@"recipe_image_collection", nil),
+                            NSLocalizedString(@"recipe_image_camera", nil),
+                            nil];
+    popup.tag = 1;
+    [popup showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch(buttonIndex)
+    {
+        case 0:
+            [self callImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
+            break;
+        case 1:
+            [self callImagePicker:UIImagePickerControllerSourceTypeCamera];
+            break;
+        case 2:
+            break;
+    }
+}
+
+- (void) callImagePicker: (UIImagePickerControllerSourceType *) type{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = type;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.recipeImage.image = chosenImage;
+    [picker dismissViewControllerAnimated:YES completion:NULL];    
+}
 /*
 #pragma mark - Navigation
 
@@ -44,5 +84,6 @@
 }
 
 - (IBAction)dismissForm:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
