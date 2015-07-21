@@ -7,8 +7,11 @@
 //
 
 #import "RecipeFormViewController.h"
+#import "ServerConnection.h"
 
-@interface RecipeFormViewController ()
+@interface RecipeFormViewController (){
+    ServerConnection *connection;
+}
 
 @end
 
@@ -16,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    connection = [ServerConnection sharedInstance];
     self.formViewHeightConstraint.constant += 500.0;
     [self setNamesForInputs];
     // Do any additional setup after loading the view.
@@ -68,6 +72,13 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.recipeImage.image = chosenImage;
+    [connection uploadImage:chosenImage withParams:@{@"imageable_type": @"Recipe"} andComplition:^(id data, BOOL success){
+        if(success){
+            self.recipeImageId = data[@"id"];
+        } else {
+            
+        }
+    }];
     [picker dismissViewControllerAnimated:YES completion:NULL];    
 }
 /*

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIImageView *recipeImage;
+@property (strong, nonatomic) NSNumber *recipeImageId;
 - (IBAction)saveRecipe:(id)sender;
 - (IBAction)dismissForm:(id)sender;
 

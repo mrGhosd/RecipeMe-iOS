@@ -21,4 +21,5 @@ typedef void(^requestErrorBlock)(NSError *);
 - (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition;
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition;
 - (NSString *)returnCorrectUrlPrefix:(NSString *)string;
+- (void)uploadImage: (UIImage *) image withParams: (NSDictionary *) params andComplition:(ResponseCopmlition) complition;
 @end
