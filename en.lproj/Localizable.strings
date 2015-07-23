@@ -50,3 +50,11 @@
 "recipe_image_collection" = "Collection";
 "recipe_image_camera" = "Camera";
 "recipe_image_cancel" = "Cancel";
+
+"form_title" = "Title";
+"form_time" = "Time of cooking";
+"form_persons" = "Persons count";
+"form_difficult" = "Difficult";
+"form_category" = "Category";
+"form_tags" = "Tags";
+

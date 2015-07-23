@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "Recipe.h"
 
 @interface RecipeFormViewController : ViewController
+@property (strong, nonatomic) Recipe *recipe;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTitle;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTime;
 @property (strong, nonatomic) IBOutlet UITextField *recipePersons;

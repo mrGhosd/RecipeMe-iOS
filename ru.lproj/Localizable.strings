@@ -51,3 +51,10 @@
 "recipe_image_collection" = "Из коллекции";
 "recipe_image_camera" = "С камеры";
 "recipe_image_cancel" = "Отмена";
+
+"form_title" = "Заголовок";
+"form_time" = "Время приготовления";
+"form_persons" = "Количество персон";
+"form_difficult" = "Сложность";
+"form_category" = "Категория";
+"form_tags" = "Теги";
