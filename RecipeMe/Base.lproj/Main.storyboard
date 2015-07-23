@@ -472,6 +472,7 @@
                         <outlet property="formViewHeightConstraint" destination="Swk-GS-lcJ" id="dcK-gg-7XP"/>
                         <outlet property="navigationBar" destination="wZs-EB-R3A" id="ma0-ZB-tco"/>
                         <outlet property="recipeCategory" destination="x9Y-ae-mWZ" id="bBK-d9-TpV"/>
+                        <outlet property="recipeDescription" destination="TPP-YH-5Ta" id="zmW-BE-W1E"/>
                         <outlet property="recipeDifficult" destination="SU0-Uf-s2z" id="Iai-0m-kve"/>
                         <outlet property="recipeImage" destination="vJZ-fG-qG9" id="7Zm-pk-iCV"/>
                         <outlet property="recipePersons" destination="Ep5-aJ-jMx" id="Btn-Dy-596"/>
@@ -483,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnX-fH-AVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="1126"/>
+            <point key="canvasLocation" x="1851" y="1166"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="S0O-uz-CNd">

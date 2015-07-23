@@ -8,9 +8,11 @@
 
 #import "RecipeFormViewController.h"
 #import "ServerConnection.h"
+#import "AuthorizationManager.h"
 
 @interface RecipeFormViewController (){
     ServerConnection *connection;
+    AuthorizationManager *auth;
     UIPickerView *difficultPicker;
     UIPickerView *categoriesPicker;
     NSMutableArray *difficults;
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
+    auth = [AuthorizationManager sharedInstance];
     //Категории должны загружатся в первую очередь
     [self loadCategoriesList];
     [self defaultFormConfig];
@@ -195,8 +198,18 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 #pragma mark - Save and Cancel Form event handlers
-
+- (NSDictionary *) getRecipeFormData{
+    return @{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text,
+             @"image": @{@"id": self.recipeImageId}, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text};
+}
 - (IBAction)saveRecipe:(id)sender {
+    [connection sendDataToURL:@"/recipes" parameters:[self getRecipeFormData] requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+        
+        }
+    }];
 }
 
 - (IBAction)dismissForm:(id)sender {
