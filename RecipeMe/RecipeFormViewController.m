@@ -9,6 +9,9 @@
 #import "RecipeFormViewController.h"
 #import "ServerConnection.h"
 #import "AuthorizationManager.h"
+#import "RecipeFormHeader.h"
+#import "IngridientsFormTableViewCell.h"
+#import "Ingridient.h"
 
 @interface RecipeFormViewController (){
     ServerConnection *connection;
@@ -21,6 +24,8 @@
     NSString *selectedDifficult;
     NSNumber *selectedCategory;
     float previousDescHeight;
+    NSMutableArray *ingridients;
+    NSMutableArray *steps;
 }
 
 @end
@@ -42,10 +47,19 @@
     [self setNamesForInputs];
     // Do any additional setup after loading the view.
 }
+
+- (void) registerCellClasses{
+    [self.ingridientsTableView registerClass:[IngridientsFormTableViewCell class] forCellReuseIdentifier:@"ingridientsCell"];
+    [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientsFormTableViewCell" bundle:nil]
+                   forCellReuseIdentifier:@"ingridientsCell"];
+}
 - (void) defaultFormConfig{
-//    self.formViewHeightConstraint.constant += 500.0;
+    [self registerCellClasses];
+    self.formViewHeightConstraint.constant += 110.0;
     self.recipeDescription.delegate = self;
     [self setInputPlaceholders];
+    ingridients = [NSMutableArray new];
+    steps = [NSMutableArray new];
     difficultIDs = @[@"easy", @"medium", @"hard"];
     difficults = @[NSLocalizedString(@"recipes_difficult_easy", nil),
                    NSLocalizedString(@"recipes_difficult_medium", nil),
@@ -232,14 +246,60 @@ numberOfRowsInComponent:(NSInteger)component{
 
 #pragma - mark UITextView delegate
 - (void) textViewDidChange:(UITextView *)textView{
-    NSString *text = self.recipeDescription.text;
-    if(previousDescHeight - self.recipeDescription.contentSize.height != 0){
-        previousDescHeight = self.recipeDescription.contentSize.height;
-        self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
-        self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 8;
+    if([textView isEqual:self.recipeDescription]){
+        if(previousDescHeight - self.recipeDescription.contentSize.height > 0){
+            previousDescHeight = self.recipeDescription.contentSize.height;
+            self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
+            self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 8;
+        } else if(previousDescHeight - self.recipeDescription.contentSize.height < 0){
+            previousDescHeight = self.recipeDescription.contentSize.height;
+            self.formViewHeightConstraint.constant -= self.recipeDescription.contentSize.height;
+        }
     }
-    
-//    [self changeAllViewsHeights:self.recipeDescription.contentSize.height result:YES];
-//    self.recipeDescription.frame = newFrame;
+}
+
+#pragma mark - UITableView Delegate and DataSource
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 50;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    if (tableView == self.ingridientsTableView) {
+        return ingridients.count;
+        
+    } else {
+        return steps.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([tableView isEqual:self.ingridientsTableView]){
+        static NSString *CellIdentifier = @"ingridientsCell";
+        IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.ingridient = ingridients[indexPath.row];
+        return cell;
+    } else {
+        static NSString *CellIdentifier = @"stepsCell";
+        UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        return cell;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    RecipeFormHeader *view = [[[NSBundle mainBundle] loadNibNamed:@"RecipeFormHeader" owner:self options:nil] firstObject];
+    if([tableView isEqual:self.ingridientsTableView]){
+        view.headerTitle.text = NSLocalizedString(@"ingridients", nil);
+        [view.headerButton addTarget:self action:@selector(addIngridient:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        view.headerTitle.text = NSLocalizedString(@"steps", nil);
+    }
+    return view;
+}
+#pragma mark - Steps and Ingridients adding on form
+- (void) addIngridient: (id) sender{
+    Ingridient *ingridient = [[Ingridient alloc] init];
+    [ingridients addObject:ingridient];
+    [self.ingridientsTableView reloadData];
 }
 @end
