@@ -14,31 +14,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgH-eb-m0y">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgH-eb-m0y">
                         <rect key="frame" x="8" y="7" width="199" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OOD-OL-sJw">
-                        <rect key="frame" x="215" y="7" width="97" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OOD-OL-sJw">
+                        <rect key="frame" x="215" y="7" width="56" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="euW-gy-cBe"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-ek-GCg">
+                        <rect key="frame" x="279" y="6" width="33" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="33" id="2kz-n7-9HH"/>
+                            <constraint firstAttribute="height" constant="32" id="bgh-SP-HqZ"/>
+                        </constraints>
+                        <state key="normal" image="check-failed.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zgH-eb-m0y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="8EY-v2-ucI"/>
-                    <constraint firstItem="OOD-OL-sJw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="GhK-N7-b8z"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="zgH-eb-m0y" secondAttribute="bottom" constant="-2" id="UXz-5A-eUA"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="OOD-OL-sJw" secondAttribute="bottom" constant="-2" id="Wzw-1g-7hR"/>
-                    <constraint firstItem="OOD-OL-sJw" firstAttribute="leading" secondItem="zgH-eb-m0y" secondAttribute="trailing" constant="8" id="hDE-ed-BQy"/>
-                    <constraint firstItem="OOD-OL-sJw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="p4h-Gi-tbC"/>
-                    <constraint firstItem="zgH-eb-m0y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="po4-wq-VPu"/>
+                    <constraint firstItem="xvO-ek-GCg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="0bk-U6-UWO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="OOD-OL-sJw" secondAttribute="bottom" constant="-2" id="5vP-Cz-vgP"/>
+                    <constraint firstItem="xvO-ek-GCg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9Ze-P5-lYV"/>
+                    <constraint firstItem="OOD-OL-sJw" firstAttribute="leading" secondItem="zgH-eb-m0y" secondAttribute="trailing" constant="8" id="ClV-zd-Uje"/>
+                    <constraint firstItem="xvO-ek-GCg" firstAttribute="leading" secondItem="OOD-OL-sJw" secondAttribute="trailing" constant="4" id="O42-or-NZs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="zgH-eb-m0y" secondAttribute="bottom" constant="-2" id="UIj-nx-ssX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xvO-ek-GCg" secondAttribute="bottom" constant="-2" id="Z1c-Ad-ybC"/>
+                    <constraint firstItem="OOD-OL-sJw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="axs-vZ-6K2"/>
+                    <constraint firstItem="zgH-eb-m0y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="eGZ-Pw-59z"/>
+                    <constraint firstItem="zgH-eb-m0y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="max-5j-QWs"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="deleteButton" destination="xvO-ek-GCg" id="L5a-1i-bz6"/>
                 <outlet property="ingridientName" destination="zgH-eb-m0y" id="1u9-9x-elh"/>
                 <outlet property="ingridientSize" destination="OOD-OL-sJw" id="ytA-fD-mzH"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="check-failed.png" width="32" height="32"/>
+    </resources>
 </document>

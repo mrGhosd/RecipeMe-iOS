@@ -273,17 +273,47 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
+- (void) increaseViewsHeight: (BOOL) value{
+    if(value){
+        float tableViewHeight = 44.0;
+        self.ingridientsTableViewHeightConstraint.constant += tableViewHeight;
+        self.formViewHeightConstraint.constant += tableViewHeight;
+        [self.ingridientsTableView reloadData];
+    } else {
+        [self.stepsTableView reloadData];
+    }
+}
+
+- (void) decreaseViewsHeight: (BOOL) value{
+    if(value){
+        float tableViewHeight = 44.0;
+        self.ingridientsTableViewHeightConstraint.constant -= tableViewHeight;
+        self.formViewHeightConstraint.constant -= tableViewHeight;
+        [self.ingridientsTableView reloadData];
+    } else {
+        [self.stepsTableView reloadData];
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
         IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.ingridient = ingridients[indexPath.row];
+         [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else {
         static NSString *CellIdentifier = @"stepsCell";
         UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         return cell;
     }
+}
+
+- (void) deleteButton: (id) sender{
+    NSIndexPath *indexPath = [self.ingridientsTableView indexPathForCell:[[sender superview] superview]];
+    [ingridients removeObjectAtIndex:indexPath.row];
+    [self decreaseViewsHeight:YES];
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -300,6 +330,6 @@ numberOfRowsInComponent:(NSInteger)component{
 - (void) addIngridient: (id) sender{
     Ingridient *ingridient = [[Ingridient alloc] init];
     [ingridients addObject:ingridient];
-    [self.ingridientsTableView reloadData];
+    [self increaseViewsHeight:YES];
 }
 @end

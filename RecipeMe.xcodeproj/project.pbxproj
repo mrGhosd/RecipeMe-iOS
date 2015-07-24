@@ -57,6 +57,7 @@
 		649589541B625BC100D3A6D8 /* RecipeFormHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649589531B625BC100D3A6D8 /* RecipeFormHeader.xib */; };
 		6495895B1B62640D00D3A6D8 /* IngridientsFormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649589591B62640D00D3A6D8 /* IngridientsFormTableViewCell.m */; };
 		6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6495895A1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib */; };
+		6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6495895D1B626B2D00D3A6D8 /* check-failed.png */; };
 		64B6FE9F1B4DA1B800C0EFD7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */; };
 		64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C221981B4D70B80010F3F3 /* delete_sign-32.png */; };
 		64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C2219A1B4D71530010F3F3 /* edit-32.png */; };
@@ -182,6 +183,7 @@
 		649589581B62640D00D3A6D8 /* IngridientsFormTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngridientsFormTableViewCell.h; sourceTree = "<group>"; };
 		649589591B62640D00D3A6D8 /* IngridientsFormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngridientsFormTableViewCell.m; sourceTree = "<group>"; };
 		6495895A1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngridientsFormTableViewCell.xib; sourceTree = "<group>"; };
+		6495895D1B626B2D00D3A6D8 /* check-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-failed.png"; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
 		64B6FE9D1B4DA1B800C0EFD7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
 				64C5B1831B4824E60043C9D3 /* menu-32.png */,
 				6467E0E71B42A5FD001BB1CD /* stepsIcon.png */,
+				6495895D1B626B2D00D3A6D8 /* check-failed.png */,
 				64F7CB931B49556400D543AC /* authPasswordField.png */,
 				6467E0E81B42A5FE001BB1CD /* ingridientsIcon.png */,
 				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
@@ -803,6 +806,7 @@
 				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
 				64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */,
+				6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */,
 				642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */,
 				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,

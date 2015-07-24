@@ -12,5 +12,6 @@
 @interface IngridientsFormTableViewCell : UITableViewCell <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *ingridientName;
 @property (strong, nonatomic) IBOutlet UITextField *ingridientSize;
+@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong, nonatomic) Ingridient *ingridient;
 @end

@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *recipeDescriptionTextViewHeight;
 @property (strong, nonatomic) IBOutlet UITableView *ingridientsTableView;
 @property (strong, nonatomic) IBOutlet UITableView *stepsTableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ingridientsTableViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *stepsTableViewHeightConstraint;
 - (IBAction)saveRecipe:(id)sender;
 - (IBAction)dismissForm:(id)sender;
 

@@ -420,6 +420,9 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b4x-dU-b6w">
                                                 <rect key="frame" x="150" y="498" width="300" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="WH6-OB-a3e"/>
+                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingridientsCell" id="W6D-DW-zaK">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -436,6 +439,9 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8HO-XB-xMs">
                                                 <rect key="frame" x="140" y="606" width="320" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="2C3-kZ-rfZ"/>
+                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stepsCell" id="adP-IA-0HK">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -517,6 +523,7 @@
                         <outlet property="formView" destination="H25-N2-NZh" id="Tei-L1-7rx"/>
                         <outlet property="formViewHeightConstraint" destination="Swk-GS-lcJ" id="dcK-gg-7XP"/>
                         <outlet property="ingridientsTableView" destination="b4x-dU-b6w" id="aPV-im-yD5"/>
+                        <outlet property="ingridientsTableViewHeightConstraint" destination="WH6-OB-a3e" id="h0w-cq-L1c"/>
                         <outlet property="navigationBar" destination="wZs-EB-R3A" id="ma0-ZB-tco"/>
                         <outlet property="recipeCategory" destination="x9Y-ae-mWZ" id="bBK-d9-TpV"/>
                         <outlet property="recipeDescription" destination="TPP-YH-5Ta" id="zmW-BE-W1E"/>
@@ -529,6 +536,7 @@
                         <outlet property="recipeTitle" destination="SFs-VV-zeU" id="Lzp-bG-fhg"/>
                         <outlet property="saveButton" destination="edZ-VH-OWv" id="esp-pz-oUp"/>
                         <outlet property="stepsTableView" destination="8HO-XB-xMs" id="Op7-E9-a3g"/>
+                        <outlet property="stepsTableViewHeightConstraint" destination="2C3-kZ-rfZ" id="kBs-0U-vU0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnX-fH-AVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
