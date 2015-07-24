@@ -20,6 +20,7 @@
     NSMutableArray *categories;
     NSString *selectedDifficult;
     NSNumber *selectedCategory;
+    float previousDescHeight;
 }
 
 @end
@@ -42,12 +43,15 @@
     // Do any additional setup after loading the view.
 }
 - (void) defaultFormConfig{
-    self.formViewHeightConstraint.constant += 500.0;
+//    self.formViewHeightConstraint.constant += 500.0;
+    self.recipeDescription.delegate = self;
     [self setInputPlaceholders];
     difficultIDs = @[@"easy", @"medium", @"hard"];
     difficults = @[NSLocalizedString(@"recipes_difficult_easy", nil),
                    NSLocalizedString(@"recipes_difficult_medium", nil),
                    NSLocalizedString(@"recipes_difficult_hard", nil)];
+    [self.recipeDescription sizeToFit];
+    [self.recipeDescription layoutIfNeeded];
     [self setDifficultPickerView];
     [self setCategoryPickerView];
 }
@@ -154,6 +158,16 @@
     }];
     [picker dismissViewControllerAnimated:YES completion:NULL];    
 }
+
+- (void) changeAllViewsHeights:(float) value result: (BOOL) result{
+    if(result){
+        self.formViewHeightConstraint.constant += value;
+        self.recipeDescriptionTextViewHeight.constant += value;
+    } else {
+        self.formViewHeightConstraint.constant -= value;
+        self.recipeDescriptionTextViewHeight.constant -= value;
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -214,5 +228,18 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (IBAction)dismissForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma - mark UITextView delegate
+- (void) textViewDidChange:(UITextView *)textView{
+    NSString *text = self.recipeDescription.text;
+    if(previousDescHeight - self.recipeDescription.contentSize.height != 0){
+        previousDescHeight = self.recipeDescription.contentSize.height;
+        self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
+        self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 8;
+    }
+    
+//    [self changeAllViewsHeights:self.recipeDescription.contentSize.height result:YES];
+//    self.recipeDescription.frame = newFrame;
 }
 @end

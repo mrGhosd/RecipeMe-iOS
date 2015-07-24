@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Recipe.h"
 
-@interface RecipeFormViewController : ViewController
+@interface RecipeFormViewController : ViewController <UITextViewDelegate>
 @property (strong, nonatomic) Recipe *recipe;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTitle;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTime;
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *recipeImage;
 @property (strong, nonatomic) NSNumber *recipeImageId;
 @property (strong, nonatomic) IBOutlet UITextView *recipeDescription;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *recipeDescriptionTextViewHeight;
 - (IBAction)saveRecipe:(id)sender;
 - (IBAction)dismissForm:(id)sender;
 
