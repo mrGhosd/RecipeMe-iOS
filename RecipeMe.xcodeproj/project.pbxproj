@@ -41,6 +41,9 @@
 		6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3CE1B3C09FF0013872F /* IngridientHeaderTableViewCell.xib */; };
 		6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3D21B3C0C230013872F /* StepHeaderTableViewCell.m */; };
 		6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6455C3D31B3C0C230013872F /* StepHeaderTableViewCell.xib */; };
+		6459A2821B64468E009F95A3 /* security26.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2811B64468E009F95A3 /* security26.png */; };
+		6459A2841B6446BC009F95A3 /* delete85.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2831B6446BC009F95A3 /* delete85.png */; };
+		6459A2861B6446E8009F95A3 /* pen29.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2851B6446E8009F95A3 /* pen29.png */; };
 		6467E0E41B42A41E001BB1CD /* commentFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E31B42A41E001BB1CD /* commentFormView.xib */; };
 		6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */; };
 		6467E0EA1B42A5FE001BB1CD /* stepsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E71B42A5FD001BB1CD /* stepsIcon.png */; };
@@ -160,6 +163,9 @@
 		6455C3D11B3C0C230013872F /* StepHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepHeaderTableViewCell.h; sourceTree = "<group>"; };
 		6455C3D21B3C0C230013872F /* StepHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepHeaderTableViewCell.m; sourceTree = "<group>"; };
 		6455C3D31B3C0C230013872F /* StepHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		6459A2811B64468E009F95A3 /* security26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = security26.png; sourceTree = "<group>"; };
+		6459A2831B6446BC009F95A3 /* delete85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete85.png; sourceTree = "<group>"; };
+		6459A2851B6446E8009F95A3 /* pen29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen29.png; sourceTree = "<group>"; };
 		6467E0E31B42A41E001BB1CD /* commentFormView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentFormView.xib; sourceTree = "<group>"; };
 		6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentCreateIcon.png; sourceTree = "<group>"; };
 		6467E0E71B42A5FD001BB1CD /* stepsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsIcon.png; sourceTree = "<group>"; };
@@ -570,6 +576,9 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6459A2851B6446E8009F95A3 /* pen29.png */,
+				6459A2831B6446BC009F95A3 /* delete85.png */,
+				6459A2811B64468E009F95A3 /* security26.png */,
 				642C4CC91B5AECFA007C2783 /* addRecipe.png */,
 				64C2219C1B4D75EE0010F3F3 /* heart.png */,
 				64C221981B4D70B80010F3F3 /* delete_sign-32.png */,
@@ -809,6 +818,7 @@
 			files = (
 				6467E0EA1B42A5FE001BB1CD /* stepsIcon.png in Resources */,
 				64F7CB6F1B491F7200D543AC /* recipes.png in Resources */,
+				6459A2861B6446E8009F95A3 /* pen29.png in Resources */,
 				6467E0E41B42A41E001BB1CD /* commentFormView.xib in Resources */,
 				6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */,
 				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
@@ -827,10 +837,12 @@
 				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
+				6459A2841B6446BC009F95A3 /* delete85.png in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
 				64F7CB921B49528500D543AC /* authMailIcon.png in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
 				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
+				6459A2821B64468E009F95A3 /* security26.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */,

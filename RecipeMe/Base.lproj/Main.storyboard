@@ -314,6 +314,9 @@
                             <constraint firstItem="tbr-NR-yW8" firstAttribute="top" secondItem="WST-3c-IX9" secondAttribute="bottom" id="sui-IA-S84"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vp8-JM-yyl">
+                        <barButtonItem key="rightBarButtonItem" id="sfb-XU-lY8"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentsTableView" destination="4FI-ud-EHw" id="0em-vr-UKc"/>
                         <outlet property="commentsTableViewHeightConstraint" destination="T70-j6-PCo" id="W1z-Hn-MII"/>
@@ -331,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1851" y="291"/>
+            <point key="canvasLocation" x="1797" y="413"/>
         </scene>
         <!--Recipe Form View Controller-->
         <scene sceneID="MGF-V5-mhU">

@@ -86,6 +86,12 @@ float const recipeCellInfoHeight = 250;
                     forCellReuseIdentifier:@"commentHeaderCell"];
     
     self.ingridientsTableView.separatorColor = [UIColor clearColor];
+    
+    UIBarButtonItem *complaint = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"security26.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(complaintRecipeContent:)];
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen29.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(editRecipe:)];
+    UIBarButtonItem *destroy = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"delete85.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(destroyRecipe:)];
+    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[destroy, edit, complaint]];
+    
 
     self.scrollView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.scrollView addInfiniteScrollWithHandler:^(UIScrollView *scrollView){
@@ -544,5 +550,18 @@ float const recipeCellInfoHeight = 250;
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Recipe Detail View Actions
+- (void) complaintRecipeContent: (id) sender{
+
+}
+
+- (void) editRecipe: (id) sender{
+
+}
+
+- (void) destroyRecipe: (id) sender{
+
+}
 
 @end
