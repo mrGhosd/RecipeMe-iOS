@@ -32,7 +32,16 @@
     if(params[@"size"]) self.size = params[@"size"];
 }
 - (void) save{
-    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/ingridients", self.recipeId] parameters:@{@"name": self.name, @"in_size": self.size} requestType:@"POST" andComplition:^(id data, BOOL success){
+    NSString *url;
+    NSString *requestType;
+    if(self.id){
+        url = [NSString stringWithFormat:@"/recipes/%@/ingridients/%@", self.recipeId, self.id];
+        requestType = @"PUT";
+    } else {
+        url = [NSString stringWithFormat:@"/recipes/%@/ingridients", self.recipeId];
+        requestType = @"POST";
+    }
+    [[ServerConnection sharedInstance] sendDataToURL:url parameters:@{@"name": self.name, @"in_size": self.size} requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
         
         } else {

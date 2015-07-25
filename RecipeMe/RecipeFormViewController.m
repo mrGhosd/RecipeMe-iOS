@@ -277,7 +277,16 @@ numberOfRowsInComponent:(NSInteger)component{
              @"image": @{@"id": self.recipeImageId}, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text};
 }
 - (IBAction)saveRecipe:(id)sender {
-    [connection sendDataToURL:@"/recipes" parameters:[self getRecipeFormData] requestType:@"POST" andComplition:^(id data, BOOL success){
+    NSString *url;
+    NSString *requestType;
+    if(self.recipe){
+        url = [NSString stringWithFormat:@"/recipes/%@", self.recipe.id];
+        requestType = @"PUT";
+    } else {
+        url = @"/recipes";
+        requestType = @"POST";
+    }
+    [connection sendDataToURL:url parameters:[self getRecipeFormData] requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
             dispatch_group_t group = dispatch_group_create();
             dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {

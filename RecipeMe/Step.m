@@ -37,7 +37,16 @@
     return img;
 }
 - (void) save{
-    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/steps", self.recipeId] parameters:@{@"description": self.desc, @"recipe_id": self.recipeId, @"image": @{@"id": self.imageId}} requestType:@"POST" andComplition:^(id data, BOOL success){
+    NSString *url;
+    NSString *requestType;
+    if(self.id){
+        url = [NSString stringWithFormat:@"/recipes/%@/steps/%@", self.recipeId, self.id];
+        requestType = @"PUT";
+    } else {
+        url = [NSString stringWithFormat:@"/recipes/%@/steps", self.recipeId];
+        requestType = @"POST";
+    }
+    [[ServerConnection sharedInstance] sendDataToURL:url parameters:@{@"description": self.desc, @"recipe_id": self.recipeId, @"image": @{@"id": self.imageId}} requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
             
         } else {

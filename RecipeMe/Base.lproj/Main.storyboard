@@ -737,9 +737,9 @@
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9jT-f3-207"/>
-        <segue reference="x1S-wy-2mz"/>
         <segue reference="tNo-vm-oAh"/>
-        <segue reference="GSM-mJ-tYE"/>
+        <segue reference="x1S-wy-2mz"/>
+        <segue reference="9jT-f3-207"/>
+        <segue reference="KKI-rF-QC7"/>
     </inferredMetricsTieBreakers>
 </document>
