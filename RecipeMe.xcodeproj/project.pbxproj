@@ -58,6 +58,8 @@
 		6495895B1B62640D00D3A6D8 /* IngridientsFormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649589591B62640D00D3A6D8 /* IngridientsFormTableViewCell.m */; };
 		6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6495895A1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib */; };
 		6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 6495895D1B626B2D00D3A6D8 /* check-failed.png */; };
+		649589621B62750100D3A6D8 /* StepsFormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649589601B62750100D3A6D8 /* StepsFormTableViewCell.m */; };
+		649589631B62750100D3A6D8 /* StepsFormTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649589611B62750100D3A6D8 /* StepsFormTableViewCell.xib */; };
 		64B6FE9F1B4DA1B800C0EFD7 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */; };
 		64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C221981B4D70B80010F3F3 /* delete_sign-32.png */; };
 		64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C2219A1B4D71530010F3F3 /* edit-32.png */; };
@@ -184,6 +186,9 @@
 		649589591B62640D00D3A6D8 /* IngridientsFormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngridientsFormTableViewCell.m; sourceTree = "<group>"; };
 		6495895A1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IngridientsFormTableViewCell.xib; sourceTree = "<group>"; };
 		6495895D1B626B2D00D3A6D8 /* check-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-failed.png"; sourceTree = "<group>"; };
+		6495895F1B62750100D3A6D8 /* StepsFormTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepsFormTableViewCell.h; sourceTree = "<group>"; };
+		649589601B62750100D3A6D8 /* StepsFormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepsFormTableViewCell.m; sourceTree = "<group>"; };
+		649589611B62750100D3A6D8 /* StepsFormTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsFormTableViewCell.xib; sourceTree = "<group>"; };
 		64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeCellDelegate.h; sourceTree = "<group>"; };
 		64B6FE9D1B4DA1B800C0EFD7 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		64B6FE9E1B4DA1B800C0EFD7 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
@@ -310,6 +315,9 @@
 				649589581B62640D00D3A6D8 /* IngridientsFormTableViewCell.h */,
 				649589591B62640D00D3A6D8 /* IngridientsFormTableViewCell.m */,
 				6495895A1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib */,
+				6495895F1B62750100D3A6D8 /* StepsFormTableViewCell.h */,
+				649589601B62750100D3A6D8 /* StepsFormTableViewCell.m */,
+				649589611B62750100D3A6D8 /* StepsFormTableViewCell.xib */,
 			);
 			name = recipes;
 			sourceTree = "<group>";
@@ -814,6 +822,7 @@
 				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
 				64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */,
 				64F7CB8E1B4942C100D543AC /* AuthorizationView.xib in Resources */,
+				649589631B62750100D3A6D8 /* StepsFormTableViewCell.xib in Resources */,
 				6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */,
 				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */,
@@ -928,6 +937,7 @@
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
 				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
+				649589621B62750100D3A6D8 /* StepsFormTableViewCell.m in Sources */,
 				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */,

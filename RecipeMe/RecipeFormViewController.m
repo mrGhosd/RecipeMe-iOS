@@ -12,6 +12,7 @@
 #import "RecipeFormHeader.h"
 #import "IngridientsFormTableViewCell.h"
 #import "Ingridient.h"
+#import "StepsFormTableViewCell.h"
 
 @interface RecipeFormViewController (){
     ServerConnection *connection;
@@ -24,8 +25,14 @@
     NSString *selectedDifficult;
     NSNumber *selectedCategory;
     float previousDescHeight;
+    float prevStepHeight;
     NSMutableArray *ingridients;
     NSMutableArray *steps;
+    StepsFormTableViewCell *selectedCell;
+    UIActionSheet *recipeImagePopup;
+    UIActionSheet *stepImagePopup;
+    UIImagePickerController *recipePicker;
+    UIImagePickerController *stepPicker;
 }
 
 @end
@@ -52,6 +59,10 @@
     [self.ingridientsTableView registerClass:[IngridientsFormTableViewCell class] forCellReuseIdentifier:@"ingridientsCell"];
     [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientsFormTableViewCell" bundle:nil]
                    forCellReuseIdentifier:@"ingridientsCell"];
+    
+    [self.stepsTableView registerClass:[StepsFormTableViewCell class] forCellReuseIdentifier:@"stepsCell"];
+    [self.stepsTableView registerNib:[UINib nibWithNibName:@"StepsFormTableViewCell" bundle:nil]
+                    forCellReuseIdentifier:@"stepsCell"];
 }
 - (void) defaultFormConfig{
     [self registerCellClasses];
@@ -129,48 +140,79 @@
 }
 
 - (void) tapDetected: (id) sender{
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"recipe_image_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:
+    recipeImagePopup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"recipe_image_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:
                             NSLocalizedString(@"recipe_image_collection", nil),
                             NSLocalizedString(@"recipe_image_camera", nil),
                             nil];
-    popup.tag = 1;
-    [popup showInView:self.view];
+    recipeImagePopup.tag = 1;
+    [recipeImagePopup showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch(buttonIndex)
-    {
-        case 0:
-            [self callImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
-            break;
-        case 1:
-            [self callImagePicker:UIImagePickerControllerSourceTypeCamera];
-            break;
-        case 2:
-            break;
+    if([popup isEqual:recipeImagePopup]){
+        switch(buttonIndex){
+            case 0:
+                [self callImagePicker:UIImagePickerControllerSourceTypePhotoLibrary andValue:YES];
+                break;
+            case 1:
+                [self callImagePicker:UIImagePickerControllerSourceTypeCamera andValue:YES];
+                break;
+            case 2:
+                break;
+        }
+    }
+    if([popup isEqual:stepImagePopup]){
+        switch(buttonIndex){
+            case 0:
+                [self callImagePicker:UIImagePickerControllerSourceTypePhotoLibrary andValue:NO];
+                break;
+            case 1:
+                [self callImagePicker:UIImagePickerControllerSourceTypeCamera andValue:NO];
+                break;
+            case 2:
+                break;
+        }
     }
 }
 
-- (void) callImagePicker: (UIImagePickerControllerSourceType *) type{
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = type;
-    [self presentViewController:picker animated:YES completion:NULL];
+- (void) callImagePicker: (UIImagePickerControllerSourceType *) type andValue: (BOOL) value{
+    if(value){
+        recipePicker = [[UIImagePickerController alloc] init];
+        recipePicker.delegate = self;
+        recipePicker.allowsEditing = YES;
+        recipePicker.sourceType = type;
+        [self presentViewController:recipePicker animated:YES completion:NULL];
+    } else {
+        stepPicker = [[UIImagePickerController alloc] init];
+        stepPicker.delegate = self;
+        stepPicker.allowsEditing = YES;
+        stepPicker.sourceType = type;
+        [self presentViewController:stepPicker animated:YES completion:NULL];
+    }
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.recipeImage.image = chosenImage;
+    if([picker isEqual:recipePicker]){
+        self.recipeImage.image = chosenImage;
+    }
+    if([picker isEqual:stepPicker]){
+        selectedCell.stepImage.image = chosenImage;
+    }
     [connection uploadImage:chosenImage withParams:@{@"imageable_type": @"Recipe"} andComplition:^(id data, BOOL success){
         if(success){
-            self.recipeImageId = data[@"id"];
+            if([picker isEqual:recipePicker]){
+                self.recipeImageId = data[@"id"];
+            }
+            if([picker isEqual:stepPicker]){
+                selectedCell.stepImageId = data[@"id"];
+            }
         } else {
             
         }
     }];
-    [picker dismissViewControllerAnimated:YES completion:NULL];    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void) changeAllViewsHeights:(float) value result: (BOOL) result{
@@ -233,7 +275,18 @@ numberOfRowsInComponent:(NSInteger)component{
 - (IBAction)saveRecipe:(id)sender {
     [connection sendDataToURL:@"/recipes" parameters:[self getRecipeFormData] requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
-            [self dismissViewControllerAnimated:YES completion:nil];
+            dispatch_group_t group = dispatch_group_create();
+            dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
+                for(Ingridient *ingridient in ingridients){
+                    ingridient.recipeId = data[@"id"];
+                    [ingridient save];
+                }
+               //Save steps and ingridien
+            });
+            dispatch_group_notify(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
+                // block3
+               [self dismissViewControllerAnimated:YES completion:nil];
+            });
         } else {
         
         }
@@ -244,23 +297,58 @@ numberOfRowsInComponent:(NSInteger)component{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void) increaseViewsHeight: (BOOL) value{
+    if(value){
+        float tableViewHeight = 44.0;
+        self.ingridientsTableViewHeightConstraint.constant += tableViewHeight;
+        self.formViewHeightConstraint.constant += tableViewHeight;
+        [self.ingridientsTableView reloadData];
+    } else {
+        float tableViewHeight = 60.0;
+        self.stepsTableViewHeightConstraint.constant += tableViewHeight;
+        self.formViewHeightConstraint.constant += tableViewHeight;
+        [self.stepsTableView reloadData];
+    }
+}
+
+- (void) decreaseViewsHeight: (BOOL) value{
+    if(value){
+        float tableViewHeight = 44.0;
+        self.ingridientsTableViewHeightConstraint.constant -= tableViewHeight;
+        self.formViewHeightConstraint.constant -= tableViewHeight;
+        [self.ingridientsTableView reloadData];
+    } else {
+        float tableViewHeight = 60.0;
+        self.stepsTableViewHeightConstraint.constant -= tableViewHeight;
+        self.formViewHeightConstraint.constant -= tableViewHeight;
+        [self.stepsTableView reloadData];
+    }
+}
+
 #pragma - mark UITextView delegate
 - (void) textViewDidChange:(UITextView *)textView{
     if([textView isEqual:self.recipeDescription]){
-        if(previousDescHeight - self.recipeDescription.contentSize.height > 0){
+        if(previousDescHeight - self.recipeDescription.contentSize.height != 0){
             previousDescHeight = self.recipeDescription.contentSize.height;
             self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
-            self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 8;
-        } else if(previousDescHeight - self.recipeDescription.contentSize.height < 0){
-            previousDescHeight = self.recipeDescription.contentSize.height;
-            self.formViewHeightConstraint.constant -= self.recipeDescription.contentSize.height;
+            self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 5;
         }
     }
+    
 }
 
 #pragma mark - UITableView Delegate and DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 50;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([tableView isEqual:self.ingridientsTableView]){
+        return 44;
+    } else {
+        return 60.0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -273,28 +361,6 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
-- (void) increaseViewsHeight: (BOOL) value{
-    if(value){
-        float tableViewHeight = 44.0;
-        self.ingridientsTableViewHeightConstraint.constant += tableViewHeight;
-        self.formViewHeightConstraint.constant += tableViewHeight;
-        [self.ingridientsTableView reloadData];
-    } else {
-        [self.stepsTableView reloadData];
-    }
-}
-
-- (void) decreaseViewsHeight: (BOOL) value{
-    if(value){
-        float tableViewHeight = 44.0;
-        self.ingridientsTableViewHeightConstraint.constant -= tableViewHeight;
-        self.formViewHeightConstraint.constant -= tableViewHeight;
-        [self.ingridientsTableView reloadData];
-    } else {
-        [self.stepsTableView reloadData];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
@@ -304,7 +370,10 @@ numberOfRowsInComponent:(NSInteger)component{
         return cell;
     } else {
         static NSString *CellIdentifier = @"stepsCell";
-        UITableViewCell *cell = [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        StepsFormTableViewCell *cell = (StepsFormTableViewCell *) [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.step = steps[indexPath.row];
+        cell.delegate = self;
+        [cell.deleteButton addTarget:self action:@selector(deleteStepButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
 }
@@ -316,6 +385,12 @@ numberOfRowsInComponent:(NSInteger)component{
 
 }
 
+- (void) deleteStepButton: (id) sender{
+    NSIndexPath *indexPath = [self.stepsTableView indexPathForCell:[[sender superview] superview]];
+    [steps removeObjectAtIndex:indexPath.row];
+    [self decreaseViewsHeight:NO];
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     RecipeFormHeader *view = [[[NSBundle mainBundle] loadNibNamed:@"RecipeFormHeader" owner:self options:nil] firstObject];
     if([tableView isEqual:self.ingridientsTableView]){
@@ -323,6 +398,7 @@ numberOfRowsInComponent:(NSInteger)component{
         [view.headerButton addTarget:self action:@selector(addIngridient:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         view.headerTitle.text = NSLocalizedString(@"steps", nil);
+        [view.headerButton addTarget:self action:@selector(addStep:) forControlEvents:UIControlEventTouchUpInside];
     }
     return view;
 }
@@ -332,4 +408,34 @@ numberOfRowsInComponent:(NSInteger)component{
     [ingridients addObject:ingridient];
     [self increaseViewsHeight:YES];
 }
+- (void) addStep: (id) sender{
+    Step *step = [[Step alloc] init];
+    [steps addObject:step];
+    [self increaseViewsHeight:NO];
+}
+
+#pragma mark - StepCellDelegate methods
+- (void) increaseStepsTableViewBy: (float) value{
+    if(prevStepHeight - value != 0){
+        prevStepHeight = value;
+        if(value > 0){
+            self.stepsTableViewHeightConstraint.constant += value;
+            self.formViewHeightConstraint.constant += value;
+        } else {
+            self.stepsTableViewHeightConstraint.constant -= value;
+            self.formViewHeightConstraint.constant -= value;
+        }
+    }
+}
+
+- (void) selectImageForCell:(StepsFormTableViewCell *) cell{
+    selectedCell = cell;
+    stepImagePopup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"recipe_image_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:
+                        NSLocalizedString(@"recipe_image_collection", nil),
+                        NSLocalizedString(@"recipe_image_camera", nil),
+                        nil];
+    stepImagePopup.tag = 1;
+    [stepImagePopup showInView:self.view];
+}
+
 @end

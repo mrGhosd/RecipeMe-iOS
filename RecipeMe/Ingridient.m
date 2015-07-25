@@ -7,6 +7,7 @@
 //
 
 #import "Ingridient.h"
+#import "ServerConnection.h"
 
 @implementation Ingridient
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) ingridientsList{
@@ -27,7 +28,16 @@
 - (void) setParams: (NSDictionary *) params{
     if(params[@"id"]) self.id = params[@"id"];
     if(params[@"name"]) self.name = params[@"name"];
+    if(params[@"recipe_id"]) self.recipeId = params[@"recipe_id"];
     if(params[@"size"]) self.size = params[@"size"];
 }
-
+- (void) save{
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/ingridients", self.recipeId] parameters:@{@"name": self.name, @"in_size": self.size} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+        
+        } else {
+        
+        }
+    }];
+}
 @end

@@ -10,8 +10,10 @@
 
 @interface Ingridient : NSObject
 @property (nonatomic, retain) NSNumber *id;
+@property (nonatomic, retain) NSNumber *recipeId;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * size;
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) ingridientsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
+- (void) save;
 @end
