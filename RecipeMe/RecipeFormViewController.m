@@ -194,19 +194,23 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    NSString *imageableType;
     if([picker isEqual:recipePicker]){
         self.recipeImage.image = chosenImage;
+        imageableType = @"Recipe";
     }
     if([picker isEqual:stepPicker]){
         selectedCell.stepImage.image = chosenImage;
+        imageableType = @"Step";
     }
-    [connection uploadImage:chosenImage withParams:@{@"imageable_type": @"Recipe"} andComplition:^(id data, BOOL success){
+    [connection uploadImage:chosenImage withParams:@{@"imageable_type": imageableType} andComplition:^(id data, BOOL success){
         if(success){
             if([picker isEqual:recipePicker]){
                 self.recipeImageId = data[@"id"];
             }
             if([picker isEqual:stepPicker]){
                 selectedCell.stepImageId = data[@"id"];
+                selectedCell.step.imageId = data[@"id"];
             }
         } else {
             
@@ -280,6 +284,10 @@ numberOfRowsInComponent:(NSInteger)component{
                 for(Ingridient *ingridient in ingridients){
                     ingridient.recipeId = data[@"id"];
                     [ingridient save];
+                }
+                for(Step *step in steps){
+                    step.recipeId = data[@"id"];
+                    [step save];
                 }
                //Save steps and ingridien
             });

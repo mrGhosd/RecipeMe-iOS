@@ -36,4 +36,13 @@
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[ServerConnection sharedInstance] returnCorrectUrlPrefix:self.imageUrl]]]];
     return img;
 }
+- (void) save{
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/steps", self.recipeId] parameters:@{@"description": self.desc, @"recipe_id": self.recipeId, @"image": @{@"id": self.imageId}} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            
+        } else {
+        
+        }
+    }];
+}
 @end

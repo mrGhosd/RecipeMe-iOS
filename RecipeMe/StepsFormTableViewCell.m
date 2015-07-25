@@ -29,4 +29,7 @@
 
     // Configure the view for the selected state
 }
+- (void) textViewDidChange:(UITextView *)textView{
+    self.step.desc = textView.text;
+}
 @end

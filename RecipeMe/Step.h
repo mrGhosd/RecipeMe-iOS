@@ -12,7 +12,9 @@
 @property (nonatomic, retain) NSNumber *id;
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSNumber * recipeId;
+@property (nonatomic, retain) NSNumber * imageId;
 @property (nonatomic, retain) NSString * imageUrl;
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) stepsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
+- (void) save;
 @end
