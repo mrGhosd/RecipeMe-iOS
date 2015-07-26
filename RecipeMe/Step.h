@@ -17,4 +17,5 @@
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) stepsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (void) save;
+- (void) destroy;
 @end

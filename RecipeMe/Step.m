@@ -47,7 +47,7 @@
         requestType = @"POST";
     }
     NSMutableDictionary *stepParams = [NSMutableDictionary dictionaryWithDictionary:@{@"description": self.desc, @"recipe_id": self.recipeId}];
-    if(!self.id){
+    if(self.imageId){
         [stepParams setObject:@{@"id": self.imageId} forKey:@"image"];
     }
     [[ServerConnection sharedInstance] sendDataToURL:url parameters: stepParams requestType:requestType andComplition:^(id data, BOOL success){
@@ -58,4 +58,14 @@
         }
     }];
 }
+- (void) destroy{
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/steps/%@", self.recipeId, self.id] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            
+        } else {
+            
+        }
+    }];
+}
+
 @end

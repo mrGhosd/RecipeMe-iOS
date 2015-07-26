@@ -469,6 +469,10 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (void) deleteStepButton: (id) sender{
     NSIndexPath *indexPath = [self.stepsTableView indexPathForCell:[[sender superview] superview]];
+    Step *step = steps[indexPath.row];
+    if(step.id){
+        [step destroy];
+    }
     [steps removeObjectAtIndex:indexPath.row];
     [self decreaseViewsHeight:NO];
 }
