@@ -24,5 +24,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *commentsTableView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentsTableViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *recipeInfoTableViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *recipeDescriptionWebViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet UIWebView *recipeDescWebView;
 @property (strong, nonatomic) Recipe *recipe;
 @end

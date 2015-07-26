@@ -222,7 +222,7 @@
                                                 </connections>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-dy-ZL3" userLabel="ingridientsTableView">
-                                                <rect key="frame" x="0.0" y="108" width="600" height="100"/>
+                                                <rect key="frame" x="0.0" y="238" width="600" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="at8-7a-Pbz"/>
@@ -241,7 +241,7 @@
                                                 </connections>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dQb-Dc-Yma" userLabel="stepsTableView">
-                                                <rect key="frame" x="0.0" y="216" width="600" height="100"/>
+                                                <rect key="frame" x="0.0" y="346" width="600" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="kUV-G0-CfH"/>
@@ -260,7 +260,7 @@
                                                 </connections>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4FI-ud-EHw" userLabel="commentsTableView">
-                                                <rect key="frame" x="0.0" y="324" width="600" height="68"/>
+                                                <rect key="frame" x="0.0" y="454" width="600" height="68"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="T70-j6-PCo"/>
@@ -278,22 +278,32 @@
                                                     <outlet property="delegate" destination="DLe-8j-NgS" id="KZD-tx-cqi"/>
                                                 </connections>
                                             </tableView>
+                                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nN6-0x-Bxv">
+                                                <rect key="frame" x="0.0" y="108" width="600" height="119"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="ZFK-nr-Rz7"/>
+                                                </constraints>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="0o0-C4-32C"/>
-                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="1sc-1T-jwW"/>
-                                            <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="FdA-Kk-7T8"/>
-                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" constant="-20" id="GYm-eR-ty1"/>
-                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" constant="-20" id="ITo-wD-3BP"/>
-                                            <constraint firstAttribute="trailing" secondItem="dQb-Dc-Yma" secondAttribute="trailing" id="Qtz-2e-4kO"/>
-                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="RFv-q6-iE0"/>
-                                            <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="a9Y-El-j5g"/>
-                                            <constraint firstAttribute="trailing" secondItem="4FI-ud-EHw" secondAttribute="trailing" id="ani-B6-9a5"/>
-                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="qZe-r7-n3V"/>
-                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="top" secondItem="T9a-pe-xBR" secondAttribute="bottom" id="reK-ak-Vhy"/>
-                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="wcq-hV-KmM"/>
-                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="yQc-yf-9x6"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="6be-08-l73"/>
+                                            <constraint firstAttribute="trailing" secondItem="nN6-0x-Bxv" secondAttribute="trailing" id="8h8-NC-wIg"/>
+                                            <constraint firstAttribute="trailing" secondItem="dQb-Dc-Yma" secondAttribute="trailing" id="FCY-DT-xvr"/>
+                                            <constraint firstItem="nN6-0x-Bxv" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="GB5-9W-exD"/>
+                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="GJf-hs-7Sq"/>
+                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="I3b-ph-IKn"/>
+                                            <constraint firstAttribute="trailing" secondItem="T9a-pe-xBR" secondAttribute="trailing" id="W8T-Vd-MTK"/>
+                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="leading" secondItem="8ld-hV-qdV" secondAttribute="leading" id="XJR-70-lyi"/>
+                                            <constraint firstItem="T9a-pe-xBR" firstAttribute="top" secondItem="8ld-hV-qdV" secondAttribute="top" id="Xrq-qV-VtQ"/>
+                                            <constraint firstItem="dQb-Dc-Yma" firstAttribute="top" secondItem="sVg-dy-ZL3" secondAttribute="bottom" constant="-10" id="XxN-IU-Rdv"/>
+                                            <constraint firstAttribute="trailing" secondItem="4FI-ud-EHw" secondAttribute="trailing" id="bjX-JJ-3wV"/>
+                                            <constraint firstItem="nN6-0x-Bxv" firstAttribute="top" secondItem="T9a-pe-xBR" secondAttribute="bottom" constant="-10" id="kps-jv-aNu"/>
+                                            <constraint firstAttribute="trailing" secondItem="sVg-dy-ZL3" secondAttribute="trailing" id="lrE-io-DDR"/>
+                                            <constraint firstItem="4FI-ud-EHw" firstAttribute="top" secondItem="dQb-Dc-Yma" secondAttribute="bottom" constant="-10" id="n8F-U7-MFK"/>
+                                            <constraint firstItem="sVg-dy-ZL3" firstAttribute="top" secondItem="nN6-0x-Bxv" secondAttribute="bottom" constant="-5" id="oup-CZ-966"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -322,6 +332,8 @@
                         <outlet property="commentsTableViewHeightConstraint" destination="T70-j6-PCo" id="W1z-Hn-MII"/>
                         <outlet property="ingiridnetsTableHeightConstraint" destination="at8-7a-Pbz" id="k6D-xh-R7q"/>
                         <outlet property="ingridientsTableView" destination="sVg-dy-ZL3" id="XGH-nx-K1H"/>
+                        <outlet property="recipeDescWebView" destination="nN6-0x-Bxv" id="2ac-k7-DA1"/>
+                        <outlet property="recipeDescriptionWebViewHeightConstraint" destination="ZFK-nr-Rz7" id="gWj-th-i9P"/>
                         <outlet property="recipeInfoTableView" destination="T9a-pe-xBR" id="CLh-ss-3aX"/>
                         <outlet property="recipeInfoTableViewHeightConstraint" destination="4FO-CA-kqP" id="eDN-Bt-ZYg"/>
                         <outlet property="scrollView" destination="tbr-NR-yW8" id="7qX-cJ-uJm"/>
@@ -335,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797" y="413"/>
+            <point key="canvasLocation" x="1951" y="328"/>
         </scene>
         <!--Recipe Form View Controller-->
         <scene sceneID="MGF-V5-mhU">

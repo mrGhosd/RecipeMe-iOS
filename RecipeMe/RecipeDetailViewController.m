@@ -111,7 +111,7 @@ float const recipeCellInfoHeight = 250;
     } else {
         self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight;
     }
-    self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height;
+    self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height + self.recipeDescriptionWebViewHeightConstraint.constant;
 }
 
 - (void) loadRecipe{
@@ -481,12 +481,24 @@ float const recipeCellInfoHeight = 250;
 - (void) setStepsArrayWithArray:(NSArray *) stepsArray ingridietnsArrayWithArray:(NSArray *) ingridientsArray andCommentsArraWithArray:(NSArray *) commentsArray{
     steps = [NSMutableArray arrayWithArray:stepsArray];
     ingridients = [NSMutableArray arrayWithArray:ingridientsArray];
-    comments = [NSMutableArray arrayWithArray:commentsArray];;
+    comments = [NSMutableArray arrayWithArray:commentsArray];
+    [self setRecipeDescriptionInfo];
     [self setIngridientsTableViewHeight];
     [steps insertObject:NSLocalizedString(@"steps", nil) atIndex:0];
     [ingridients insertObject:NSLocalizedString(@"ingridients", nil) atIndex:0];
     [comments insertObject:NSLocalizedString(@"comments", nil) atIndex:0];
     [self reloadTableViewsData];
+}
+
+-(void) setRecipeDescriptionInfo{
+    self.recipeDescWebView.scrollView.scrollEnabled = NO;
+    CGSize textSize = [self.recipe.desc sizeWithAttributes:nil];
+    if(textSize.width > 33.0){
+        self.recipeDescriptionWebViewHeightConstraint.constant = textSize.width;
+    } else {
+        self.recipeDescriptionWebViewHeightConstraint.constant = 33.0;
+    }
+    [self.recipeDescWebView loadHTMLString:self.recipe.desc baseURL:nil];
 }
 -(void) reloadTableViewsData{
     [self.recipeInfoTableView reloadData];
