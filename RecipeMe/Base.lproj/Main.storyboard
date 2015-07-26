@@ -330,6 +330,7 @@
                         <outlet property="viewHeightConstraint" destination="0o0-C4-32C" id="isD-VC-x5T"/>
                         <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="KKI-rF-QC7"/>
                         <segue destination="y6t-J6-Dau" kind="show" identifier="editComment" id="bf7-Zz-ZZF"/>
+                        <segue destination="ir9-CV-5LZ" kind="presentation" identifier="editRecipe" id="3if-zo-Jsd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KnX-fH-AVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="1246"/>
+            <point key="canvasLocation" x="1124" y="1338"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="S0O-uz-CNd">
@@ -743,6 +744,7 @@
         <segue reference="tNo-vm-oAh"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="9jT-f3-207"/>
+        <segue reference="3if-zo-Jsd"/>
         <segue reference="KKI-rF-QC7"/>
     </inferredMetricsTieBreakers>
 </document>

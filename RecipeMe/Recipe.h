@@ -10,12 +10,14 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 #import "Step.h"
+#import "RMCategory.h"
 
 @interface Recipe : NSObject
 @property (nonatomic, retain) NSNumber *id;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * imageUrl;
+@property (nonatomic, retain) NSString * tags;
 @property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSNumber * rate;
@@ -28,6 +30,8 @@
 @property (nonatomic, retain) NSMutableArray *steps;
 @property (nonatomic, retain) NSMutableArray *ingridients;
 @property (nonatomic, retain) NSMutableArray *comments;
+@property (nonatomic, retain) RMCategory *category;
+
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 @end

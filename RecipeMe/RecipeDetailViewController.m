@@ -26,6 +26,7 @@
 #import "AuthorizationManager.h"
 #import <UIScrollView+InfiniteScroll.h>
 #import "CommentViewController.h"
+#import "RecipeFormViewController.h"
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -513,6 +514,11 @@ float const recipeCellInfoHeight = 250;
         CommentViewController *view = segue.destinationViewController;
         view.comment = com;
     }
+    
+    if([segue.identifier isEqualToString:@"editRecipe"]){
+        RecipeFormViewController *form = segue.destinationViewController;
+        form.recipe = self.recipe;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -557,7 +563,7 @@ float const recipeCellInfoHeight = 250;
 }
 
 - (void) editRecipe: (id) sender{
-
+    [self performSegueWithIdentifier:@"editRecipe" sender:self];
 }
 
 - (void) destroyRecipe: (id) sender{

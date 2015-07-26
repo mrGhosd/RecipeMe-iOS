@@ -36,6 +36,8 @@
     if(params[@"steps_list"]) self.steps = [Step initializeFromArray:params[@"steps_list"]];
     if(params[@"comments_list"]) self.comments = [Comment initializeFromArray:params[@"comments_list"]];
     if(params[@"ingridients_list"]) self.ingridients = [Ingridient initializeFromArray:params[@"ingridients_list"]];
+    if(params[@"tag_list"]) self.tags = params[@"tag_list"];
+    if(params[@"category"]) self.category = [[RMCategory alloc] initWithParameters:params[@"category"]];
 }
 
 - (UIImage *) image{

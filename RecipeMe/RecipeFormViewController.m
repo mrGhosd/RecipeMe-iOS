@@ -13,6 +13,9 @@
 #import "IngridientsFormTableViewCell.h"
 #import "Ingridient.h"
 #import "StepsFormTableViewCell.h"
+#import "RMCategory.h"
+#import <UIImageView+AFNetworking.h>
+#import <MBProgressHUD.h>
 
 @interface RecipeFormViewController (){
     ServerConnection *connection;
@@ -41,16 +44,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    categories = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
     //Категории должны загружатся в первую очередь
-    [self loadCategoriesList];
     [self defaultFormConfig];
-    if(self.recipe){
-        [self updateRecipe];
-    } else {
-        [self createRecipe];
-    }
+    [self loadCategoriesList];
     [self setNamesForInputs];
     // Do any additional setup after loading the view.
 }
@@ -82,6 +81,8 @@
 }
 
 - (void) loadCategoriesList{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     [connection sendDataToURL:@"/categories" parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseCategories:data];
@@ -92,13 +93,18 @@
 }
 
 - (void) parseCategories:(id)data{
-    categories = [NSArray arrayWithArray:data];
+    if(data != [NSNull null]){
+        for(NSDictionary *category in data){
+            RMCategory *cat = [[RMCategory alloc] initWithParameters:category];
+            [categories addObject:cat];
+        }
+        if(self.recipe){
+            [self updateRecipe];
+        }
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
-
-- (void) createRecipe{
-
-}
 - (void) setDifficultPickerView{
     difficultPicker = [[UIPickerView alloc] init];
     difficultPicker.delegate = self;
@@ -123,9 +129,41 @@
 }
 
 - (void) updateRecipe{
-
+    [self setRecipeMainImage];
+    self.recipeTitle.text = self.recipe.title;
+    self.recipePersons.text = [NSString stringWithFormat:@"%@", self.recipe.persons];
+    self.recipeTime.text = [NSString stringWithFormat:@"%@", self.recipe.time];
+    self.recipeTags.text = self.recipe.tags;
+    self.recipeDescription.text = self.recipe.desc;
+    [self setRecipeDifficultValue];
+    [self setRecipeCategoryValue];
 }
 
+- (void) setRecipeDifficultValue{
+    NSString *recipeDifficultTitle = [NSString stringWithFormat:@"recipes_difficult_%@", self.recipe.difficult];
+    self.recipeDifficult.text = NSLocalizedString(recipeDifficultTitle, nil);
+    NSInteger index = [difficults indexOfObject:NSLocalizedString(recipeDifficultTitle, nil)];
+    selectedDifficult = difficultIDs[index];
+}
+
+- (void) setRecipeCategoryValue{
+    for(RMCategory *cat in categories){
+        if([cat.id isEqual:self.recipe.categoryId]){
+            selectedCategory = cat.id;
+            self.recipeCategory.text = cat.title;
+        }
+    }
+}
+
+- (void) setRecipeMainImage{
+    NSURL *url = [NSURL URLWithString:self.recipe.imageUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
+    [self.recipeImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        self.recipeImage.image = image;
+    } failure:nil];
+    self.recipeImage.clipsToBounds = YES;
+}
 - (void) setNamesForInputs{
     [self.navigationBar.items[0] setTitle:@"Recipe Form"];
     [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
@@ -256,7 +294,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if([pickerView isEqual:difficultPicker]){
         return difficults[row];
     } else {
-        return categories[row][@"title"];
+        return [categories[row] title];
     }
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -265,16 +303,21 @@ numberOfRowsInComponent:(NSInteger)component{
         self.recipeDifficult.text = difficults[row];
         selectedDifficult = difficultIDs[row];
     } else {
-        self.recipeCategory.text = categories[row][@"title"];
-        selectedCategory = categories[row][@"id"];
+        self.recipeCategory.text = [categories[row] title];
+        selectedCategory = [categories[row] id];
     }
 //    pickerView.removeFromSuperview;
 }
 
 #pragma mark - Save and Cancel Form event handlers
 - (NSDictionary *) getRecipeFormData{
-    return @{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text,
-             @"image": @{@"id": self.recipeImageId}, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text};
+    NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:@{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
+//    return @{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text,
+//             @"image": @{@"id": self.recipeImageId}, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
+    if(self.recipeImageId){
+        [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
+    }
+    return recipeParams;
 }
 - (IBAction)saveRecipe:(id)sender {
     NSString *url;
@@ -290,9 +333,11 @@ numberOfRowsInComponent:(NSInteger)component{
         if(success){
             dispatch_group_t group = dispatch_group_create();
             dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
-                for(Ingridient *ingridient in ingridients){
-                    ingridient.recipeId = data[@"id"];
-                    [ingridient save];
+                if(ingridients != [NSNull null]){
+                    for(Ingridient *ingridient in ingridients){
+                        ingridient.recipeId = data[@"id"];
+                        [ingridient save];
+                    }
                 }
                 for(Step *step in steps){
                     step.recipeId = data[@"id"];
