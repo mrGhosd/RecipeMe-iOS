@@ -138,6 +138,7 @@
     [self setRecipeDifficultValue];
     [self setRecipeCategoryValue];
     [self setRecipeIngridients];
+    [self setRecipeSteps];
 }
 
 - (void) setRecipeIngridients{
@@ -145,6 +146,14 @@
         [ingridients addObject:ingridient];
         [self.ingridientsTableView reloadData];
         [self increaseViewsHeight:YES];
+    }
+}
+
+- (void) setRecipeSteps{
+    for(Step *step in self.recipe.steps){
+        [steps addObject:step];
+        [self.stepsTableView reloadData];
+        [self increaseViewsHeight:NO];
     }
 }
 
@@ -440,7 +449,7 @@ numberOfRowsInComponent:(NSInteger)component{
     } else {
         static NSString *CellIdentifier = @"stepsCell";
         StepsFormTableViewCell *cell = (StepsFormTableViewCell *) [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.step = steps[indexPath.row];
+        [cell setStepData:steps[indexPath.row]];
         cell.delegate = self;
         [cell.deleteButton addTarget:self action:@selector(deleteStepButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;

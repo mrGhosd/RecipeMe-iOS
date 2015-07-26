@@ -46,7 +46,11 @@
         url = [NSString stringWithFormat:@"/recipes/%@/steps", self.recipeId];
         requestType = @"POST";
     }
-    [[ServerConnection sharedInstance] sendDataToURL:url parameters:@{@"description": self.desc, @"recipe_id": self.recipeId, @"image": @{@"id": self.imageId}} requestType:requestType andComplition:^(id data, BOOL success){
+    NSMutableDictionary *stepParams = [NSMutableDictionary dictionaryWithDictionary:@{@"description": self.desc, @"recipe_id": self.recipeId}];
+    if(!self.id){
+        [stepParams setObject:@{@"id": self.imageId} forKey:@"image"];
+    }
+    [[ServerConnection sharedInstance] sendDataToURL:url parameters: stepParams requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
             
         } else {

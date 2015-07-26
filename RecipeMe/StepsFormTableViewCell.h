@@ -18,4 +18,5 @@
 @property (strong, nonatomic) id<StepCellDelegate> delegate;
 @property (strong, nonatomic) NSNumber *stepImageId;
 @property (nonatomic) float currentHeight;
+- (void) setStepData: (Step *) step;
 @end
