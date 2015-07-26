@@ -16,4 +16,5 @@
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) ingridientsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (void) save;
+- (void) destroy;
 @end

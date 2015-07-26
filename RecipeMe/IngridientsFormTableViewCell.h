@@ -14,4 +14,5 @@
 @property (strong, nonatomic) IBOutlet UITextField *ingridientSize;
 @property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong, nonatomic) Ingridient *ingridient;
+- (void) setIngridientData: (Ingridient *) ingridient;
 @end

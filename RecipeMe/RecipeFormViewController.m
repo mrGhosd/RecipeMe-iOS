@@ -137,6 +137,15 @@
     self.recipeDescription.text = self.recipe.desc;
     [self setRecipeDifficultValue];
     [self setRecipeCategoryValue];
+    [self setRecipeIngridients];
+}
+
+- (void) setRecipeIngridients{
+    for(Ingridient *ingridient in self.recipe.ingridients){
+        [ingridients addObject:ingridient];
+        [self.ingridientsTableView reloadData];
+        [self increaseViewsHeight:YES];
+    }
 }
 
 - (void) setRecipeDifficultValue{
@@ -312,8 +321,6 @@ numberOfRowsInComponent:(NSInteger)component{
 #pragma mark - Save and Cancel Form event handlers
 - (NSDictionary *) getRecipeFormData{
     NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:@{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
-//    return @{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text,
-//             @"image": @{@"id": self.recipeImageId}, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
     if(self.recipeImageId){
         [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
     }
@@ -427,7 +434,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
         IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        cell.ingridient = ingridients[indexPath.row];
+        [cell setIngridientData:ingridients[indexPath.row]];
          [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else {
@@ -442,6 +449,10 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (void) deleteButton: (id) sender{
     NSIndexPath *indexPath = [self.ingridientsTableView indexPathForCell:[[sender superview] superview]];
+    Ingridient *ingridient = ingridients[indexPath.row];
+    if(ingridient.id){
+        [ingridient destroy];
+    }
     [ingridients removeObjectAtIndex:indexPath.row];
     [self decreaseViewsHeight:YES];
 
