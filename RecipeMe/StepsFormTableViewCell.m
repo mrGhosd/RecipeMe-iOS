@@ -17,6 +17,13 @@
     // Initialization code
     self.stepText.delegate = self;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
+    self.backgroundColor = [UIColor clearColor];
+    self.stepImage.image = [UIImage imageNamed:@"stepImagePlaceholder.png"];
+    self.stepText.backgroundColor = [UIColor clearColor];
+    self.stepText.textColor = [UIColor whiteColor];
+    self.stepText.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.stepText.layer.borderWidth = 2.0;
+    self.stepText.layer.cornerRadius = 10.0;
     [self.stepImage setUserInteractionEnabled:YES];
     [self.stepImage addGestureRecognizer:singleTap];
 }

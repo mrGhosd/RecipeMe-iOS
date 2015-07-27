@@ -128,7 +128,7 @@
     [self customizeTextField:self.recipeCategory withIcon:@"category.png" andPlaceholder:NSLocalizedString(@"form_category", nil)];
     [self customizeTextField:self.recipeTags withIcon:@"recipeFormTags.png" andPlaceholder:NSLocalizedString(@"form_tags", nil)];
     [self setRecipeDescriptionApperance];
-    [self setIngridientsTableViewApperance];
+    [self setTableViewApperance];
 }
 - (void) setRecipeDescriptionApperance{
     self.recipeDescription.backgroundColor = [UIColor clearColor];
@@ -137,8 +137,9 @@
     self.recipeDescription.layer.borderWidth = 2.0;
     self.recipeDescription.layer.cornerRadius = 8.0;
 }
-- (void)setIngridientsTableViewApperance{
+- (void)setTableViewApperance{
     self.ingridientsTableView.backgroundColor = [UIColor clearColor];
+    self.stepsTableView.backgroundColor = [UIColor clearColor];
 }
 - (void) updateRecipe{
     [self setRecipeMainImage];
@@ -455,6 +456,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if([tableView isEqual:self.ingridientsTableView]){
         static NSString *CellIdentifier = @"ingridientsCell";
         IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setIngridientData:ingridients[indexPath.row]];
          [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -462,6 +464,7 @@ numberOfRowsInComponent:(NSInteger)component{
         static NSString *CellIdentifier = @"stepsCell";
         StepsFormTableViewCell *cell = (StepsFormTableViewCell *) [self.stepsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         [cell setStepData:steps[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
         [cell.deleteButton addTarget:self action:@selector(deleteStepButton:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -538,13 +541,6 @@ numberOfRowsInComponent:(NSInteger)component{
 
 #pragma mark - RecipeFormFields CustomizationView
 - (void) customizeTextField: (UITextField *) textField withIcon: (NSString *) iconName andPlaceholder: (NSString *) placeholder{
-//    CALayer *border = [CALayer layer];
-//    CGFloat borderWidth = 2;
-//    border.borderColor = [UIColor whiteColor].CGColor;
-//    border.frame = CGRectMake(0, textField.frame.size.height - borderWidth, textField.frame.size.width, textField.frame.size.height);
-//    border.borderWidth = borderWidth;
-//    [textField.layer addSublayer:border];
-//    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     textField.layer.masksToBounds = YES;
     textField.leftViewMode = UITextFieldViewModeAlways;
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
