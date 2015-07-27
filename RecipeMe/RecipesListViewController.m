@@ -256,7 +256,4 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
 }
-
-
-
 @end

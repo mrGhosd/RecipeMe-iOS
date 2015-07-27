@@ -27,6 +27,7 @@
 #import <UIScrollView+InfiniteScroll.h>
 #import "CommentViewController.h"
 #import "RecipeFormViewController.h"
+#import "RecipesListViewController.h"
 
 @interface RecipeDetailViewController (){
     int selectedIndex;
@@ -55,6 +56,7 @@ float const recipeCellInfoHeight = 250;
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
+    self.recipeDescWebView.delegate = self;
     auth = [AuthorizationManager sharedInstance];
     connection = [ServerConnection sharedInstance];
     [self refreshInit];
@@ -491,13 +493,6 @@ float const recipeCellInfoHeight = 250;
 }
 
 -(void) setRecipeDescriptionInfo{
-    self.recipeDescWebView.scrollView.scrollEnabled = NO;
-    CGSize textSize = [self.recipe.desc sizeWithAttributes:nil];
-    if(textSize.width > 33.0){
-        self.recipeDescriptionWebViewHeightConstraint.constant = textSize.width;
-    } else {
-        self.recipeDescriptionWebViewHeightConstraint.constant = 33.0;
-    }
     [self.recipeDescWebView loadHTMLString:self.recipe.desc baseURL:nil];
 }
 -(void) reloadTableViewsData{
@@ -579,7 +574,34 @@ float const recipeCellInfoHeight = 250;
 }
 
 - (void) destroyRecipe: (id) sender{
-
+    [connection sendDataToURL:[NSString stringWithFormat:@"/recipes/%@", self.recipe.id] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        } else {
+        
+        }
+    }];
 }
+#pragma mark - UIWebView delegates
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    CGRect frame = webView.frame;
+    frame.size.height = 5.0f;
+    webView.frame = frame;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    CGSize mWebViewTextSize = [webView sizeThatFits:CGSizeMake(1.0f, 1.0f)]; // Pass about any size
+    CGRect mWebViewFrame = webView.frame;
+    mWebViewFrame.size.height = mWebViewTextSize.height;
+    webView.frame = mWebViewFrame;
+    self.recipeDescriptionWebViewHeightConstraint.constant = webView.frame.size.height;
+    //Disable bouncing in webview
+    for (id subview in webView.subviews) {
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]]) {
+            [subview setBounces:NO];
+        }
+    }
+}
+
 
 @end

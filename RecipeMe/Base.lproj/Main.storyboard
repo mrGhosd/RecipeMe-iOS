@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVk-1a-dIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2745" y="299"/>
+            <point key="canvasLocation" x="2761" y="347"/>
         </scene>
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -169,9 +169,11 @@
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeDetail" id="9jT-f3-207"/>
                         <segue destination="iQM-Fe-TbH" kind="show" identifier="userProfile" id="tlU-6g-992"/>
                         <segue destination="ir9-CV-5LZ" kind="presentation" identifier="recipeForm" id="EHB-Hv-DP5"/>
+                        <segue destination="Owy-Kj-vTU" kind="unwind" identifier="returnToRecipesView" unwindAction="unwindFromDetailView:" id="P3B-mX-VS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="Owy-Kj-vTU" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController id="13H-wA-GtN">
                     <connections>
                         <outlet property="delegate" destination="vXZ-lx-hvc" id="ZPZ-RA-Gew"/>
@@ -347,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="328"/>
+            <point key="canvasLocation" x="1983" y="310"/>
         </scene>
         <!--Recipe Form View Controller-->
         <scene sceneID="MGF-V5-mhU">
@@ -753,10 +755,10 @@
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tNo-vm-oAh"/>
-        <segue reference="x1S-wy-2mz"/>
         <segue reference="9jT-f3-207"/>
-        <segue reference="3if-zo-Jsd"/>
+        <segue reference="x1S-wy-2mz"/>
+        <segue reference="tNo-vm-oAh"/>
         <segue reference="KKI-rF-QC7"/>
+        <segue reference="3if-zo-Jsd"/>
     </inferredMetricsTieBreakers>
 </document>
