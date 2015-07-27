@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     self.ingridientName.delegate = self;
     self.ingridientSize.delegate = self;
+    self.backgroundColor = [UIColor clearColor];
+    [self customizeTextField:self.ingridientName withIcon:@"ingridientName" andPlaceholder:NSLocalizedString(@"ingridient_name", nil)];
+    [self customizeTextField:self.ingridientSize withIcon:@"ingridientSize" andPlaceholder:NSLocalizedString(@"ingridient_size", nil)];
     [self.ingridientName addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.ingridientSize addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
@@ -47,4 +50,21 @@
 }
 - (void) textFieldDidEndEditing:(UITextField *)textField{
 }
+
+- (void) customizeTextField: (UITextField *) textField withIcon: (NSString *) iconName andPlaceholder: (NSString *) placeholder{
+    CALayer *border = [CALayer layer];
+    CGFloat borderWidth = 2;
+    border.borderColor = [UIColor whiteColor].CGColor;
+    border.frame = CGRectMake(0, textField.frame.size.height - borderWidth, textField.frame.size.width, textField.frame.size.height);
+    border.borderWidth = borderWidth;
+    [textField.layer addSublayer:border];
+    textField.layer.masksToBounds = YES;
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    imgView.image = [UIImage imageNamed:iconName];
+    textField.leftView = imgView;
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor lightGrayColor] }];
+    textField.attributedPlaceholder = str;
+}
+
 @end

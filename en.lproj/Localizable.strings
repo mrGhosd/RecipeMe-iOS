@@ -58,3 +58,6 @@
 "form_category" = "Category";
 "form_tags" = "Tags";
 
+"ingridient_name" = "Name";
+"ingridient_size" = "Size";
+

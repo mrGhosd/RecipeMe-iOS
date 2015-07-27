@@ -127,8 +127,19 @@
     [self customizeTextField:self.recipeDifficult withIcon:@"recipeDifficultIcon.png" andPlaceholder:NSLocalizedString(@"form_difficult", nil)];
     [self customizeTextField:self.recipeCategory withIcon:@"category.png" andPlaceholder:NSLocalizedString(@"form_category", nil)];
     [self customizeTextField:self.recipeTags withIcon:@"recipeFormTags.png" andPlaceholder:NSLocalizedString(@"form_tags", nil)];
+    [self setRecipeDescriptionApperance];
+    [self setIngridientsTableViewApperance];
 }
-
+- (void) setRecipeDescriptionApperance{
+    self.recipeDescription.backgroundColor = [UIColor clearColor];
+    self.recipeDescription.textColor = [UIColor whiteColor];
+    self.recipeDescription.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.recipeDescription.layer.borderWidth = 2.0;
+    self.recipeDescription.layer.cornerRadius = 8.0;
+}
+- (void)setIngridientsTableViewApperance{
+    self.ingridientsTableView.backgroundColor = [UIColor clearColor];
+}
 - (void) updateRecipe{
     [self setRecipeMainImage];
     self.recipeTitle.text = self.recipe.title;

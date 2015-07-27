@@ -58,3 +58,6 @@
 "form_difficult" = "Сложность";
 "form_category" = "Категория";
 "form_tags" = "Теги";
+
+"ingridient_name" = "Название";
+"ingridient_size" = "Размер";

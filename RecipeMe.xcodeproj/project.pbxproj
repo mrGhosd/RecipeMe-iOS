@@ -16,6 +16,8 @@
 		640C01091B668FAF00EA6465 /* recipeDifficultIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01081B668FAF00EA6465 /* recipeDifficultIcon.png */; };
 		640C010B1B66909B00EA6465 /* recipeFormTags.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C010A1B66909B00EA6465 /* recipeFormTags.png */; };
 		640C010D1B6691E300EA6465 /* recipeFormImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C010C1B6691E300EA6465 /* recipeFormImage.png */; };
+		640C01111B66969C00EA6465 /* ingridientName.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C010F1B66969C00EA6465 /* ingridientName.png */; };
+		640C01121B66969C00EA6465 /* ingridientSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01101B66969C00EA6465 /* ingridientSize.png */; };
 		64101E1E1B2C557B006D516D /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64101E1D1B2C557B006D516D /* heartIcon.png */; };
 		641470411B64C80300A5392D /* RMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 641470401B64C80300A5392D /* RMCategory.m */; };
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
@@ -132,6 +134,8 @@
 		640C01081B668FAF00EA6465 /* recipeDifficultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeDifficultIcon.png; sourceTree = "<group>"; };
 		640C010A1B66909B00EA6465 /* recipeFormTags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeFormTags.png; sourceTree = "<group>"; };
 		640C010C1B6691E300EA6465 /* recipeFormImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeFormImage.png; sourceTree = "<group>"; };
+		640C010F1B66969C00EA6465 /* ingridientName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ingridientName.png; sourceTree = "<group>"; };
+		640C01101B66969C00EA6465 /* ingridientSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ingridientSize.png; sourceTree = "<group>"; };
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
 		6414703F1B64C80300A5392D /* RMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategory.h; sourceTree = "<group>"; };
 		641470401B64C80300A5392D /* RMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategory.m; sourceTree = "<group>"; };
@@ -290,6 +294,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		640C010E1B66964B00EA6465 /* ViewHelper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewHelper;
+			sourceTree = "<group>";
+		};
 		6414703B1B64C73800A5392D /* categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +507,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				640C010E1B66964B00EA6465 /* ViewHelper */,
 				6414703B1B64C73800A5392D /* categories */,
 				64F7CB991B49701100D543AC /* authorization */,
 				64F7CB791B492A1100D543AC /* ServerError */,
@@ -601,6 +613,8 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				640C010F1B66969C00EA6465 /* ingridientName.png */,
+				640C01101B66969C00EA6465 /* ingridientSize.png */,
 				6459A2851B6446E8009F95A3 /* pen29.png */,
 				6459A2831B6446BC009F95A3 /* delete85.png */,
 				6459A2811B64468E009F95A3 /* security26.png */,
@@ -860,8 +874,10 @@
 				6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */,
 				642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */,
 				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
+				640C01121B66969C00EA6465 /* ingridientSize.png in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
+				640C01111B66969C00EA6465 /* ingridientName.png in Resources */,
 				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
 				64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */,
 				64F7CB8E1B4942C100D543AC /* AuthorizationView.xib in Resources */,
