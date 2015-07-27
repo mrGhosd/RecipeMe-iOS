@@ -10,6 +10,12 @@
 		220BA50B8AA07A2589BED8B7 /* libPods-RecipeMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03A9DE5F479A1981245B8DF /* libPods-RecipeMe.a */; };
 		34F75A056DFF53A57FBD3AEC /* libPods-RecipeMeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E191853DFC22572833285A4 /* libPods-RecipeMeTests.a */; };
 		6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */; };
+		640C01031B668B8200EA6465 /* recipeTitleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01021B668B8200EA6465 /* recipeTitleIcon.png */; };
+		640C01051B668C2500EA6465 /* recipeTimeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01041B668C2500EA6465 /* recipeTimeIcon.png */; };
+		640C01071B668CBC00EA6465 /* recipePersonsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01061B668CBC00EA6465 /* recipePersonsIcon.png */; };
+		640C01091B668FAF00EA6465 /* recipeDifficultIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01081B668FAF00EA6465 /* recipeDifficultIcon.png */; };
+		640C010B1B66909B00EA6465 /* recipeFormTags.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C010A1B66909B00EA6465 /* recipeFormTags.png */; };
+		640C010D1B6691E300EA6465 /* recipeFormImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C010C1B6691E300EA6465 /* recipeFormImage.png */; };
 		64101E1E1B2C557B006D516D /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64101E1D1B2C557B006D516D /* heartIcon.png */; };
 		641470411B64C80300A5392D /* RMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 641470401B64C80300A5392D /* RMCategory.m */; };
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
@@ -120,6 +126,12 @@
 		6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StepCellDelegate.h; sourceTree = "<group>"; };
 		6404CBFE1B2DB511005B5A0D /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
+		640C01021B668B8200EA6465 /* recipeTitleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeTitleIcon.png; sourceTree = "<group>"; };
+		640C01041B668C2500EA6465 /* recipeTimeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeTimeIcon.png; sourceTree = "<group>"; };
+		640C01061B668CBC00EA6465 /* recipePersonsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipePersonsIcon.png; sourceTree = "<group>"; };
+		640C01081B668FAF00EA6465 /* recipeDifficultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeDifficultIcon.png; sourceTree = "<group>"; };
+		640C010A1B66909B00EA6465 /* recipeFormTags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeFormTags.png; sourceTree = "<group>"; };
+		640C010C1B6691E300EA6465 /* recipeFormImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeFormImage.png; sourceTree = "<group>"; };
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
 		6414703F1B64C80300A5392D /* RMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategory.h; sourceTree = "<group>"; };
 		641470401B64C80300A5392D /* RMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategory.m; sourceTree = "<group>"; };
@@ -609,10 +621,16 @@
 				64C5B1831B4824E60043C9D3 /* menu-32.png */,
 				6467E0E71B42A5FD001BB1CD /* stepsIcon.png */,
 				6495895D1B626B2D00D3A6D8 /* check-failed.png */,
+				640C010A1B66909B00EA6465 /* recipeFormTags.png */,
+				640C01081B668FAF00EA6465 /* recipeDifficultIcon.png */,
+				640C01061B668CBC00EA6465 /* recipePersonsIcon.png */,
 				64F7CB931B49556400D543AC /* authPasswordField.png */,
 				6467E0E81B42A5FE001BB1CD /* ingridientsIcon.png */,
+				640C01041B668C2500EA6465 /* recipeTimeIcon.png */,
+				640C01021B668B8200EA6465 /* recipeTitleIcon.png */,
 				6467E0E91B42A5FE001BB1CD /* commentIcon.png */,
 				64101E1D1B2C557B006D516D /* heartIcon.png */,
+				640C010C1B6691E300EA6465 /* recipeFormImage.png */,
 				643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */,
 				64C2219A1B4D71530010F3F3 /* edit-32.png */,
 				643AFBCA1B2C22310090BC68 /* timeIcon.png */,
@@ -836,7 +854,9 @@
 				6455C3CB1B3C03C60013872F /* IngridientsTableViewCell.xib in Resources */,
 				64FFCD4F1B3C346500A4DDCC /* CommentHeaderTableViewCell.xib in Resources */,
 				643AFBBF1B2B89D90090BC68 /* kartofel.jpg in Resources */,
+				640C010D1B6691E300EA6465 /* recipeFormImage.png in Resources */,
 				64C5B1841B4824E60043C9D3 /* menu-32.png in Resources */,
+				640C010B1B66909B00EA6465 /* recipeFormTags.png in Resources */,
 				6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */,
 				642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */,
 				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
@@ -857,6 +877,7 @@
 				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
 				6459A2821B64468E009F95A3 /* security26.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
+				640C01051B668C2500EA6465 /* recipeTimeIcon.png in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */,
 				64F7CB831B493A7E00D543AC /* authBg.png in Resources */,
@@ -865,9 +886,12 @@
 				64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
+				640C01031B668B8200EA6465 /* recipeTitleIcon.png in Resources */,
 				649589541B625BC100D3A6D8 /* RecipeFormHeader.xib in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
+				640C01071B668CBC00EA6465 /* recipePersonsIcon.png in Resources */,
 				64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */,
+				640C01091B668FAF00EA6465 /* recipeDifficultIcon.png in Resources */,
 				6467E0EB1B42A5FE001BB1CD /* ingridientsIcon.png in Resources */,
 				643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */,
 				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
