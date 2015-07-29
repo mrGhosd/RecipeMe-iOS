@@ -14,6 +14,10 @@
 
 - (void)awakeFromNib {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeartIcon:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.heartIcon setUserInteractionEnabled:YES];
+    [self.heartIcon addGestureRecognizer:singleTap];
     // Initialization code
 }
 
@@ -81,12 +85,23 @@
 }
 - (void) setVoteMark: (Recipe *)recipe andUser: (User *) user{
     if(user && [recipe.votedUsers containsObject:user.id] ){
-        self.heartIcon.image = [UIImage imageNamed:@"filledHeartIcon.png"];
+        [self userVoted];
     } else {
-        self.heartIcon.image = [UIImage imageNamed:@"heartIcon.png"];
+        [self userReVoted];
     }
 }
 - (void) imageTap: (UIGestureRecognizer *) recognizer{
     [self.delegate clickOnUserImage:self.user];
+}
+
+- (void) tapHeartIcon: (id) sender{
+    [self.recipe upvoteFroRecipeWithCell:self];
+}
+
+- (void) userVoted{
+    self.heartIcon.image = [UIImage imageNamed:@"filledHeartIcon.png"];
+}
+- (void) userReVoted{
+    self.heartIcon.image = [UIImage imageNamed:@"heartIcon.png"];
 }
 @end

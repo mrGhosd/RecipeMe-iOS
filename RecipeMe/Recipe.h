@@ -11,6 +11,7 @@
 #import "User.h"
 #import "Step.h"
 #import "RMCategory.h"
+#import "RecipeCellDelegate.h"
 
 @interface Recipe : NSObject
 @property (nonatomic, retain) NSNumber *id;
@@ -32,7 +33,9 @@
 @property (nonatomic, retain) NSMutableArray *comments;
 @property (nonatomic, retain) NSMutableArray *votedUsers;
 @property (nonatomic, retain) RMCategory *category;
+@property (nonatomic, retain) id<RecipeCellDelegate> delegate;
 
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
+- (void) upvoteFroRecipeWithCell: (id) cell;
 @end

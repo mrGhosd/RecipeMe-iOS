@@ -10,6 +10,7 @@
 #import "ServerConnection.h"
 #import "Ingridient.h"
 #import "Comment.h"
+#import "RecipesListTableViewCell.h"
 
 @implementation Recipe
 - (instancetype) initWithParameters: (NSDictionary *) params{
@@ -44,5 +45,16 @@
 - (UIImage *) image{
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[ServerConnection sharedInstance] returnCorrectUrlPrefix:self.imageUrl]]]];
     return img;
+}
+- (void) upvoteFroRecipeWithCell: (id) cell{
+    __block NSNumber *prevValue = self.rate;
+    __block RecipesListTableViewCell *listCell = cell;
+    [[ServerConnection sharedInstance] sendDataToURL:[NSString stringWithFormat:@"/recipes/%@/rating", self.id] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.delegate successUpvoteCallbackWithRecipe:self cell:cell andData:data];
+        } else {
+            [self.delegate failureUpvoteCallbackWithRecipe:data];
+        }
+    }];
 }
 @end

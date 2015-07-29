@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "UserDelegate.h"
 #import "ServerErrorDelegate.h"
-@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate>
+#import "RecipeCellDelegate.h"
+
+@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate, RecipeCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)showSearchBar:(id)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;

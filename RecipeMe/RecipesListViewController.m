@@ -156,7 +156,7 @@
     } else {
         recipe = recipes[indexPath.row];
     }
-    
+    recipe.delegate = self;
     RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
@@ -258,5 +258,13 @@ shouldReloadTableForSearchString:(NSString *)searchString
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
+}
+
+- (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
+    data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+}
+
+- (void) failureUpvoteCallbackWithRecipe:(id)error{
+    
 }
 @end

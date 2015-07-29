@@ -25,4 +25,6 @@
 - (void) setInfoView;
 - (void) initWithRecipe: (Recipe *) recipe andCurrentUser: (User *) user;
 @property (strong, nonatomic) IBOutlet UIView *infoView;
+- (void) userVoted;
+- (void) userReVoted;
 @end
