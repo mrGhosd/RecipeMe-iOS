@@ -23,6 +23,6 @@
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) id <RecipeCellDelegate, UserDelegate> delegate;
 - (void) setInfoView;
-- (void) initWithRecipe: (Recipe *) recipe;
+- (void) initWithRecipe: (Recipe *) recipe andCurrentUser: (User *) user;
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @end

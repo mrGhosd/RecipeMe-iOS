@@ -38,6 +38,7 @@
     if(params[@"ingridients_list"]) self.ingridients = [Ingridient initializeFromArray:params[@"ingridients_list"]];
     if(params[@"tag_list"]) self.tags = params[@"tag_list"];
     if(params[@"category"]) self.category = [[RMCategory alloc] initWithParameters:params[@"category"]];
+    if(params[@"votes"]) self.votedUsers = [NSMutableArray arrayWithArray:params[@"votes"]];
 }
 
 - (UIImage *) image{

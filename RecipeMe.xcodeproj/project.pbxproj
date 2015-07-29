@@ -85,6 +85,7 @@
 		64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */; };
 		64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */; };
 		64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */; };
+		64ED43031B68ED7E00839F1F /* filledHeartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ED43021B68ED7E00839F1F /* filledHeartIcon.png */; };
 		64F7CB6F1B491F7200D543AC /* recipes.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB6E1B491F7200D543AC /* recipes.png */; };
 		64F7CB731B4920DD00D543AC /* reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB701B4920DD00D543AC /* reg.png */; };
 		64F7CB741B4920DD00D543AC /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F7CB711B4920DD00D543AC /* category.png */; };
@@ -235,6 +236,7 @@
 		64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
 		64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapMarkerSidebar.png; sourceTree = "<group>"; };
 		64D7D3EE1B4B256700F8061E /* CommentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentDelegate.h; sourceTree = "<group>"; };
+		64ED43021B68ED7E00839F1F /* filledHeartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledHeartIcon.png; sourceTree = "<group>"; };
 		64F7CB6E1B491F7200D543AC /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
 		64F7CB711B4920DD00D543AC /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				64F7CB911B49528500D543AC /* authMailIcon.png */,
 				64F7CB821B493A7E00D543AC /* authBg.png */,
 				64F7CB701B4920DD00D543AC /* reg.png */,
+				64ED43021B68ED7E00839F1F /* filledHeartIcon.png */,
 				64F7CB711B4920DD00D543AC /* category.png */,
 				64F7CB721B4920DD00D543AC /* auth.png */,
 				64F7CB6E1B491F7200D543AC /* recipes.png */,
@@ -881,6 +884,7 @@
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
 				640C01111B66969C00EA6465 /* ingridientName.png in Resources */,
+				64ED43031B68ED7E00839F1F /* filledHeartIcon.png in Resources */,
 				64F7CB731B4920DD00D543AC /* reg.png in Resources */,
 				64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */,
 				64F7CB8E1B4942C100D543AC /* AuthorizationView.xib in Resources */,

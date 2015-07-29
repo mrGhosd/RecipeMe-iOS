@@ -204,7 +204,7 @@ float const recipeCellInfoHeight = 250;
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        [cell initWithRecipe:self.recipe];
+        [cell initWithRecipe:self.recipe andCurrentUser:auth.currentUser];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
         singleTap.numberOfTapsRequired = 1;

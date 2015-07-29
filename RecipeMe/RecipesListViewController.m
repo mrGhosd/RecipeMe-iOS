@@ -16,8 +16,10 @@
 #import "RecipeDetailViewController.h"
 #import "SWRevealViewController.h"
 #import "ServerError.h"
+#import "AuthorizationManager.h"
 
 @interface RecipesListViewController (){
+    AuthorizationManager *auth;
     ServerConnection *connection;
     NSMutableArray *recipes;
     NSArray *searchResults;
@@ -35,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
     pageNumber = @1;
     recipes = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
@@ -159,7 +162,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    [cell initWithRecipe:recipe];
+    [cell initWithRecipe:recipe andCurrentUser:auth.currentUser];
     cell.delegate = self;
     return cell;
 }

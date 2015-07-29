@@ -8,10 +8,12 @@
 
 #import "RecipesListTableViewCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "AuthorizationManager.h"
 
 @implementation RecipesListTableViewCell
 
 - (void)awakeFromNib {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     // Initialization code
 }
 
@@ -20,10 +22,14 @@
 
     // Configure the view for the selected state
 }
-- (void) initWithRecipe: (Recipe *) recipe{
+- (void) initWithRecipe: (Recipe *) recipe andCurrentUser: (User *) user{
+    self.recipe = recipe;
     [self setMainImage:recipe];
     [self setAvatarImage:recipe];
     [self setInfoViewData:recipe];
+    if(user){
+        [self setVoteMark:self.recipe andUser:user];
+    }
 }
 - (void) setMainImage: (Recipe *) recipe{
     NSURL *url = [NSURL URLWithString:recipe.imageUrl];
@@ -62,7 +68,10 @@
     self.recipeTime.text = [NSString stringWithFormat:@"%@ %@", recipe.time, timeKey];
     [self setUserAvatarSize];
 }
-
+- (void) userSignedIn: (NSNotification *) notifictation{
+    User *currentUser = [[User alloc] initWithParams:notifictation.object];
+    [self setVoteMark:self.recipe andUser:currentUser];
+}
 - (void) setUserAvatarSize{
     self.userAvatar.backgroundColor = [UIColor whiteColor];
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
@@ -70,7 +79,13 @@
     self.userAvatar.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.userAvatar.layer.borderWidth = 2.5;
 }
-
+- (void) setVoteMark: (Recipe *)recipe andUser: (User *) user{
+    if(user && [recipe.votedUsers containsObject:user.id] ){
+        self.heartIcon.image = [UIImage imageNamed:@"filledHeartIcon.png"];
+    } else {
+        self.heartIcon.image = [UIImage imageNamed:@"heartIcon.png"];
+    }
+}
 - (void) imageTap: (UIGestureRecognizer *) recognizer{
     [self.delegate clickOnUserImage:self.user];
 }

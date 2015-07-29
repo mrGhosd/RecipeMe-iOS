@@ -30,6 +30,7 @@
 @property (nonatomic, retain) NSMutableArray *steps;
 @property (nonatomic, retain) NSMutableArray *ingridients;
 @property (nonatomic, retain) NSMutableArray *comments;
+@property (nonatomic, retain) NSMutableArray *votedUsers;
 @property (nonatomic, retain) RMCategory *category;
 
 - (instancetype) initWithParameters: (NSDictionary *) params;
