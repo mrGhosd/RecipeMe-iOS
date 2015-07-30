@@ -41,13 +41,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-Xn-ADL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-Xn-ADL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-Pq-toz">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxw-Pq-toz">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-qT-rEM">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5z-qT-rEM">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -58,6 +58,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="B5z-qT-rEM" firstAttribute="leading" secondItem="Hxw-Pq-toz" secondAttribute="leading" id="27D-Ay-ch2"/>
+                                            <constraint firstAttribute="height" constant="600" id="R2A-yL-ogJ"/>
                                             <constraint firstItem="B5z-qT-rEM" firstAttribute="top" secondItem="Hxw-Pq-toz" secondAttribute="top" id="jsk-fh-ShY"/>
                                             <constraint firstAttribute="trailing" secondItem="B5z-qT-rEM" secondAttribute="trailing" id="w1j-NJ-yrA"/>
                                             <constraint firstAttribute="bottom" secondItem="B5z-qT-rEM" secondAttribute="bottom" constant="50" id="yDY-JF-vE4"/>
@@ -126,6 +127,8 @@
                     </view>
                     <connections>
                         <outlet property="cancellButton" destination="S5P-zU-fSi" id="e00-4d-PJU"/>
+                        <outlet property="commentActionViewBottomMarginConstraint" destination="cL6-NL-9EH" id="1gy-kP-a8L"/>
+                        <outlet property="commentFormheightConstraint" destination="R2A-yL-ogJ" id="ChW-95-hdq"/>
                         <outlet property="commentTextView" destination="B5z-qT-rEM" id="Nbp-7E-jBv"/>
                         <outlet property="saveButton" destination="8q0-Cq-rY1" id="ige-9m-v0O"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="successUpdate" id="mKy-iu-30W"/>

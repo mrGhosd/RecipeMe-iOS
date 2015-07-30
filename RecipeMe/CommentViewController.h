@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property(strong, nonatomic) Comment *comment;
 @property (strong, nonatomic) IBOutlet UIButton *cancellButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentFormheightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentActionViewBottomMarginConstraint;
 - (IBAction)saveChanges:(id)sender;
 - (IBAction)cancelChanges:(id)sender;
 @end

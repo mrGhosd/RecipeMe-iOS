@@ -9,7 +9,9 @@
 #import "CommentViewController.h"
 #import "ServerError.h"
 
-@interface CommentViewController ()
+@interface CommentViewController (){
+    float keyboardHeight;
+}
 
 @end
 
@@ -26,7 +28,32 @@
     self.cancellButton.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
 
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+//    float prevViewHeight = self.formViewHeightConstraint.constant;
+    keyboardHeight = keyboardFrame.size.height;
+    //    if(prevViewHeight - self.formViewHeightConstraint.constant == keyboardHeight){
+    self.commentFormheightConstraint.constant += keyboardHeight;
+    self.commentActionViewBottomMarginConstraint.constant += keyboardHeight;
+    //    }
+    //    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight / 1.2);
+    //    [self.scrollView setContentOffset:bottomOffset animated:YES];
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+    self.commentFormheightConstraint.constant -= keyboardHeight;
+    self.commentActionViewBottomMarginConstraint.constant -= keyboardHeight;
+    keyboardHeight = 0;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
