@@ -606,6 +606,7 @@ float const recipeCellInfoHeight = 250;
 
 - (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
     data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+    self.recipe.rate = data[@"rate"];
 }
 
 @end

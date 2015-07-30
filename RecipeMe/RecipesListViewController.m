@@ -262,6 +262,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 
 - (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
     data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+    [recipe setRate:data[@"rate"]];
 }
 
 - (void) failureUpvoteCallbackWithRecipe:(id)error{
