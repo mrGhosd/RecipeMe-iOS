@@ -2826,11 +2826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/RecipeDetailViewController.m"
-            timestampString = "459937847.478955"
+            timestampString = "459939170.171722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "-webViewDidFinishLoad:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3002,11 +3002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/RecipesListViewController.m"
-            timestampString = "459870577.487199"
+            timestampString = "459939170.171722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-successUpvoteCallbackWithRecipe:cell:andData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3034,11 +3034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/RecipeDetailViewController.m"
-            timestampString = "459938545.554132"
+            timestampString = "459939170.171722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "-successUpvoteCallbackWithRecipe:cell:andData:"
             landmarkType = "5">
          </BreakpointContent>

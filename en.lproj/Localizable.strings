@@ -12,6 +12,8 @@
 "recipes_time" = "min.";
 
 "system-error-title" = "Error";
+"system-message" = "Message";
+"system-message-complaint"="Thank you for your attention! Soon administration will look at your demand.";
 
 /*RECIPES*/
 "ingridients" = "Ingridients";

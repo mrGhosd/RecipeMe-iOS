@@ -567,7 +567,14 @@ float const recipeCellInfoHeight = 250;
 
 #pragma mark - Recipe Detail View Actions
 - (void) complaintRecipeContent: (id) sender{
-
+    [connection sendDataToURL:@"/complaints" parameters:@{@"complaint": @{@"user_id": auth.currentUser.id, @"complaintable_id": self.recipe.id, @"complaintable_type": @"Recipe"}} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message", nil) message: NSLocalizedString(@"system-message-complaint", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            
+        }
+    }];
 }
 
 - (void) editRecipe: (id) sender{

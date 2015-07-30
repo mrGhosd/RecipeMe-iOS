@@ -12,6 +12,8 @@
 "recipes_time" = "мин.";
 
 "system-error-title" = "Ошибка";
+"system-message" = "Сообщение";
+"system-message-complaint"="TСпасибо за ваше внимание! В ближайшее время администратор рассмотрит вашу заявку.";
 
 /*RECIPES*/
 "ingridients" = "Ингридиенты";
