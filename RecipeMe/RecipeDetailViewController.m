@@ -426,6 +426,7 @@ float const recipeCellInfoHeight = 250;
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([tableView isEqual:self.commentsTableView]){
         commentForm *form = [[[NSBundle mainBundle] loadNibNamed:@"commentFormView" owner:self options:nil] firstObject];
+        form.commentTextView.delegate = self;
         form.delegate = self;
         return form;
     } else {
@@ -650,6 +651,14 @@ float const recipeCellInfoHeight = 250;
 - (void) keyboardWillHide:(NSNotification *) notification{
     self.viewHeightConstraint.constant -= keyboardHeight;
     keyboardHeight = 0;
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+{
+        if ([text isEqualToString:@"\n"]) {
+            [textView resignFirstResponder];
+            return NO;
+        }
+    return YES;
 }
 
 

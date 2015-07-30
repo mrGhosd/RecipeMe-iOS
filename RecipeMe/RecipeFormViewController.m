@@ -36,6 +36,7 @@
     UIActionSheet *stepImagePopup;
     UIImagePickerController *recipePicker;
     UIImagePickerController *stepPicker;
+    float keyboardHeight;
 }
 
 @end
@@ -459,6 +460,8 @@ numberOfRowsInComponent:(NSInteger)component{
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setIngridientData:ingridients[indexPath.row]];
          [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
+        cell.ingridientName.delegate = self;
+        cell.ingridientSize.delegate = self;
         return cell;
     } else {
         static NSString *CellIdentifier = @"stepsCell";
@@ -548,6 +551,38 @@ numberOfRowsInComponent:(NSInteger)component{
     textField.leftView = imgView;
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:placeholder attributes:@{ NSForegroundColorAttributeName : [UIColor lightGrayColor] }];
     textField.attributedPlaceholder = str;
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+    float prevViewHeight = self.formViewHeightConstraint.constant;
+    keyboardHeight = keyboardFrame.size.height;
+//    if(prevViewHeight - self.formViewHeightConstraint.constant == keyboardHeight){
+    self.formViewHeightConstraint.constant += keyboardHeight;
+//    }
+//    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight / 1.2);
+//    [self.scrollView setContentOffset:bottomOffset animated:YES];
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+    self.formViewHeightConstraint.constant -= keyboardHeight;
+    keyboardHeight = 0;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void) textFieldDidBeginEditing:(UITextField *)textField{
 }
 
 @end

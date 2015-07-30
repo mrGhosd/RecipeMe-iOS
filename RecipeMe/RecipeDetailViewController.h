@@ -13,7 +13,7 @@
 #import "ServerErrorDelegate.h"
 #import "CommentDelegate.h"
 
-@interface RecipeDetailViewController : ViewController <UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UserDelegate, ServerErrorDelegate, CommentDelegate, UIWebViewDelegate>
+@interface RecipeDetailViewController : ViewController <UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UserDelegate, ServerErrorDelegate, CommentDelegate, UIWebViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *recipeInfoTableView;
 @property (strong, nonatomic) IBOutlet UITableView *ingridientsTableView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
