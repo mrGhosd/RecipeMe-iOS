@@ -55,6 +55,7 @@ float const recipeCellInfoHeight = 250;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     selectedIndex = -1;
     self.recipeDescWebView.delegate = self;
     auth = [AuthorizationManager sharedInstance];
@@ -89,13 +90,7 @@ float const recipeCellInfoHeight = 250;
                     forCellReuseIdentifier:@"commentHeaderCell"];
     
     self.ingridientsTableView.separatorColor = [UIColor clearColor];
-    
-    UIBarButtonItem *complaint = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"security26.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(complaintRecipeContent:)];
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen29.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(editRecipe:)];
-    UIBarButtonItem *destroy = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"delete85.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(destroyRecipe:)];
-    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[destroy, edit, complaint]];
-    
-
+    [self setNavigationBarButtons];
     self.scrollView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.scrollView addInfiniteScrollWithHandler:^(UIScrollView *scrollView){
         selectedIndex = 0;
@@ -104,6 +99,26 @@ float const recipeCellInfoHeight = 250;
         [self loadCommentsList];
         [scrollView finishInfiniteScroll];
     }];
+}
+- (void) userSignedIn{
+    [self setNavigationBarButtons];
+    [self.commentsTableView reloadData];
+}
+- (void) setNavigationBarButtons{
+    if(auth.currentUser){
+        NSMutableArray *buttonsArray;
+        UIBarButtonItem *complaint = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"security26.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(complaintRecipeContent:)];
+        [buttonsArray addObject:complaint];
+        if([auth.currentUser.id isEqualToNumber:self.recipe.userId])
+        {
+            UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pen29.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(editRecipe:)];
+            UIBarButtonItem *destroy = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"delete85.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(destroyRecipe:)];
+            self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[destroy, edit, complaint,]];
+        } else{
+        self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[complaint]];
+        }
+    }
+
 }
 - (void) setIngridientsTableViewHeight{
     self.ingiridnetsTableHeightConstraint.constant = (ingridients.count + 1) * ingridientHeight;
@@ -545,9 +560,6 @@ float const recipeCellInfoHeight = 250;
         [comments insertObject:newComment atIndex:index];
     }
     [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
-//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void) failureUpdateCallback:(id)error{

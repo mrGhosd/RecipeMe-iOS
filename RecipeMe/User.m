@@ -39,7 +39,7 @@
 }
 
 - (NSString *) correctNaming{
-    if(self.surname && self.name){
+    if(self.surname != [NSNull null] && self.name != [NSNull null]){
         NSString *name = [NSString stringWithFormat:@"%@ %@", self.name, self.surname];
         if(name.length > 12){
             name = [NSString stringWithFormat:@"%@\n%@", self.name, self.surname];

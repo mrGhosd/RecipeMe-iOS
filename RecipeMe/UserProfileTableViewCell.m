@@ -25,7 +25,9 @@
     if([[user correctNaming] length] > 12){
         self.userNameMarginLeft.constant += [[user correctNaming] length] / 2;
     }
-    self.cityName.text = user.city;
+    if(user.city != [NSNull null]){
+        self.cityName.text = user.city;
+    }
     NSURL *url = [NSURL URLWithString:user.avatarUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
