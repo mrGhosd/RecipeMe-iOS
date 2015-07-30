@@ -158,6 +158,7 @@ float const recipeCellInfoHeight = 250;
 - (void) parseRecipe: (id) data{
     if(data != [NSNull null]){
         self.recipe = [[Recipe alloc] initWithParameters:data];
+        self.recipe.delegate = self;
         [self setStepsArrayWithArray:self.recipe.steps ingridietnsArrayWithArray:self.recipe.ingridients andCommentsArraWithArray:self.recipe.comments];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -603,5 +604,8 @@ float const recipeCellInfoHeight = 250;
     }
 }
 
+- (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
+    data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+}
 
 @end
