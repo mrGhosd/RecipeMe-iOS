@@ -40,6 +40,7 @@
     UIButton *errorButton;
     AuthorizationManager *auth;
     Comment *com;
+    float keyboardHeight;
 }
 
 @end
@@ -191,6 +192,13 @@ float const recipeCellInfoHeight = 250;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -627,5 +635,24 @@ float const recipeCellInfoHeight = 250;
     data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
     self.recipe.rate = data[@"rate"];
 }
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+//    keyboardHeight = keyboardFrame.size.height;
+//    self.viewHeightConstraint.constant += keyboardHeight;
+//    float textViewConstraint = keyboardFrame.size.height;
+//    self.scrollViewBottomMargin.constant = textViewConstraint + self.controlView.frame.size.height;
+//    self.controlViewBottomMargin.constant = textViewConstraint;
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+//    self.viewHeightConstraint.constant -= keyboardHeight;
+//    keyboardHeight = 0;
+//    self.controlViewBottomMargin.constant = 0.0;
+//    self.scrollViewBottomMargin.constant = self.controlView.frame.size.height;
+}
+
 
 @end
