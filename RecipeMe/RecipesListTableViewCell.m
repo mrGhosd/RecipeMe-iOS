@@ -95,7 +95,9 @@
 }
 
 - (void) tapHeartIcon: (id) sender{
-    [self.recipe upvoteFroRecipeWithCell:self];
+    if([[AuthorizationManager sharedInstance] currentUser]){
+        [self.recipe upvoteFroRecipeWithCell:self];
+    }
 }
 
 - (void) userVoted{

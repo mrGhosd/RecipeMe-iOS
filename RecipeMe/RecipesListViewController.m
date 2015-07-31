@@ -45,14 +45,15 @@
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     [self setNavigationAttributes];
     [self refreshInit];
-    [self loadRecipesList];
-    UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];
-    UIBarButtonItem *addRecipe = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addRecipe.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(addRecipe:)];
-    self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[search, addRecipe]];
-//    [search setImage:searchImage];
-    
+    if(self.recipes){
+        recipes = self.recipes;
+    } else {
+        [self loadRecipesList];
+    }
+    [self setNavigationBarButtons];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         pageNumber = [NSNumber numberWithInteger:[pageNumber integerValue] + 1];
@@ -61,6 +62,17 @@
     }];
     // Do any additional setup after loading the view.
 }
+
+- (void) setNavigationBarButtons{
+    if(auth.currentUser){
+        UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];
+        UIBarButtonItem *addRecipe = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addRecipe.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(addRecipe:)];
+        self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[search, addRecipe]];
+    } else {
+        UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];
+        self.navigationItem.rightBarButtonItems = [self.navigationItem.rightBarButtonItems arrayByAddingObjectsFromArray:@[search]];
+    }
+}
 - (void) setNavigationAttributes{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];
     self.navigationController.navigationBar.translucent = NO;
@@ -68,8 +80,7 @@
     self.navigationController.navigationBar.topItem.title = NSLocalizedString(@"recipes", nil);
     [self setNeedsStatusBarAppearanceUpdate];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                                                     [UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,[UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
     
 }
 -(void) setNavigationPanel{

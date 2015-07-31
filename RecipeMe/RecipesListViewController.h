@@ -13,6 +13,7 @@
 
 @interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate, RecipeCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *recipes;
 - (IBAction)showSearchBar:(id)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

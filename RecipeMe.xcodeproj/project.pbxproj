@@ -24,6 +24,9 @@
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
 		642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */; };
 		643510E51B6BB7F100E1853C /* sign_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 643510E41B6BB7F100E1853C /* sign_out.png */; };
+		643510E91B6BE7C000E1853C /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510E81B6BE7C000E1853C /* CategoriesViewController.m */; };
+		643510EE1B6BEB1300E1853C /* CategoriesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */; };
+		643510EF1B6BEB1300E1853C /* CategoriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
@@ -147,6 +150,12 @@
 		642C4CCB1B5AF046007C2783 /* RecipeFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeFormViewController.h; sourceTree = "<group>"; };
 		642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeFormViewController.m; sourceTree = "<group>"; };
 		643510E41B6BB7F100E1853C /* sign_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign_out.png; sourceTree = "<group>"; };
+		643510E71B6BE7C000E1853C /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		643510E81B6BE7C000E1853C /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
+		643510EB1B6BEB1300E1853C /* CategoriesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesListTableViewCell.h; sourceTree = "<group>"; };
+		643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesListTableViewCell.m; sourceTree = "<group>"; };
+		643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesListTableViewCell.xib; sourceTree = "<group>"; };
+		643510F01B6BF14C00E1853C /* CategoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDelegate.h; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
@@ -312,6 +321,25 @@
 			children = (
 				6414703F1B64C80300A5392D /* RMCategory.h */,
 				641470401B64C80300A5392D /* RMCategory.m */,
+			);
+			name = categories;
+			sourceTree = "<group>";
+		};
+		643510E61B6BE7A600E1853C /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				643510E71B6BE7C000E1853C /* CategoriesViewController.h */,
+				643510E81B6BE7C000E1853C /* CategoriesViewController.m */,
+			);
+			name = categories;
+			sourceTree = "<group>";
+		};
+		643510EA1B6BEAEF00E1853C /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				643510EB1B6BEB1300E1853C /* CategoriesListTableViewCell.h */,
+				643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */,
+				643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -531,6 +559,7 @@
 		647875FF1B2B0A9000401720 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				643510E61B6BE7A600E1853C /* categories */,
 				64B6FE9C1B4DA1A300C0EFD7 /* comment */,
 				64F7CB7E1B4939A300D543AC /* auth */,
 				64C5B17F1B4824720043C9D3 /* sidebar */,
@@ -544,6 +573,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				643510EA1B6BEAEF00E1853C /* categories */,
 				64D7D3E31B4B050E00F8061E /* sidebar */,
 				64F7CB861B49426700D543AC /* authorization */,
 				64FFCD411B3C341C00A4DDCC /* comments */,
@@ -576,6 +606,7 @@
 				64F7CB7D1B492A4B00D543AC /* ServerErrorDelegate.h */,
 				64F7CB9D1B4972E700D543AC /* AuthorizationDelegate.h */,
 				64D7D3EE1B4B256700F8061E /* CommentDelegate.h */,
+				643510F01B6BF14C00E1853C /* CategoryDelegate.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
@@ -910,6 +941,7 @@
 				64F7CB831B493A7E00D543AC /* authBg.png in Resources */,
 				64C2219D1B4D75EE0010F3F3 /* heart.png in Resources */,
 				64F7CB941B49556400D543AC /* authPasswordField.png in Resources */,
+				643510EF1B6BEB1300E1853C /* CategoriesListTableViewCell.xib in Resources */,
 				64C221991B4D70B80010F3F3 /* delete_sign-32.png in Resources */,
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
@@ -1013,7 +1045,9 @@
 				64F7CBA01B499A0200D543AC /* UserViewController.m in Sources */,
 				6455C3BF1B3BFF790013872F /* Ingridient.m in Sources */,
 				64FFCD461B3C343D00A4DDCC /* CommentTableViewCell.m in Sources */,
+				643510E91B6BE7C000E1853C /* CategoriesViewController.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
+				643510EE1B6BEB1300E1853C /* CategoriesListTableViewCell.m in Sources */,
 				649589621B62750100D3A6D8 /* StepsFormTableViewCell.m in Sources */,
 				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,

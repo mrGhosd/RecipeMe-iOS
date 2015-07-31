@@ -63,3 +63,6 @@
 "ingridient_name" = "Name";
 "ingridient_size" = "Size";
 
+/*CATEGORIES*/
+"categories_title" = "Categories";
+

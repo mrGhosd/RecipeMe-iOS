@@ -12,5 +12,6 @@
 @property (nonatomic, retain) NSNumber *id;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSString * imageUrl;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 @end

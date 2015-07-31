@@ -7,6 +7,7 @@
 //
 
 #import "RMCategory.h"
+#import "ServerConnection.h"
 
 @implementation RMCategory
 - (instancetype) initWithParameters: (NSDictionary *) params{
@@ -19,6 +20,7 @@
     if(params[@"id"]) self.id = params[@"id"];
     if(params[@"title"]) self.title = params[@"title"];
     if(params[@"description"]) self.desc = params[@"description"];
+    if(params[@"image"]) self.imageUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"image"][@"name"][@"url"]];
 
 }
 @end
