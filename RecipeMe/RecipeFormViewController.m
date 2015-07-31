@@ -567,11 +567,7 @@ numberOfRowsInComponent:(NSInteger)component{
     int orientation = (int)[[UIDevice currentDevice] orientation];
     float prevViewHeight = self.formViewHeightConstraint.constant;
     keyboardHeight = keyboardFrame.size.height;
-//    if(prevViewHeight - self.formViewHeightConstraint.constant == keyboardHeight){
     self.formViewHeightConstraint.constant += keyboardHeight;
-//    }
-//    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight / 1.2);
-//    [self.scrollView setContentOffset:bottomOffset animated:YES];
 }
 - (void) keyboardWillHide:(NSNotification *) notification{
     self.formViewHeightConstraint.constant -= keyboardHeight;

@@ -13,12 +13,14 @@
 #import "AuthorizationManager.h"
 #import "UserProfileTableViewCell.h"
 #import "UserViewController.h"
+#import <UICKeyChainStore.h>
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
     NSArray *menuIds;
     NSArray *menuIcons;
     AuthorizationManager *auth;
+    UICKeyChainStore *store;
 }
 
 @end
@@ -28,8 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
+    store = [UICKeyChainStore keyChainStore];
     [self initSidebarData];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn) name:@"currentUserWasReseived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn) name:@"currentUserWasReseived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedOut) name:@"signedOut" object:nil];
     UIImageView *bgView = [[UIImageView alloc] init];
     [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
     self.tableView.backgroundView = bgView;
@@ -48,15 +52,21 @@
     [self initSidebarData];
     [self.tableView reloadData];
 }
+- (void) userSignedOut{
+    [self initSidebarData];
+    [self.tableView reloadData];
+}
 - (void) initSidebarData{
     if(auth.currentUser){
         menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
         menuIds = @[@"profile", @"recipes", @"categories"];
         menuIcons = @[@"auth.png", @"recipes.png", @"category.png"];
+        self.signOutButton.hidden = NO;
     } else {
         menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
         menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
         menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
+        self.signOutButton.hidden = YES;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -88,7 +98,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(auth.currentUser && indexPath.row == 0){
-        return 200;
+        return 60;
     } else {
         return 50;
     }
@@ -146,4 +156,13 @@
     [self.revealViewController.frontViewController.view setUserInteractionEnabled:YES];
 }
 
+- (IBAction)signOut:(id)sender {
+    auth.currentUser = nil;
+    [store removeItemForKey:@"email"];
+    [store removeItemForKey:@"password"];
+    [store removeItemForKey:@"access_token"];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"signedOut"
+     object:self];
+}
 @end

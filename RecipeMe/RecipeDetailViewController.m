@@ -127,7 +127,7 @@ float const recipeCellInfoHeight = 250;
     if(auth.currentUser){
         self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight + commentFormHeight;
     } else {
-        self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight;
+        self.commentsTableViewHeightConstraint.constant = (comments.count + 1) * commentHeight + 20;
     }
     self.viewHeightConstraint.constant =  self.ingiridnetsTableHeightConstraint.constant + self.stepTableViewHeightConstraint.constant + self.commentsTableViewHeightConstraint.constant + self.recipeInfoTableView.frame.size.height + self.recipeDescriptionWebViewHeightConstraint.constant;
 }
@@ -417,14 +417,14 @@ float const recipeCellInfoHeight = 250;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if([tableView isEqual:self.commentsTableView]){
+    if(auth.currentUser && [tableView isEqual:self.commentsTableView]){
         return 110;
     } else {
         return 0;
     }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if([tableView isEqual:self.commentsTableView]){
+    if(auth.currentUser && [tableView isEqual:self.commentsTableView]){
         commentForm *form = [[[NSBundle mainBundle] loadNibNamed:@"commentFormView" owner:self options:nil] firstObject];
         form.commentTextView.delegate = self;
         form.delegate = self;
