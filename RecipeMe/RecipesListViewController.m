@@ -30,6 +30,7 @@
     UISearchBar *searchBarMain;
     Recipe *selectedRecipe;
     UIButton *errorButton;
+    NSString *requestURL;
     UISearchDisplayController *searchDisplayController;
 }
 
@@ -50,6 +51,11 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     [self setNavigationAttributes];
     [self refreshInit];
+    if(self.category){
+        requestURL  = [NSString stringWithFormat:@"/categories/%@/recipes", self.category.id];
+    } else {
+        requestURL = @"/recipes";
+    }
     if(self.recipes){
         recipes = self.recipes;
     } else {
@@ -115,7 +121,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [refreshControl endRefreshing];
-    [connection sendDataToURL:@"/recipes" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [connection sendDataToURL:requestURL parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             errorButton.hidden = YES;
             errorButton = nil;
