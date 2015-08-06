@@ -688,11 +688,12 @@
                     <connections>
                         <outlet property="sidebarButton" destination="X0d-p2-4QI" id="rgG-Fo-4ry"/>
                         <outlet property="tableView" destination="vTU-Cu-gOE" id="M0n-n6-RAo"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="categoryRecipes" id="Fd9-B0-pdu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxj-16-YIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="-1661"/>
+            <point key="canvasLocation" x="1416" y="-781"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="r01-Jr-nTX">
@@ -822,7 +823,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRI-ns-iGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="-535"/>
+            <point key="canvasLocation" x="2133" y="-819"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fZg-3Z-zTU">
@@ -851,10 +852,11 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tlU-6g-992"/>
+        <segue reference="Fd9-B0-pdu"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="rhO-IQ-XCD"/>
-        <segue reference="EHB-Hv-DP5"/>
-        <segue reference="tlU-6g-992"/>
         <segue reference="9jT-f3-207"/>
+        <segue reference="EHB-Hv-DP5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,10 +10,12 @@
 #import "UserDelegate.h"
 #import "ServerErrorDelegate.h"
 #import "RecipeCellDelegate.h"
+@class RMCategory;
 
 @interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate, RecipeCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *recipes;
+@property (strong, nonatomic) RMCategory *category;
 - (IBAction)showSearchBar:(id)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

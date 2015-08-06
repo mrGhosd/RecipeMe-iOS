@@ -101,10 +101,10 @@ float const recipeCellInfoHeight = 250;
         [scrollView finishInfiniteScroll];
     }];
 }
-- (void) userSignedIn{
-    [self setNavigationBarButtons];
-    [self.commentsTableView reloadData];
-}
+//- (void) userSignedIn{
+//    [self setNavigationBarButtons];
+//    [self.commentsTableView reloadData];
+//}
 - (void) setNavigationBarButtons{
     if(auth.currentUser){
         NSMutableArray *buttonsArray;

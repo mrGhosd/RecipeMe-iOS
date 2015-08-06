@@ -21,6 +21,8 @@
 		640C01141B6699C400EA6465 /* stepImagePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01131B6699C400EA6465 /* stepImagePlaceholder.png */; };
 		64101E1E1B2C557B006D516D /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 64101E1D1B2C557B006D516D /* heartIcon.png */; };
 		641470411B64C80300A5392D /* RMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 641470401B64C80300A5392D /* RMCategory.m */; };
+		64226D211B74110000974B92 /* CategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64226D201B74110000974B92 /* CategoryHeaderView.m */; };
+		64226D231B74110F00974B92 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64226D221B74110F00974B92 /* CategoryHeaderView.xib */; };
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
 		642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */; };
 		643510E51B6BB7F100E1853C /* sign_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 643510E41B6BB7F100E1853C /* sign_out.png */; };
@@ -146,6 +148,9 @@
 		64101E1D1B2C557B006D516D /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
 		6414703F1B64C80300A5392D /* RMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCategory.h; sourceTree = "<group>"; };
 		641470401B64C80300A5392D /* RMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCategory.m; sourceTree = "<group>"; };
+		64226D1F1B74110000974B92 /* CategoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryHeaderView.h; sourceTree = "<group>"; };
+		64226D201B74110000974B92 /* CategoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryHeaderView.m; sourceTree = "<group>"; };
+		64226D221B74110F00974B92 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		642C4CC91B5AECFA007C2783 /* addRecipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addRecipe.png; sourceTree = "<group>"; };
 		642C4CCB1B5AF046007C2783 /* RecipeFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeFormViewController.h; sourceTree = "<group>"; };
 		642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeFormViewController.m; sourceTree = "<group>"; };
@@ -340,6 +345,9 @@
 				643510EB1B6BEB1300E1853C /* CategoriesListTableViewCell.h */,
 				643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */,
 				643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */,
+				64226D1F1B74110000974B92 /* CategoryHeaderView.h */,
+				64226D201B74110000974B92 /* CategoryHeaderView.m */,
+				64226D221B74110F00974B92 /* CategoryHeaderView.xib */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -946,6 +954,7 @@
 				643AFBC71B2C1C5C0090BC68 /* difficultIcon.png in Resources */,
 				64101E1E1B2C557B006D516D /* heartIcon.png in Resources */,
 				640C01031B668B8200EA6465 /* recipeTitleIcon.png in Resources */,
+				64226D231B74110F00974B92 /* CategoryHeaderView.xib in Resources */,
 				649589541B625BC100D3A6D8 /* RecipeFormHeader.xib in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
 				640C01071B668CBC00EA6465 /* recipePersonsIcon.png in Resources */,
@@ -1048,6 +1057,7 @@
 				643510E91B6BE7C000E1853C /* CategoriesViewController.m in Sources */,
 				6455C3D41B3C0C230013872F /* StepHeaderTableViewCell.m in Sources */,
 				643510EE1B6BEB1300E1853C /* CategoriesListTableViewCell.m in Sources */,
+				64226D211B74110000974B92 /* CategoryHeaderView.m in Sources */,
 				649589621B62750100D3A6D8 /* StepsFormTableViewCell.m in Sources */,
 				64F7CB9A1B49701C00D543AC /* AuthorizationManager.m in Sources */,
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,

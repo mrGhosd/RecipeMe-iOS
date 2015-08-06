@@ -15,10 +15,12 @@
 #import <FSImageViewer/FSBasicImageSource.h>
 #import "ServerError.h"
 #import "CategoriesListTableViewCell.h"
+#import "RecipesListViewController.h"
 
 @interface CategoriesViewController (){
     ServerConnection *connection;
     NSMutableArray *categories;
+    RMCategory *selectedCategory;
     UIButton *errorButton;
     UIRefreshControl *refreshControl;
 }
@@ -138,8 +140,8 @@
     return categories.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    selectedRecipe = recipes[indexPath.row];
-//    [self performSegueWithIdentifier:@"recipeDetail" sender:self];
+    selectedCategory = categories[indexPath.row];
+    [self performSegueWithIdentifier:@"categoryRecipes" sender:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,5 +172,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"categoryRecipes"]){
+        RecipesListViewController *view = segue.destinationViewController;
+        view.category = selectedCategory;
+    }
+}
 
 @end

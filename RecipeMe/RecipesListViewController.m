@@ -17,6 +17,8 @@
 #import "SWRevealViewController.h"
 #import "ServerError.h"
 #import "AuthorizationManager.h"
+#import "CategoryHeaderView.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface RecipesListViewController (){
     AuthorizationManager *auth;
@@ -45,7 +47,7 @@
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     [self setNavigationAttributes];
     [self refreshInit];
     if(self.recipes){
@@ -279,4 +281,33 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void) failureUpvoteCallbackWithRecipe:(id)error{
     
 }
+
+#pragma mark - Recipes Category list
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(self.category){
+        CategoryHeaderView *view = [[[NSBundle mainBundle] loadNibNamed:@"CategoryHeaderView" owner:self options:nil] firstObject];
+        view.categoryTitle.text = self.category.title;
+        view.categoryDesc.text = self.category.desc;
+        NSURL *url = [NSURL URLWithString:self.category.imageUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
+        [view.categoryImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            view.categoryImage.image = image;
+        } failure:nil];
+        view.categoryImage.clipsToBounds = YES;
+        return view;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(self.category){
+        return 124;
+    } else {
+        return 0;
+    }
+}
+
+
 @end
