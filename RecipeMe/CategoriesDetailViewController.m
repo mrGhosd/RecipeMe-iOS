@@ -7,6 +7,7 @@
 //
 
 #import "CategoriesDetailViewController.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface CategoriesDetailViewController ()
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initCategoryData];
     // Do any additional setup after loading the view.
 }
 
@@ -23,7 +25,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void) initCategoryData{
+    self.categoryTitle.text = self.category.title;
+    self.categoryDesc.text = self.category.desc;
+    
+    NSURL *url = [NSURL URLWithString:self.category.imageUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
+    [self.categoryImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        self.categoryImage.image = image;
+    } failure:nil];
+    self.categoryImage.clipsToBounds = YES;
+}
 /*
 #pragma mark - Navigation
 

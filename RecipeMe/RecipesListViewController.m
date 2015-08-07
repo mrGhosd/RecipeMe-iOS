@@ -203,6 +203,7 @@
     }
     if([segue.identifier isEqualToString:@"categoryDetail"]){
         CategoriesDetailViewController *view = segue.destinationViewController;
+        view.category = self.category;
     }
 }
 

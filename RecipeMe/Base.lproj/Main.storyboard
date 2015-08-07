@@ -584,8 +584,73 @@
                     <view key="view" contentMode="scaleToFill" id="AGv-z6-1W5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="authFullBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-3h-bEA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-Ed-dfi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5P-o7-K5i">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-Th-0eb">
+                                                <rect key="frame" x="200" y="84" width="200" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="Oqc-sN-ucg"/>
+                                                    <constraint firstAttribute="height" constant="200" id="V31-Rh-pZk"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOT-me-YXN">
+                                                <rect key="frame" x="200" y="292" width="200" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOM-R1-LEC">
+                                                <rect key="frame" x="279" y="321" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="FOM-R1-LEC" firstAttribute="leading" secondItem="v5P-o7-K5i" secondAttribute="leading" constant="10" id="7ZJ-ZN-Wam"/>
+                                            <constraint firstItem="FOM-R1-LEC" firstAttribute="top" secondItem="QOT-me-YXN" secondAttribute="bottom" constant="8" id="8Yh-KS-v5y"/>
+                                            <constraint firstItem="QOT-me-YXN" firstAttribute="leading" secondItem="v5P-o7-K5i" secondAttribute="leading" constant="50" id="A35-n3-E0r"/>
+                                            <constraint firstAttribute="centerX" secondItem="QOT-me-YXN" secondAttribute="centerX" id="Ael-5Q-YeU"/>
+                                            <constraint firstItem="RfY-Th-0eb" firstAttribute="top" secondItem="v5P-o7-K5i" secondAttribute="top" constant="50" id="DZw-P0-AFd"/>
+                                            <constraint firstItem="QOT-me-YXN" firstAttribute="top" secondItem="RfY-Th-0eb" secondAttribute="bottom" constant="8" id="KNY-RO-OEm"/>
+                                            <constraint firstAttribute="trailing" secondItem="RfY-Th-0eb" secondAttribute="trailing" constant="60" id="ecM-Hc-Lh4"/>
+                                            <constraint firstItem="RfY-Th-0eb" firstAttribute="leading" secondItem="v5P-o7-K5i" secondAttribute="leading" constant="60" id="jqb-1L-pzw"/>
+                                            <constraint firstAttribute="trailing" secondItem="QOT-me-YXN" secondAttribute="trailing" constant="50" id="obg-Wd-TOE"/>
+                                            <constraint firstAttribute="centerX" secondItem="RfY-Th-0eb" secondAttribute="centerX" id="qz2-LT-cyU"/>
+                                            <constraint firstAttribute="trailing" secondItem="FOM-R1-LEC" secondAttribute="trailing" constant="10" id="vwG-vY-oLb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="v5P-o7-K5i" secondAttribute="bottom" id="b0b-ah-eUh"/>
+                                    <constraint firstItem="v5P-o7-K5i" firstAttribute="leading" secondItem="UFT-Ed-dfi" secondAttribute="leading" id="gBU-yU-bdi"/>
+                                    <constraint firstItem="v5P-o7-K5i" firstAttribute="top" secondItem="UFT-Ed-dfi" secondAttribute="top" id="jCK-8n-9lF"/>
+                                    <constraint firstAttribute="trailing" secondItem="v5P-o7-K5i" secondAttribute="trailing" id="ncJ-KF-2Ji"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UFT-Ed-dfi" firstAttribute="top" secondItem="AGv-z6-1W5" secondAttribute="topMargin" id="GUm-xR-ttY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UFT-Ed-dfi" secondAttribute="trailing" constant="-16" id="Whh-I2-4Y9"/>
+                            <constraint firstItem="UFT-Ed-dfi" firstAttribute="leading" secondItem="AGv-z6-1W5" secondAttribute="leadingMargin" constant="-16" id="Wsp-wN-BEu"/>
+                            <constraint firstItem="y4T-Y8-31B" firstAttribute="top" secondItem="UFT-Ed-dfi" secondAttribute="bottom" id="lXo-It-ufp"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoryDesc" destination="FOM-R1-LEC" id="UVp-jJ-pRv"/>
+                        <outlet property="categoryImage" destination="RfY-Th-0eb" id="6Pg-ZK-3QX"/>
+                        <outlet property="categoryTitle" destination="QOT-me-YXN" id="oG9-Vd-gNX"/>
+                        <outlet property="scrollView" destination="UFT-Ed-dfi" id="LoF-yN-wbr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkp-nh-7AO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
