@@ -25,6 +25,7 @@
 		64226D231B74110F00974B92 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64226D221B74110F00974B92 /* CategoryHeaderView.xib */; };
 		642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */ = {isa = PBXBuildFile; fileRef = 642C4CC91B5AECFA007C2783 /* addRecipe.png */; };
 		642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */; };
+		6432AEB61B75566C0009D26C /* CategoriesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6432AEB51B75566C0009D26C /* CategoriesDetailViewController.m */; };
 		643510E51B6BB7F100E1853C /* sign_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 643510E41B6BB7F100E1853C /* sign_out.png */; };
 		643510E91B6BE7C000E1853C /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510E81B6BE7C000E1853C /* CategoriesViewController.m */; };
 		643510EE1B6BEB1300E1853C /* CategoriesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */; };
@@ -154,6 +155,8 @@
 		642C4CC91B5AECFA007C2783 /* addRecipe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addRecipe.png; sourceTree = "<group>"; };
 		642C4CCB1B5AF046007C2783 /* RecipeFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeFormViewController.h; sourceTree = "<group>"; };
 		642C4CCC1B5AF046007C2783 /* RecipeFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeFormViewController.m; sourceTree = "<group>"; };
+		6432AEB41B75566C0009D26C /* CategoriesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesDetailViewController.h; sourceTree = "<group>"; };
+		6432AEB51B75566C0009D26C /* CategoriesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesDetailViewController.m; sourceTree = "<group>"; };
 		643510E41B6BB7F100E1853C /* sign_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign_out.png; sourceTree = "<group>"; };
 		643510E71B6BE7C000E1853C /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
 		643510E81B6BE7C000E1853C /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 			children = (
 				643510E71B6BE7C000E1853C /* CategoriesViewController.h */,
 				643510E81B6BE7C000E1853C /* CategoriesViewController.m */,
+				6432AEB41B75566C0009D26C /* CategoriesDetailViewController.h */,
+				6432AEB51B75566C0009D26C /* CategoriesDetailViewController.m */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -1071,6 +1076,7 @@
 				64FFCD3D1B3C308800A4DDCC /* Comment.m in Sources */,
 				6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */,
 				64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */,
+				6432AEB61B75566C0009D26C /* CategoriesDetailViewController.m in Sources */,
 				6495895B1B62640D00D3A6D8 /* IngridientsFormTableViewCell.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */,

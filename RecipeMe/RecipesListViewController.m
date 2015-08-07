@@ -18,6 +18,7 @@
 #import "ServerError.h"
 #import "AuthorizationManager.h"
 #import "CategoryHeaderView.h"
+#import "CategoriesDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
 
 @interface RecipesListViewController (){
@@ -200,6 +201,9 @@
         RecipeDetailViewController *view = segue.destinationViewController;
         view.recipe = selectedRecipe;
     }
+    if([segue.identifier isEqualToString:@"categoryDetail"]){
+        CategoriesDetailViewController *view = segue.destinationViewController;
+    }
 }
 
 /*
@@ -294,8 +298,13 @@ shouldReloadTableForSearchString:(NSString *)searchString
         CategoryHeaderView *view = [[[NSBundle mainBundle] loadNibNamed:@"CategoryHeaderView" owner:self options:nil] firstObject];
         view.categoryTitle.text = self.category.title;
         view.categoryDesc.text = self.category.desc;
+        
         NSURL *url = [NSURL URLWithString:self.category.imageUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetailCategory:)];
+        singleTap.numberOfTapsRequired = 1;
+        [view setUserInteractionEnabled:YES];
+        [view addGestureRecognizer:singleTap];
         UIImage *placeholderImage = [UIImage imageNamed:@"recipes_placeholder.png"];
         [view.categoryImage setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
             view.categoryImage.image = image;
@@ -314,6 +323,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
         return 0;
     }
 }
-
+- (void) showDetailCategory: (id) sender{
+    [self performSegueWithIdentifier:@"categoryDetail" sender:self];
+}
 
 @end
