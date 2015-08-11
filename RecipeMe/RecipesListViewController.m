@@ -20,6 +20,8 @@
 #import "CategoryHeaderView.h"
 #import "CategoriesDetailViewController.h"
 #import <UIImageView+AFNetworking.h>
+#import <SIOSocket/SIOSocket.h>
+
 
 @interface RecipesListViewController (){
     AuthorizationManager *auth;
@@ -33,8 +35,9 @@
     UIButton *errorButton;
     NSString *requestURL;
     UISearchDisplayController *searchDisplayController;
+    SIOSocket *recipeSocket;
 }
-
+@property SIOSocket *socket;
 @end
 
 @implementation RecipesListViewController
@@ -69,6 +72,39 @@
         [self loadRecipesList];
         [tableView finishInfiniteScroll];
     }];
+    
+    [SIOSocket socketWithHost: @"http://127.0.0.1:5001" response: ^(SIOSocket *socket) {
+        self.socket = socket;
+        
+        __weak typeof(self) weakSelf = self;
+        self.socket.onConnect = ^(){
+            NSLog(@"Success connection");
+        };
+        
+        self.socket.onDisconnect = ^(){
+            NSLog(@"Disconnected");
+        };
+        
+        self.socket.onReconnect = ^(NSInteger count){
+        
+        };
+        
+        self.socket.onError = ^(NSDictionary *error){
+            
+        };
+        
+        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            NSDictionary *params = [args firstObject];
+            if([params[@"resource"] isEqualToString:@"Recipe"]){
+                if([params[@"action"] isEqualToString:@"create"]){
+                    [self handleSocketRecipeCreate:params[@"obj"]];
+                }
+            }
+        }];
+    }];
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -327,5 +363,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void) showDetailCategory: (id) sender{
     [self performSegueWithIdentifier:@"categoryDetail" sender:self];
 }
+- (void) handleSocketRecipeCreate: (NSDictionary *) recipe{
 
+}
 @end

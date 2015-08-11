@@ -33,6 +33,7 @@ PODS:
     - OCHamcrest (~> 4.0)
   - OHHTTPStubs (4.0.2)
   - RDRStickyKeyboardView (0.0.2)
+  - SIOSocket (0.2.0)
   - SWTableViewCell (0.3.7)
   - UAProgressView (0.1.1)
   - UICKeyChainStore (2.0.5)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - OCMockito
   - OHHTTPStubs
   - RDRStickyKeyboardView
+  - SIOSocket (~> 0.2.0)
   - SWTableViewCell (~> 0.3.7)
   - UICKeyChainStore
   - UIImage-ResizeMagick
@@ -64,10 +66,11 @@ SPEC CHECKSUMS:
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
+  SIOSocket: 2facc0bd02ae72d98c223634a46dd8ebdf9be321
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070
   UICKeyChainStore: a389515ca090d4d49780fd563fec961571caa92b
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
   UIScrollView-InfiniteScroll: cfa860f96f5a2e3b4575d59fe6d08d337093ac2a
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

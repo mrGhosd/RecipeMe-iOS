@@ -56,7 +56,6 @@ float const recipeCellInfoHeight = 250;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     selectedIndex = -1;
     self.recipeDescWebView.delegate = self;
     auth = [AuthorizationManager sharedInstance];

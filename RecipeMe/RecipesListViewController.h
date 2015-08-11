@@ -18,5 +18,4 @@
 @property (strong, nonatomic) RMCategory *category;
 - (IBAction)showSearchBar:(id)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-
 @end
