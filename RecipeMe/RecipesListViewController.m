@@ -36,6 +36,7 @@
     NSString *requestURL;
     UISearchDisplayController *searchDisplayController;
     SIOSocket *recipeSocket;
+    UIApplication *app;
 }
 @property SIOSocket *socket;
 @end
@@ -44,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    app = [UIApplication sharedApplication];
     auth = [AuthorizationManager sharedInstance];
     pageNumber = @1;
     recipes = [NSMutableArray new];
@@ -94,10 +96,17 @@
         };
         
         [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            app.networkActivityIndicatorVisible = YES;
             NSDictionary *params = [args firstObject];
             if([params[@"resource"] isEqualToString:@"Recipe"]){
                 if([params[@"action"] isEqualToString:@"create"]){
                     [self handleSocketRecipeCreate:params[@"obj"]];
+                }
+                if([params[@"action"] isEqualToString:@"destroy"]){
+                    [self handleSocketRecipeDestroy:params[@"obj"]];
+                }
+                if([params[@"action"] isEqualToString:@"attributes-change"]){
+                    [self handleSocketRecipeUpdate:params[@"obj"]];
                 }
             }
         }];
@@ -364,6 +373,33 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [self performSegueWithIdentifier:@"categoryDetail" sender:self];
 }
 - (void) handleSocketRecipeCreate: (NSDictionary *) recipe{
-
+    Recipe *rec = [[Recipe alloc] initWithParameters:recipe];
+    [recipes insertObject:rec atIndex:0];
+    [self.tableView reloadData];
+    [self hideNetworkActivityIndicator];
+}
+- (void) handleSocketRecipeDestroy: (NSDictionary *) recipe{
+    NSInteger *recipeIndex = [self indexOfRecipe:recipe[@"id"]];
+    [recipes removeObjectAtIndex:recipeIndex];
+    [self.tableView reloadData];
+    [self hideNetworkActivityIndicator];
+}
+- (NSInteger) indexOfRecipe: (NSNumber *) recipeId{
+    NSInteger *searchId;
+    for(Recipe *recipe in recipes){
+        if([recipe.id isEqualToNumber:recipeId]){
+            searchId = [recipes indexOfObject:recipe];
+        }
+    }
+    return searchId;
+}
+- (void) handleSocketRecipeUpdate: (NSDictionary *) recipe{
+    NSInteger *recipeIndex = [self indexOfRecipe:recipe[@"id"]];
+    Recipe *updRecipe = [recipes objectAtIndex:recipeIndex];
+    [updRecipe setParams:recipe];
+    [self.tableView reloadData];
+}
+- (void) hideNetworkActivityIndicator{
+    app.networkActivityIndicatorVisible = NO;
 }
 @end

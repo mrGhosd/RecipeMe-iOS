@@ -38,4 +38,5 @@
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (UIImage *) image;
 - (void) upvoteFroRecipeWithCell: (id) cell;
+- (void) setParams: (NSDictionary *) params;
 @end
