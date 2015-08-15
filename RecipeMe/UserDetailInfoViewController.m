@@ -18,6 +18,7 @@
 #import "RecipeDetailViewController.h"
 #import <SWTableViewCell.h>
 #import "CommentViewController.h"
+#import "UserListTableViewCell.h"
 
 @interface UserDetailInfoViewController (){
     ServerConnection *connection;
@@ -43,6 +44,9 @@
     [self.tableView registerClass:[UserCommentTableViewCell class] forCellReuseIdentifier:@"commentCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"UserCommentTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"commentCell"];
+    [self.tableView registerClass:[UserListTableViewCell class] forCellReuseIdentifier:@"userCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserListTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"userCell"];
     [self initSearchBar];
     userObjects = [NSMutableArray new];
     page = @1;
@@ -78,6 +82,9 @@
     if([self.scopeID isEqualToString:@"comments"]){
         [self parseCommentsData:data];
     }
+    if([self.scopeID isEqualToString:@"following"]){
+        [self parseUserInfoData: data];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,7 +117,16 @@
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
-
+- (void) parseUserInfoData: (id) data{
+    if(data != [NSNull null]){
+        for(NSDictionary *user in data){
+            User *usr = [[User alloc] initWithParams:user];
+            [userObjects addObject:usr];
+        }
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.searchDisplayController.searchResultsTableView){
@@ -137,8 +153,8 @@
         [cell initWithRecipe:recipe andCurrentUser:auth.currentUser];
         //    cell.delegate = self;
         return cell;
-    } else {
-//    if([self.scopeID isEqualToString:@"comments"]){
+    }
+    if([self.scopeID isEqualToString:@"comments"]){
         static NSString *CellIdentifier = @"commentCell";
         Comment *comment;
         if (tableView == self.searchDisplayController.searchResultsTableView){
@@ -163,6 +179,23 @@
                 cell.rightUtilityButtons = rightUtilityButtons;
                 cell.delegate = self;
         }
+        return cell;
+    } else {
+        static NSString *CellIdentifier = @"userCell";
+        User *user;
+        if (tableView == self.searchDisplayController.searchResultsTableView){
+            user = searchResults[indexPath.row];
+        } else {
+            user = userObjects[indexPath.row];
+        }
+        UserListTableViewCell *cell = (UserListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        cell.delegate = self;
+        if(cell == nil){
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserListTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        [cell initWithUserData:user];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
         return cell;
     }
     
@@ -192,8 +225,10 @@
 {
     if([self.scopeID isEqualToString:@"recipes"]){
         return 250;
-    } else {
+    } else if([self.scopeID isEqualToString:@"comments"]){
         return 92;
+    } else {
+        return 100;
     }
 }
 
@@ -218,11 +253,15 @@
                            predicateWithFormat:@"text contains[c] %@",
                            searchText];
     }
+    if([self.scopeID isEqualToString:@"following"]){
+        resultPredicate = [NSPredicate
+                               predicateWithFormat:@"name contains[c] %@ OR surname contains[c] %@ OR nickname contains[c] %@",
+                               searchText, searchText, searchText];
+    }
     searchResults = [userObjects filteredArrayUsingPredicate:resultPredicate];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller
-shouldReloadTableForSearchString:(NSString *)searchString
+-(BOOL)searchDisplayController: (UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
                                scope:[[self.searchDisplayController.searchBar scopeButtonTitles]

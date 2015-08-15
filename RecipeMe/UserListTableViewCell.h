@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface UserListTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
@@ -15,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentsCount;
 @property (strong, nonatomic) IBOutlet UILabel *followersCount;
 @property (strong, nonatomic) IBOutlet UILabel *followingCount;
-
+@property (strong, nonatomic) User *user;
+- (void) initWithUserData: (User *) user;
 @end
