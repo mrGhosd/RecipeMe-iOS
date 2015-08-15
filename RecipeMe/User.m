@@ -24,6 +24,8 @@
     if(params[@"nickname"]) self.nickname = params[@"nickname"];
     if(params[@"date_of_birth"]) self.dateOfBirth = params[@"date_of_birth"];
     if(params[@"city"]) self.city = params[@"city"];
+    if(params[@"followers_ids"]) self.followersIds = [NSMutableArray arrayWithArray:params[@"followers_ids"]];
+    if(params[@"following_ids"]) self.followingIds = [NSMutableArray arrayWithArray:params[@"following_ids"]];
 //    if(params[@"user_id"]) self.userId = params[@"user_id"];
 //    if(params[@"category_id"]) self.categoryId = params[@"category_id"];
 //    if(params[@"title"]) self.title = params[@"title"];

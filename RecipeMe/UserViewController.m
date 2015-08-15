@@ -8,6 +8,7 @@
 
 #import "UserViewController.h"
 #import "SWRevealViewController.h"
+#import "UserProfileView.h"
 
 @interface UserViewController ()
 
@@ -40,6 +41,15 @@
 //        revealViewController.rightViewController = nil;
 //    }
 }
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UserProfileView *view = [[[NSBundle mainBundle] loadNibNamed:@"UserProfileView" owner:self options:nil] firstObject];
+    [view setUserData:self.user];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 250;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,7 +67,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250;
+    return 50;
 }
 
 /*

@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSString * city;
 @property (nonatomic, retain) NSDate * dateOfBirth;
+@property (nonatomic, retain) NSMutableArray * followersIds;
+@property (nonatomic, retain) NSMutableArray * followingIds;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (NSString *) correctNaming;
 @end

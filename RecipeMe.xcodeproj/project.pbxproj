@@ -30,6 +30,10 @@
 		643510E91B6BE7C000E1853C /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510E81B6BE7C000E1853C /* CategoriesViewController.m */; };
 		643510EE1B6BEB1300E1853C /* CategoriesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */; };
 		643510EF1B6BEB1300E1853C /* CategoriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */; };
+		6439C7031B7F3431004B1186 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6439C7021B7F3431004B1186 /* UserProfileView.m */; };
+		6439C7061B7F344D004B1186 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7051B7F344D004B1186 /* UserProfileView.xib */; };
+		6439C7091B7F3DFD004B1186 /* profileViewBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7071B7F3DFD004B1186 /* profileViewBg.png */; };
+		6439C70A1B7F3DFD004B1186 /* menuWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
@@ -164,6 +168,11 @@
 		643510EC1B6BEB1300E1853C /* CategoriesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesListTableViewCell.m; sourceTree = "<group>"; };
 		643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesListTableViewCell.xib; sourceTree = "<group>"; };
 		643510F01B6BF14C00E1853C /* CategoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryDelegate.h; sourceTree = "<group>"; };
+		6439C7011B7F3431004B1186 /* UserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileView.h; sourceTree = "<group>"; };
+		6439C7021B7F3431004B1186 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
+		6439C7051B7F344D004B1186 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileView.xib; sourceTree = "<group>"; };
+		6439C7071B7F3DFD004B1186 /* profileViewBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profileViewBg.png; path = ../../../Downloads/profileViewBg.png; sourceTree = "<group>"; };
+		6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuWhiteIcon.png; path = ../../../Downloads/menuWhiteIcon.png; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
@@ -355,6 +364,16 @@
 				64226D221B74110F00974B92 /* CategoryHeaderView.xib */,
 			);
 			name = categories;
+			sourceTree = "<group>";
+		};
+		6439C7041B7F3435004B1186 /* users */ = {
+			isa = PBXGroup;
+			children = (
+				6439C7011B7F3431004B1186 /* UserProfileView.h */,
+				6439C7021B7F3431004B1186 /* UserProfileView.m */,
+				6439C7051B7F344D004B1186 /* UserProfileView.xib */,
+			);
+			name = users;
 			sourceTree = "<group>";
 		};
 		643AFBA11B2B30740090BC68 /* ServerConnection */ = {
@@ -586,6 +605,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6439C7041B7F3435004B1186 /* users */,
 				643510EA1B6BEAEF00E1853C /* categories */,
 				64D7D3E31B4B050E00F8061E /* sidebar */,
 				64F7CB861B49426700D543AC /* authorization */,
@@ -663,6 +683,8 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6439C7071B7F3DFD004B1186 /* profileViewBg.png */,
+				6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */,
 				643510E41B6BB7F100E1853C /* sign_out.png */,
 				640C01131B6699C400EA6465 /* stepImagePlaceholder.png */,
 				640C010F1B66969C00EA6465 /* ingridientName.png */,
@@ -940,8 +962,10 @@
 				6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */,
 				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */,
+				6439C70A1B7F3DFD004B1186 /* menuWhiteIcon.png in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6459A2841B6446BC009F95A3 /* delete85.png in Resources */,
+				6439C7061B7F344D004B1186 /* UserProfileView.xib in Resources */,
 				6455C3BB1B3BEFDF0013872F /* StepTableViewCell.xib in Resources */,
 				64F7CB921B49528500D543AC /* authMailIcon.png in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
@@ -970,6 +994,7 @@
 				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
 				640C01141B6699C400EA6465 /* stepImagePlaceholder.png in Resources */,
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,
+				6439C7091B7F3DFD004B1186 /* profileViewBg.png in Resources */,
 				643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */,
 				64F7CB901B4942CE00D543AC /* RegistrationView.xib in Resources */,
 				6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */,
@@ -1091,6 +1116,7 @@
 				643AFBB41B2B70A20090BC68 /* RecipesListViewController.m in Sources */,
 				64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */,
 				641470411B64C80300A5392D /* RMCategory.m in Sources */,
+				6439C7031B7F3431004B1186 /* UserProfileView.m in Sources */,
 				647031F31B2AF0420084D58A /* main.m in Sources */,
 				6455C3CF1B3C09FF0013872F /* IngridientHeaderTableViewCell.m in Sources */,
 				64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */,
