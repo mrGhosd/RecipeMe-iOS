@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import <SWTableViewCell.h>
 
 @interface UserProfileTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;

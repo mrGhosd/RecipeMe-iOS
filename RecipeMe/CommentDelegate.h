@@ -8,4 +8,5 @@
 - (void) failureDeleteCallback: (id) error;
 - (void) successUpdateCallback: (id) comment;
 - (void) failureUpdateCallback: (id) error;
+- (void) clickOnRecipeImage: (id) recipe;
 @end

@@ -39,8 +39,10 @@
     self.recipeImage.clipsToBounds = YES;
     self.recipeImage.layer.cornerRadius = self.recipeImage.frame.size.height / 2;
     
-    
-    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.recipeImage setUserInteractionEnabled:YES];
+    [self.recipeImage addGestureRecognizer:singleTap];
 }
 - (void) setAvatarImage{
     NSURL *url = [NSURL URLWithString:self.comment.user.avatarUrl];
@@ -51,5 +53,9 @@
     } failure:nil];
     self.userAvatar.clipsToBounds = YES;
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
+}
+
+- (void) imageTap: (id) sender{
+    [self.delegate clickOnRecipeImage:self.comment.recipe];
 }
 @end

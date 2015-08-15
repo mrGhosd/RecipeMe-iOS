@@ -15,9 +15,15 @@
 #import <UIScrollView+InfiniteScroll.h>
 #import "Comment.h"
 #import "UserCommentTableViewCell.h"
+#import "RecipeDetailViewController.h"
+#import <SWTableViewCell.h>
+#import "CommentViewController.h"
+
 @interface UserDetailInfoViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
+    Recipe *selectedRecipe;
+    Comment *selectedComment;
     NSNumber *page;
     NSMutableArray *userObjects;
     NSMutableArray *searchResults;
@@ -78,11 +84,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.scopeID = nil;
-    self.user = nil;
-}
+//- (void) viewDidDisappear:(BOOL)animated{
+//    [super viewWillDisappear:YES];
+//    self.scopeID = nil;
+//    self.user = nil;
+//}
 - (void) parseRecipesData:(id) data{
     if(data != [NSNull null]){
         for(NSDictionary *recipe in data){
@@ -141,14 +147,45 @@
             comment = userObjects[indexPath.row];
         }
         UserCommentTableViewCell *cell = (UserCommentTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.delegate = self;
         if(cell == nil){
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserCommentTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
         [cell initCommentData:comment];
+        
+        if([auth.currentUser.id isEqualToNumber:comment.user.id]){
+                NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+                [rightUtilityButtons sw_addUtilityButtonWithColor:
+                 [UIColor greenColor] icon:[UIImage imageNamed:@"edit-32.png"]];
+                [rightUtilityButtons sw_addUtilityButtonWithColor:
+                 [UIColor redColor] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
+                cell.rightUtilityButtons = rightUtilityButtons;
+                cell.delegate = self;
+        }
         return cell;
     }
     
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Comment *comment = userObjects[indexPath.row];
+    selectedComment = comment;
+    switch (index) {
+        case 0:{
+            [self performSegueWithIdentifier:@"editComment" sender:self];
+            break;
+        }
+        case 1:{
+            [MBProgressHUD showHUDAddedTo:self.view
+                                 animated:YES];
+            [comment deleteFromServer];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,6 +194,13 @@
         return 250;
     } else {
         return 92;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if([self.scopeID isEqualToString:@"recipes"]){
+        selectedRecipe = userObjects[indexPath.row];
+        [self performSegueWithIdentifier:@"recipeView" sender:self];
     }
 }
 
@@ -192,14 +236,36 @@ shouldReloadTableForSearchString:(NSString *)searchString
     tableView.rowHeight = 250
     ; // or some other height
 }
-/*
+- (void) clickOnRecipeImage:(id)recipe{
+    selectedRecipe = recipe;
+    [self performSegueWithIdentifier:@"recipeView" sender:self];
+}
 #pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"recipeView"]){
+        RecipeDetailViewController *view = segue.destinationViewController;
+        view.recipe = selectedRecipe;
+    }
+    if([segue.identifier isEqualToString:@"editComment"]){
+        CommentViewController *view = segue.destinationViewController;
+        view.comment = selectedComment;
+    }
+}
 
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
-
+#pragma mark - CommentDelegate methods
+- (void) succesDeleteCallback:(Comment *)comment{
+    [userObjects removeObject:comment];
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void) failureDeleteCallback:(id)error{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 @end

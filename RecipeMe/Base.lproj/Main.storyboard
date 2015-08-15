@@ -54,6 +54,8 @@
                         <outlet property="searchBar" destination="f0P-De-DV1" id="tfg-rv-7Kk"/>
                         <outlet property="searchDisplayController" destination="u5w-RQ-euQ" id="2eY-wo-GTh"/>
                         <outlet property="tableView" destination="l2X-13-KZV" id="KWX-FS-3TL"/>
+                        <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="Ngo-ju-t5l"/>
+                        <segue destination="y6t-J6-Dau" kind="show" identifier="editComment" id="DX1-Df-l95"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCC-ev-fDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,7 +69,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4422" y="-1281"/>
+            <point key="canvasLocation" x="4486" y="-905"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="xUq-bw-MYf">
@@ -292,7 +294,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -1028,8 +1030,9 @@
         <segue reference="rqB-h1-uFK"/>
         <segue reference="rhO-IQ-XCD"/>
         <segue reference="x1S-wy-2mz"/>
-        <segue reference="Fd9-B0-pdu"/>
-        <segue reference="mKy-iu-30W"/>
+        <segue reference="DX1-Df-l95"/>
+        <segue reference="Ngo-ju-t5l"/>
         <segue reference="3if-zo-Jsd"/>
+        <segue reference="Fd9-B0-pdu"/>
     </inferredMetricsTieBreakers>
 </document>

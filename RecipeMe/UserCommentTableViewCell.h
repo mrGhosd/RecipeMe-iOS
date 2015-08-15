@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Comment.h"
-@interface UserCommentTableViewCell : UITableViewCell
+#import "CommentDelegate.h"
+#import <SWTableViewCell.h>
+
+@interface UserCommentTableViewCell : SWTableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *recipeImage;
 @property (strong, nonatomic) IBOutlet UIView *userView;
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
@@ -16,5 +19,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *commentText;
 @property (strong, nonatomic) IBOutlet UILabel *commentCreatedAt;
 @property (strong, nonatomic) Comment *comment;
+@property (strong, nonatomic) id<CommentDelegate> delegate;
 - (void) initCommentData: (Comment *) comment;
 @end
