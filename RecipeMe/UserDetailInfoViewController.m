@@ -12,6 +12,7 @@
 #import "RecipesListTableViewCell.h"
 #import "AuthorizationManager.h"
 #import <MBProgressHUD.h>
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface UserDetailInfoViewController (){
     ServerConnection *connection;
@@ -38,6 +39,11 @@
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
     [self loadUserInfoData];
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        page = [NSNumber numberWithInteger:[page integerValue] + 1];
+        [self loadUserInfoData];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void) loadUserInfoData{
@@ -83,6 +89,9 @@
 
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.searchDisplayController.searchResultsTableView){
+        return searchResults.count;
+    }
     return userObjects.count;
     
 }

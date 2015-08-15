@@ -19,7 +19,6 @@
 #import "AuthorizationManager.h"
 #import "CategoryHeaderView.h"
 #import "CategoriesDetailViewController.h"
-#import <UIImageView+AFNetworking.h>
 #import <SIOSocket/SIOSocket.h>
 
 
