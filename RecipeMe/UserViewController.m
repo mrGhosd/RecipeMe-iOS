@@ -83,6 +83,7 @@
     if([segue.identifier isEqualToString:@"detailList"]){
         UserDetailInfoViewController *view = segue.destinationViewController;
         view.scopeID = panelID;
+        view.user = self.user;
     }
 }
 /*
