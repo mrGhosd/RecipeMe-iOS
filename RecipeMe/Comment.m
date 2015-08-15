@@ -29,6 +29,7 @@
     if(params[@"text"]) self.text = params[@"text"];
     if(params[@"user_id"]) self.userId = params[@"user_id"];
     if(params[@"user"]) self.user = [[User alloc] initWithParams:params[@"user"]];
+    if(params[@"recipe"]) self.recipe = [[Recipe alloc] initWithParameters: params[@"recipe"]];
     if(params[@"recipe_id"]) self.recipeId = params[@"recipe_id"];
     if(params[@"rate"]) self.rate = params[@"rate"];
     if(params[@"created_at"]) self.createdAt = [self correctConvertOfDate:params[@"created_at"]];

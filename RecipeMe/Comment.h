@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "Recipe.h"
 #import "CommentDelegate.h"
 
 @interface Comment : NSObject
@@ -18,6 +19,7 @@
 @property (nonatomic, retain) NSNumber *rate;
 @property (nonatomic, retain) NSDate *createdAt;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) Recipe *recipe;
 @property (nonatomic, retain) id<CommentDelegate> delegate;
 + (NSMutableArray *) initializeFromArray: (NSMutableArray *) commentsList;
 - (instancetype) initWithParameters: (NSDictionary *) params;

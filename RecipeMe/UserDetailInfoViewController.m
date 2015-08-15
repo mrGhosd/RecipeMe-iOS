@@ -13,7 +13,8 @@
 #import "AuthorizationManager.h"
 #import <MBProgressHUD.h>
 #import <UIScrollView+InfiniteScroll.h>
-
+#import "Comment.h"
+#import "UserCommentTableViewCell.h"
 @interface UserDetailInfoViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
@@ -33,6 +34,9 @@
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
+    [self.tableView registerClass:[UserCommentTableViewCell class] forCellReuseIdentifier:@"commentCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserCommentTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"commentCell"];
     [self initSearchBar];
     userObjects = [NSMutableArray new];
     page = @1;
@@ -65,6 +69,9 @@
     if([self.scopeID isEqualToString:@"recipes"]){
         [self parseRecipesData:data];
     }
+    if([self.scopeID isEqualToString:@"comments"]){
+        [self parseCommentsData:data];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,6 +94,17 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+- (void) parseCommentsData:(id) data{
+    if(data != [NSNull null]){
+        for(NSDictionary *comment in data){
+            Comment *comm = [[Comment alloc] initWithParameters:comment];
+            [userObjects addObject:comm];
+        }
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.searchDisplayController.searchResultsTableView){
@@ -96,36 +114,66 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"recipeCell";
-    Recipe *recipe;
-    if (tableView == self.searchDisplayController.searchResultsTableView){
-        recipe = searchResults[indexPath.row];
+    if([self.scopeID isEqualToString:@"recipes"]){
+        static NSString *CellIdentifier = @"recipeCell";
+        Recipe *recipe;
+        if (tableView == self.searchDisplayController.searchResultsTableView){
+            recipe = searchResults[indexPath.row];
+        } else {
+            recipe = userObjects[indexPath.row];
+        }
+        recipe.delegate = self;
+        RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil){
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        [cell initWithRecipe:recipe andCurrentUser:auth.currentUser];
+        //    cell.delegate = self;
+        return cell;
     } else {
-        recipe = userObjects[indexPath.row];
+//    if([self.scopeID isEqualToString:@"comments"]){
+        static NSString *CellIdentifier = @"commentCell";
+        Comment *comment;
+        if (tableView == self.searchDisplayController.searchResultsTableView){
+            comment = searchResults[indexPath.row];
+        } else {
+            comment = userObjects[indexPath.row];
+        }
+        UserCommentTableViewCell *cell = (UserCommentTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil){
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserCommentTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        [cell initCommentData:comment];
+        return cell;
     }
-    recipe.delegate = self;
-    RecipesListTableViewCell *cell = (RecipesListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil){
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RecipesListTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
-    [cell initWithRecipe:recipe andCurrentUser:auth.currentUser];
-//    cell.delegate = self;
-    return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 250;
+    if([self.scopeID isEqualToString:@"recipes"]){
+        return 250;
+    } else {
+        return 92;
+    }
 }
 
 #pragma UISearchBar and UISearchBarController
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate
+    NSPredicate *resultPredicate;
+    if([self.scopeID isEqualToString:@"recipes"]){
+        resultPredicate = [NSPredicate
                                     predicateWithFormat:@"title contains[c] %@",
                                     searchText];
-    
+    }
+    if([self.scopeID isEqualToString:@"comments"]){
+        resultPredicate = [NSPredicate
+                           predicateWithFormat:@"text contains[c] %@",
+                           searchText];
+    }
     searchResults = [userObjects filteredArrayUsingPredicate:resultPredicate];
 }
 

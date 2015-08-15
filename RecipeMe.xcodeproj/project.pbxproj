@@ -36,6 +36,8 @@
 		6439C70F1B7F5DA4004B1186 /* profileViewBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C70D1B7F5DA4004B1186 /* profileViewBg.png */; };
 		6439C7101B7F5DA4004B1186 /* menuWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C70E1B7F5DA4004B1186 /* menuWhiteIcon.png */; };
 		6439C7131B7F5DEE004B1186 /* UserDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6439C7121B7F5DEE004B1186 /* UserDetailInfoViewController.m */; };
+		6439C71A1B7FB53C004B1186 /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6439C7181B7FB53C004B1186 /* UserCommentTableViewCell.m */; };
+		6439C71B1B7FB53C004B1186 /* UserCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7191B7FB53C004B1186 /* UserCommentTableViewCell.xib */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
@@ -178,6 +180,9 @@
 		6439C70E1B7F5DA4004B1186 /* menuWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuWhiteIcon.png; sourceTree = "<group>"; };
 		6439C7111B7F5DEE004B1186 /* UserDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailInfoViewController.h; sourceTree = "<group>"; };
 		6439C7121B7F5DEE004B1186 /* UserDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailInfoViewController.m; sourceTree = "<group>"; };
+		6439C7171B7FB53C004B1186 /* UserCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentTableViewCell.h; sourceTree = "<group>"; };
+		6439C7181B7FB53C004B1186 /* UserCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentTableViewCell.m; sourceTree = "<group>"; };
+		6439C7191B7FB53C004B1186 /* UserCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCommentTableViewCell.xib; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
@@ -377,6 +382,9 @@
 				6439C7011B7F3431004B1186 /* UserProfileView.h */,
 				6439C7021B7F3431004B1186 /* UserProfileView.m */,
 				6439C7051B7F344D004B1186 /* UserProfileView.xib */,
+				6439C7171B7FB53C004B1186 /* UserCommentTableViewCell.h */,
+				6439C7181B7FB53C004B1186 /* UserCommentTableViewCell.m */,
+				6439C7191B7FB53C004B1186 /* UserCommentTableViewCell.xib */,
 			);
 			name = users;
 			sourceTree = "<group>";
@@ -957,6 +965,7 @@
 				640C010B1B66909B00EA6465 /* recipeFormTags.png in Resources */,
 				6495895E1B626B2D00D3A6D8 /* check-failed.png in Resources */,
 				642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */,
+				6439C71B1B7FB53C004B1186 /* UserCommentTableViewCell.xib in Resources */,
 				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
 				640C01121B66969C00EA6465 /* ingridientSize.png in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
@@ -1103,6 +1112,7 @@
 				642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
+				6439C71A1B7FB53C004B1186 /* UserCommentTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
 				64F7CB811B4939CA00D543AC /* AuthorizationViewController.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
