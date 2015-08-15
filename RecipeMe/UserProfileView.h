@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
+#import "UserDelegate.h"
 @interface UserProfileView : UIView
 @property (strong, nonatomic) IBOutlet UIButton *sidbarButton;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) User *user;
 - (void) setUserData: (User *) user;
+@property (strong, nonatomic) id <UserDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIView *recipesView;
 @property (strong, nonatomic) IBOutlet UIView *commentsView;
 @property (strong, nonatomic) IBOutlet UIView *followersView;

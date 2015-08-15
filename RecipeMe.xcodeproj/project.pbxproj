@@ -32,8 +32,10 @@
 		643510EF1B6BEB1300E1853C /* CategoriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643510ED1B6BEB1300E1853C /* CategoriesListTableViewCell.xib */; };
 		6439C7031B7F3431004B1186 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6439C7021B7F3431004B1186 /* UserProfileView.m */; };
 		6439C7061B7F344D004B1186 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7051B7F344D004B1186 /* UserProfileView.xib */; };
-		6439C7091B7F3DFD004B1186 /* profileViewBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7071B7F3DFD004B1186 /* profileViewBg.png */; };
-		6439C70A1B7F3DFD004B1186 /* menuWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */; };
+		6439C70C1B7F5D95004B1186 /* followedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C70B1B7F5D95004B1186 /* followedIcon.png */; };
+		6439C70F1B7F5DA4004B1186 /* profileViewBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C70D1B7F5DA4004B1186 /* profileViewBg.png */; };
+		6439C7101B7F5DA4004B1186 /* menuWhiteIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6439C70E1B7F5DA4004B1186 /* menuWhiteIcon.png */; };
+		6439C7131B7F5DEE004B1186 /* UserDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6439C7121B7F5DEE004B1186 /* UserDetailInfoViewController.m */; };
 		643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
 		643AFBA71B2B31BE0090BC68 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */; };
 		643AFBA81B2B33AF0090BC68 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 643AFBA31B2B30AD0090BC68 /* ServerConnection.m */; };
@@ -171,8 +173,11 @@
 		6439C7011B7F3431004B1186 /* UserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileView.h; sourceTree = "<group>"; };
 		6439C7021B7F3431004B1186 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
 		6439C7051B7F344D004B1186 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileView.xib; sourceTree = "<group>"; };
-		6439C7071B7F3DFD004B1186 /* profileViewBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profileViewBg.png; path = ../../../Downloads/profileViewBg.png; sourceTree = "<group>"; };
-		6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuWhiteIcon.png; path = ../../../Downloads/menuWhiteIcon.png; sourceTree = "<group>"; };
+		6439C70B1B7F5D95004B1186 /* followedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followedIcon.png; sourceTree = "<group>"; };
+		6439C70D1B7F5DA4004B1186 /* profileViewBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileViewBg.png; sourceTree = "<group>"; };
+		6439C70E1B7F5DA4004B1186 /* menuWhiteIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuWhiteIcon.png; sourceTree = "<group>"; };
+		6439C7111B7F5DEE004B1186 /* UserDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailInfoViewController.h; sourceTree = "<group>"; };
+		6439C7121B7F5DEE004B1186 /* UserDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailInfoViewController.m; sourceTree = "<group>"; };
 		643AFBA21B2B30AD0090BC68 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		643AFBA31B2B30AD0090BC68 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		643AFBA61B2B31BE0090BC68 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
@@ -658,6 +663,8 @@
 			children = (
 				64F7CB9E1B499A0200D543AC /* UserViewController.h */,
 				64F7CB9F1B499A0200D543AC /* UserViewController.m */,
+				6439C7111B7F5DEE004B1186 /* UserDetailInfoViewController.h */,
+				6439C7121B7F5DEE004B1186 /* UserDetailInfoViewController.m */,
 			);
 			name = users;
 			sourceTree = "<group>";
@@ -683,8 +690,9 @@
 		64C5B1851B48286B0043C9D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				6439C7071B7F3DFD004B1186 /* profileViewBg.png */,
-				6439C7081B7F3DFD004B1186 /* menuWhiteIcon.png */,
+				6439C70B1B7F5D95004B1186 /* followedIcon.png */,
+				6439C70D1B7F5DA4004B1186 /* profileViewBg.png */,
+				6439C70E1B7F5DA4004B1186 /* menuWhiteIcon.png */,
 				643510E41B6BB7F100E1853C /* sign_out.png */,
 				640C01131B6699C400EA6465 /* stepImagePlaceholder.png */,
 				640C010F1B66969C00EA6465 /* ingridientName.png */,
@@ -962,7 +970,6 @@
 				6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */,
 				64F7CB751B4920DD00D543AC /* auth.png in Resources */,
 				6495895C1B62640D00D3A6D8 /* IngridientsFormTableViewCell.xib in Resources */,
-				6439C70A1B7F3DFD004B1186 /* menuWhiteIcon.png in Resources */,
 				643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */,
 				6459A2841B6446BC009F95A3 /* delete85.png in Resources */,
 				6439C7061B7F344D004B1186 /* UserProfileView.xib in Resources */,
@@ -971,6 +978,7 @@
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
 				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
 				6459A2821B64468E009F95A3 /* security26.png in Resources */,
+				6439C7101B7F5DA4004B1186 /* menuWhiteIcon.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				640C01051B668C2500EA6465 /* recipeTimeIcon.png in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
@@ -986,6 +994,7 @@
 				64226D231B74110F00974B92 /* CategoryHeaderView.xib in Resources */,
 				649589541B625BC100D3A6D8 /* RecipeFormHeader.xib in Resources */,
 				647032011B2AF0420084D58A /* LaunchScreen.xib in Resources */,
+				6439C70C1B7F5D95004B1186 /* followedIcon.png in Resources */,
 				640C01071B668CBC00EA6465 /* recipePersonsIcon.png in Resources */,
 				64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */,
 				640C01091B668FAF00EA6465 /* recipeDifficultIcon.png in Resources */,
@@ -994,12 +1003,12 @@
 				64FFCD471B3C343D00A4DDCC /* CommentTableViewCell.xib in Resources */,
 				640C01141B6699C400EA6465 /* stepImagePlaceholder.png in Resources */,
 				647031FE1B2AF0420084D58A /* Images.xcassets in Resources */,
-				6439C7091B7F3DFD004B1186 /* profileViewBg.png in Resources */,
 				643AFBC91B2C1FF40090BC68 /* personsIcon.png in Resources */,
 				64F7CB901B4942CE00D543AC /* RegistrationView.xib in Resources */,
 				6455C3D01B3C09FF0013872F /* IngridientHeaderTableViewCell.xib in Resources */,
 				64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */,
 				643AFBC11B2C00330090BC68 /* recipes_placeholder.png in Resources */,
+				6439C70F1B7F5DA4004B1186 /* profileViewBg.png in Resources */,
 				643AFBBD1B2B72DE0090BC68 /* RecipesListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1119,6 +1128,7 @@
 				6439C7031B7F3431004B1186 /* UserProfileView.m in Sources */,
 				647031F31B2AF0420084D58A /* main.m in Sources */,
 				6455C3CF1B3C09FF0013872F /* IngridientHeaderTableViewCell.m in Sources */,
+				6439C7131B7F5DEE004B1186 /* UserDetailInfoViewController.m in Sources */,
 				64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

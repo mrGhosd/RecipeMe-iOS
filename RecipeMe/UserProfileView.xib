@@ -14,20 +14,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileViewBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Q4-uR-0e1">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhI-1U-sQC">
-                    <rect key="frame" x="8" y="24" width="30" height="30"/>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" backgroundImage="menuWhiteIcon.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-Kk-ZXT">
-                    <rect key="frame" x="562" y="24" width="30" height="30"/>
-                    <state key="normal" backgroundImage="searcIcon.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Rr-de-BDu">
                     <rect key="frame" x="238" y="24" width="125" height="125"/>
                     <constraints>
@@ -188,19 +174,15 @@
             <constraints>
                 <constraint firstItem="JUI-yh-lI0" firstAttribute="top" secondItem="Pho-g1-KGl" secondAttribute="bottom" constant="8" id="1fk-WD-9oP"/>
                 <constraint firstItem="Pho-g1-KGl" firstAttribute="top" secondItem="5Rr-de-BDu" secondAttribute="bottom" constant="8" id="EHx-Rw-5Bt"/>
-                <constraint firstAttribute="trailing" secondItem="wIy-Kk-ZXT" secondAttribute="trailing" constant="8" id="Etz-te-17i"/>
                 <constraint firstItem="5Rr-de-BDu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="FaV-Tr-NMb"/>
                 <constraint firstAttribute="bottom" secondItem="JUI-yh-lI0" secondAttribute="bottom" id="K77-p7-Lgi"/>
                 <constraint firstItem="0Q4-uR-0e1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Kks-R2-ju4"/>
                 <constraint firstAttribute="bottom" secondItem="0Q4-uR-0e1" secondAttribute="bottom" id="L57-ga-HKP"/>
-                <constraint firstItem="fhI-1U-sQC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="P0C-MB-7dD"/>
                 <constraint firstAttribute="trailing" secondItem="JUI-yh-lI0" secondAttribute="trailing" id="T4t-Bz-Bcn"/>
                 <constraint firstItem="JUI-yh-lI0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YV3-HG-OHH"/>
                 <constraint firstItem="Pho-g1-KGl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Ypt-r8-aaJ"/>
-                <constraint firstItem="fhI-1U-sQC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="gVw-FT-mzs"/>
                 <constraint firstAttribute="centerX" secondItem="5Rr-de-BDu" secondAttribute="centerX" id="hhm-LB-YzT"/>
                 <constraint firstItem="0Q4-uR-0e1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jzy-cz-vCW"/>
-                <constraint firstItem="wIy-Kk-ZXT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="qsn-Ov-niL"/>
                 <constraint firstAttribute="trailing" secondItem="Pho-g1-KGl" secondAttribute="trailing" constant="10" id="vQ0-25-ZyW"/>
                 <constraint firstAttribute="trailing" secondItem="0Q4-uR-0e1" secondAttribute="trailing" id="wSR-bv-p7O"/>
             </constraints>
@@ -218,8 +200,6 @@
                 <outlet property="recipesCount" destination="Bsf-B3-nZ5" id="sn9-zE-IXo"/>
                 <outlet property="recipesLabel" destination="IYD-Fu-X6R" id="fnz-d3-N1n"/>
                 <outlet property="recipesView" destination="aOW-iN-O82" id="iN2-Zy-jzN"/>
-                <outlet property="searchButton" destination="wIy-Kk-ZXT" id="TBW-b2-xM9"/>
-                <outlet property="sidbarButton" destination="fhI-1U-sQC" id="gyi-yd-jDg"/>
                 <outlet property="userName" destination="Pho-g1-KGl" id="vBA-q1-kth"/>
                 <outlet property="userProfileImageView" destination="5Rr-de-BDu" id="9pJ-O6-ack"/>
             </connections>
@@ -227,9 +207,7 @@
         </view>
     </objects>
     <resources>
-        <image name="menuWhiteIcon.png" width="30" height="28"/>
         <image name="profileViewBg.png" width="640" height="513"/>
-        <image name="searcIcon.png" width="22" height="22"/>
         <image name="sidebarBg.png" width="640" height="1136"/>
     </resources>
 </document>

@@ -9,8 +9,11 @@
 #import "UserViewController.h"
 #import "SWRevealViewController.h"
 #import "UserProfileView.h"
+#import "UserDetailInfoViewController.h"
 
-@interface UserViewController ()
+@interface UserViewController (){
+    NSString *panelID;
+}
 
 @end
 
@@ -24,25 +27,26 @@
 }
 
 - (void) setNavigationBarApperance{
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];
-//    self.navigationController.navigationBar.translucent = NO;
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    [self setNeedsStatusBarAppearanceUpdate];
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,[UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self setNeedsStatusBarAppearanceUpdate];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:126.0/255.0 green:31.0/255.0 blue:81.0/255.0 alpha:1.0], NSForegroundColorAttributeName,[UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
 }
 
 -(void) setNavigationPanel{
-//    SWRevealViewController *revealViewController = self.revealViewController;
-//    if ( revealViewController ){
-//        [self.sidebarButton setTarget: self.revealViewController];
-//        [self.sidebarButton setAction: @selector(revealToggle:)];
-//        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-//        revealViewController.rightViewController = nil;
-//    }
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController ){
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector(revealToggle:)];
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+        revealViewController.rightViewController = nil;
+    }
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UserProfileView *view = [[[NSBundle mainBundle] loadNibNamed:@"UserProfileView" owner:self options:nil] firstObject];
+    view.delegate = self;
     [view setUserData:self.user];
     return view;
 }
@@ -69,7 +73,18 @@
 {
     return 50;
 }
+- (void) clickUserInfoPanel:(NSString *) panelIdentifier{
+    panelID = panelIdentifier;
+    [self performSegueWithIdentifier:@"detailList" sender:self];
+}
 
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"detailList"]){
+        UserDetailInfoViewController *view = segue.destinationViewController;
+        view.scopeID = panelID;
+    }
+}
 /*
 #pragma mark - Navigation
 

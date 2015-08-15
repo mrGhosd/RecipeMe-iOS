@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "User.h"
-
-@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+#import "UserDelegate.h"
+@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UserDelegate>
 @property(strong, nonatomic) User *user;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;

@@ -34,6 +34,12 @@
                        @{@"count": self.followingCount, @"label": self.followingLabel,
                          @"i18n": NSLocalizedString(@"profile_following", nil), @"count_val": [NSNumber numberWithInteger:self.user.followingIds.count]}];
     [self setProfileInfoViews:views];
+    for(UIView *view in @[self.recipesView, self.commentsView, self.followersView, self.followingView]){
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userInfoViewTap:)];
+        singleTap.numberOfTapsRequired = 1;
+        [view setUserInteractionEnabled:YES];
+        [view addGestureRecognizer:singleTap];
+    }
 }
 - (void) setProfileInfoViews: (NSArray *) infoViews{
     for(NSDictionary *info in infoViews){
@@ -71,5 +77,22 @@
 
 - (void) profileImageTap: (id) sender{
     
+}
+- (void) userInfoViewTap: (id) view{
+    NSString *ID;
+    UIView *clickedView = [view view];
+    if([clickedView isEqual:self.recipesView]){
+        ID = @"recipes";
+    }
+    if([clickedView isEqual:self.commentsView]){
+        ID = @"comments";
+    }
+    if([clickedView isEqual:self.followersView]){
+        ID = @"followers";
+    }
+    if([clickedView isEqual:self.followingView]){
+        ID = @"following";
+    }
+    [self.delegate  clickUserInfoPanel:ID];
 }
 @end
