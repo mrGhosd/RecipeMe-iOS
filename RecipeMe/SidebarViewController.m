@@ -86,8 +86,8 @@
         RecipesListViewController *view = segue.destinationViewController;
     }
     if([[segue identifier] isEqualToString:@"profile"]){
-        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        UserViewController *view = (UserViewController *)navController.topViewController;
+//        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        UserViewController *view = (UserViewController *)segue.destinationViewController;
         view.user = auth.currentUser;
     }
 }

@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "User.h"
 
-@interface UserViewController : ViewController
+@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 @property(strong, nonatomic) User *user;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end
