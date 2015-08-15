@@ -19,8 +19,36 @@
 */
 - (void) setUserData: (User *) user{
     self.user = user;
-    self.userName.text = [[self.user correctNaming] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    [self setProfileInfo];
     [self setUserProfileImage:self.user];
+}
+- (void) setProfileInfo{
+    self.userName.text = [[self.user correctNaming] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    
+    NSArray *views = @[@{@"count": self.recipesCount, @"label": self.recipesLabel,
+                         @"i18n": NSLocalizedString(@"profile_recipes", nil), @"count_val": self.user.recipesCount},
+                       @{@"count": self.commentsCount, @"label": self.commentsLabel,
+                         @"i18n": NSLocalizedString(@"profile_comments", nil), @"count_val": self.user.commentsCount},
+                       @{@"count": self.followersCount, @"label": self.followersLabel,
+                         @"i18n": NSLocalizedString(@"profile_followers", nil), @"count_val": [NSNumber numberWithInteger:self.user.followersIds.count]},
+                       @{@"count": self.followingCount, @"label": self.followingLabel,
+                         @"i18n": NSLocalizedString(@"profile_following", nil), @"count_val": [NSNumber numberWithInteger:self.user.followingIds.count]}];
+    [self setProfileInfoViews:views];
+}
+- (void) setProfileInfoViews: (NSArray *) infoViews{
+    for(NSDictionary *info in infoViews){
+        UILabel *countLabel = info[@"count"];
+        UILabel *viewLable = info[@"label"];
+        NSString *label = info[@"i18n"];
+        
+        CGSize labelTextSize = [label sizeWithAttributes:@{}];
+        CGSize labelFrame = viewLable.frame.size;
+        if(labelTextSize.width > labelFrame.width){
+            viewLable.font = [UIFont systemFontOfSize:8];
+        }
+        countLabel.text = [NSString stringWithFormat:@"%@", info[@"count_val"]];
+        viewLable.text = info[@"i18n"];
+    }
 }
 - (void) setUserProfileImage: (User *) user{
     

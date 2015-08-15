@@ -66,3 +66,9 @@
 
 /*CATEGORIES*/
 "categories_title" = "Категории";
+
+/*PROFILE*/
+"profile_recipes" = "Рецептов";
+"profile_comments" = "Комментариев";
+"profile_followers" = "Подписчиков";
+"profile_following" = "Подписок";

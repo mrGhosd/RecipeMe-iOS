@@ -26,18 +26,8 @@
     if(params[@"city"]) self.city = params[@"city"];
     if(params[@"followers_ids"]) self.followersIds = [NSMutableArray arrayWithArray:params[@"followers_ids"]];
     if(params[@"following_ids"]) self.followingIds = [NSMutableArray arrayWithArray:params[@"following_ids"]];
-//    if(params[@"user_id"]) self.userId = params[@"user_id"];
-//    if(params[@"category_id"]) self.categoryId = params[@"category_id"];
-//    if(params[@"title"]) self.title = params[@"title"];
-//    if(params[@"image"] != [NSNull null] && params[@"image"][@"name"][@"url"]) self.imageUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"image"][@"name"][@"url"]];
-//    if(params[@"description"]) self.desc = params[@"description"];
-//    if(params[@"rate"]) self.rate = params[@"rate"];
-//    if(params[@"comments_count"]) self.commentsCount = params[@"comments_count"];
-//    if(params[@"steps_count"]) self.stepsCount = params[@"steps_count"];
-//    if(params[@"time"]) self.time = params[@"time"];
-//    if(params[@"persons"]) self.persons = params[@"persons"];
-//    if(params[@"difficult"]) self.difficult = params[@"difficult"];
-//    if(params[@"user"]) self.user = [[User alloc] ];
+    if(params[@"comments_count"]) self.commentsCount = params[@"comments_count"];
+    if(params[@"recipes_count"]) self.recipesCount = params[@"recipes_count"];
 }
 
 - (NSString *) correctNaming{

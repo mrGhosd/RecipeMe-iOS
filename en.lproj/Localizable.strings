@@ -66,3 +66,9 @@
 /*CATEGORIES*/
 "categories_title" = "Categories";
 
+/*PROFILE*/
+"profile_recipes" = "Recipes";
+"profile_comments" = "Comments";
+"profile_followers" = "Followers";
+"profile_following" = "Following";
+

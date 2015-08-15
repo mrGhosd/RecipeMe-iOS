@@ -19,6 +19,8 @@
 @property (nonatomic, retain) NSDate * dateOfBirth;
 @property (nonatomic, retain) NSMutableArray * followersIds;
 @property (nonatomic, retain) NSMutableArray * followingIds;
+@property (nonatomic, retain) NSNumber * recipesCount;
+@property (nonatomic, retain) NSNumber * commentsCount;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (NSString *) correctNaming;
 @end
