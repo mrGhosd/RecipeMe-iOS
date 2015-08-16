@@ -78,3 +78,5 @@
 /*FEED*/
 "feed_add_comment" = "Добавил комментарий к рецепту";
 "feed_add_recipe" = "Добавил рецепт";
+"feed_add_vote_recipe" = "Понравился рецепт";
+"feed_add_vote_comment" = "Понравился комментарий";

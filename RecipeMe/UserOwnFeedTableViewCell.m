@@ -57,8 +57,18 @@
     }
     if([self.feed.eventType isEqualToString:@"create"] && [self.feed.entity isEqualToString:@"Recipe"]){
         NSString *feedTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_recipe", nil), self.feed.object[@"title"]];
-        self.eventTitle.text = feedTitle;
         self.eventDescription.text = self.feed.object[@"description"];
+    }
+    if([self.feed.eventType isEqualToString:@"create"] && [self.feed.entity isEqualToString:@"Vote"]){
+        NSString *feedTitle;
+        if(self.feed.parentObject[@"text"]){
+            feedTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_vote_comment", nil), self.feed.parentObject[@"title"]];
+            self.eventDescription.text = self.feed.parentObject[@"text"];
+        } else {
+            feedTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_vote_recipe", nil), self.feed.parentObject[@"title"]];
+            self.eventDescription.text = self.feed.parentObject[@"description"];
+        }
+        self.eventTitle.text = feedTitle;
     }
 }
 @end

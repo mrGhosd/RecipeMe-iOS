@@ -77,3 +77,5 @@
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";
 "feed_add_recipe" = "Add a recipe";
+"feed_add_vote_recipe" = "Liked a recipe";
+"feed_add_vote_comment" = "Liked a comment";
