@@ -78,7 +78,6 @@
     refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [UIColor whiteColor];
     refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
-    //    [refreshView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
 }
@@ -86,6 +85,7 @@
 - (void) loadLastData{
     page = @1;
     feeds = [NSMutableArray new];
+    [self.tableView reloadData];
     [self loadUserData];
     [self loadUserFeedData];
 }
@@ -104,7 +104,6 @@
             title = NSLocalizedString(@"profile_follow", nil);
         }
         [self setRightBarButtonItemWithText:title andImageName:img];
-        
     }
     
 }
@@ -152,6 +151,7 @@
     }
     [self setRightBarButtonItemWithText:title andImageName:imgName];
 }
+
 - (void) loadUserData{
     [refreshControl endRefreshing];
     [MBProgressHUD showHUDAddedTo:self.view
@@ -178,7 +178,6 @@
 - (void) parseUserData: (id)data{
     if(data != [NSNull null]){
         [self.user setParams:data];
-        [self.tableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -223,6 +222,26 @@
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    if(feeds.count != nil){
+        self.tableView.backgroundView = nil;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return 1;
+    } else{
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.frame.size.width, 500)];
+        messageLabel.text = NSLocalizedString(@"feed_empty_list", nil);
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        [messageLabel sizeToFit];
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

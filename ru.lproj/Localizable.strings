@@ -80,3 +80,4 @@
 "feed_add_recipe" = "Добавил рецепт";
 "feed_add_vote_recipe" = "Понравился рецепт";
 "feed_add_vote_comment" = "Понравился комментарий";
+"feed_empty_list" = "Лента пользователя пуста";
