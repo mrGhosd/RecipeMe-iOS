@@ -74,3 +74,6 @@
 "profile_following" = "Подписок";
 "profile_follow" = "Подписаться";
 "profile_unfollow" = "Отписаться";
+
+/*FEED*/
+"feed_add_comment" = "Добавил комментарий к рецепту";

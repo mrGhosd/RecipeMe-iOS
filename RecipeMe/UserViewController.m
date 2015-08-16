@@ -13,12 +13,15 @@
 #import "ServerConnection.h"
 #import <MBProgressHUD.h>
 #import "AuthorizationManager.h"
+#import "Feed.h"
+#import "UserOwnFeedTableViewCell.h"
 
 @interface UserViewController (){
     NSString *panelID;
     AuthorizationManager *auth;
     ServerConnection *connection;
     UIRefreshControl *refreshControl;
+    NSMutableArray *feeds;
 }
 
 @end
@@ -29,10 +32,16 @@
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    [self.tableView registerClass:[UserOwnFeedTableViewCell class] forCellReuseIdentifier:@"feedCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserOwnFeedTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"feedCell"];
+    feeds = [NSMutableArray new];
     [self refreshInit];
     [self initRightBarButtonItem];
     [self setNavigationPanel];
     [self setNavigationBarApperance];
+    [self loadUserData];
+    [self loadUserFeedData];
     // Do any additional setup after loading the view.
 }
 
@@ -139,6 +148,16 @@
     }];
 }
 
+- (void) loadUserFeedData{
+    [connection sendDataToURL: @"/users/own_feed" parameters:[NSMutableDictionary dictionaryWithObject:self.user.id forKey:@"id"] requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseFeedData:data];
+        } else {
+            
+        }
+    }];
+}
+
 - (void) parseUserData: (id)data{
     if(data != [NSNull null]){
         [self.user setParams:data];
@@ -146,6 +165,17 @@
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
+
+- (void) parseFeedData: (id) data{
+    if(data != [NSNull null]){
+        for (NSDictionary *fd in data){
+            Feed *feed = [[Feed alloc] initWithParameters:fd];
+            [feeds addObject:feed];
+        }
+        [self.tableView reloadData];
+    }
+}
+
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UserProfileView *view = [[[NSBundle mainBundle] loadNibNamed:@"UserProfileView" owner:self options:nil] firstObject];
     view.delegate = self;
@@ -162,18 +192,23 @@
     // Dispose of any resources that can be recreated.
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
-    
+    return feeds.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"recipeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"feedCell";
+    Feed *feed = feeds[indexPath.row];
+    UserOwnFeedTableViewCell *cell = (UserOwnFeedTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserOwnFeedTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    [cell initWithFeed:feed];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 125;
 }
 - (void) clickUserInfoPanel:(NSString *) panelIdentifier{
     panelID = panelIdentifier;

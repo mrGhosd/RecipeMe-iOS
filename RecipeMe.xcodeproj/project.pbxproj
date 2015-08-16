@@ -103,6 +103,9 @@
 		64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */; };
 		64C9733C1B806C7B00D4531D /* success-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C9733B1B806C7B00D4531D /* success-check.png */; };
 		64C9733E1B806C9E00D4531D /* check-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C9733D1B806C9E00D4531D /* check-failed.png */; };
+		64C973411B80B39200D4531D /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C973401B80B39200D4531D /* Feed.m */; };
+		64C973451B80C18400D4531D /* UserOwnFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C973431B80C18400D4531D /* UserOwnFeedTableViewCell.m */; };
+		64C973461B80C18400D4531D /* UserOwnFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C973441B80C18400D4531D /* UserOwnFeedTableViewCell.xib */; };
 		64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */; };
 		64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */; };
 		64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */; };
@@ -282,6 +285,11 @@
 		64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgViewSmall.png; sourceTree = "<group>"; };
 		64C9733B1B806C7B00D4531D /* success-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success-check.png"; sourceTree = "<group>"; };
 		64C9733D1B806C9E00D4531D /* check-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-failed.png"; sourceTree = "<group>"; };
+		64C9733F1B80B39200D4531D /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		64C973401B80B39200D4531D /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		64C973421B80C18400D4531D /* UserOwnFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOwnFeedTableViewCell.h; sourceTree = "<group>"; };
+		64C973431B80C18400D4531D /* UserOwnFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOwnFeedTableViewCell.m; sourceTree = "<group>"; };
+		64C973441B80C18400D4531D /* UserOwnFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserOwnFeedTableViewCell.xib; sourceTree = "<group>"; };
 		64D7D3E71B4B053E00F8061E /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
 		64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
 		64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
@@ -401,6 +409,9 @@
 				6439C71C1B7FD365004B1186 /* UserListTableViewCell.h */,
 				6439C71D1B7FD365004B1186 /* UserListTableViewCell.m */,
 				6439C71E1B7FD365004B1186 /* UserListTableViewCell.xib */,
+				64C973421B80C18400D4531D /* UserOwnFeedTableViewCell.h */,
+				64C973431B80C18400D4531D /* UserOwnFeedTableViewCell.m */,
+				64C973441B80C18400D4531D /* UserOwnFeedTableViewCell.xib */,
 			);
 			name = users;
 			sourceTree = "<group>";
@@ -613,6 +624,8 @@
 				643AFBC21B2C10550090BC68 /* user */,
 				643AFBA91B2B45E70090BC68 /* recipe */,
 				643AFBA11B2B30740090BC68 /* ServerConnection */,
+				64C9733F1B80B39200D4531D /* Feed.h */,
+				64C973401B80B39200D4531D /* Feed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -988,6 +1001,7 @@
 				642C4CCA1B5AECFA007C2783 /* addRecipe.png in Resources */,
 				6439C71B1B7FB53C004B1186 /* UserCommentTableViewCell.xib in Resources */,
 				64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */,
+				64C973461B80C18400D4531D /* UserOwnFeedTableViewCell.xib in Resources */,
 				640C01121B66969C00EA6465 /* ingridientSize.png in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
@@ -1139,6 +1153,7 @@
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
 				6439C71A1B7FB53C004B1186 /* UserCommentTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,
+				64C973451B80C18400D4531D /* UserOwnFeedTableViewCell.m in Sources */,
 				64F7CB811B4939CA00D543AC /* AuthorizationViewController.m in Sources */,
 				647031F91B2AF0420084D58A /* ViewController.m in Sources */,
 				64F7CB891B49429E00D543AC /* AuthorizationView.m in Sources */,
@@ -1147,6 +1162,7 @@
 				64FFCD4E1B3C346500A4DDCC /* CommentHeaderTableViewCell.m in Sources */,
 				6432AEB61B75566C0009D26C /* CategoriesDetailViewController.m in Sources */,
 				6495895B1B62640D00D3A6D8 /* IngridientsFormTableViewCell.m in Sources */,
+				64C973411B80B39200D4531D /* Feed.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */,
 				6467E0EF1B42A72F001BB1CD /* commentForm.m in Sources */,

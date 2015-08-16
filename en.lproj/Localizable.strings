@@ -74,3 +74,5 @@
 "profile_follow" = "Follow";
 "profile_unfollow" = "Unollow";
 
+/*FEED*/
+"feed_add_comment" = "Add a comment to recipe";
