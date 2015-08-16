@@ -15,6 +15,7 @@
 #import "AuthorizationManager.h"
 #import "Feed.h"
 #import "UserOwnFeedTableViewCell.h"
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface UserViewController (){
     NSString *panelID;
@@ -22,6 +23,7 @@
     ServerConnection *connection;
     UIRefreshControl *refreshControl;
     NSMutableArray *feeds;
+    NSNumber *page;
 }
 
 @end
@@ -36,12 +38,20 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"UserOwnFeedTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"feedCell"];
     feeds = [NSMutableArray new];
+    page = @1;
     [self refreshInit];
     [self initRightBarButtonItem];
     [self setNavigationPanel];
     [self setNavigationBarApperance];
     [self loadUserData];
     [self loadUserFeedData];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        page = [NSNumber numberWithInteger:[page integerValue] + 1];
+        [self loadUserFeedData];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -69,8 +79,15 @@
     refreshControl.tintColor = [UIColor whiteColor];
     refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
     //    [refreshView addSubview:refreshControl];
-    [refreshControl addTarget:self action:@selector(loadUserData) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
+}
+
+- (void) loadLastData{
+    page = @1;
+    feeds = [NSMutableArray new];
+    [self loadUserData];
+    [self loadUserFeedData];
 }
 
 - (void) initRightBarButtonItem{
@@ -149,7 +166,7 @@
 }
 
 - (void) loadUserFeedData{
-    [connection sendDataToURL: @"/users/own_feed" parameters:[NSMutableDictionary dictionaryWithObject:self.user.id forKey:@"id"] requestType:@"GET" andComplition:^(id data, BOOL success){
+    [connection sendDataToURL: @"/users/own_feed" parameters:[NSMutableDictionary dictionaryWithDictionary:@{@"id": self.user.id, @"page": page}] requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseFeedData:data];
         } else {
@@ -203,6 +220,8 @@
         cell = [nib objectAtIndex:0];
     }
     [cell initWithFeed:feed];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

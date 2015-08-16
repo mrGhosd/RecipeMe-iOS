@@ -275,6 +275,7 @@
     
     return YES;
 }
+
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
     tableView.rowHeight = 250
@@ -315,5 +316,14 @@
 }
 - (void) failureDeleteCallback:(id)error{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+#pragma mark - Votes callback
+- (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
+    data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+    [recipe setRate:data[@"rate"]];
+}
+
+- (void) failureUpvoteCallbackWithRecipe:(id)error{
+    
 }
 @end
