@@ -72,3 +72,5 @@
 "profile_comments" = "Комментариев";
 "profile_followers" = "Подписчиков";
 "profile_following" = "Подписок";
+"profile_follow" = "Подписаться";
+"profile_unfollow" = "Отписаться";

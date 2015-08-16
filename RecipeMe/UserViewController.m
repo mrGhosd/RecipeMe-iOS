@@ -12,9 +12,11 @@
 #import "UserDetailInfoViewController.h"
 #import "ServerConnection.h"
 #import <MBProgressHUD.h>
+#import "AuthorizationManager.h"
 
 @interface UserViewController (){
     NSString *panelID;
+    AuthorizationManager *auth;
     ServerConnection *connection;
     UIRefreshControl *refreshControl;
 }
@@ -26,7 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
+    auth = [AuthorizationManager sharedInstance];
     [self refreshInit];
+    [self initRightBarButtonItem];
     [self setNavigationPanel];
     [self setNavigationBarApperance];
     // Do any additional setup after loading the view.
@@ -60,6 +64,68 @@
     [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
 }
 
+- (void) initRightBarButtonItem{
+    if([self.user.id isEqualToNumber:auth.currentUser.id]){
+    
+    } else {
+        NSString *img;
+        NSString *title;
+        if([auth.currentUser.followingIds containsObject:self.user.id]){
+                img = @"check-failed.png";
+                title = NSLocalizedString(@"profile_unfollow", nil);
+        } else {
+            img = @"success-check.png";
+            title = NSLocalizedString(@"profile_follow", nil);
+        }
+        [self setRightBarButtonItemWithText:title andImageName:img];
+        
+    }
+    
+}
+
+- (void) relationshipButton: (UIButton *) button{
+    NSString *url;
+    NSString *requestType;
+    if([auth.currentUser.followingIds containsObject:self.user.id]){
+        url = [NSString stringWithFormat:@"/relationships/%@", self.user.id];
+        requestType = @"DELETE";
+    } else {
+        url = @"/relationships";
+        requestType = @"POST";
+    }
+    [connection sendDataToURL:url parameters:[NSMutableDictionary dictionaryWithObject:self.user.id forKey:@"id"] requestType:requestType andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseFollowingData:data withRequest:requestType];
+        } else {
+            
+        }
+    }];
+}
+
+- (void) setRightBarButtonItemWithText: (NSString *) text andImageName: (NSString *) imageName{
+    UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [customButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [customButton setTitle:text forState:UIControlStateNormal];
+    [customButton sizeToFit];
+    [customButton addTarget:self action:@selector(relationshipButton:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
+    self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
+}
+
+- (void) parseFollowingData: (id) data withRequest: (NSString *) request{
+    NSString *title;
+    NSString *imgName;
+    if([request isEqualToString:@"DELETE"]){
+        [auth.currentUser.followingIds removeObject:data[@"id"]];
+        title = NSLocalizedString(@"profile_follow", nil);
+        imgName = @"success-check.png";
+    } else {
+        [auth.currentUser.followingIds addObject:data[@"id"]];
+        title = NSLocalizedString(@"profile_unfollow", nil);
+        imgName =  @"check-failed.png";
+    }
+    [self setRightBarButtonItemWithText:title andImageName:imgName];
+}
 - (void) loadUserData{
     [refreshControl endRefreshing];
     [MBProgressHUD showHUDAddedTo:self.view

@@ -101,6 +101,8 @@
 		64C5B1871B4828B70043C9D3 /* sidebarBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B1861B4828B70043C9D3 /* sidebarBg.png */; };
 		64C5B18D1B4857690043C9D3 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C5B18C1B4857690043C9D3 /* SidebarViewController.m */; };
 		64C5B18F1B4892F80043C9D3 /* bgViewSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */; };
+		64C9733C1B806C7B00D4531D /* success-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C9733B1B806C7B00D4531D /* success-check.png */; };
+		64C9733E1B806C9E00D4531D /* check-failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C9733D1B806C9E00D4531D /* check-failed.png */; };
 		64D7D3EA1B4B053E00F8061E /* UserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */; };
 		64D7D3EB1B4B053E00F8061E /* UserProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */; };
 		64D7D3ED1B4B0E4700F8061E /* mapMarkerSidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */; };
@@ -278,6 +280,8 @@
 		64C5B18B1B4857690043C9D3 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		64C5B18C1B4857690043C9D3 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgViewSmall.png; sourceTree = "<group>"; };
+		64C9733B1B806C7B00D4531D /* success-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success-check.png"; sourceTree = "<group>"; };
+		64C9733D1B806C9E00D4531D /* check-failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-failed.png"; sourceTree = "<group>"; };
 		64D7D3E71B4B053E00F8061E /* UserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileTableViewCell.h; sourceTree = "<group>"; };
 		64D7D3E81B4B053E00F8061E /* UserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileTableViewCell.m; sourceTree = "<group>"; };
 		64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileTableViewCell.xib; sourceTree = "<group>"; };
@@ -722,6 +726,7 @@
 				6459A2831B6446BC009F95A3 /* delete85.png */,
 				6459A2811B64468E009F95A3 /* security26.png */,
 				642C4CC91B5AECFA007C2783 /* addRecipe.png */,
+				64C9733B1B806C7B00D4531D /* success-check.png */,
 				64C2219C1B4D75EE0010F3F3 /* heart.png */,
 				64C221981B4D70B80010F3F3 /* delete_sign-32.png */,
 				64D7D3EC1B4B0E4700F8061E /* mapMarkerSidebar.png */,
@@ -733,6 +738,7 @@
 				64F7CB711B4920DD00D543AC /* category.png */,
 				64F7CB721B4920DD00D543AC /* auth.png */,
 				64F7CB6E1B491F7200D543AC /* recipes.png */,
+				64C9733D1B806C9E00D4531D /* check-failed.png */,
 				64C5B18E1B4892F80043C9D3 /* bgViewSmall.png */,
 				64C5B1861B4828B70043C9D3 /* sidebarBg.png */,
 				6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */,
@@ -1005,9 +1011,11 @@
 				6439C7101B7F5DA4004B1186 /* menuWhiteIcon.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
 				640C01051B668C2500EA6465 /* recipeTimeIcon.png in Resources */,
+				64C9733C1B806C7B00D4531D /* success-check.png in Resources */,
 				643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */,
 				64C2219B1B4D71530010F3F3 /* edit-32.png in Resources */,
 				64F7CB831B493A7E00D543AC /* authBg.png in Resources */,
+				64C9733E1B806C9E00D4531D /* check-failed.png in Resources */,
 				64C2219D1B4D75EE0010F3F3 /* heart.png in Resources */,
 				64F7CB941B49556400D543AC /* authPasswordField.png in Resources */,
 				643510EF1B6BEB1300E1853C /* CategoriesListTableViewCell.xib in Resources */,

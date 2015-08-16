@@ -56,6 +56,7 @@
                         <outlet property="tableView" destination="l2X-13-KZV" id="KWX-FS-3TL"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="Ngo-ju-t5l"/>
                         <segue destination="y6t-J6-Dau" kind="show" identifier="editComment" id="DX1-Df-l95"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="profileView" id="aeK-7I-mAS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCC-ev-fDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,7 +70,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4486" y="-905"/>
+            <point key="canvasLocation" x="4598" y="-955"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="xUq-bw-MYf">
@@ -85,7 +86,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="4bC-rn-JI1">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="552"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipeCell" id="9Gk-MQ-6PT">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -112,8 +113,10 @@
                         <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="spz-Lc-xBe">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="OUq-EV-S05"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="rightBarButtonItem" destination="OUq-EV-S05" id="3Ha-Le-WuX"/>
                         <outlet property="sidebarButton" destination="spz-Lc-xBe" id="VC6-dJ-fvx"/>
                         <outlet property="tableView" destination="4bC-rn-JI1" id="ZGH-iI-vdl"/>
                         <segue destination="FKG-ko-PTc" kind="show" identifier="detailList" id="nTT-gw-yCb"/>
@@ -197,7 +200,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="S5P-zU-fSi" firstAttribute="top" secondItem="uP5-W5-dcP" secondAttribute="top" constant="8" id="6Iq-sf-akY"/>
                                     <constraint firstAttribute="bottom" secondItem="8q0-Cq-rY1" secondAttribute="bottom" constant="12" id="87G-Ud-Bkr"/>
@@ -295,7 +298,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -1028,12 +1031,13 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rqB-h1-uFK"/>
-        <segue reference="rhO-IQ-XCD"/>
-        <segue reference="x1S-wy-2mz"/>
+        <segue reference="aeK-7I-mAS"/>
         <segue reference="DX1-Df-l95"/>
         <segue reference="Ngo-ju-t5l"/>
         <segue reference="3if-zo-Jsd"/>
+        <segue reference="rqB-h1-uFK"/>
+        <segue reference="x1S-wy-2mz"/>
+        <segue reference="rhO-IQ-XCD"/>
         <segue reference="Fd9-B0-pdu"/>
     </inferredMetricsTieBreakers>
 </document>

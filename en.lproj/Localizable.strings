@@ -71,4 +71,6 @@
 "profile_comments" = "Comments";
 "profile_followers" = "Followers";
 "profile_following" = "Following";
+"profile_follow" = "Follow";
+"profile_unfollow" = "Unollow";
 

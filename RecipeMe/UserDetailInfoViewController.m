@@ -19,12 +19,14 @@
 #import <SWTableViewCell.h>
 #import "CommentViewController.h"
 #import "UserListTableViewCell.h"
+#import "UserViewController.h"
 
 @interface UserDetailInfoViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
     Recipe *selectedRecipe;
     Comment *selectedComment;
+    User *selectedUser;
     NSNumber *page;
     NSMutableArray *userObjects;
     NSMutableArray *searchResults;
@@ -82,7 +84,7 @@
     if([self.scopeID isEqualToString:@"comments"]){
         [self parseCommentsData:data];
     }
-    if([self.scopeID isEqualToString:@"following"]){
+    if([self.scopeID isEqualToString:@"following"] || [self.scopeID isEqualToString:@"followers"]){
         [self parseUserInfoData: data];
     }
 }
@@ -189,7 +191,6 @@
             user = userObjects[indexPath.row];
         }
         UserListTableViewCell *cell = (UserListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        cell.delegate = self;
         if(cell == nil){
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserListTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
@@ -237,6 +238,10 @@
         selectedRecipe = userObjects[indexPath.row];
         [self performSegueWithIdentifier:@"recipeView" sender:self];
     }
+    if([self.scopeID isEqualToString:@"followers"] || [self.scopeID isEqualToString:@"following"]){
+        selectedUser = userObjects[indexPath.row];
+        [self performSegueWithIdentifier:@"profileView" sender:self];
+    }
 }
 
 #pragma UISearchBar and UISearchBarController
@@ -253,7 +258,7 @@
                            predicateWithFormat:@"text contains[c] %@",
                            searchText];
     }
-    if([self.scopeID isEqualToString:@"following"]){
+    if([self.scopeID isEqualToString:@"following"] || [self.scopeID isEqualToString:@"followers"]){
         resultPredicate = [NSPredicate
                                predicateWithFormat:@"name contains[c] %@ OR surname contains[c] %@ OR nickname contains[c] %@",
                                searchText, searchText, searchText];
@@ -288,6 +293,10 @@
     if([segue.identifier isEqualToString:@"editComment"]){
         CommentViewController *view = segue.destinationViewController;
         view.comment = selectedComment;
+    }
+    if([segue.identifier isEqualToString:@"profileView"]){
+        UserViewController *view = segue.destinationViewController;
+        view.user = selectedUser;
     }
 }
 
