@@ -10,9 +10,13 @@
 #import "SWRevealViewController.h"
 #import "UserProfileView.h"
 #import "UserDetailInfoViewController.h"
+#import "ServerConnection.h"
+#import <MBProgressHUD.h>
 
 @interface UserViewController (){
     NSString *panelID;
+    ServerConnection *connection;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -21,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    connection = [ServerConnection sharedInstance];
+    [self refreshInit];
     [self setNavigationPanel];
     [self setNavigationBarApperance];
     // Do any additional setup after loading the view.
@@ -43,6 +49,36 @@
         [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
         revealViewController.rightViewController = nil;
     }
+}
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
+    //    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadUserData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
+}
+
+- (void) loadUserData{
+    [refreshControl endRefreshing];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [connection sendDataToURL:[NSString stringWithFormat: @"/users/%@", self.user.id ] parameters:[NSMutableDictionary new] requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseUserData:data];
+        } else {
+        
+        }
+    }];
+}
+
+- (void) parseUserData: (id)data{
+    if(data != [NSNull null]){
+        [self.user setParams:data];
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UserProfileView *view = [[[NSBundle mainBundle] loadNibNamed:@"UserProfileView" owner:self options:nil] firstObject];

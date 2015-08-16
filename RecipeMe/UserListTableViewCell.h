@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *followersCount;
 @property (strong, nonatomic) IBOutlet UILabel *followingCount;
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) IBOutlet UIImageView *followedIcon;
 - (void) initWithUserData: (User *) user;
 @end

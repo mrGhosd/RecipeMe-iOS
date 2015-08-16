@@ -115,6 +115,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="spz-Lc-xBe" id="VC6-dJ-fvx"/>
+                        <outlet property="tableView" destination="4bC-rn-JI1" id="ZGH-iI-vdl"/>
                         <segue destination="FKG-ko-PTc" kind="show" identifier="detailList" id="nTT-gw-yCb"/>
                     </connections>
                 </viewController>

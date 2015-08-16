@@ -23,4 +23,5 @@
 @property (nonatomic, retain) NSNumber * commentsCount;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (NSString *) correctNaming;
+- (void) setParams: (NSDictionary *) params;
 @end

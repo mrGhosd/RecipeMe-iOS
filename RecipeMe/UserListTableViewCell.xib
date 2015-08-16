@@ -24,6 +24,9 @@
                             <constraint firstAttribute="height" constant="90" id="RP3-bL-F6O"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-1z-pGC">
+                        <rect key="frame" x="60" y="5" width="38" height="38"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-43-k7Y">
                         <rect key="frame" x="106" y="8" width="206" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -148,8 +151,10 @@
                     <constraint firstAttribute="bottomMargin" secondItem="uGI-np-O1o" secondAttribute="bottom" constant="-8" id="BGA-02-iPf"/>
                     <constraint firstItem="fP9-6R-NhT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Bja-Td-evR"/>
                     <constraint firstAttribute="trailingMargin" secondItem="uGI-np-O1o" secondAttribute="trailing" constant="-16" id="Dsb-9P-IlP"/>
+                    <constraint firstItem="7zU-1z-pGC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="Rk9-n6-P4h"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qwe-QO-Yyk" secondAttribute="bottom" constant="-3" id="TgB-yF-guq"/>
                     <constraint firstItem="qwe-QO-Yyk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="W7T-Lr-5oq"/>
+                    <constraint firstItem="fP9-6R-NhT" firstAttribute="leading" secondItem="7zU-1z-pGC" secondAttribute="trailing" constant="8" id="Zgl-VQ-zzb"/>
                     <constraint firstItem="qwe-QO-Yyk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="h9V-M4-hm9"/>
                     <constraint firstItem="fP9-6R-NhT" firstAttribute="leading" secondItem="qwe-QO-Yyk" secondAttribute="trailing" constant="8" id="jjk-ai-bXd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fP9-6R-NhT" secondAttribute="bottom" constant="-3" id="qHI-lk-vhg"/>
@@ -158,6 +163,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentsCount" destination="ctE-V2-05O" id="ZIJ-So-xKg"/>
+                <outlet property="followedIcon" destination="7zU-1z-pGC" id="J8z-lE-GcY"/>
                 <outlet property="followersCount" destination="Btw-Av-YzV" id="eqf-5A-GpR"/>
                 <outlet property="followingCount" destination="bhr-xM-dPC" id="MFe-nr-YPz"/>
                 <outlet property="recipesCount" destination="mAk-Ub-TDa" id="TWe-8I-Dab"/>
