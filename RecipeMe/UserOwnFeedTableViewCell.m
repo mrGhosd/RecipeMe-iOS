@@ -55,5 +55,10 @@
         self.eventTitle.text = feedTitle;
         self.eventDescription.text = self.feed.object[@"text"];
     }
+    if([self.feed.eventType isEqualToString:@"create"] && [self.feed.entity isEqualToString:@"Recipe"]){
+        NSString *feedTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_recipe", nil), self.feed.object[@"title"]];
+        self.eventTitle.text = feedTitle;
+        self.eventDescription.text = self.feed.object[@"description"];
+    }
 }
 @end
