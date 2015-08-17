@@ -68,14 +68,14 @@
     NSMutableDictionary *attrsList = [NSMutableDictionary new];
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] init];
     if([self.eventType isEqualToString:@"create"] && [self.entity isEqualToString:@"Comment"]){
-        [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_comment", nil) feedText:self.object[@"text"] andFeedTitle:self.parentObject[@"title"]];
+        [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_comment", nil) feedText:[self.object text] andFeedTitle:[self.parentObject title]];
     } else if([self.eventType isEqualToString:@"create"] && [self.entity isEqualToString:@"Recipe"]){
-        [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_recipe", nil) feedText:self.object[@"description"] andFeedTitle:self.object[@"title"]];
+        [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_recipe", nil) feedText:[self.object desc] andFeedTitle:[self.object title]];
     } else {
-        if(self.parentObject[@"text"]){
-            [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_vote_comment", nil) feedText:self.parentObject[@"text"] andFeedTitle:self.parentObject[@"title"]];
+        if([self.parentObject isKindOfClass:[Comment class]]){
+            [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_vote_comment", nil) feedText:[self.parentObject text] andFeedTitle:[self.parentObject title]];
         } else {
-            [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_vote_recipe", nil) feedText:self.parentObject[@"description"] andFeedTitle:self.parentObject[@"title"]];
+            [self addDataToFeedDictionary:attrsList withTranslateString:NSLocalizedString(@"feed_add_vote_recipe", nil) feedText:[self.parentObject desc] andFeedTitle:[self.parentObject title]];
         }
     }
     return attrsList;
@@ -95,13 +95,13 @@
     NSString *imgUrl;
     if([self.entity isEqualToString:@"Vote"] &&
        [self.eventType isEqualToString:@"create"] &&
-       self.object[@"text"]){
+       [self.object isKindOfClass:[Comment class]]){
         imgUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix: self.user[@"avatar_url"]];
     } else {
-        if(self.object[@"image"]){
-            imgUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix: self.object[@"image"][@"url"]];
+        if([self.object isKindOfClass:[Recipe class]]){
+            imgUrl = [self.object imageUrl];
         } else {
-            imgUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix: self.parentObject[@"image"][@"url"]];
+            imgUrl = [self.parentObject imageUrl];
         }
     }
     return imgUrl;
