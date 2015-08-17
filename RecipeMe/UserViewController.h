@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "User.h"
 #import "UserDelegate.h"
-@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UserDelegate>
+#import "FeedDelegate.h"
+
+@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UserDelegate, FeedDelegate>
 @property(strong, nonatomic) User *user;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;

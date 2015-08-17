@@ -16,6 +16,7 @@
 #import "Feed.h"
 #import "UserOwnFeedTableViewCell.h"
 #import <UIScrollView+InfiniteScroll.h>
+#import "RecipeDetailViewController.h"
 
 @interface UserViewController (){
     NSString *panelID;
@@ -24,6 +25,7 @@
     UIRefreshControl *refreshControl;
     NSMutableArray *feeds;
     NSNumber *page;
+    Recipe *selectedRecipe;
 }
 
 @end
@@ -219,6 +221,7 @@
         cell = [nib objectAtIndex:0];
     }
     [cell initWithFeed:feed];
+    cell.delegate = self;
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -260,6 +263,15 @@
         view.scopeID = panelID;
         view.user = self.user;
     }
+    if([segue.identifier isEqualToString:@"recipeView"]){
+        RecipeDetailViewController *view = segue.destinationViewController;
+        view.recipe = selectedRecipe;
+    }
+}
+
+- (void) moveToFeedObject:(id)object{
+    selectedRecipe = (Recipe *) object;
+    [self performSegueWithIdentifier:@"recipeView" sender:self];
 }
 /*
 #pragma mark - Navigation

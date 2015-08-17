@@ -120,6 +120,7 @@
                         <outlet property="sidebarButton" destination="spz-Lc-xBe" id="VC6-dJ-fvx"/>
                         <outlet property="tableView" destination="4bC-rn-JI1" id="ZGH-iI-vdl"/>
                         <segue destination="FKG-ko-PTc" kind="show" identifier="detailList" id="nTT-gw-yCb"/>
+                        <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="KX8-mF-En4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1033,12 +1034,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3if-zo-Jsd"/>
-        <segue reference="de0-jY-TBw"/>
+        <segue reference="KX8-mF-En4"/>
+        <segue reference="gIc-MD-fzz"/>
         <segue reference="rqB-h1-uFK"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="rhO-IQ-XCD"/>
         <segue reference="Fd9-B0-pdu"/>
-        <segue reference="gIc-MD-fzz"/>
         <segue reference="DX1-Df-l95"/>
     </inferredMetricsTieBreakers>
 </document>

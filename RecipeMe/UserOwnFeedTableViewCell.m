@@ -10,6 +10,7 @@
 #import "ServerConnection.h"
 #import <UIImageView+AFNetworking.h>
 #import <TTTAttributedLabel.h>
+#import "Comment.h"
 
 @implementation UserOwnFeedTableViewCell
 
@@ -48,12 +49,7 @@
     [self.eventTitle addGestureRecognizer:singleTap];
 }
 - (void) linkRecipeTap: (UITapGestureRecognizer *)tapRecognizer{
-    id sendObject;
-    if(self.feed.object[@"text"]){
-        sendObject = self.feed.parentObject;
-    } else {
-        sendObject = self.feed.object;
-    }
-    
+    id sendObject = self.feed.parentObject == nil ? self.feed.object : self.feed.parentObject;
+    [self.delegate moveToFeedObject:sendObject];
 }
 @end
