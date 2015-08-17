@@ -9,6 +9,7 @@
 #import "UserOwnFeedTableViewCell.h"
 #import "ServerConnection.h"
 #import <UIImageView+AFNetworking.h>
+#import <TTTAttributedLabel.h>
 
 @implementation UserOwnFeedTableViewCell
 
@@ -51,8 +52,12 @@
 }
 - (void) setFeedDescription{
     if([self.feed.eventType isEqualToString:@"create"] && [self.feed.entity isEqualToString:@"Comment"]){
-        NSString *feedTitle = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_comment", nil), self.feed.parentObject[@"title"]];
-        self.eventTitle.text = feedTitle;
+        NSString *requestString = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"feed_add_comment", nil), self.feed.parentObject[@"title"]];
+        NSMutableAttributedString *feedTitle = [[NSMutableAttributedString alloc] initWithString: requestString];
+        NSRange r = [requestString rangeOfString:self.feed.parentObject[@"title"]];
+        [feedTitle addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:r];
+        self.eventTitle.attributedText = feedTitle;
+//        NSRange r = [feedTitle rangeOfString:self.feed.parentObject[@"title"]];
         self.eventDescription.text = self.feed.object[@"text"];
     }
     if([self.feed.eventType isEqualToString:@"create"] && [self.feed.entity isEqualToString:@"Recipe"]){
@@ -70,5 +75,19 @@
         }
         self.eventTitle.text = feedTitle;
     }
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkRecipeTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.eventTitle setUserInteractionEnabled:YES];
+    [self.eventTitle addGestureRecognizer:singleTap];
+}
+- (void) linkRecipeTap: (UITapGestureRecognizer *)tapRecognizer{
+    id sendObject;
+    if(self.feed.object[@"text"]){
+        sendObject = self.feed.parentObject;
+    } else {
+        sendObject = self.feed.object;
+    }
+    
 }
 @end

@@ -298,7 +298,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -1016,6 +1016,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="iFd-uV-tHQ" kind="relationship" relationship="rootViewController" id="gIc-MD-fzz"/>
+                        <segue destination="DLe-8j-NgS" kind="show" id="de0-jY-TBw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNV-Rl-qY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1031,13 +1032,13 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aeK-7I-mAS"/>
-        <segue reference="DX1-Df-l95"/>
-        <segue reference="Ngo-ju-t5l"/>
         <segue reference="3if-zo-Jsd"/>
+        <segue reference="de0-jY-TBw"/>
         <segue reference="rqB-h1-uFK"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="rhO-IQ-XCD"/>
         <segue reference="Fd9-B0-pdu"/>
+        <segue reference="gIc-MD-fzz"/>
+        <segue reference="DX1-Df-l95"/>
     </inferredMetricsTieBreakers>
 </document>

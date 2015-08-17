@@ -13,6 +13,7 @@ target 'RecipeMe' do
     pod 'UIScrollView-InfiniteScroll'
     pod 'FSImageViewer', '~> 3.1'
     pod 'SIOSocket', '~> 0.2.0'
+    pod 'TTTAttributedLabel'
 end
 
 target 'RecipeMeTests' do

@@ -35,6 +35,7 @@ PODS:
   - RDRStickyKeyboardView (0.0.2)
   - SIOSocket (0.2.0)
   - SWTableViewCell (0.3.7)
+  - TTTAttributedLabel (1.13.4)
   - UAProgressView (0.1.1)
   - UICKeyChainStore (2.0.5)
   - UIImage-ResizeMagick (0.0.1)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - RDRStickyKeyboardView
   - SIOSocket (~> 0.2.0)
   - SWTableViewCell (~> 0.3.7)
+  - TTTAttributedLabel
   - UICKeyChainStore
   - UIImage-ResizeMagick
   - UIScrollView-InfiniteScroll
@@ -68,6 +70,7 @@ SPEC CHECKSUMS:
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
   SIOSocket: 2facc0bd02ae72d98c223634a46dd8ebdf9be321
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070
   UICKeyChainStore: a389515ca090d4d49780fd563fec961571caa92b
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
