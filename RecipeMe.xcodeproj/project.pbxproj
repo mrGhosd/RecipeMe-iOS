@@ -617,6 +617,7 @@
 		647875FE1B2B0A8700401720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				64E295C61B822E9F00913399 /* feed */,
 				640C010E1B66964B00EA6465 /* ViewHelper */,
 				6414703B1B64C73800A5392D /* categories */,
 				64F7CB991B49701100D543AC /* authorization */,
@@ -628,8 +629,6 @@
 				643AFBC21B2C10550090BC68 /* user */,
 				643AFBA91B2B45E70090BC68 /* recipe */,
 				643AFBA11B2B30740090BC68 /* ServerConnection */,
-				64C9733F1B80B39200D4531D /* Feed.h */,
-				64C973401B80B39200D4531D /* Feed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -804,6 +803,15 @@
 				64D7D3E91B4B053E00F8061E /* UserProfileTableViewCell.xib */,
 			);
 			name = sidebar;
+			sourceTree = "<group>";
+		};
+		64E295C61B822E9F00913399 /* feed */ = {
+			isa = PBXGroup;
+			children = (
+				64C9733F1B80B39200D4531D /* Feed.h */,
+				64C973401B80B39200D4531D /* Feed.m */,
+			);
+			name = feed;
 			sourceTree = "<group>";
 		};
 		64F7CB761B4923E000D543AC /* ServerError */ = {

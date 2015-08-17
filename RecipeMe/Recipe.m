@@ -25,7 +25,15 @@
     if(params[@"user_id"]) self.userId = params[@"user_id"];
     if(params[@"category_id"]) self.categoryId = params[@"category_id"];
     if(params[@"title"]) self.title = params[@"title"];
-    if(params[@"image"] != [NSNull null] && params[@"image"][@"name"][@"url"]) self.imageUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"image"][@"name"][@"url"]];
+    if(params[@"image"] != [NSNull null]) {
+        NSString *img;
+        if([params[@"image"][@"name"] isKindOfClass:[NSString class]]){
+            img = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"image"][@"url"]];
+        } else {
+            img = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"image"][@"name"][@"url"]];
+        }
+        self.imageUrl = img;
+    }
     if(params[@"description"]) self.desc = params[@"description"];
     if(params[@"rate"]) self.rate = params[@"rate"];
     if(params[@"comments_count"]) self.commentsCount = params[@"comments_count"];

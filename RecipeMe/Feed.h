@@ -18,4 +18,7 @@
 @property (strong, nonatomic) NSDate *createdAt;
 - (instancetype) initWithParameters: (NSDictionary *) params;
 - (NSString *) friendlyCreatedAt;
+- (NSString *) returnFeedMainImageURLString;
+- (NSString *) getFeedDescription;
+- (NSMutableAttributedString *) getFeedTitle;
 @end
