@@ -8,8 +8,14 @@
 
 #import "NewsFeedViewController.h"
 #import "SWRevealViewController.h"
+#import "ServerConnection.h"
+#import "AuthorizationManager.h"
 
-@interface NewsFeedViewController ()
+@interface NewsFeedViewController (){
+    ServerConnection *connection;
+    AuthorizationManager *auth;
+    NSNumber *page;
+}
 
 @end
 
@@ -17,8 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    page = @1;
+    connection = [ServerConnection sharedInstance];
+    auth = [AuthorizationManager sharedInstance];
     [self setNavigationPanel];
     [self setNavigationAttributes];
+    [self loadUserFeedData];
     // Do any additional setup after loading the view.
 }
 
@@ -26,8 +36,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void) setNavigationPanel{
+- (void) loadUserFeedData{
+    [connection sendDataToURL:@"/users/feed" parameters:@{@"page": @1} requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(data){
+            [self parseFeedData:data];
+        } else {
+        
+        }
+    }];
+}
+- (void) parseFeedData: (id) data{
+    
+}
+- (void) setNavigationPanel{
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController ){
         [self.sidebarButton setTarget: self.revealViewController];
