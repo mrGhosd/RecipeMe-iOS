@@ -25,6 +25,7 @@
 "reg" = "Sign up";
 "recipes" = "Recipes";
 "categories" = "Categories";
+"news_feed" = "Feed";
 
 /*AUTHORIZATION*/
 "email" = "Email Address";
@@ -80,3 +81,4 @@
 "feed_add_vote_recipe" = "Liked a recipe";
 "feed_add_vote_comment" = "Liked a comment";
 "feed_empty_list" = "User's feed is empty";
+"feed_page_title" = "Feeds";

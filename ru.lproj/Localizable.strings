@@ -25,6 +25,7 @@
 "reg" = "Регистрация";
 "recipes" = "Рецепты";
 "categories" = "Категории";
+"news_feed" = "Новости";
 
 /*AUTHORIZATION*/
 "email" = "Электронная почта";
@@ -81,3 +82,4 @@
 "feed_add_vote_recipe" = "Понравился рецепт";
 "feed_add_vote_comment" = "Понравился комментарий";
 "feed_empty_list" = "Лента пользователя пуста";
+"feed_page_title" = "Новости";

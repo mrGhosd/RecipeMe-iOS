@@ -58,9 +58,9 @@
 }
 - (void) initSidebarData{
     if(auth.currentUser){
-        menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
-        menuIds = @[@"profile", @"recipes", @"categories"];
-        menuIcons = @[@"auth.png", @"recipes.png", @"category.png"];
+        menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil), NSLocalizedString(@"news_feed", nil)]];
+        menuIds = @[@"profile", @"recipes", @"categories", @"feed"];
+        menuIcons = @[@"auth.png", @"recipes.png", @"category.png", @"newsFeedIcon.png"];
         self.signOutButton.hidden = NO;
     } else {
         menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
