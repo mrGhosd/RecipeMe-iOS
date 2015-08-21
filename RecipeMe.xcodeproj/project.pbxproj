@@ -58,6 +58,8 @@
 		643AFBCB1B2C22310090BC68 /* timeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBCA1B2C22310090BC68 /* timeIcon.png */; };
 		643AFBD51B2C30410090BC68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBD71B2C30410090BC68 /* Localizable.strings */; };
 		643AFBDD1B2C3EAB0090BC68 /* searcIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */; };
+		645393301B87D4BF002FD5CC /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6453932E1B87D4BF002FD5CC /* FeedTableViewCell.m */; };
+		645393311B87D4BF002FD5CC /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6453932F1B87D4BF002FD5CC /* FeedTableViewCell.xib */; };
 		6455C3B21B3BE1FF0013872F /* StepSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B11B3BE1FF0013872F /* StepSpec.m */; };
 		6455C3B51B3BE2480013872F /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B41B3BE2480013872F /* Step.m */; };
 		6455C3BA1B3BEFDF0013872F /* StepTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6455C3B81B3BEFDF0013872F /* StepTableViewCell.m */; };
@@ -224,6 +226,9 @@
 		643AFBD81B2C30440090BC68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBD91B2C30450090BC68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		643AFBDC1B2C3EAB0090BC68 /* searcIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searcIcon.png; sourceTree = "<group>"; };
+		6453932D1B87D4BF002FD5CC /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
+		6453932E1B87D4BF002FD5CC /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
+		6453932F1B87D4BF002FD5CC /* FeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		6455C3B11B3BE1FF0013872F /* StepSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepSpec.m; sourceTree = "<group>"; };
 		6455C3B31B3BE2480013872F /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		6455C3B41B3BE2480013872F /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
@@ -496,6 +501,16 @@
 			name = user;
 			sourceTree = "<group>";
 		};
+		645393291B87D48E002FD5CC /* feed */ = {
+			isa = PBXGroup;
+			children = (
+				6453932D1B87D4BF002FD5CC /* FeedTableViewCell.h */,
+				6453932E1B87D4BF002FD5CC /* FeedTableViewCell.m */,
+				6453932F1B87D4BF002FD5CC /* FeedTableViewCell.xib */,
+			);
+			name = feed;
+			sourceTree = "<group>";
+		};
 		6455C3AF1B3BE1D50013872F /* step */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +680,7 @@
 		647876001B2B0A9800401720 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				645393291B87D48E002FD5CC /* feed */,
 				6439C7041B7F3435004B1186 /* users */,
 				643510EA1B6BEAEF00E1853C /* categories */,
 				64D7D3E31B4B050E00F8061E /* sidebar */,
@@ -1051,6 +1067,7 @@
 				64F7CB921B49528500D543AC /* authMailIcon.png in Resources */,
 				6455C3D51B3C0C230013872F /* StepHeaderTableViewCell.xib in Resources */,
 				64F7CB851B493BB200D543AC /* authFullBg.png in Resources */,
+				645393311B87D4BF002FD5CC /* FeedTableViewCell.xib in Resources */,
 				6459A2821B64468E009F95A3 /* security26.png in Resources */,
 				6439C7101B7F5DA4004B1186 /* menuWhiteIcon.png in Resources */,
 				647031FC1B2AF0420084D58A /* Main.storyboard in Resources */,
@@ -1196,6 +1213,7 @@
 				64C973411B80B39200D4531D /* Feed.m in Sources */,
 				6455C3B51B3BE2480013872F /* Step.m in Sources */,
 				64F7CB7C1B492A3600D543AC /* ServerError.m in Sources */,
+				645393301B87D4BF002FD5CC /* FeedTableViewCell.m in Sources */,
 				6467E0EF1B42A72F001BB1CD /* commentForm.m in Sources */,
 				649589521B625BAC00D3A6D8 /* RecipeFormHeader.m in Sources */,
 				64C5B17E1B481DEC0043C9D3 /* SWRevealViewController.m in Sources */,

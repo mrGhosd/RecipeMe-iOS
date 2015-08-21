@@ -10,11 +10,15 @@
 #import "SWRevealViewController.h"
 #import "ServerConnection.h"
 #import "AuthorizationManager.h"
+#import "FeedTableViewCell.h"
+#import <MBProgressHUD.h>
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface NewsFeedViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
     NSNumber *page;
+    NSMutableArray *feeds;
 }
 
 @end
@@ -24,11 +28,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     page = @1;
+    feeds = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    [self.tableView registerClass:[FeedTableViewCell class] forCellReuseIdentifier:@"feedCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"FeedTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"feedCell"];
     [self setNavigationPanel];
     [self setNavigationAttributes];
     [self loadUserFeedData];
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        page = [NSNumber numberWithInteger:[page integerValue] + 1];
+        [self loadUserFeedData];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -37,7 +51,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (void) loadUserFeedData{
-    [connection sendDataToURL:@"/users/feed" parameters:@{@"page": @1} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [connection sendDataToURL:@"/users/feed" parameters:@{@"page": page} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(data){
             [self parseFeedData:data];
         } else {
@@ -46,7 +62,14 @@
     }];
 }
 - (void) parseFeedData: (id) data{
-    
+    if([data count]){
+        for(NSDictionary *fd in data){
+            Feed *feed = [[Feed alloc] initWithParameters:fd];
+            [feeds addObject:feed];
+        }
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) setNavigationPanel{
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -67,6 +90,30 @@
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,[UIFont fontWithName:@"System" size:22.0], NSFontAttributeName, nil]];
 }
 
+#pragma mark - UITableViewDelegate and UITableViewDataSource methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return feeds.count;
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"feedCell";
+    Feed *feed = feeds[indexPath.row];
+    FeedTableViewCell *cell = (FeedTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FeedTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    [cell setFeedData:feed];
+    return cell;
+}
 
 /*
 #pragma mark - Navigation

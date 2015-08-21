@@ -11,4 +11,5 @@
 @interface NewsFeedViewController : ViewController
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

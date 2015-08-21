@@ -22,10 +22,19 @@
 - (void) setParams: (NSDictionary *) params{
     if(params[@"created_at"]) self.createdAt = [self correctConvertOfDate:params[@"created_at"]];
     if(params[@"entity"]) self.entity = params[@"entity"];
-    if(params[@"user"]) self.user = [NSDictionary dictionaryWithDictionary:params[@"user"]];
+    if(params[@"user"]) self.user = [self parseUser:params[@"user"]];
     if(params[@"event_type"]) self.eventType = params[@"event_type"];
     if(params[@"object"] != [NSNull null]) self.object = [self defineObject:params[@"object"]];
     if(params[@"parent_object"] != [NSNull null]) self.parentObject = [self defineParentObject:params[@"parent_object"]];
+}
+- (NSDictionary *) parseUser:(NSDictionary *)user{
+    NSString *rightURL;
+    if(user[@"avatar_url"]){
+       rightURL = [[ServerConnection sharedInstance] returnCorrectUrlPrefix: user[@"avatar_url"]];
+    } else {
+        rightURL = user[@"avatar_url"];
+    }
+    return @{@"name": user[@"name"], @"avatar_url": rightURL, @"id": user[@"id"]};
 }
 - (NSString *) friendlyCreatedAt{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
