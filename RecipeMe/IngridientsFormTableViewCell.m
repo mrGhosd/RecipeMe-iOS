@@ -24,16 +24,14 @@
 - (void) setIngridientData: (Ingridient *) ingridient{
     self.ingridient = ingridient;
     if(self.ingridient.id){
-        self.ingridientName.text = self.ingridient.name;
-        self.ingridientSize.text = self.ingridient.size;
         self.ingridientName.enabled = NO;
         self.ingridientSize.enabled = NO;
     } else {
-        self.ingridientName.text = @"";
-        self.ingridientSize.text = @"";
         self.ingridientName.enabled = YES;
         self.ingridientSize.enabled = YES;
     }
+    self.ingridientName.text = self.ingridient.name;
+    self.ingridientSize.text = self.ingridient.size;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -47,8 +45,6 @@
     if([textField isEqual:self.ingridientSize]){
         self.ingridient.size = self.ingridientSize.text;
     }
-}
-- (void) textFieldDidEndEditing:(UITextField *)textField{
 }
 
 - (void) customizeTextField: (UITextField *) textField withIcon: (NSString *) iconName andPlaceholder: (NSString *) placeholder{

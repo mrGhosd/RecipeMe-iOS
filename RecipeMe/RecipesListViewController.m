@@ -44,6 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     app = [UIApplication sharedApplication];
     auth = [AuthorizationManager sharedInstance];
     pageNumber = @1;
@@ -114,7 +115,12 @@
     
     // Do any additional setup after loading the view.
 }
-
+- (void) userSignedIn: (NSNotification *) notifictation{
+    User *currentUser = [[User alloc] initWithParams:notifictation.object];
+    self.navigationItem.rightBarButtonItems = [NSArray new];
+    [self setNavigationBarButtons];
+//    [self setVoteMark:self.recipe andUser:currentUser];
+}
 - (void) setNavigationBarButtons{
     if(auth.currentUser){
         UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];

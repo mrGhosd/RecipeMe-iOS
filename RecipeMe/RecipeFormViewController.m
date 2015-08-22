@@ -338,16 +338,35 @@ numberOfRowsInComponent:(NSInteger)component{
         self.recipeCategory.text = [categories[row] title];
         selectedCategory = [categories[row] id];
     }
-//    pickerView.removeFromSuperview;
 }
 
 #pragma mark - Save and Cancel Form event handlers
 - (NSDictionary *) getRecipeFormData{
-    NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:@{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
+    NSMutableDictionary *recipeParams = [NSMutableDictionary new];
+//    NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:@{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
     if(self.recipeImageId){
         [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
     }
+    if(ingridients.count > 0){
+        [recipeParams setObject:[self setIngridientAttributes] forKey:@"recipe_ingridients_attributes"];
+    }
     return recipeParams;
+}
+
+- (NSMutableArray *) setIngridientAttributes{
+    NSMutableArray *ingridientsAttributes = [NSMutableArray new];
+    for(Ingridient *ingridient in ingridients){
+        NSMutableDictionary *ingridientParams = [NSMutableDictionary new];
+        if(ingridient.size) [ingridientParams setObject:ingridient.size forKey:@"size"];
+        if(ingridient.name){
+            NSMutableDictionary *attrsForIngridient = [NSMutableDictionary new];
+            if(ingridient.id) [attrsForIngridient setObject:ingridient.id forKey:@"id"];
+            if(ingridient.name) [attrsForIngridient setObject:ingridient.name forKey:@"name"];
+            [ingridientParams setObject:attrsForIngridient forKey:@"ingridient_attributes"];
+        }
+        [ingridientsAttributes addObject:ingridientParams];
+    }
+    return ingridientsAttributes;
 }
 - (IBAction)saveRecipe:(id)sender {
     NSString *url;
@@ -458,10 +477,9 @@ numberOfRowsInComponent:(NSInteger)component{
         static NSString *CellIdentifier = @"ingridientsCell";
         IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell setIngridientData:ingridients[indexPath.row]];
+        Ingridient *ingridient = ingridients[indexPath.row];
+        [cell setIngridientData:ingridient];
          [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
-        cell.ingridientName.delegate = self;
-        cell.ingridientSize.delegate = self;
         return cell;
     } else {
         static NSString *CellIdentifier = @"stepsCell";
