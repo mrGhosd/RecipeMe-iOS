@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface NewsFeedViewController : ViewController
+#import "FeedDelegate.h"
+@interface NewsFeedViewController : ViewController <UITableViewDataSource, UITableViewDelegate, FeedDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

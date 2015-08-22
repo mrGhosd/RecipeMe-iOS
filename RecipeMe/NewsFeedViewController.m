@@ -13,12 +13,19 @@
 #import "FeedTableViewCell.h"
 #import <MBProgressHUD.h>
 #import <UIScrollView+InfiniteScroll.h>
+#import "Recipe.h"
+#import "RecipeDetailViewController.h"
+#import "UserViewController.h"
+#import <FSImageViewer/FSBasicImage.h>
+#import <FSImageViewer/FSBasicImageSource.h>
 
 @interface NewsFeedViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
     NSNumber *page;
     NSMutableArray *feeds;
+    Recipe *selectedRecipe;
+    User *selectedUser;
 }
 
 @end
@@ -95,6 +102,11 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return feeds.count;
@@ -113,10 +125,48 @@
     }
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
     [cell setFeedData:feed];
     return cell;
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"recipeView"]){
+        RecipeDetailViewController *view = segue.destinationViewController;
+        view.recipe = selectedRecipe;
+    }
+    if([segue.identifier isEqualToString:@"userView"]){
+        UserViewController *view = segue.destinationViewController;
+        view.user = selectedUser;
+    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+#pragma mark - FeedCell delegate methods
 
+- (void) moveToFeedObject:(id)object{
+    selectedRecipe = (Recipe *) object;
+    [self performSegueWithIdentifier:@"recipeView" sender:self];
+}
+- (void) clickOnCellImage:(id)object{
+    NSString *url;
+    NSString *name;
+    if([object isKindOfClass:[NSDictionary class]]){
+        url = object[@"avatar_url"];
+        name = object[@"name"];
+    } else {
+        url = (Recipe *) [object imageUrl];
+        name = (Recipe *) [object title];
+    }
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:url] name:name];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
+- (void) moveToUserProfile:(id)user{
+    selectedUser = (User *) user;
+    [self performSegueWithIdentifier:@"userView" sender:self];
+}
 /*
 #pragma mark - Navigation
 

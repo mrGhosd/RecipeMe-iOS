@@ -9,6 +9,7 @@
 #import "FeedTableViewCell.h"
 #import <UIImageView+AFNetworking.h>
 #import "ServerConnection.h"
+#import "User.h"
 @implementation FeedTableViewCell
 
 - (void)awakeFromNib {
@@ -33,6 +34,11 @@
     self.userAvatar.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.userAvatar.layer.borderWidth = 2.0;
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapUserImage:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.userAvatar setUserInteractionEnabled:YES];
+    [self.userAvatar addGestureRecognizer:singleTap];
 }
 
 - (void) setFeedImageData{
@@ -45,6 +51,11 @@
     self.feedImage.clipsToBounds = YES;
     self.feedImage.backgroundColor = [UIColor whiteColor];
     self.feedImage.layer.cornerRadius = self.feedImage.frame.size.height / 2;
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFeedImage:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.feedImage setUserInteractionEnabled:YES];
+    [self.feedImage addGestureRecognizer:singleTap];
 }
 
 - (void) setFeedData: (Feed *) feed{
@@ -55,6 +66,32 @@
     self.userName.text = self.feed.user[@"name"];
     [self setAvatarImage];
     [self setFeedImageData];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkRecipeTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.feedTitle setUserInteractionEnabled:YES];
+    [self.feedTitle addGestureRecognizer:singleTap];
+    
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkUserTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.userName setUserInteractionEnabled:YES];
+    [self.userName addGestureRecognizer:userTap];
 }
 
+- (void) linkRecipeTap: (UITapGestureRecognizer *)tapRecognizer{
+    id sendObject = self.feed.parentObject == nil ? self.feed.object : self.feed.parentObject;
+    [self.delegate moveToFeedObject:sendObject];
+}
+
+- (void) tapUserImage: (id) sender{
+    [self.delegate clickOnCellImage:self.feed.user];
+}
+- (void) tapFeedImage: (id) sender{
+    id sendObject = self.feed.parentObject == nil ? self.feed.object : self.feed.parentObject;
+    [self.delegate clickOnCellImage:sendObject];
+}
+- (void) linkUserTap: (id) sender{
+    User *user = [[User alloc] initWithParams:self.feed.user];
+    [self.delegate moveToUserProfile:user];
+}
 @end

@@ -121,6 +121,7 @@
                         <outlet property="tableView" destination="4bC-rn-JI1" id="ZGH-iI-vdl"/>
                         <segue destination="FKG-ko-PTc" kind="show" identifier="detailList" id="nTT-gw-yCb"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="KX8-mF-En4"/>
+                        <segue destination="FSy-Pd-GQM" kind="show" id="9BR-nH-MKL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,7 +300,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -797,6 +798,8 @@
                     <connections>
                         <outlet property="sidebarButton" destination="Bw8-uE-Scz" id="K33-BS-xdd"/>
                         <outlet property="tableView" destination="uX3-4M-ZBw" id="ayY-sV-CR6"/>
+                        <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="FBK-IP-glf"/>
+                        <segue destination="FKG-ko-PTc" kind="show" identifier="userView" id="d74-kL-QZJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waL-DB-i8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1103,13 +1106,15 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3if-zo-Jsd"/>
-        <segue reference="KX8-mF-En4"/>
-        <segue reference="gIc-MD-fzz"/>
-        <segue reference="rqB-h1-uFK"/>
         <segue reference="x1S-wy-2mz"/>
         <segue reference="rhO-IQ-XCD"/>
+        <segue reference="Ghj-o6-u1a"/>
         <segue reference="Fd9-B0-pdu"/>
+        <segue reference="9BR-nH-MKL"/>
+        <segue reference="aeK-7I-mAS"/>
+        <segue reference="d74-kL-QZJ"/>
         <segue reference="DX1-Df-l95"/>
+        <segue reference="FBK-IP-glf"/>
+        <segue reference="3if-zo-Jsd"/>
     </inferredMetricsTieBreakers>
 </document>
