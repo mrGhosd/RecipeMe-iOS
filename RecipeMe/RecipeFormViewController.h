@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "Recipe.h"
 #import "StepCellDelegate.h"
+#import "ServerError.h"
 
-@interface RecipeFormViewController : ViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UITextFieldDelegate>
+@interface RecipeFormViewController : ViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UITextFieldDelegate, ServerErrorDelegate>
 @property (strong, nonatomic) Recipe *recipe;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTitle;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTime;

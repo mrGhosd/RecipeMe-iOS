@@ -17,6 +17,7 @@
 #import <UIImageView+AFNetworking.h>
 #import <MBProgressHUD.h>
 
+
 @interface RecipeFormViewController (){
     ServerConnection *connection;
     AuthorizationManager *auth;
@@ -342,14 +343,26 @@ numberOfRowsInComponent:(NSInteger)component{
 
 #pragma mark - Save and Cancel Form event handlers
 - (NSDictionary *) getRecipeFormData{
-    NSMutableDictionary *recipeParams = [NSMutableDictionary new];
-//    NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:@{@"title": self.recipeTitle.text, @"category_id": selectedCategory, @"tag_list": self.recipeTags.text, @"description": self.recipeDescription.text, @"difficult": selectedDifficult, @"user_id": auth.currentUser.id, @"time": self.recipeTime.text, @"persons": self.recipePersons.text}];
-    if(self.recipeImageId){
-        [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
-    }
+    NSMutableDictionary *recipeParams = [NSMutableDictionary dictionaryWithDictionary:[self setParamsForRecipe]];
     if(ingridients.count > 0){
         [recipeParams setObject:[self setIngridientAttributes] forKey:@"recipe_ingridients_attributes"];
     }
+    if(steps.count > 0){
+        [recipeParams setObject:[self setStepsAttributes] forKey:@"steps_attributes"];
+    }
+    return recipeParams;
+}
+- (NSMutableDictionary *) setParamsForRecipe{
+    NSMutableDictionary *recipeParams = [NSMutableDictionary new];
+    if(self.recipeTitle.text) [recipeParams setObject:self.recipeTitle.text forKey:@"title"];
+    if(selectedCategory) [recipeParams setObject:selectedCategory forKey:@"category_id"];
+    if(self.recipeTags.text) [recipeParams setObject:self.recipeTags.text forKey:@"tag_list"];
+    if(self.recipeDescription.text) [recipeParams setObject:self.recipeDescription.text forKey:@"description"];
+    if(selectedDifficult) [recipeParams setObject:selectedDifficult forKey:@"difficult"];
+    if(auth.currentUser.id) [recipeParams setObject:auth.currentUser.id forKey:@"user_id"];
+    if(self.recipeTime.text) [recipeParams setObject:self.recipeTime.text forKey:@"time"];
+    if(self.recipePersons.text) [recipeParams setObject:self.recipePersons.text forKey:@"persons"];
+    if(self.recipeImageId) [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
     return recipeParams;
 }
 
@@ -368,7 +381,22 @@ numberOfRowsInComponent:(NSInteger)component{
     }
     return ingridientsAttributes;
 }
+- (NSMutableArray *) setStepsAttributes{
+    NSMutableArray *stepsAttributes = [NSMutableArray new];
+    for(Step *step in steps){
+        NSMutableDictionary *stepParams = [NSMutableDictionary new];
+        if(step.id) [stepParams setObject:step.id forKey:@"id"];
+        if(step.desc) [stepParams setObject:step.desc forKey:@"description"];
+        if(step.imageId) {
+            NSDictionary *dict = @{@"id": step.imageId};
+            [stepParams setObject:dict forKey:@"image"];
+        }
+        [stepsAttributes addObject:stepParams];
+    }
+    return stepsAttributes;
+}
 - (IBAction)saveRecipe:(id)sender {
+    [self setDefaulCellApperanceForStepsCells];
     NSString *url;
     NSString *requestType;
     if(self.recipe){
@@ -380,30 +408,45 @@ numberOfRowsInComponent:(NSInteger)component{
     }
     [connection sendDataToURL:url parameters:[self getRecipeFormData] requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
-            dispatch_group_t group = dispatch_group_create();
-            dispatch_group_async(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
-                if(ingridients != [NSNull null]){
-                    for(Ingridient *ingridient in ingridients){
-                        ingridient.recipeId = data[@"id"];
-                        [ingridient save];
-                    }
-                }
-                for(Step *step in steps){
-                    step.recipeId = data[@"id"];
-                    [step save];
-                }
-               //Save steps and ingridien
-            });
-            dispatch_group_notify(group,dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^ {
-                // block3
-               [self dismissViewControllerAnimated:YES completion:nil];
-            });
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
         }
     }];
 }
 
+- (void) handleServerFormErrorWithError: (id) error{
+    NSDictionary *errorMessage = [error message];
+    if(errorMessage[@"steps"]){
+        [self handleStepsErrors:errorMessage[@"steps"]];
+    }
+}
+- (void) setDefaulCellApperanceForStepsCells{
+    NSArray *cells = [self.stepsTableView visibleCells];
+    for(StepsFormTableViewCell *cell in cells){
+        cell.stepImage.layer.borderColor = [[UIColor clearColor] CGColor];
+        cell.stepText.layer.borderColor = [[UIColor whiteColor] CGColor];
+    }
+}
+- (void) handleStepsErrors: (NSArray *) stepsErrors{
+    NSArray *cells = [self.stepsTableView visibleCells];
+    for(int i = 0; i < stepsErrors.count; i++){
+        StepsFormTableViewCell *cell = (StepsFormTableViewCell *) cells[i];
+        if(stepsErrors[i][[NSString stringWithFormat:@"%d", i]][@"description"]){
+            cell.stepText.layer.borderColor = [[UIColor redColor] CGColor];
+        }
+        if(stepsErrors[i][[NSString stringWithFormat:@"%d", i]][@"image"]){
+            cell.stepImage.layer.borderColor = [[UIColor redColor] CGColor];
+            cell.stepImage.layer.borderWidth = 3.0;
+            cell.stepImage.layer.cornerRadius = 8.0;
+        }
+    }
+}
+- (void) handleServerErrorWithError:(id) error{
+
+}
 - (IBAction)dismissForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

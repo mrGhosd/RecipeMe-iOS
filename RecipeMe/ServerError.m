@@ -42,7 +42,7 @@
 - (void) handle{
     if([self.status  isEqual: @0]){
         [self.delegate handleServerErrorWithError:self];
-    } else if ([self.status isEqual:@422] || [self.status isEqual:@401]){
+    } else if ([self.status isEqual:@422] || [self.status isEqual:@401] || [self.status isEqual:@403]){
         [self.delegate handleServerFormErrorWithError:self];
     }
 }
