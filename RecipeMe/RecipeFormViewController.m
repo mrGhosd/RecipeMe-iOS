@@ -362,7 +362,7 @@ numberOfRowsInComponent:(NSInteger)component{
     if(auth.currentUser.id) [recipeParams setObject:auth.currentUser.id forKey:@"user_id"];
     if(self.recipeTime.text) [recipeParams setObject:self.recipeTime.text forKey:@"time"];
     if(self.recipePersons.text) [recipeParams setObject:self.recipePersons.text forKey:@"persons"];
-    if(self.recipeImageId) [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image"];
+    if(self.recipeImageId) [recipeParams setObject:@{@"id": self.recipeImageId} forKey:@"image_attributes"];
     return recipeParams;
 }
 
@@ -396,6 +396,7 @@ numberOfRowsInComponent:(NSInteger)component{
     return stepsAttributes;
 }
 - (IBAction)saveRecipe:(id)sender {
+    [self setDefaultApperanceForRecipeElements];
     [self setDefaultCellApperanceForIngridientCells];
     [self setDefaulCellApperanceForStepsCells];
     NSString *url;
@@ -420,6 +421,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 - (void) handleServerFormErrorWithError: (id) error{
     NSDictionary *errorMessage = [error message];
+    [self handleRecipeErrors:errorMessage];
     if(errorMessage[@"steps"]){
         [self handleStepsErrors:errorMessage[@"steps"]];
     }
@@ -427,6 +429,32 @@ numberOfRowsInComponent:(NSInteger)component{
         [self handleIngridientsErrors:errorMessage[@"ingridients"]];
     }
 }
+- (void) handleRecipeErrors:(NSDictionary *) errors{
+    if(errors[@"title"]) [self setColorToElement:self.recipeTitle withColor:[UIColor redColor]];
+    if(errors[@"description"]) [self setColorToElement:self.recipeDescription withColor:[UIColor redColor]];
+    if(errors[@"time"]) [self setColorToElement:self.recipeTime withColor:[UIColor redColor]];
+    if(errors[@"persons"]) [self setColorToElement:self.recipePersons withColor:[UIColor redColor]];
+    if(errors[@"difficult"]) [self setColorToElement:self.recipeDifficult withColor:[UIColor redColor]];
+    if(errors[@"category_id"]) [self setColorToElement:self.recipeCategory withColor:[UIColor redColor]];
+    if(errors[@"tags"]) [self setColorToElement:self.recipeTags withColor:[UIColor redColor]];
+    if(errors[@"image"]) [self setColorToElement:self.recipeImage withColor:[UIColor redColor]];
+}
+- (void) setColorToElement: (id) field withColor: (UIColor *) color{
+    [[field layer] setBorderColor:[color CGColor]];
+    [[field layer] setBorderWidth:2.0];
+    [[field layer] setCornerRadius:8.0];
+}
+- (void) setDefaultApperanceForRecipeElements{
+    self.recipeTitle.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeImage.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipePersons.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeTime.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeDifficult.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeCategory.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeTags.layer.borderColor = [[UIColor clearColor] CGColor];
+    self.recipeDescription.layer.borderColor = [[UIColor whiteColor] CGColor];
+}
+
 - (void) setDefaulCellApperanceForStepsCells{
     NSArray *cells = [self.stepsTableView visibleCells];
     for(StepsFormTableViewCell *cell in cells){
