@@ -111,6 +111,8 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"FeedTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgViewSmall.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setFeedData:feed];
     return cell;
 }
