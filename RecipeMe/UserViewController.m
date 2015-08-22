@@ -17,6 +17,8 @@
 #import "UserOwnFeedTableViewCell.h"
 #import <UIScrollView+InfiniteScroll.h>
 #import "RecipeDetailViewController.h"
+#import <FSImageViewer/FSBasicImage.h>
+#import <FSImageViewer/FSBasicImageSource.h>
 
 @interface UserViewController (){
     NSString *panelID;
@@ -258,6 +260,15 @@
 - (void) moveToFeedObject:(id)object{
     selectedRecipe = (Recipe *) object;
     [self performSegueWithIdentifier:@"recipeView" sender:self];
+}
+
+- (void) clickOnCellImage:(id)object{
+    Recipe *recipe = (Recipe *) object;
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:recipe.imageUrl] name:recipe.title];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

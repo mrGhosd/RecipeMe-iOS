@@ -39,6 +39,10 @@
     } failure:nil];
     self.feedImage.clipsToBounds = YES;
     self.feedImage.layer.cornerRadius = self.feedImage.frame.size.height / 2;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecipeImage:)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.feedImage setUserInteractionEnabled:YES];
+    [self.feedImage addGestureRecognizer:singleTap];
 }
 - (void) setFeedDescription{
     self.eventTitle.attributedText = [self.feed getFeedTitle];
@@ -48,8 +52,14 @@
     [self.eventTitle setUserInteractionEnabled:YES];
     [self.eventTitle addGestureRecognizer:singleTap];
 }
+
 - (void) linkRecipeTap: (UITapGestureRecognizer *)tapRecognizer{
     id sendObject = self.feed.parentObject == nil ? self.feed.object : self.feed.parentObject;
     [self.delegate moveToFeedObject:sendObject];
+}
+
+- (void) tapRecipeImage: (id) sender{
+    id sendObject = self.feed.parentObject == nil ? self.feed.object : self.feed.parentObject;
+    [self.delegate clickOnCellImage:sendObject];
 }
 @end

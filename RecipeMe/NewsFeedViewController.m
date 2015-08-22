@@ -26,6 +26,7 @@
     NSMutableArray *feeds;
     Recipe *selectedRecipe;
     User *selectedUser;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -38,6 +39,7 @@
     feeds = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    [self refreshInit];
     [self.tableView registerClass:[FeedTableViewCell class] forCellReuseIdentifier:@"feedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FeedTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"feedCell"];
@@ -58,6 +60,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void) loadUserFeedData{
+    [refreshControl endRefreshing];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [connection sendDataToURL:@"/users/feed" parameters:@{@"page": page} requestType:@"GET" andComplition:^(id data, BOOL success){
@@ -68,6 +71,13 @@
         }
     }];
 }
+
+- (void) loadLastData{
+    page = @1;
+    feeds = [NSMutableArray new];
+    [self loadUserFeedData];
+}
+
 - (void) parseFeedData: (id) data{
     if([data count]){
         for(NSDictionary *fd in data){
@@ -78,6 +88,16 @@
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
+    [refreshControl addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
+}
+
 - (void) setNavigationPanel{
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController ){
