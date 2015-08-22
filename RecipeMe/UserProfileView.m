@@ -24,7 +24,7 @@
 }
 - (void) setProfileInfo{
     self.userName.text = [[self.user correctNaming] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    
+    if(self.user.recipesCount && self.user.commentsCount){
     NSArray *views = @[@{@"count": self.recipesCount, @"label": self.recipesLabel,
                          @"i18n": NSLocalizedString(@"profile_recipes", nil), @"count_val": self.user.recipesCount},
                        @{@"count": self.commentsCount, @"label": self.commentsLabel,
@@ -39,6 +39,7 @@
         singleTap.numberOfTapsRequired = 1;
         [view setUserInteractionEnabled:YES];
         [view addGestureRecognizer:singleTap];
+    }
     }
 }
 - (void) setProfileInfoViews: (NSArray *) infoViews{

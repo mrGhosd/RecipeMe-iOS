@@ -799,7 +799,7 @@
                         <outlet property="sidebarButton" destination="Bw8-uE-Scz" id="K33-BS-xdd"/>
                         <outlet property="tableView" destination="uX3-4M-ZBw" id="ayY-sV-CR6"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="FBK-IP-glf"/>
-                        <segue destination="FKG-ko-PTc" kind="show" identifier="userView" id="d74-kL-QZJ"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userView" id="SeE-2U-AnV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waL-DB-i8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1111,8 +1111,7 @@
         <segue reference="Ghj-o6-u1a"/>
         <segue reference="Fd9-B0-pdu"/>
         <segue reference="9BR-nH-MKL"/>
-        <segue reference="aeK-7I-mAS"/>
-        <segue reference="d74-kL-QZJ"/>
+        <segue reference="SeE-2U-AnV"/>
         <segue reference="DX1-Df-l95"/>
         <segue reference="FBK-IP-glf"/>
         <segue reference="3if-zo-Jsd"/>
