@@ -396,6 +396,7 @@ numberOfRowsInComponent:(NSInteger)component{
     return stepsAttributes;
 }
 - (IBAction)saveRecipe:(id)sender {
+    [self setDefaultCellApperanceForIngridientCells];
     [self setDefaulCellApperanceForStepsCells];
     NSString *url;
     NSString *requestType;
@@ -422,6 +423,9 @@ numberOfRowsInComponent:(NSInteger)component{
     if(errorMessage[@"steps"]){
         [self handleStepsErrors:errorMessage[@"steps"]];
     }
+    if(errorMessage[@"ingridients"]){
+        [self handleIngridientsErrors:errorMessage[@"ingridients"]];
+    }
 }
 - (void) setDefaulCellApperanceForStepsCells{
     NSArray *cells = [self.stepsTableView visibleCells];
@@ -430,6 +434,33 @@ numberOfRowsInComponent:(NSInteger)component{
         cell.stepText.layer.borderColor = [[UIColor whiteColor] CGColor];
     }
 }
+
+- (void) setDefaultCellApperanceForIngridientCells{
+    NSArray *cells = [self.ingridientsTableView visibleCells];
+    for(IngridientsFormTableViewCell *cell in cells){
+        cell.ingridientName.layer.borderColor = [[UIColor clearColor] CGColor];
+        cell.ingridientSize.layer.borderColor = [[UIColor clearColor] CGColor];
+    }
+}
+
+- (void) handleIngridientsErrors: (NSArray *) ingridientsErrors{
+    NSArray *cells = [self.ingridientsTableView visibleCells];
+    for(int i = 0; i < ingridientsErrors.count; i++){
+        IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) cells[i];
+        if(ingridientsErrors[i][[NSString stringWithFormat:@"%d", i]][@"size"]){
+            cell.ingridientSize.layer.borderColor = [[UIColor redColor] CGColor];
+            cell.ingridientSize.layer.borderWidth = 2.0;
+            cell.ingridientSize.layer.cornerRadius = 8.0;
+        }
+        if(ingridientsErrors[i][[NSString stringWithFormat:@"%d", i]][@"name"]){
+            cell.ingridientName.layer.borderColor = [[UIColor redColor] CGColor];
+            cell.ingridientName.layer.borderWidth = 2.0;
+            cell.ingridientName.layer.cornerRadius = 8.0;
+
+        }
+    }
+}
+
 - (void) handleStepsErrors: (NSArray *) stepsErrors{
     NSArray *cells = [self.stepsTableView visibleCells];
     for(int i = 0; i < stepsErrors.count; i++){
