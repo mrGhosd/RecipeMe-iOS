@@ -15,13 +15,13 @@
 
 @implementation MainViewController
 
-- (void)awakeFromNib
+- (void)viewDidLoad
 {
-    [super awakeFromNib];
+    [super view];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
+    self.rootViewController = [self getRootViewControllerData];
     _leftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SidebarViewController"];
 
         [self setLeftViewEnabledWithWidth:250.f
@@ -29,7 +29,6 @@
                      alwaysVisibleOptions:0];
         
         self.leftViewBackgroundImage = [UIImage imageNamed:@"sidebarBg.png"];
-        // -----
         
         _leftViewController.tableView.backgroundColor = [UIColor clearColor];
         [_leftViewController.tableView reloadData];
@@ -41,6 +40,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setRooteViewController: (NSString *) controllerID{
+    self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:controllerID];
+}
+
+- (UIViewController *) getRootViewControllerData{
+    if(!self.rootViewController){
+        return [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
+    }
+    return self.rootViewController;
+}
 /*
 #pragma mark - Navigation
 

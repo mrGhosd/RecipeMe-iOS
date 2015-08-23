@@ -10,5 +10,5 @@
 #import <LGSideMenuController.h>
 
 @interface MainViewController : LGSideMenuController
-
+- (void) setRooteViewController: (NSString *) controllerID;
 @end

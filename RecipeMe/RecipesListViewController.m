@@ -214,22 +214,13 @@
     
 }
 -(void) setNavigationPanel{
-//    SWRevealViewController *revealViewController = self.revealViewController;
-//    if ( revealViewController ){
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
         [self.sidebarButton setTarget:self.sidebarButton];
         [self.sidebarButton setAction: @selector(showLeftMenu:)];
-//        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-//        revealViewController.rightViewController = nil;
-//    }
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetailCategory:)];
-//    singleTap.numberOfTapsRequired = 1;
-//    [self.sidebarButton setUserInteractionEnabled:YES];
-//    [self.sidebarButton addGestureRecognizer:singleTap];
-//    [self.sidebarButton ]
 }
 
 - (void) showLeftMenu{
+    [kMainViewController setRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"]];
     [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 

@@ -19,6 +19,8 @@
 #import "RecipeDetailViewController.h"
 #import <FSImageViewer/FSBasicImage.h>
 #import <FSImageViewer/FSBasicImageSource.h>
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 @interface UserViewController (){
     NSString *panelID;
@@ -69,14 +71,14 @@
 }
 
 -(void) setNavigationPanel{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController ){
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector(revealToggle:)];
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-        revealViewController.rightViewController = nil;
-    }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
 }
+
+- (void) showLeftMenu{
+//    [(MainViewController *)kMainViewController setRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"UserNavigationController"]];
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
+}
+
 - (void) refreshInit{
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     refreshControl = [[UIRefreshControl alloc] init];

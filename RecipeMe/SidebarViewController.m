@@ -14,6 +14,8 @@
 #import "UserProfileTableViewCell.h"
 #import "UserViewController.h"
 #import <UICKeyChainStore.h>
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -90,10 +92,14 @@
         RecipesListViewController *view = segue.destinationViewController;
     }
     if([[segue identifier] isEqualToString:@"profile"]){
-        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
-        UserViewController *view = (UserViewController *)navController.topViewController;
-        view.user = auth.currentUser;
+        
+        
+        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+//        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+//        UserViewController *view = (UserViewController *)navController.topViewController;
+//        view.user = auth.currentUser;
     }
+    [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -112,8 +118,13 @@
     return menuItems.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-        NSString *touched = menuIds[indexPath.row];
-        [self performSegueWithIdentifier:touched sender:self];
+    
+//        NSString *touched = menuIds[indexPath.row];
+//        [self performSegueWithIdentifier:touched sender:self];
+    UserViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserViewController"];
+    viewController.user = auth.currentUser;
+    [kNavigationController pushViewController:viewController animated:YES];
+    [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
