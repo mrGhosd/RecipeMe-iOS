@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B6204241B3661BF10C07A0B"
-               BuildableName = "libUIImage-ResizeMagick.a"
-               BlueprintName = "UIImage-ResizeMagick"
+               BlueprintIdentifier = "1DE13DF4D6A2E233ADDAA57C"
+               BuildableName = "libLGSideMenuController.a"
+               BlueprintName = "LGSideMenuController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -1002,10 +1002,10 @@
             </objects>
             <point key="canvasLocation" x="730" y="-788"/>
         </scene>
-        <!--Reveal View Controller-->
+        <!--Side Menu Controller-->
         <scene sceneID="3G4-5C-8sp">
             <objects>
-                <viewController id="Lw9-BP-F1B" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController id="Lw9-BP-F1B" customClass="LGSideMenuController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XXs-f6-eTO"/>
                         <viewControllerLayoutGuide type="bottom" id="fdQ-YT-gN5"/>
@@ -1106,14 +1106,14 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x1S-wy-2mz"/>
+        <segue reference="QPr-PU-Tqy"/>
         <segue reference="rhO-IQ-XCD"/>
         <segue reference="Ghj-o6-u1a"/>
         <segue reference="Fd9-B0-pdu"/>
+        <segue reference="FBK-IP-glf"/>
         <segue reference="9BR-nH-MKL"/>
         <segue reference="SeE-2U-AnV"/>
         <segue reference="DX1-Df-l95"/>
-        <segue reference="FBK-IP-glf"/>
         <segue reference="3if-zo-Jsd"/>
     </inferredMetricsTieBreakers>
 </document>

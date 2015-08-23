@@ -17,6 +17,7 @@ target 'RecipeMe' do
     pod 'LGFilterView', '~> 1.0.0'
     pod 'LGDrawer', '~> 1.0.0'
     pod 'LGViews', '~> 1.0.0'
+    pod 'LGSideMenuController', '~> 1.0.0'
 end
 
 target 'RecipeMeTests' do

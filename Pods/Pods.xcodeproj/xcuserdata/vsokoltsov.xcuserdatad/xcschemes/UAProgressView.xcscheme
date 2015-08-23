@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27C326C4969418C526EAEEBF"
+               BlueprintIdentifier = "2073FA4886A3C8A9DFC2DDD3"
                BuildableName = "libUAProgressView.a"
                BlueprintName = "UAProgressView"
                ReferencedContainer = "container:Pods.xcodeproj">

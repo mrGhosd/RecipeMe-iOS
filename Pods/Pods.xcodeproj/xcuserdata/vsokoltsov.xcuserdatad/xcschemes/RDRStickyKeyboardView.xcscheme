@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "341D32954ABAC010D2666F14"
+               BlueprintIdentifier = "0B1D3666F90F21FF5A066811"
                BuildableName = "libRDRStickyKeyboardView.a"
                BlueprintName = "RDRStickyKeyboardView"
                ReferencedContainer = "container:Pods.xcodeproj">
