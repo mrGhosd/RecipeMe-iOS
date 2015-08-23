@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SidebarViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SidebarViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *signOutButton;
 - (IBAction)signOut:(id)sender;

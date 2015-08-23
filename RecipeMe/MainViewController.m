@@ -29,9 +29,6 @@
                      alwaysVisibleOptions:0];
         
         self.leftViewBackgroundImage = [UIImage imageNamed:@"sidebarBg.png"];
-        
-        // -----
-        
         // -----
         
         _leftViewController.tableView.backgroundColor = [UIColor clearColor];

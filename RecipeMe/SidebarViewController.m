@@ -27,8 +27,13 @@
 
 @implementation SidebarViewController
 
+- (void) awakeFromNib{
+    [super awakeFromNib];
+    [self viewDidLoad];
+    
+}
 - (void)viewDidLoad {
-    [super viewDidLoad];
+//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     auth = [AuthorizationManager sharedInstance];
     store = [UICKeyChainStore keyChainStore];
     [self initSidebarData];
@@ -40,14 +45,13 @@
     self.tableView.separatorColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.revealViewController panGestureRecognizer];
-    [self.revealViewController tapGestureRecognizer];
     
     [self.tableView registerClass:[UserProfileTableViewCell class] forCellReuseIdentifier:@"profileCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"UserProfileTableViewCell" bundle:nil]
-              forCellReuseIdentifier:@"profileCell"];
+         forCellReuseIdentifier:@"profileCell"];
     // Do any additional setup after loading the view.
 }
+
 -(void) userSignedIn{
     [self initSidebarData];
     [self.tableView reloadData];
@@ -145,11 +149,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void) viewWillAppear:(BOOL)animated{
-    //    super: YES;
-    [self.revealViewController.frontViewController.view setUserInteractionEnabled:NO];
-    [self.revealViewController.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-}
 
 - (void) viewWillDisappear:(BOOL)animated{
     //    super: YES;
