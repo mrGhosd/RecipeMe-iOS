@@ -10,9 +10,10 @@
 #import "UserDelegate.h"
 #import "ServerErrorDelegate.h"
 #import "RecipeCellDelegate.h"
+#import "LGFilterView.h"
 @class RMCategory;
 
-@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate, RecipeCellDelegate>
+@interface RecipesListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, UserDelegate, ServerErrorDelegate, RecipeCellDelegate, LGFilterViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *recipes;
 @property (strong, nonatomic) RMCategory *category;

@@ -20,6 +20,8 @@
 #import "CategoryHeaderView.h"
 #import "CategoriesDetailViewController.h"
 #import <SIOSocket/SIOSocket.h>
+#import <LGDrawer.h>
+#import <LGButton.h>
 
 
 @interface RecipesListViewController (){
@@ -36,6 +38,11 @@
     UISearchDisplayController *searchDisplayController;
     SIOSocket *recipeSocket;
     UIApplication *app;
+    LGFilterView *filterView;
+    LGButton *titleButton;
+    NSArray *titlesArray;
+    NSArray *filterParams;
+    NSString *filterAttr;
 }
 @property SIOSocket *socket;
 @end
@@ -47,10 +54,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
     app = [UIApplication sharedApplication];
     auth = [AuthorizationManager sharedInstance];
+    titlesArray = @[NSLocalizedString(@"filter_rate", nil), NSLocalizedString(@"filter_comments", nil), NSLocalizedString(@"filter_steps", nil), NSLocalizedString(@"filter_ingridients", nil)];
+    filterParams = @[@"rate", @"comments_count", @"steps_count", @"recipe_ingridients_count"];
+    filterAttr = filterParams.firstObject;
     pageNumber = @1;
     recipes = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     [self setNavigationPanel];
+    [self setupFilterViewsWithTransitionStyle:LGFilterViewTransitionStyleTop];
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecipesListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"recipeCell"];
@@ -121,6 +132,64 @@
     [self setNavigationBarButtons];
 //    [self setVoteMark:self.recipe andUser:currentUser];
 }
+- (LGDrawer *) setCustomArrowImage{
+    return [LGDrawer drawArrowWithImageSize:CGSizeMake(11.f, 8.f)
+                                       size:CGSizeMake(9.f, 6.f)
+                                     offset:CGPointZero
+                                     rotate:0.f
+                                  thickness:2.f
+                                  direction:LGDrawerDirectionBottom
+                            backgroundColor:nil
+                                      color:[UIColor whiteColor]
+                                       dash:nil
+                                shadowColor:nil
+                               shadowOffset:CGPointZero
+                                 shadowBlur:0.f];
+}
+- (void) setCustomTitleButtonWithArrow: (UIImage *) arrowImage{
+    titleButton = [LGButton new];
+    titleButton.adjustsAlphaWhenHighlighted = YES;
+    titleButton.backgroundColor = [UIColor clearColor];
+    titleButton.tag = 0;
+    [titleButton setTitle:titlesArray.firstObject forState:UIControlStateNormal];
+    [titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [titleButton addTarget:self action:@selector(toggleFilterView:) forControlEvents:UIControlEventTouchUpInside];
+    [titleButton setImage:arrowImage forState:UIControlStateNormal];
+    titleButton.imagePosition = LGButtonImagePositionRight;
+    titleButton.titleLabel.font = [UIFont systemFontOfSize:20.f];
+    [titleButton sizeToFit];
+    self.navigationItem.titleView = titleButton;
+}
+
+- (void) setFilterAttributes{
+    
+}
+
+- (void)setupFilterViewsWithTransitionStyle:(LGFilterViewTransitionStyle)style
+{
+    UIImage *arrowImage = [self setCustomArrowImage];
+    [self setCustomTitleButtonWithArrow:arrowImage];
+    
+    filterView = [[LGFilterView alloc] initWithTitles:titlesArray
+                                          actionHandler:^(LGFilterView *filterView, NSString *title, NSUInteger index)
+                    {
+                        [titleButton setTitle:title forState:UIControlStateNormal];
+                        titleButton.tag = index;
+                    }
+                                          cancelHandler:nil];
+    filterView.delegate = self;
+    filterView.transitionStyle = style;
+    filterView.numberOfLines = 0;
+    filterView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+}
+- (void) toggleFilterView: (UIButton *) btn{
+    if(!filterView.isShowing){
+        filterView.selectedIndex = titleButton.tag;
+        [filterView showInView:self.view animated:YES completionHandler:nil];
+    } else {
+        [filterView dismissAnimated:YES completionHandler:nil];
+    }
+}
 - (void) setNavigationBarButtons{
     if(auth.currentUser){
         UIBarButtonItem *search = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"searcIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSearchBar:)];
@@ -171,7 +240,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [refreshControl endRefreshing];
-    [connection sendDataToURL:requestURL parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [connection sendDataToURL:requestURL parameters:@{@"page": pageNumber, @"filter_attr": filterAttr} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             errorButton.hidden = YES;
             errorButton = nil;
@@ -405,5 +474,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 - (void) hideNetworkActivityIndicator{
     app.networkActivityIndicatorVisible = NO;
+}
+
+#pragma  mark - LGFilterViewDelegate methods
+- (void) filterView:(LGFilterView *)filterView buttonPressedWithTitle:(NSString *)title index:(NSUInteger)index{
+    filterAttr = filterParams[index];
+    [self loadLatestRecipes];
 }
 @end

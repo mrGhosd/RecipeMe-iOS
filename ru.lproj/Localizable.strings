@@ -83,3 +83,10 @@
 "feed_add_vote_comment" = "Понравился комментарий";
 "feed_empty_list" = "Лента пользователя пуста";
 "feed_page_title" = "Новости";
+
+/*FILTERS*/
+
+"filter_rate" = "Рейтинг";
+"filter_comments" = "Комментарии";
+"filter_steps" = "Шаги";
+"filter_ingridients" = "Ингридиенты";

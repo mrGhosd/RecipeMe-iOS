@@ -82,3 +82,10 @@
 "feed_add_vote_comment" = "Liked a comment";
 "feed_empty_list" = "User's feed is empty";
 "feed_page_title" = "Feeds";
+
+/*FILTERS*/
+
+"filter_rate" = "Rate";
+"filter_comments" = "Comments";
+"filter_steps" = "Steps";
+"filter_ingridients" = "Ingridients";

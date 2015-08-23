@@ -29,6 +29,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LGDrawer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LGFilterView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LGViews.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,16 +117,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>011520F69B6C774D05AF43181DB765F3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0D003E8C54ABC5EBBFB54BEEEAA4A250</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>10BC1BA6F3F0CF7455D231DDED96F3ED</key>
 		<dict>
 			<key>primary</key>
@@ -122,27 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>19AC0755FB7EE89DA0083DF951202C57</key>
+		<key>13C734C7F5CA916FE67D385CE2B79AED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DC8D3DFDE31E50DE20DD24F6A5F3B86</key>
+		<key>219ACACAF2CA518BF9D555661FAC1C2E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>22B8C309F794F7F21D3105129AFE25D0</key>
+		<key>3DBEBD204C7188CAEE164E38EA376F2F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4BBC078CC3A3FA347216A4708C91D4B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>4C86CDCFBDD7B951618F544A8E2CC0D2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4E33D3A738D09E9A8DB41B7573B53568</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,32 +167,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D126FDE0D291592E7E4E93D03082BC4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>631A1722B4186E3487359B3661B34CD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65924C663DB0123F33B44127B3CAFCA5</key>
+		<key>63394877AE4A448D3BF9AF14D4531779</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69A779CA854817F626F017F312896385</key>
+		<key>87DD53B287E945BA735976A49C6E48F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ACFEC9724D78A8819165E966237CFE62</key>
+		<key>8F543FA50651FDDA742A98A1F8B47E2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4C13A40917648D4C2C22B2DD5237511</key>
+		<key>967668D62D3479DF81813FCDA585D362</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A90A67274C8EA77684A488FBB6C41F74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AEB2E5ADA8AD94A7E22C94F531F24688</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -197,52 +207,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C16D86F5615796DB46CDFB8DE00B3270</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C98E3B37976DAE938D8366F5324B1945</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>CDE0B7668B6EC1B2BF166A65E070AF5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE031B1DD54CF0C4A6DEA43149A9F68E</key>
+		<key>CF1DD8CE7A73D033B269B29DDB7645B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DBE60E75BD903CAE63B98695057E9BFD</key>
+		<key>F504C98ACF0D77164E6EC3F7009A10AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE0E2202EBAD0FB1CA93199431A4A995</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8CD0939E792AF0B6893DBC6E8E26B78</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EAD5B0089B7C2172DBD96A96FA40B0FB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F233472D390C57227FC09136BEC2C956</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA7A4A4C16DD350E15E400A1EDBC4C5B</key>
+		<key>FE956F7229E963ECB9C825FE49B42724</key>
 		<dict>
 			<key>primary</key>
 			<true/>
