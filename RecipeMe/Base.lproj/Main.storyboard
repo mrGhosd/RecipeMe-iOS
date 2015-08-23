@@ -240,7 +240,7 @@
         <!--Recipes List View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="RecipesListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipesListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="RecipesListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Ts-2I-csK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -756,7 +756,7 @@
         <!--News Feed View Controller-->
         <scene sceneID="ALd-39-zKL">
             <objects>
-                <viewController id="FSy-Pd-GQM" customClass="NewsFeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FSy-Pd-GQM" customClass="NewsFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P8z-RP-ZHF"/>
                         <viewControllerLayoutGuide type="bottom" id="6ht-NJ-WuK"/>
@@ -826,11 +826,6 @@
                     <connections>
                         <outlet property="signOutButton" destination="ZOe-hG-67c" id="AXK-cd-YQR"/>
                         <outlet property="tableView" destination="SEI-Uc-REs" id="nr5-yc-IXW"/>
-                        <segue destination="gla-cp-LbY" kind="custom" identifier="auth" customClass="SWRevealViewControllerSeguePushController" id="tNo-vm-oAh"/>
-                        <segue destination="gla-cp-LbY" kind="custom" identifier="reg" customClass="SWRevealViewControllerSeguePushController" id="rhO-IQ-XCD"/>
-                        <segue destination="X3o-v8-7nm" kind="custom" identifier="recipes" customClass="SWRevealViewControllerSeguePushController" id="x1S-wy-2mz"/>
-                        <segue destination="M4Q-B6-Dv8" kind="custom" identifier="categories" customClass="SWRevealViewControllerSeguePushController" id="9J8-lA-2KW"/>
-                        <segue destination="2p4-gL-Lsg" kind="custom" identifier="feed" customClass="SWRevealViewControllerSeguePushController" id="utn-Os-ihm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-dj-vE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -866,12 +861,12 @@
                     </connections>
                 </button>
             </objects>
-            <point key="canvasLocation" x="741" y="-2212"/>
+            <point key="canvasLocation" x="747" y="-1934"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="HZe-kC-f0h">
             <objects>
-                <viewController id="n2O-e2-WsE" customClass="CategoriesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n2O-e2-WsE" customClass="CategoriesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cbo-Hd-TRX"/>
                         <viewControllerLayoutGuide type="bottom" id="Jqt-pr-DRK"/>
@@ -923,7 +918,7 @@
         <!--Authorization View Controller-->
         <scene sceneID="r01-Jr-nTX">
             <objects>
-                <viewController id="gla-cp-LbY" customClass="AuthorizationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthorizationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gla-cp-LbY" customClass="AuthorizationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WCm-FW-EDk"/>
                         <viewControllerLayoutGuide type="bottom" id="3se-oj-FKP"/>
@@ -1092,13 +1087,12 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tNo-vm-oAh"/>
-        <segue reference="CX9-et-KnK"/>
-        <segue reference="KX8-mF-En4"/>
-        <segue reference="gIc-MD-fzz"/>
-        <segue reference="Kjn-bt-xIc"/>
+        <segue reference="Fd9-B0-pdu"/>
+        <segue reference="53N-ds-cc1"/>
+        <segue reference="9jT-f3-207"/>
+        <segue reference="EHB-Hv-DP5"/>
         <segue reference="9BR-nH-MKL"/>
+        <segue reference="SeE-2U-AnV"/>
         <segue reference="DX1-Df-l95"/>
-        <segue reference="3if-zo-Jsd"/>
     </inferredMetricsTieBreakers>
 </document>

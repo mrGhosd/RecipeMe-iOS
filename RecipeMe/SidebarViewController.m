@@ -16,6 +16,8 @@
 #import <UICKeyChainStore.h>
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "CategoriesViewController.h"
+#import "NewsFeedViewController.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -65,7 +67,7 @@
 - (void) initSidebarData{
     if(auth.currentUser){
         menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil), NSLocalizedString(@"news_feed", nil)]];
-        menuIds = @[@"profile", @"recipes", @"categories", @"feed"];
+        menuIds = @[@"UserViewController", @"RecipesListViewController", @"CategoriesViewController", @"NewsFeedViewController"];
         menuIcons = @[@"auth.png", @"recipes.png", @"category.png", @"newsFeedIcon.png"];
         self.signOutButton.hidden = NO;
     } else {
@@ -118,12 +120,30 @@
     return menuItems.count;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [self moveToView:menuIds[indexPath.row]];
 //        NSString *touched = menuIds[indexPath.row];
 //        [self performSegueWithIdentifier:touched sender:self];
-    UserViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserViewController"];
-    viewController.user = auth.currentUser;
-    [kNavigationController pushViewController:viewController animated:YES];
+   
+}
+
+- (void) moveToView: (NSString *) viewControllerName{
+    if([viewControllerName isEqualToString:@"RecipesListViewController"]){
+        RecipesListViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
+            [kNavigationController pushViewController:viewController animated:YES];
+    }
+    if([viewControllerName isEqualToString:@"UserViewController"]){
+        UserViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
+            viewController.user = auth.currentUser;
+            [kNavigationController pushViewController:viewController animated:YES];
+    }
+    if([viewControllerName isEqualToString:@"CategoriesViewController"]){
+        CategoriesViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
+        [kNavigationController pushViewController:viewController animated:YES];
+    }
+    if([viewControllerName isEqualToString:@"NewsFeedViewController"]){
+        NewsFeedViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
+        [kNavigationController pushViewController:viewController animated:YES];
+    }
     [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
 }
 

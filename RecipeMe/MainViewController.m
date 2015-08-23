@@ -21,7 +21,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.rootViewController = [self getRootViewControllerData];
+    self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
     _leftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SidebarViewController"];
 
         [self setLeftViewEnabledWithWidth:250.f
@@ -38,10 +38,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) setRooteViewController: (NSString *) controllerID{
-    self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:controllerID];
 }
 
 - (UIViewController *) getRootViewControllerData{

@@ -18,6 +18,8 @@
 #import "UserViewController.h"
 #import <FSImageViewer/FSBasicImage.h>
 #import <FSImageViewer/FSBasicImageSource.h>
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 @interface NewsFeedViewController (){
     ServerConnection *connection;
@@ -98,14 +100,14 @@
     [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
 }
 
-- (void) setNavigationPanel{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController ){
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector(revealToggle:)];
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-        revealViewController.rightViewController = nil;
-    }
+-(void) setNavigationPanel{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
+    [self.sidebarButton setTarget:self.sidebarButton];
+    [self.sidebarButton setAction: @selector(showLeftMenu:)];
+}
+
+- (void) showLeftMenu{
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 - (void) setNavigationAttributes{
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:.56 alpha:1];

@@ -16,6 +16,8 @@
 #import "ServerError.h"
 #import "CategoriesListTableViewCell.h"
 #import "RecipesListViewController.h"
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 @interface CategoriesViewController (){
     ServerConnection *connection;
@@ -89,13 +91,13 @@
 }
 
 -(void) setNavigationPanel{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController ){
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector(revealToggle:)];
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-        revealViewController.rightViewController = nil;
-    }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
+    [self.sidebarButton setTarget:self.sidebarButton];
+    [self.sidebarButton setAction: @selector(showLeftMenu:)];
+}
+
+- (void) showLeftMenu{
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 - (void) clickOnImage: (RMCategory *) category{
