@@ -22,7 +22,8 @@
 #import <SIOSocket/SIOSocket.h>
 #import <LGDrawer.h>
 #import <LGButton.h>
-
+#import "MainViewController.h"
+#import "AppDelegate.h"
 
 @interface RecipesListViewController (){
     AuthorizationManager *auth;
@@ -43,6 +44,7 @@
     NSArray *titlesArray;
     NSArray *filterParams;
     NSString *filterAttr;
+    MainViewController *viewController;
 }
 @property SIOSocket *socket;
 @end
@@ -52,6 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
+    viewController = [[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController];
     app = [UIApplication sharedApplication];
     auth = [AuthorizationManager sharedInstance];
     titlesArray = @[NSLocalizedString(@"filter_rate", nil), NSLocalizedString(@"filter_comments", nil), NSLocalizedString(@"filter_steps", nil), NSLocalizedString(@"filter_ingridients", nil)];
@@ -211,13 +214,23 @@
     
 }
 -(void) setNavigationPanel{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController ){
-        [self.sidebarButton setTarget: self.revealViewController];
-        [self.sidebarButton setAction: @selector(revealToggle:)];
-        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-        revealViewController.rightViewController = nil;
-    }
+//    SWRevealViewController *revealViewController = self.revealViewController;
+//    if ( revealViewController ){
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
+        [self.sidebarButton setTarget:self.sidebarButton];
+        [self.sidebarButton setAction: @selector(showLeftMenu:)];
+//        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+//        revealViewController.rightViewController = nil;
+//    }
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDetailCategory:)];
+//    singleTap.numberOfTapsRequired = 1;
+//    [self.sidebarButton setUserInteractionEnabled:YES];
+//    [self.sidebarButton addGestureRecognizer:singleTap];
+//    [self.sidebarButton ]
+}
+
+- (void) showLeftMenu{
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 - (void) refreshInit{

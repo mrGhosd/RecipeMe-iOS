@@ -75,6 +75,7 @@
 		6459A2821B64468E009F95A3 /* security26.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2811B64468E009F95A3 /* security26.png */; };
 		6459A2841B6446BC009F95A3 /* delete85.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2831B6446BC009F95A3 /* delete85.png */; };
 		6459A2861B6446E8009F95A3 /* pen29.png in Resources */ = {isa = PBXBuildFile; fileRef = 6459A2851B6446E8009F95A3 /* pen29.png */; };
+		64633E0C1B89ABAC00D3CEDD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64633E0B1B89ABAC00D3CEDD /* MainViewController.m */; };
 		6467E0E41B42A41E001BB1CD /* commentFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E31B42A41E001BB1CD /* commentFormView.xib */; };
 		6467E0E61B42A53C001BB1CD /* commentCreateIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */; };
 		6467E0EA1B42A5FE001BB1CD /* stepsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6467E0E71B42A5FD001BB1CD /* stepsIcon.png */; };
@@ -250,6 +251,8 @@
 		6459A2811B64468E009F95A3 /* security26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = security26.png; sourceTree = "<group>"; };
 		6459A2831B6446BC009F95A3 /* delete85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete85.png; sourceTree = "<group>"; };
 		6459A2851B6446E8009F95A3 /* pen29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen29.png; sourceTree = "<group>"; };
+		64633E0A1B89ABAC00D3CEDD /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		64633E0B1B89ABAC00D3CEDD /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6467E0E31B42A41E001BB1CD /* commentFormView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentFormView.xib; sourceTree = "<group>"; };
 		6467E0E51B42A53C001BB1CD /* commentCreateIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentCreateIcon.png; sourceTree = "<group>"; };
 		6467E0E71B42A5FD001BB1CD /* stepsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stepsIcon.png; sourceTree = "<group>"; };
@@ -673,6 +676,8 @@
 				64C5B17B1B481DDC0043C9D3 /* SWRevealViewController */,
 				64BD17E11B45EB0800DA2B36 /* users */,
 				647876011B2B0ACE00401720 /* recipes */,
+				64633E0A1B89ABAC00D3CEDD /* MainViewController.h */,
+				64633E0B1B89ABAC00D3CEDD /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1198,6 +1203,7 @@
 				643AFBC51B2C106C0090BC68 /* User.m in Sources */,
 				642C4CCD1B5AF046007C2783 /* RecipeFormViewController.m in Sources */,
 				643AFBA41B2B30AD0090BC68 /* ServerConnection.m in Sources */,
+				64633E0C1B89ABAC00D3CEDD /* MainViewController.m in Sources */,
 				6455C3CA1B3C03C60013872F /* IngridientsTableViewCell.m in Sources */,
 				6439C71A1B7FB53C004B1186 /* UserCommentTableViewCell.m in Sources */,
 				643AFBAC1B2B45FB0090BC68 /* Recipe.m in Sources */,

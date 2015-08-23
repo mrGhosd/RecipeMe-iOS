@@ -809,7 +809,7 @@
         <!--Sidebar View Controller-->
         <scene sceneID="S0O-uz-CNd">
             <objects>
-                <viewController id="mE3-cN-39h" customClass="SidebarViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SidebarViewController" id="mE3-cN-39h" customClass="SidebarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ALn-iO-NKD"/>
                         <viewControllerLayoutGuide type="bottom" id="thm-Kl-map"/>
@@ -1002,10 +1002,10 @@
             </objects>
             <point key="canvasLocation" x="730" y="-788"/>
         </scene>
-        <!--Side Menu Controller-->
+        <!--Main View Controller-->
         <scene sceneID="3G4-5C-8sp">
             <objects>
-                <viewController id="Lw9-BP-F1B" customClass="LGSideMenuController" sceneMemberID="viewController">
+                <viewController id="Lw9-BP-F1B" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XXs-f6-eTO"/>
                         <viewControllerLayoutGuide type="bottom" id="fdQ-YT-gN5"/>
@@ -1015,19 +1015,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="X3o-v8-7nm" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="QPr-PU-Tqy"/>
-                        <segue destination="mE3-cN-39h" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="FXI-ld-wH7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oJ-kh-UTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-794" y="272"/>
+            <point key="canvasLocation" x="-484" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="guC-ue-zeK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X3o-v8-7nm" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="X3o-v8-7nm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VWN-ls-Q4p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1106,10 +1102,9 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QPr-PU-Tqy"/>
         <segue reference="rhO-IQ-XCD"/>
-        <segue reference="Ghj-o6-u1a"/>
-        <segue reference="Fd9-B0-pdu"/>
+        <segue reference="rqB-h1-uFK"/>
+        <segue reference="CX9-et-KnK"/>
         <segue reference="FBK-IP-glf"/>
         <segue reference="9BR-nH-MKL"/>
         <segue reference="SeE-2U-AnV"/>
