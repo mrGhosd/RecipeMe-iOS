@@ -75,6 +75,12 @@
 "profile_follow" = "Follow";
 "profile_unfollow" = "Unollow";
 
+"empty_recipes" = "don't have any recipes";
+"empty_comments" = "don't have any comments";
+"empty_followers" = "don't have any followers";
+"empty_following" = "don't have any following";
+
+
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";
 "feed_add_recipe" = "Add a recipe";

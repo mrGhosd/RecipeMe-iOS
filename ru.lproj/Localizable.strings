@@ -76,6 +76,11 @@
 "profile_follow" = "Подписаться";
 "profile_unfollow" = "Отписаться";
 
+"empty_recipes" = "не имеет рецептов";
+"empty_comments" = "не имеет комментариев";
+"empty_followers" = "не имеет подписчиков";
+"empty_following" = "не имеет подписок";
+
 /*FEED*/
 "feed_add_comment" = "Добавил комментарий к рецепту";
 "feed_add_recipe" = "Добавил рецепт";

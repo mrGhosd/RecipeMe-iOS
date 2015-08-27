@@ -32,6 +32,7 @@
     NSMutableArray *searchResults;
     UISearchBar *searchBarMain;
     UISearchDisplayController *searchDisplayController;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -50,6 +51,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"UserListTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"userCell"];
     [self initSearchBar];
+    [self refreshInit];
     userObjects = [NSMutableArray new];
     page = @1;
     connection = [ServerConnection sharedInstance];
@@ -63,6 +65,7 @@
     // Do any additional setup after loading the view.
 }
 - (void) loadUserInfoData{
+    [refreshControl endRefreshing];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [connection sendDataToURL:[NSString stringWithFormat:@"/users/%@/%@", self.user.id, self.scopeID] parameters:[NSMutableDictionary dictionaryWithObject:page forKey:@"page"] requestType:@"GET" andComplition:^(id data, BOOL success){
@@ -93,11 +96,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (void) viewDidDisappear:(BOOL)animated{
-//    [super viewWillDisappear:YES];
-//    self.scopeID = nil;
-//    self.user = nil;
-//}
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor colorWithRed:251/255.0 green:28/255.0 blue:56/255.0 alpha:1];
+    [refreshControl addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl]; //the tableView is a IBOutlet
+}
+- (void) loadLastData{
+    userObjects = [NSMutableArray new];
+    page = @1;
+    [self loadUserInfoData];
+}
 - (void) parseRecipesData:(id) data{
     if(data != [NSNull null]){
         for(NSDictionary *recipe in data){
@@ -107,6 +118,10 @@
         [self.tableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [self setBGToTableView];
 }
 
 - (void) parseCommentsData:(id) data{
@@ -137,6 +152,31 @@
     return userObjects.count;
     
 }
+- (void) setBGToTableView{
+    UIImageView *view = [[UIImageView alloc] init];
+    view.image = [UIImage imageNamed:@"sidebarBg.png"];
+    self.tableView.backgroundView = view;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    if(userObjects.count != nil){
+        [self setBGToTableView];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return 1;
+    } else{
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 150, self.view.layer.frame.size.width, 500)];
+        messageLabel.text = [self setLabelForEmptyList];
+        messageLabel.textColor = [UIColor blackColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        [messageLabel sizeToFit];
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return 0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if([self.scopeID isEqualToString:@"recipes"]){
         static NSString *CellIdentifier = @"recipeCell";
@@ -325,5 +365,23 @@
 
 - (void) failureUpvoteCallbackWithRecipe:(id)error{
     
+}
+
+- (NSString *) setLabelForEmptyList{
+    NSString *emptyDescriptionLabel;
+    if([self.scopeID isEqualToString:@"recipes"]){
+        emptyDescriptionLabel = NSLocalizedString(@"empty_recipes", nil);
+    }
+    if([self.scopeID isEqualToString:@"comments"]){
+        emptyDescriptionLabel = NSLocalizedString(@"empty_comments", nil);
+    }
+    if([self.scopeID isEqualToString:@"followers"]){
+        emptyDescriptionLabel = NSLocalizedString(@"empty_followers", nil);
+    }
+    if([self.scopeID isEqualToString:@"following"]){
+        emptyDescriptionLabel = NSLocalizedString(@"empty_following", nil);
+    }
+    NSString *fullEmptyString = [NSString stringWithFormat:@"%@ %@", [self.user correctNaming], emptyDescriptionLabel];
+    return fullEmptyString;
 }
 @end
