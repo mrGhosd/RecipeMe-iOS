@@ -9,9 +9,9 @@
 #import "ServerConnection.h"
 #import <UICKeyChainStore.h>
 
-#define MAIN_URL @"http://localhost:3000"
+//#define MAIN_URL @"http://localhost:3000"
 //#define MAIN_URL @"http://10.1.1.31:3000"
-//#define MAIN_URL @"http://188.166.99.8"
+#define MAIN_URL @"http://188.166.99.8"
 @implementation ServerConnection{
     UICKeyChainStore *store;
 }

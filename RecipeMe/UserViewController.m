@@ -51,7 +51,9 @@
     [self setNavigationBarApperance];
     [self loadUserData];
     [self loadUserFeedData];
-    
+    UIImageView *view = [[UIImageView alloc] init];
+    view.image = [UIImage imageNamed:@"profileViewBg.png"];
+    self.tableView.backgroundView = view;
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         page = [NSNumber numberWithInteger:[page integerValue] + 1];
@@ -240,6 +242,7 @@
 {
     return 125;
 }
+
 - (void) clickUserInfoPanel:(NSString *) panelIdentifier{
     panelID = panelIdentifier;
     [self performSegueWithIdentifier:@"detailList" sender:self];
