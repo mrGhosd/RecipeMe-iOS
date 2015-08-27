@@ -251,6 +251,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hh1-50-azV" id="05h-Ct-HHv">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="O5s-k9-ZyI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -300,7 +303,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -448,6 +451,7 @@
                         <segue destination="y6t-J6-Dau" kind="show" identifier="editComment" id="bf7-Zz-ZZF"/>
                         <segue destination="ir9-CV-5LZ" kind="presentation" identifier="editRecipe" id="3if-zo-Jsd"/>
                         <segue destination="18E-LM-nup" kind="show" identifier="userProfile" id="Kjn-bt-xIc"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="xmi-lP-A8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6S4-9C-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1095,12 +1099,12 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KX8-mF-En4"/>
-        <segue reference="SeE-2U-AnV"/>
-        <segue reference="9BR-nH-MKL"/>
-        <segue reference="DX1-Df-l95"/>
+        <segue reference="Kjn-bt-xIc"/>
+        <segue reference="9jT-f3-207"/>
         <segue reference="Fd9-B0-pdu"/>
-        <segue reference="53N-ds-cc1"/>
-        <segue reference="EHB-Hv-DP5"/>
+        <segue reference="bf7-Zz-ZZF"/>
+        <segue reference="3if-zo-Jsd"/>
+        <segue reference="xmi-lP-A8O"/>
+        <segue reference="9BR-nH-MKL"/>
     </inferredMetricsTieBreakers>
 </document>

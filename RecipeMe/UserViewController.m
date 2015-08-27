@@ -76,7 +76,7 @@
 }
 
 - (void) showLeftMenu{
-//    [(MainViewController *)kMainViewController setRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"UserNavigationController"]];
+    [kMainViewController setRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"]];
     [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 

@@ -28,7 +28,9 @@
 #import "CommentViewController.h"
 #import "RecipeFormViewController.h"
 #import "RecipesListViewController.h"
-
+#import "UserViewController.h"
+#import "MainViewController.h"
+#import "AppDelegate.h"
 @interface RecipeDetailViewController (){
     int selectedIndex;
     float currentCellHeight;
@@ -549,6 +551,11 @@ float const recipeCellInfoHeight = 250;
     if([segue.identifier isEqualToString:@"editRecipe"]){
         RecipeFormViewController *form = segue.destinationViewController;
         form.recipe = self.recipe;
+    }
+    if([segue.identifier isEqualToString:@"userProfile"]){
+        UINavigationController *navControl = segue.destinationViewController;
+        UserViewController *view = navControl.topViewController;
+        view.user = self.recipe.user;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

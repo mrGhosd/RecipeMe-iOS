@@ -24,6 +24,9 @@
 #import <LGButton.h>
 #import "MainViewController.h"
 #import "AppDelegate.h"
+#import "UserViewController.h"
+#import <FSImageViewer/FSBasicImage.h>
+#import <FSImageViewer/FSBasicImageSource.h>
 
 @interface RecipesListViewController (){
     AuthorizationManager *auth;
@@ -45,6 +48,7 @@
     NSArray *filterParams;
     NSString *filterAttr;
     MainViewController *viewController;
+    User *selectedUser;
 }
 @property SIOSocket *socket;
 @end
@@ -388,7 +392,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
     ; // or some other height
 }
 - (void) clickOnUserImage:(User *)user{
-    [self performSegueWithIdentifier:@"userProfile" sender:self];
+    FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:user.avatarUrl] name:[user correctNaming]];
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
+    FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
+    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void) handleServerErrorWithError:(id)error{
