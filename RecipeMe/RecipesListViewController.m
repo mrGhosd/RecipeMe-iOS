@@ -67,6 +67,9 @@
     pageNumber = @1;
     recipes = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
+    UIImageView *view = [[UIImageView alloc] init];
+    view.image = [UIImage imageNamed:@"profileViewBg.png"];
+    self.tableView.backgroundView = view;
     [self setNavigationPanel];
     [self setupFilterViewsWithTransitionStyle:LGFilterViewTransitionStyleTop];
     [self.tableView registerClass:[RecipesListTableViewCell class] forCellReuseIdentifier:@"recipeCell"];
@@ -354,6 +357,7 @@
         self.tableView.tableHeaderView = nil;
         searchBarMain = nil;
         [self.searchDisplayController.searchBar resignFirstResponder];
+        [self.searchDisplayController setActive:NO];
         [searchBarMain removeFromSuperview];
     }
     
