@@ -7,7 +7,7 @@
 //
 
 #import "UserProfileFormViewController.h"
-
+#import "UserViewController.h"
 @interface UserProfileFormViewController ()
 
 @end
@@ -27,10 +27,23 @@
 
 - (void) setCustomBarButtons{
     UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [customButton setImage:[UIImage imageNamed:@"success-check.png"] forState:UIControlStateNormal];
     [customButton setTitle:@"SAVE" forState:UIControlStateNormal];
     [customButton sizeToFit];
+    
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setImage:[UIImage imageNamed:@"check-failed.png"] forState:UIControlStateNormal];
+    [leftButton setTitle:@"CANCEL" forState:UIControlStateNormal];
+    [leftButton sizeToFit];
+    [leftButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
     self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
+}
+
+- (void) backButton: (UIButton *) button{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 /*
 #pragma mark - Navigation

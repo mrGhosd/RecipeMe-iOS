@@ -87,11 +87,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authFullBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="K25-fU-A5n">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-qR-MVC">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-qR-MVC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-IX-8kk">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-IX-8kk">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="recipes_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Jb-IY-Pbr">
+                                                <rect key="frame" x="225" y="43" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="78o-Lm-qEE"/>
+                                                    <constraint firstAttribute="height" constant="150" id="gXu-jI-Xxw"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="1Jb-IY-Pbr" secondAttribute="centerX" id="ULs-0D-3hF"/>
+                                            <constraint firstAttribute="height" constant="600" id="h07-cC-fKU"/>
+                                            <constraint firstItem="1Jb-IY-Pbr" firstAttribute="top" secondItem="GZf-IX-8kk" secondAttribute="top" constant="40" id="olH-W0-GZO"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -117,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="YGe-qR-MVC" id="aJs-8e-lMC"/>
+                        <outlet property="viewHeightConstraint" destination="h07-cC-fKU" id="j0e-3w-5rx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elK-9I-gNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1147,6 +1162,7 @@
         <image name="authFullBg.png" width="640" height="1136"/>
         <image name="menu-32.png" width="32" height="32"/>
         <image name="recipeFormImage.png" width="64" height="64"/>
+        <image name="recipes_placeholder.png" width="64" height="64"/>
         <image name="sidebarBg.png" width="640" height="1136"/>
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
