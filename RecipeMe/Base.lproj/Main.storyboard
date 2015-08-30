@@ -72,6 +72,57 @@
             </objects>
             <point key="canvasLocation" x="4598" y="-955"/>
         </scene>
+        <!--User Profile Form View Controller-->
+        <scene sceneID="Tvz-LQ-eX5">
+            <objects>
+                <viewController id="p68-SZ-kJl" customClass="UserProfileFormViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zCN-iJ-Zhp"/>
+                        <viewControllerLayoutGuide type="bottom" id="r5z-xK-cSD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="28s-P5-eDj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authFullBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="K25-fU-A5n">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGe-qR-MVC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-IX-8kk">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GZf-IX-8kk" secondAttribute="trailing" id="Kqf-O1-g2z"/>
+                                    <constraint firstItem="GZf-IX-8kk" firstAttribute="width" secondItem="YGe-qR-MVC" secondAttribute="width" id="dtm-fy-hA7"/>
+                                    <constraint firstItem="GZf-IX-8kk" firstAttribute="top" secondItem="YGe-qR-MVC" secondAttribute="top" id="dwY-Yw-exc"/>
+                                    <constraint firstAttribute="bottom" secondItem="GZf-IX-8kk" secondAttribute="bottom" id="tTj-hL-uvP"/>
+                                    <constraint firstItem="GZf-IX-8kk" firstAttribute="leading" secondItem="YGe-qR-MVC" secondAttribute="leading" id="yRK-qw-xCh"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K25-fU-A5n" firstAttribute="leading" secondItem="28s-P5-eDj" secondAttribute="leadingMargin" constant="-16" id="JqU-5c-hBI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K25-fU-A5n" secondAttribute="trailing" constant="-16" id="KiZ-Ax-Xv2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YGe-qR-MVC" secondAttribute="trailing" constant="-16" id="R2H-uW-9vt"/>
+                            <constraint firstItem="r5z-xK-cSD" firstAttribute="top" secondItem="YGe-qR-MVC" secondAttribute="bottom" id="RVd-gX-egP"/>
+                            <constraint firstItem="YGe-qR-MVC" firstAttribute="top" secondItem="28s-P5-eDj" secondAttribute="topMargin" id="Sgm-KR-eSw"/>
+                            <constraint firstItem="YGe-qR-MVC" firstAttribute="leading" secondItem="28s-P5-eDj" secondAttribute="leadingMargin" constant="-16" id="V7t-JO-SvV"/>
+                            <constraint firstItem="K25-fU-A5n" firstAttribute="top" secondItem="28s-P5-eDj" secondAttribute="topMargin" id="kDs-GA-ffe"/>
+                            <constraint firstItem="r5z-xK-cSD" firstAttribute="top" secondItem="K25-fU-A5n" secondAttribute="bottom" id="tWV-H8-JPR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="YGe-qR-MVC" id="aJs-8e-lMC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elK-9I-gNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3708" y="-1710"/>
+        </scene>
         <!--User View Controller-->
         <scene sceneID="xUq-bw-MYf">
             <objects>
@@ -122,11 +173,12 @@
                         <segue destination="FKG-ko-PTc" kind="show" identifier="detailList" id="nTT-gw-yCb"/>
                         <segue destination="DLe-8j-NgS" kind="show" identifier="recipeView" id="KX8-mF-En4"/>
                         <segue destination="FSy-Pd-GQM" kind="show" id="9BR-nH-MKL"/>
+                        <segue destination="p68-SZ-kJl" kind="show" identifier="editProfile" id="RDJ-rF-DI2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by6-Zf-eVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3713" y="-916"/>
+            <point key="canvasLocation" x="3747" y="-870"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="NOU-1r-hfK">
@@ -1099,12 +1151,12 @@
         <image name="sign_out.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kjn-bt-xIc"/>
-        <segue reference="9jT-f3-207"/>
-        <segue reference="Fd9-B0-pdu"/>
-        <segue reference="bf7-Zz-ZZF"/>
-        <segue reference="3if-zo-Jsd"/>
         <segue reference="xmi-lP-A8O"/>
+        <segue reference="KX8-mF-En4"/>
+        <segue reference="bf7-Zz-ZZF"/>
+        <segue reference="Kjn-bt-xIc"/>
+        <segue reference="3if-zo-Jsd"/>
         <segue reference="9BR-nH-MKL"/>
+        <segue reference="Fd9-B0-pdu"/>
     </inferredMetricsTieBreakers>
 </document>

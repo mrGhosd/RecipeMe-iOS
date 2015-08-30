@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-clickUserInfoPanel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-parseUserData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462402614.269922"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-relationshipButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-parseFollowingData:withRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-parseFeedData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "-loadUserData"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "-parseFeedData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-parseFeedData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-parseFeedData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -970,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462402614.269922"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-loadLastData"
             landmarkType = "5">
          </BreakpointContent>
@@ -986,7 +986,71 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-loadUserData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMe/UserViewController.m"
+            timestampString = "462626283.843392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-parseFeedData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMe/UserViewController.m"
+            timestampString = "462626283.843392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-loadUserData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMe/UserViewController.m"
+            timestampString = "462626283.843392"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-loadUserData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMe/UserViewController.m"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -1002,75 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "-parseFeedData:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-loadUserData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-loadUserData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-loadUserData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462402614.269922"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-loadLastData"
             landmarkType = "5">
          </BreakpointContent>
@@ -1418,11 +1418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-clickOnCellImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1578,11 +1578,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462398411.422877"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1594,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462022348.614357"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2090,11 +2090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462402614.269922"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-showLeftMenu"
             landmarkType = "5">
          </BreakpointContent>
@@ -2106,11 +2106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462022386.881532"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2170,11 +2170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2186,11 +2186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-parseUserData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2202,11 +2202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462022386.881532"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2218,11 +2218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462625517.392854"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-loadUserFeedData"
             landmarkType = "5">
          </BreakpointContent>
@@ -2234,11 +2234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462402614.269922"
+            timestampString = "462626283.843392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-showLeftMenu"
             landmarkType = "5">
          </BreakpointContent>

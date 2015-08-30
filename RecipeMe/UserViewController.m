@@ -21,6 +21,7 @@
 #import <FSImageViewer/FSBasicImageSource.h>
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "UserProfileFormViewController.h"
 
 @interface UserViewController (){
     NSString *panelID;
@@ -135,7 +136,7 @@
 }
 
 - (void) editProfile: (UIButton *) button{
-    
+    [self performSegueWithIdentifier:@"editProfile" sender:self];
 }
 
 - (void) setRightBarButtonItemWithText: (NSString *) text andImageName: (NSString *) imageName{
@@ -273,6 +274,10 @@
     if([segue.identifier isEqualToString:@"recipeView"]){
         RecipeDetailViewController *view = segue.destinationViewController;
         view.recipe = selectedRecipe;
+    }
+    if([segue.identifier isEqualToString:@"editProfile"]){
+        UserProfileFormViewController *view = segue.destinationViewController;
+        view.user = self.user;
     }
 }
 
