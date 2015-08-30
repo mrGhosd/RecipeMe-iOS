@@ -75,6 +75,10 @@
 "profile_follow" = "Follow";
 "profile_unfollow" = "Unollow";
 
+"profile_surname" = "Surname";
+"profile_name" = "Name";
+"profile_nickname" = "Nickname";
+
 "empty_recipes" = "don't have any recipes";
 "empty_comments" = "don't have any comments";
 "empty_followers" = "don't have any followers";

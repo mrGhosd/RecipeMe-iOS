@@ -12,6 +12,8 @@
 	<dict>
 		<key>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</key>
 		<string>github.com:mrGhosd/RecipeMe-iOS.git</string>
+		<key>C82E570E883C1EC861DF2DE59F31E9D11A3599E2</key>
+		<string>github.com:mrGhosd/RecipeMe.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>RecipeMe.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</key>
 		<string>..</string>
+		<key>C82E570E883C1EC861DF2DE59F31E9D11A3599E2</key>
+		<string>../../../rails_projects/RecipeMe</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:mrGhosd/RecipeMe-iOS.git</string>
@@ -33,6 +37,14 @@
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RecipeMe</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C82E570E883C1EC861DF2DE59F31E9D11A3599E2</string>
 			<key>IDESourceControlWCCName</key>
 			<string>RecipeMe</string>
 		</dict>

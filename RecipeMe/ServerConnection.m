@@ -9,9 +9,9 @@
 #import "ServerConnection.h"
 #import <UICKeyChainStore.h>
 
-//#define MAIN_URL @"http://localhost:3000"
+#define MAIN_URL @"http://localhost:3000"
 //#define MAIN_URL @"http://10.1.1.31:3000"
-#define MAIN_URL @"http://188.166.99.8"
+//#define MAIN_URL @"http://188.166.99.8"
 @implementation ServerConnection{
     UICKeyChainStore *store;
 }
@@ -88,12 +88,30 @@ static ServerConnection *sharedSingleton_ = nil;
 }
 -(void)uploadImage: (UIImage *) image withParams: (NSDictionary *) params andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:3000"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:MAIN_URL]];
     NSData *imageData = UIImagePNGRepresentation(image);
     NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:params];
+    
     AFHTTPRequestOperation *op = [manager POST:@"/api/v1/images" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //do not put image inside parameters dictionary as I did, but append it!
         [formData appendPartWithFileData:imageData name:@"name" fileName:@"photo.jpg" mimeType:@"image/png"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        response(responseObject, YES);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSDictionary *errorDict = @{@"operation": operation, @"error": error};
+        response(errorDict, NO);
+    }];
+    [op start];
+}
+
+-(void)uploadDataWithParams: (NSDictionary *) params url: (NSString *) url image: (UIImage *) image andComplition:(ResponseCopmlition) complition{
+    ResponseCopmlition response = [complition copy];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:MAIN_URL]];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:params];
+    AFHTTPRequestOperation *op = [manager POST:[NSString stringWithFormat:@"/api/v1%@", url] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //do not put image inside parameters dictionary as I did, but append it!
+        [formData appendPartWithFileData:imageData name:@"avatar" fileName:@"photo.jpg" mimeType:@"image/png"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         response(responseObject, YES);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

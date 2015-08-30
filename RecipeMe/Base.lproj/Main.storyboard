@@ -93,18 +93,45 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZf-IX-8kk">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="recipes_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Jb-IY-Pbr">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user8.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Jb-IY-Pbr">
                                                 <rect key="frame" x="225" y="43" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="78o-Lm-qEE"/>
                                                     <constraint firstAttribute="height" constant="150" id="gXu-jI-Xxw"/>
                                                 </constraints>
                                             </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6O1-np-HHv">
+                                                <rect key="frame" x="252" y="201" width="97" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76H-xi-KZi">
+                                                <rect key="frame" x="252" y="239" width="97" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdl-9J-6eL">
+                                                <rect key="frame" x="252" y="277" width="97" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="6O1-np-HHv" secondAttribute="centerX" id="4HJ-oE-4Fs"/>
+                                            <constraint firstAttribute="trailing" secondItem="pdl-9J-6eL" secondAttribute="trailing" constant="10" id="Kl0-h0-Seg"/>
+                                            <constraint firstItem="pdl-9J-6eL" firstAttribute="top" secondItem="76H-xi-KZi" secondAttribute="bottom" constant="8" id="R6T-5Y-JUh"/>
+                                            <constraint firstAttribute="centerX" secondItem="76H-xi-KZi" secondAttribute="centerX" id="SYe-3d-aGg"/>
                                             <constraint firstAttribute="centerX" secondItem="1Jb-IY-Pbr" secondAttribute="centerX" id="ULs-0D-3hF"/>
+                                            <constraint firstAttribute="centerX" secondItem="pdl-9J-6eL" secondAttribute="centerX" id="XFN-Rr-732"/>
+                                            <constraint firstAttribute="trailing" secondItem="6O1-np-HHv" secondAttribute="trailing" constant="10" id="Xpi-Ne-3wW"/>
+                                            <constraint firstItem="6O1-np-HHv" firstAttribute="top" secondItem="1Jb-IY-Pbr" secondAttribute="bottom" constant="8" id="Zmo-7J-Mrz"/>
+                                            <constraint firstItem="76H-xi-KZi" firstAttribute="top" secondItem="6O1-np-HHv" secondAttribute="bottom" constant="8" id="aIk-ro-ioi"/>
                                             <constraint firstAttribute="height" constant="600" id="h07-cC-fKU"/>
+                                            <constraint firstItem="6O1-np-HHv" firstAttribute="leading" secondItem="GZf-IX-8kk" secondAttribute="leading" constant="10" id="mEI-GU-ja7"/>
+                                            <constraint firstItem="76H-xi-KZi" firstAttribute="leading" secondItem="GZf-IX-8kk" secondAttribute="leading" constant="10" id="oKp-5h-9R5"/>
                                             <constraint firstItem="1Jb-IY-Pbr" firstAttribute="top" secondItem="GZf-IX-8kk" secondAttribute="top" constant="40" id="olH-W0-GZO"/>
+                                            <constraint firstItem="pdl-9J-6eL" firstAttribute="leading" secondItem="GZf-IX-8kk" secondAttribute="leading" constant="10" id="u9Y-Ng-xMa"/>
+                                            <constraint firstAttribute="trailing" secondItem="76H-xi-KZi" secondAttribute="trailing" constant="10" id="zZt-GB-Ler"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -130,7 +157,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nameField" destination="76H-xi-KZi" id="BVJ-TB-1QT"/>
+                        <outlet property="nickName" destination="pdl-9J-6eL" id="cb0-Sa-aFe"/>
                         <outlet property="scrollView" destination="YGe-qR-MVC" id="aJs-8e-lMC"/>
+                        <outlet property="surnameField" destination="6O1-np-HHv" id="Xjs-IA-NDg"/>
+                        <outlet property="userAvatar" destination="1Jb-IY-Pbr" id="a6f-dO-XBo"/>
                         <outlet property="viewHeightConstraint" destination="h07-cC-fKU" id="j0e-3w-5rx"/>
                     </connections>
                 </viewController>
@@ -1162,9 +1193,9 @@
         <image name="authFullBg.png" width="640" height="1136"/>
         <image name="menu-32.png" width="32" height="32"/>
         <image name="recipeFormImage.png" width="64" height="64"/>
-        <image name="recipes_placeholder.png" width="64" height="64"/>
         <image name="sidebarBg.png" width="640" height="1136"/>
         <image name="sign_out.png" width="32" height="32"/>
+        <image name="user8.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xmi-lP-A8O"/>

@@ -12,5 +12,9 @@
 @interface UserProfileFormViewController : ViewController
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (strong, nonatomic) IBOutlet UITextField *surnameField;
+@property (strong, nonatomic) IBOutlet UITextField *nameField;
+@property (strong, nonatomic) IBOutlet UITextField *nickName;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewHeightConstraint;
 @end

@@ -22,4 +22,5 @@ typedef void(^requestErrorBlock)(NSError *);
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition;
 - (NSString *)returnCorrectUrlPrefix:(NSString *)string;
 - (void)uploadImage: (UIImage *) image withParams: (NSDictionary *) params andComplition:(ResponseCopmlition) complition;
+- (void)uploadDataWithParams: (NSDictionary *) params url: (NSString *) url image: (UIImage *) image andComplition:(ResponseCopmlition) complition;
 @end
