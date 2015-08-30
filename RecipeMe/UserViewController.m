@@ -98,11 +98,11 @@
 }
 
 - (void) initRightBarButtonItem{
+    NSString *img;
+    NSString *title;
     if([self.user.id isEqualToNumber:auth.currentUser.id]){
-    
+        img = @"pen29.png";
     } else {
-        NSString *img;
-        NSString *title;
         if([auth.currentUser.followingIds containsObject:self.user.id]){
                 img = @"check-failed.png";
                 title = NSLocalizedString(@"profile_unfollow", nil);
@@ -110,8 +110,8 @@
             img = @"success-check.png";
             title = NSLocalizedString(@"profile_follow", nil);
         }
-        [self setRightBarButtonItemWithText:title andImageName:img];
     }
+    [self setRightBarButtonItemWithText:title andImageName:img];
     
 }
 
@@ -134,12 +134,20 @@
     }];
 }
 
+- (void) editProfile: (UIButton *) button{
+    
+}
+
 - (void) setRightBarButtonItemWithText: (NSString *) text andImageName: (NSString *) imageName{
     UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [customButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [customButton setTitle:text forState:UIControlStateNormal];
     [customButton sizeToFit];
-    [customButton addTarget:self action:@selector(relationshipButton:) forControlEvents:UIControlEventTouchUpInside];
+    if([self.user.id isEqualToNumber:auth.currentUser.id]){
+        [customButton addTarget:self action:@selector(editProfile:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [customButton addTarget:self action:@selector(relationshipButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
     UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
     self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
 }
