@@ -80,6 +80,11 @@
 "empty_followers" = "don't have any followers";
 "empty_following" = "don't have any following";
 
+"recipes_title" = "Recipes";
+"comments_title" = "Comments";
+"followers_title" = "Followers";
+"following_title" = "Following";
+
 
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";

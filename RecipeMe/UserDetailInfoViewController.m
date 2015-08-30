@@ -56,6 +56,7 @@
     page = @1;
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    self.title = [self setTitleForView];
     [self loadUserInfoData];
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         page = [NSNumber numberWithInteger:[page integerValue] + 1];
@@ -383,5 +384,22 @@
     }
     NSString *fullEmptyString = [NSString stringWithFormat:@"%@ %@", [self.user correctNaming], emptyDescriptionLabel];
     return fullEmptyString;
+}
+- (NSString *) setTitleForView{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    NSString *title;
+    if([self.scopeID isEqualToString:@"recipes"]){
+        title = NSLocalizedString(@"recipes_title", nil);
+    }
+    if([self.scopeID isEqualToString:@"comments"]){
+        title = NSLocalizedString(@"comments_title", nil);
+    }
+    if([self.scopeID isEqualToString:@"followers"]){
+        title = NSLocalizedString(@"followers_title", nil);
+    }
+    if([self.scopeID isEqualToString:@"following"]){
+        title = NSLocalizedString(@"following_title", nil);
+    }
+    return title;
 }
 @end

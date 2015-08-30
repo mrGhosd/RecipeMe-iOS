@@ -81,6 +81,11 @@
 "empty_followers" = "не имеет подписчиков";
 "empty_following" = "не имеет подписок";
 
+"recipes_title" = "Рецепты";
+"comments_title" = "Комментарии";
+"followers_title" = "Подписчики";
+"following_title" = "Подписки";
+
 /*FEED*/
 "feed_add_comment" = "Добавил комментарий к рецепту";
 "feed_add_recipe" = "Добавил рецепт";
