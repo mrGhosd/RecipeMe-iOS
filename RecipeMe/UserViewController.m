@@ -339,6 +339,9 @@
 - (void) addnewFeed: (NSDictionary *) object{
     Feed *feed = [[Feed alloc] initWithParameters:object];
     [feeds insertObject:feed atIndex:0];
+    if([object[@"event_type"] isEqualToString:@"create"] && [object[@"entity"] isEqualToString:@"Comment"]){
+        self.user.commentsCount = [NSNumber numberWithInteger:[self.user.commentsCount integerValue] + 1];
+    }
     [self.tableView reloadData];
 }
 /*

@@ -2394,11 +2394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeMe/UserViewController.m"
-            timestampString = "462661724.574799"
+            timestampString = "462662210.690728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "-addnewFeed:"
             landmarkType = "5">
          </BreakpointContent>
