@@ -22,6 +22,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "UserProfileFormViewController.h"
+#import <SIOSocket/SIOSocket.h>
 
 @interface UserViewController (){
     NSString *panelID;
@@ -32,11 +33,10 @@
     NSNumber *page;
     Recipe *selectedRecipe;
 }
-
+@property SIOSocket *socket;
 @end
 
 @implementation UserViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
@@ -55,6 +55,7 @@
     UIImageView *view = [[UIImageView alloc] init];
     view.image = [UIImage imageNamed:@"profileViewBg.png"];
     self.tableView.backgroundView = view;
+    [self socketsHandling];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         page = [NSNumber numberWithInteger:[page integerValue] + 1];
@@ -293,6 +294,41 @@
     FSImageViewerViewController *imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:imageViewController];
     [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+}
+#pragma mark - SISOcket
+- (void) socketsHandling{
+    [SIOSocket socketWithHost:[NSString stringWithFormat:@"%@:5001", MAIN_HOST]  response: ^(SIOSocket *socket) {
+        self.socket = socket;
+        
+        self.socket.onConnect = ^(){
+            NSLog(@"Success connection");
+        };
+            
+        self.socket.onDisconnect = ^(){
+            NSLog(@"Disconnected");
+        };
+            
+        self.socket.onReconnect = ^(NSInteger count){
+            
+        };
+        self.socket.onError = ^(NSDictionary *error){
+                
+        };
+        
+        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            NSDictionary *params = [args firstObject];
+            if([params[@"resource"] isEqualToString:@"User"]){
+                if([params[@"action"] isEqualToString:@"update"]){
+                    [self.user setParams:params[@"obj"]];
+                    [self.tableView reloadData];
+                }
+                if([params[@"action"] isEqualToString:@"avatar"]){
+                    self.user.avatarUrl = [[ServerConnection sharedInstance] returnCorrectUrlPrefix:params[@"obj"]];
+                    [self.tableView reloadData];
+                }
+            }
+        }];
+    }];
 }
 /*
 #pragma mark - Navigation

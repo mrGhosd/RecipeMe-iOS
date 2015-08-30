@@ -12,6 +12,7 @@
 		6404CC001B2DB511005B5A0D /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6404CBFF1B2DB511005B5A0D /* RecipeDetailViewController.m */; };
 		6406C1001B931BB200FFA331 /* UserProfileFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6406C0FF1B931BB200FFA331 /* UserProfileFormViewController.m */; };
 		6406C1041B93333100FFA331 /* user8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6406C1031B93333100FFA331 /* user8.png */; };
+		6406C1071B935EBB00FFA331 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6406C1061B935EBB00FFA331 /* Settings.bundle */; };
 		640C01031B668B8200EA6465 /* recipeTitleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01021B668B8200EA6465 /* recipeTitleIcon.png */; };
 		640C01051B668C2500EA6465 /* recipeTimeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01041B668C2500EA6465 /* recipeTimeIcon.png */; };
 		640C01071B668CBC00EA6465 /* recipePersonsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 640C01061B668CBC00EA6465 /* recipePersonsIcon.png */; };
@@ -167,6 +168,7 @@
 		6406C0FE1B931BB200FFA331 /* UserProfileFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileFormViewController.h; sourceTree = "<group>"; };
 		6406C0FF1B931BB200FFA331 /* UserProfileFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileFormViewController.m; sourceTree = "<group>"; };
 		6406C1031B93333100FFA331 /* user8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user8.png; sourceTree = "<group>"; };
+		6406C1061B935EBB00FFA331 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		640C01021B668B8200EA6465 /* recipeTitleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeTitleIcon.png; sourceTree = "<group>"; };
 		640C01041B668C2500EA6465 /* recipeTimeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipeTimeIcon.png; sourceTree = "<group>"; };
 		640C01061B668CBC00EA6465 /* recipePersonsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipePersonsIcon.png; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				647031FD1B2AF0420084D58A /* Images.xcassets */,
 				647031FF1B2AF0420084D58A /* LaunchScreen.xib */,
 				647031F01B2AF0420084D58A /* Supporting Files */,
+				6406C1061B935EBB00FFA331 /* Settings.bundle */,
 			);
 			path = RecipeMe;
 			sourceTree = "<group>";
@@ -1064,6 +1067,7 @@
 				640C01121B66969C00EA6465 /* ingridientSize.png in Resources */,
 				6467E0EC1B42A5FE001BB1CD /* commentIcon.png in Resources */,
 				6406C1041B93333100FFA331 /* user8.png in Resources */,
+				6406C1071B935EBB00FFA331 /* Settings.bundle in Resources */,
 				64F7CB741B4920DD00D543AC /* category.png in Resources */,
 				640C01111B66969C00EA6465 /* ingridientName.png in Resources */,
 				64ED43031B68ED7E00839F1F /* filledHeartIcon.png in Resources */,

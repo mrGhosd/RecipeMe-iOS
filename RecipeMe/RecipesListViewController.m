@@ -94,46 +94,7 @@
         [self loadRecipesList];
         [tableView finishInfiniteScroll];
     }];
-    
-    [SIOSocket socketWithHost: @"http://127.0.0.1:5001" response: ^(SIOSocket *socket) {
-        self.socket = socket;
-        
-        __weak typeof(self) weakSelf = self;
-        self.socket.onConnect = ^(){
-            NSLog(@"Success connection");
-        };
-        
-        self.socket.onDisconnect = ^(){
-            NSLog(@"Disconnected");
-        };
-        
-        self.socket.onReconnect = ^(NSInteger count){
-        
-        };
-        
-        self.socket.onError = ^(NSDictionary *error){
-            
-        };
-        
-        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
-            app.networkActivityIndicatorVisible = YES;
-            NSDictionary *params = [args firstObject];
-            if([params[@"resource"] isEqualToString:@"Recipe"]){
-                if([params[@"action"] isEqualToString:@"create"]){
-                    [self handleSocketRecipeCreate:params[@"obj"]];
-                }
-                if([params[@"action"] isEqualToString:@"destroy"]){
-                    [self handleSocketRecipeDestroy:params[@"obj"]];
-                }
-                if([params[@"action"] isEqualToString:@"attributes-change"]){
-                    [self handleSocketRecipeUpdate:params[@"obj"]];
-                }
-            }
-        }];
-    }];
-    
-    
-    
+    [self handleSockets];
     // Do any additional setup after loading the view.
 }
 - (void) userSignedIn: (NSNotification *) notifictation{
@@ -496,5 +457,45 @@ shouldReloadTableForSearchString:(NSString *)searchString
 - (void) filterView:(LGFilterView *)filterView buttonPressedWithTitle:(NSString *)title index:(NSUInteger)index{
     filterAttr = filterParams[index];
     [self loadLatestRecipes];
+}
+#pragma mark - SISOcket
+- (void) handleSockets{
+    [SIOSocket socketWithHost:[NSString stringWithFormat:@"%@:5001", MAIN_HOST]  response: ^(SIOSocket *socket) {
+        self.socket = socket;
+        
+        __weak typeof(self) weakSelf = self;
+        self.socket.onConnect = ^(){
+            NSLog(@"Success connection");
+        };
+        
+        self.socket.onDisconnect = ^(){
+            NSLog(@"Disconnected");
+        };
+        
+        self.socket.onReconnect = ^(NSInteger count){
+            
+        };
+        
+        self.socket.onError = ^(NSDictionary *error){
+            
+        };
+        
+        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            app.networkActivityIndicatorVisible = YES;
+            NSDictionary *params = [args firstObject];
+            if([params[@"resource"] isEqualToString:@"Recipe"]){
+                if([params[@"action"] isEqualToString:@"create"]){
+                    [self handleSocketRecipeCreate:params[@"obj"]];
+                }
+                if([params[@"action"] isEqualToString:@"destroy"]){
+                    [self handleSocketRecipeDestroy:params[@"obj"]];
+                }
+                if([params[@"action"] isEqualToString:@"attributes-change"]){
+                    [self handleSocketRecipeUpdate:params[@"obj"]];
+                }
+            }
+        }];
+    }];
+
 }
 @end
