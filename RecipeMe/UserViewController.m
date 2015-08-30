@@ -182,11 +182,18 @@
     }];
 }
 
+- (void) setViewTitle{
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    self.title = [self.user correctNaming];
+    
+}
+
 - (void) parseUserData: (id)data{
     if(data != [NSNull null]){
         [self.user setParams:data];
     }
     [self.tableView reloadData];
+    [self setViewTitle];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
