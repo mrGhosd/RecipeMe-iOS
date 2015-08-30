@@ -327,8 +327,19 @@
                     [self.tableView reloadData];
                 }
             }
+            if([params[@"resource"] isEqualToString:@"Feed"]){
+                if([params[@"action"] isEqualToString:@"create"]){
+                    [self addnewFeed:params[@"obj"]];
+                }
+            }
         }];
     }];
+}
+
+- (void) addnewFeed: (NSDictionary *) object{
+    Feed *feed = [[Feed alloc] initWithParameters:object];
+    [feeds insertObject:feed atIndex:0];
+    [self.tableView reloadData];
 }
 /*
 #pragma mark - Navigation
