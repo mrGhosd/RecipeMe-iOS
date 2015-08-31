@@ -302,29 +302,34 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 */
-
+#pragma mark - UISearchBarNavigation methods
 - (IBAction)showSearchBar:(id)sender {
-    if(!searchBarMain){
+//    if(!searchBarMain){
+        searchResults = [NSMutableArray new];
         searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
         searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
         searchBarMain.delegate = self;
         searchDisplayController.delegate = self;
+        searchDisplayController.searchResultsDelegate = self;
         searchDisplayController.searchResultsDataSource = self;
-        
+
         self.tableView.tableHeaderView = searchBarMain;
         
-        [self.searchDisplayController.searchBar becomeFirstResponder];
-    } else {
-        self.tableView.tableHeaderView = nil;
-        searchBarMain = nil;
-        [self.searchDisplayController.searchBar resignFirstResponder];
-        [self.searchDisplayController setActive:NO];
-        [searchBarMain removeFromSuperview];
-    }
+//        [self.searchDisplayController.searchBar becomeFirstResponder];
+//    } else {
+//        self.tableView.tableHeaderView = nil;
+//        searchBarMain = nil;
+////        [self.searchDisplayController.searchBar resignFirstResponder];
+//        [self.searchDisplayController setActive:NO];
+//        [searchBarMain removeFromSuperview];
+//    }
     
 }
 - (IBAction)addRecipe:(id)sender {
     [self performSegueWithIdentifier:@"recipeForm" sender:self];
+}
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    [self.tableView reloadData];
 }
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
@@ -335,27 +340,45 @@
     searchResults = [recipes filteredArrayUsingPredicate:resultPredicate];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
 shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     
     return YES;
 }
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    self.tableView.tableHeaderView = nil;
-    [self.searchDisplayController.searchBar resignFirstResponder];
-    searchBarMain = nil;
-    [searchBar removeFromSuperview];
+//    self.tableView.tableHeaderView = nil;
+////    [self.searchDisplayController.searchBar resignFirstResponder];
+//    searchResults = [NSMutableArray new];
+//    searchBarMain = nil;
+//    searchBarMain.delegate = nil;
+//    searchDisplayController.delegate = nil;
+//    searchDisplayController.searchResultsDelegate = nil;
+//    searchDisplayController.searchResultsDataSource = nil;
+
+//    [searchBar removeFromSuperview];
+    
 }
+
+-(void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView {
+    [self.searchDisplayController.searchResultsTableView reloadData];
+    if (self.searchDisplayController.active == YES) {
+        tableView.hidden = NO;
+    }
+}
+- (void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
+    [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
+    [self.searchDisplayController.searchResultsTableView reloadData];
     tableView.rowHeight = 250
     ; // or some other height
 }
+
+#pragma mark - Delegate methods
 - (void) clickOnUserImage:(User *)user{
     FSBasicImage *firstPhoto = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:user.avatarUrl] name:[user correctNaming]];
     FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:@[firstPhoto]];
@@ -380,8 +403,12 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 
 - (void) successUpvoteCallbackWithRecipe:(id)recipe cell:(id)cell andData:(id)data{
-    data[@"rate"] > [recipe rate] ? [cell userVoted] : [cell userReVoted];
+    NSNumber *serverValue = data[@"rate"];
+    NSNumber *currentRecipeRate = [recipe rate];
+    serverValue > currentRecipeRate ? [cell userVoted] : [cell userReVoted];
     [recipe setRate:data[@"rate"]];
+//    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+//    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void) failureUpvoteCallbackWithRecipe:(id)error{
@@ -421,18 +448,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 - (void) showDetailCategory: (id) sender{
     [self performSegueWithIdentifier:@"categoryDetail" sender:self];
-}
-- (void) handleSocketRecipeCreate: (NSDictionary *) recipe{
-    Recipe *rec = [[Recipe alloc] initWithParameters:recipe];
-    [recipes insertObject:rec atIndex:0];
-    [self.tableView reloadData];
-    [self hideNetworkActivityIndicator];
-}
-- (void) handleSocketRecipeDestroy: (NSDictionary *) recipe{
-    NSInteger *recipeIndex = [self indexOfRecipe:recipe[@"id"]];
-    [recipes removeObjectAtIndex:recipeIndex];
-    [self.tableView reloadData];
-    [self hideNetworkActivityIndicator];
 }
 - (NSInteger) indexOfRecipe: (NSNumber *) recipeId{
     NSInteger *searchId;
@@ -490,12 +505,23 @@ shouldReloadTableForSearchString:(NSString *)searchString
                 if([params[@"action"] isEqualToString:@"destroy"]){
                     [self handleSocketRecipeDestroy:params[@"obj"]];
                 }
-                if([params[@"action"] isEqualToString:@"attributes-change"]){
-                    [self handleSocketRecipeUpdate:params[@"obj"]];
-                }
             }
         }];
     }];
 
 }
+
+- (void) handleSocketRecipeCreate: (NSDictionary *) recipe{
+    Recipe *rec = [[Recipe alloc] initWithParameters:recipe];
+    [recipes insertObject:rec atIndex:0];
+    [self.tableView reloadData];
+    [self hideNetworkActivityIndicator];
+}
+- (void) handleSocketRecipeDestroy: (NSDictionary *) recipe{
+    NSInteger *recipeIndex = [self indexOfRecipe:recipe[@"id"]];
+    [recipes removeObjectAtIndex:recipeIndex];
+    [self.tableView reloadData];
+    [self hideNetworkActivityIndicator];
+}
+
 @end
