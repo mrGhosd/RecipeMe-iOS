@@ -90,7 +90,7 @@ static ServerConnection *sharedSingleton_ = nil;
     
     AFHTTPRequestOperation *op = [manager POST:@"/api/v1/images" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //do not put image inside parameters dictionary as I did, but append it!
-        [formData appendPartWithFileData:imageData name:@"name" fileName:@"photo.jpg" mimeType:@"image/png"];
+        [formData appendPartWithFileData:imageData name:@"name" fileName:[NSString stringWithFormat:@"photo-%@.png", [NSDate date]] mimeType:@"image/png"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         response(responseObject, YES);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

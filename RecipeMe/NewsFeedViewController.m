@@ -51,6 +51,7 @@
     [self setNavigationAttributes];
     [self loadUserFeedData];
     [self handleSockets];
+    self.title = NSLocalizedString(@"feed_page_title", nil);
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         page = [NSNumber numberWithInteger:[page integerValue] + 1];

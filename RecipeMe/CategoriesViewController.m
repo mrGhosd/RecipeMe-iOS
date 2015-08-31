@@ -42,6 +42,7 @@
     UIImageView *bgView = [[UIImageView alloc] init];
     [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
     self.tableView.backgroundView = bgView;
+    self.title = NSLocalizedString(@"categories_title", nil);
     [self refreshInit];
     [self setNavigationPanel];
     [self setNavigationAttributes];

@@ -274,8 +274,11 @@
         selectedCell.stepImage.image = chosenImage;
         imageableType = @"Step";
     }
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     [connection uploadImage:chosenImage withParams:@{@"imageable_type": imageableType} andComplition:^(id data, BOOL success){
         if(success){
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             if([picker isEqual:recipePicker]){
                 self.recipeImageId = data[@"id"];
             }
