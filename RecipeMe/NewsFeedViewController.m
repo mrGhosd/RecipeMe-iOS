@@ -20,6 +20,8 @@
 #import <FSImageViewer/FSBasicImageSource.h>
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "ServerConnection.h"
+#import <SIOSocket/SIOSocket.h>
 
 @interface NewsFeedViewController (){
     ServerConnection *connection;
@@ -30,7 +32,7 @@
     User *selectedUser;
     UIRefreshControl *refreshControl;
 }
-
+@property SIOSocket *socket;
 @end
 
 @implementation NewsFeedViewController
@@ -48,6 +50,7 @@
     [self setNavigationPanel];
     [self setNavigationAttributes];
     [self loadUserFeedData];
+    [self handleSockets];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         page = [NSNumber numberWithInteger:[page integerValue] + 1];
@@ -188,6 +191,43 @@
 - (void) moveToUserProfile:(id)user{
     selectedUser = (User *) user;
     [self performSegueWithIdentifier:@"userView" sender:self];
+}
+#pragma mark - Handle Sockets
+- (void) handleSockets{
+    [SIOSocket socketWithHost:[NSString stringWithFormat:@"%@:5001", MAIN_HOST]  response: ^(SIOSocket *socket) {
+        self.socket = socket;
+        
+        __weak typeof(self) weakSelf = self;
+        self.socket.onConnect = ^(){
+            NSLog(@"Success connection");
+        };
+        
+        self.socket.onDisconnect = ^(){
+            NSLog(@"Disconnected");
+        };
+        
+        self.socket.onReconnect = ^(NSInteger count){
+            
+        };
+        
+        self.socket.onError = ^(NSDictionary *error){
+            
+        };
+        
+        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            NSDictionary *params = [args firstObject];
+            if([params[@"resource"] isEqualToString:@"Feed"]){
+                if([auth.currentUser.followersIds containsObject:params[@"obj"][@"user"][@"id"]]|| [auth.currentUser.id isEqualToNumber:params[@"obj"][@"user"][@"id"]] ){
+                    if([params[@"action"] isEqualToString:@"create"]){
+                        Feed *feed = [[Feed alloc] initWithParameters:params[@"obj"]];
+                        [feeds insertObject:feed atIndex:0];
+                        [self.tableView reloadData];
+                    }
+                }
+            }
+        }];
+    }];
+    
 }
 /*
 #pragma mark - Navigation
