@@ -498,8 +498,11 @@ float const recipeCellInfoHeight = 250;
 - (void) successCommentCreationCallback:(id)comment{
     Comment *com = [[Comment alloc] initWithParameters:comment];
     [comments insertObject:com atIndex:1];
-    [self removeTitlesFromTables];
-    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
+    self.viewHeightConstraint.constant += commentHeight;
+    self.commentsTableViewHeightConstraint.constant += commentHeight;
+    [self.commentsTableView reloadData];
+//    [self removeTitlesFromTables];
+//    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
