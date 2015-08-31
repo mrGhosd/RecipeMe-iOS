@@ -316,28 +316,9 @@
 */
 #pragma mark - UISearchBarNavigation methods
 - (IBAction)showSearchBar:(id)sender {
-//    if(!searchBarMain){
-//        searchResults = [NSMutableArray new];
-//        searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
-//        searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
-//        searchBarMain.delegate = self;
-//        searchDisplayController.delegate = self;
-//        searchDisplayController.searchResultsDelegate = self;
-//        searchDisplayController.searchResultsDataSource = self;
     self.tableView.tableHeaderView = searchBarMain;
     searchBarMain.hidden = NO;
     [searchBarMain becomeFirstResponder];
-
-        
-//        [self.searchDisplayController.searchBar becomeFirstResponder];
-//    } else {
-//        self.tableView.tableHeaderView = nil;
-//        searchBarMain = nil;
-////        [self.searchDisplayController.searchBar resignFirstResponder];
-//        [self.searchDisplayController setActive:NO];
-//        [searchBarMain removeFromSuperview];
-//    }
-    
 }
 - (IBAction)addRecipe:(id)sender {
     [self performSegueWithIdentifier:@"recipeForm" sender:self];
@@ -365,17 +346,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [searchBarMain resignFirstResponder];
     self.tableView.tableHeaderView = nil;
     searchBarMain.hidden = YES;
-//    self.tableView.tableHeaderView = nil;
-////    [self.searchDisplayController.searchBar resignFirstResponder];
-//    searchResults = [NSMutableArray new];
-//    searchBarMain = nil;
-//    searchBarMain.delegate = nil;
-//    searchDisplayController.delegate = nil;
-//    searchDisplayController.searchResultsDelegate = nil;
-//    searchDisplayController.searchResultsDataSource = nil;
-
-//    [searchBar removeFromSuperview];
-    
 }
 
 -(void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView {
@@ -515,7 +485,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
         [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
             app.networkActivityIndicatorVisible = YES;
             NSDictionary *params = [args firstObject];
-            if([params[@"resource"] isEqualToString:@"Recipe"]){
+            if([params[@"resource"] isEqualToString:@"User"]){
                 if([params[@"action"] isEqualToString:@"create"]){
                     [self handleSocketRecipeCreate:params[@"obj"]];
                 }

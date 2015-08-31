@@ -18,6 +18,8 @@
 #import "MainViewController.h"
 #import "CategoriesViewController.h"
 #import "NewsFeedViewController.h"
+#import <SIOSocket/SIOSocket.h>
+#import "ServerConnection.h"
 
 @interface SidebarViewController (){
     NSMutableArray *menuItems;
@@ -26,7 +28,7 @@
     AuthorizationManager *auth;
     UICKeyChainStore *store;
 }
-
+@property SIOSocket *socket;
 @end
 
 @implementation SidebarViewController
@@ -53,6 +55,7 @@
     [self.tableView registerClass:[UserProfileTableViewCell class] forCellReuseIdentifier:@"profileCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"UserProfileTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"profileCell"];
+    [self handleSockets];
     // Do any additional setup after loading the view.
 }
 
@@ -195,4 +198,48 @@
      postNotificationName:@"signedOut"
      object:self];
 }
+
+#pragma mark - SISOcket
+- (void) handleSockets{
+    [SIOSocket socketWithHost:[NSString stringWithFormat:@"%@:5001", MAIN_HOST]  response: ^(SIOSocket *socket) {
+        self.socket = socket;
+        
+        __weak typeof(self) weakSelf = self;
+        self.socket.onConnect = ^(){
+            NSLog(@"Success connection");
+        };
+        
+        self.socket.onDisconnect = ^(){
+            NSLog(@"Disconnected");
+        };
+        
+        self.socket.onReconnect = ^(NSInteger count){
+            
+        };
+        
+        self.socket.onError = ^(NSDictionary *error){
+            
+        };
+        
+        [self.socket on:@"rtchange" callback:^(SIOParameterArray *args){
+            NSDictionary *params = [args firstObject];
+            if([params[@"resource"] isEqualToString:@"User"]){
+                if([params[@"action"] isEqualToString:@"update"]){
+                    if(auth.currentUser){
+                        [auth.currentUser setParams:params[@"obj"]];
+                        [self.tableView reloadData];
+                    }
+                }
+            }
+        }];
+    }];
+    
+}
+
+- (void) handleSocketRecipeCreate: (NSDictionary *) recipe{
+    
+}
+- (void) handleSocketRecipeDestroy: (NSDictionary *) recipe{
+}
+
 @end
