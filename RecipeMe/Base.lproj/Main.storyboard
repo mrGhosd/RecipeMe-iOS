@@ -787,10 +787,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="authFullBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-3h-bEA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-Ed-dfi">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-Ed-dfi">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5P-o7-K5i">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5P-o7-K5i">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfY-Th-0eb">
@@ -825,6 +825,7 @@
                                             <constraint firstAttribute="trailing" secondItem="QOT-me-YXN" secondAttribute="trailing" constant="50" id="obg-Wd-TOE"/>
                                             <constraint firstAttribute="centerX" secondItem="RfY-Th-0eb" secondAttribute="centerX" id="qz2-LT-cyU"/>
                                             <constraint firstAttribute="trailing" secondItem="FOM-R1-LEC" secondAttribute="trailing" constant="10" id="vwG-vY-oLb"/>
+                                            <constraint firstAttribute="height" constant="600" id="x31-Wf-QwY"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -849,6 +850,7 @@
                         <outlet property="categoryImage" destination="RfY-Th-0eb" id="6Pg-ZK-3QX"/>
                         <outlet property="categoryTitle" destination="QOT-me-YXN" id="oG9-Vd-gNX"/>
                         <outlet property="scrollView" destination="UFT-Ed-dfi" id="LoF-yN-wbr"/>
+                        <outlet property="viewHeightConstraint" destination="x31-Wf-QwY" id="h7b-T0-qhK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkp-nh-7AO" userLabel="First Responder" sceneMemberID="firstResponder"/>

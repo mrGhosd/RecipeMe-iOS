@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *categoryImage;
 @property (strong, nonatomic) IBOutlet UILabel *categoryTitle;
 @property (strong, nonatomic) IBOutlet UILabel *categoryDesc;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewHeightConstraint;
 @property (strong, nonatomic) RMCategory *category;
 @end
