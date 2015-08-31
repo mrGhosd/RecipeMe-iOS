@@ -89,6 +89,9 @@
 "followers_title" = "Followers";
 "following_title" = "Following";
 
+"profile_save_form" = "Save";
+"profile_cancel_form" = "Cancel";
+
 
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";

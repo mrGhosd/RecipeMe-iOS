@@ -103,12 +103,12 @@
 - (void) setCustomBarButtons{
     UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [customButton setImage:[UIImage imageNamed:@"success-check.png"] forState:UIControlStateNormal];
-    [customButton setTitle:@"SAVE" forState:UIControlStateNormal];
+    [customButton setTitle:NSLocalizedString(@"profile_save_form", nil) forState:UIControlStateNormal];
     [customButton sizeToFit];
     
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setImage:[UIImage imageNamed:@"check-failed.png"] forState:UIControlStateNormal];
-    [leftButton setTitle:@"CANCEL" forState:UIControlStateNormal];
+    [leftButton setTitle:NSLocalizedString(@"profile_cancel_form", nil) forState:UIControlStateNormal];
     [leftButton sizeToFit];
     [leftButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
     [customButton addTarget:self action:@selector(updateUserProfile:) forControlEvents:UIControlEventTouchUpInside];
