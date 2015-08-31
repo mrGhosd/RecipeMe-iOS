@@ -31,6 +31,7 @@
     Recipe *selectedRecipe;
     User *selectedUser;
     UIRefreshControl *refreshControl;
+    UIButton *errorButton;
 }
 @property SIOSocket *socket;
 @end
@@ -43,6 +44,9 @@
     feeds = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    UIImageView *bgView = [[UIImageView alloc] init];
+    [bgView setImage:[UIImage imageNamed:@"sidebarBg.png"]];
+    self.tableView.backgroundView = bgView;
     [self refreshInit];
     [self.tableView registerClass:[FeedTableViewCell class] forCellReuseIdentifier:@"feedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FeedTableViewCell" bundle:nil]
@@ -70,10 +74,14 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [connection sendDataToURL:@"/users/feed" parameters:@{@"page": page} requestType:@"GET" andComplition:^(id data, BOOL success){
-        if(data){
+        if(success){
+            errorButton.hidden = YES;
+            errorButton = nil;
             [self parseFeedData:data];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
         }
     }];
 }
@@ -85,13 +93,13 @@
 }
 
 - (void) parseFeedData: (id) data{
-    if([data count]){
+    if(data != [NSNull null]){
         for(NSDictionary *fd in data){
             Feed *feed = [[Feed alloc] initWithParameters:fd];
             [feeds addObject:feed];
         }
-        [self.tableView reloadData];
     }
+    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
@@ -229,6 +237,23 @@
         }];
     }];
     
+}
+
+#pragma mark - Server Error delegate methods
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:errorButton];
+    }
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 /*
 #pragma mark - Navigation

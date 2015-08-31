@@ -68,11 +68,13 @@
 }
 
 - (void) parseCategories: (id) data{
-    for(NSDictionary *params in data){
-        RMCategory *category = [[RMCategory alloc] initWithParameters:params];
-        [categories addObject:category];
+    if(data != [NSNull null]){
+        for(NSDictionary *params in data){
+            RMCategory *category = [[RMCategory alloc] initWithParameters:params];
+            [categories addObject:category];
+        }
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
@@ -122,20 +124,7 @@
     categories = [NSMutableArray new];
     [self loadCategories];
 }
-- (void) handleServerErrorWithError:(id)error{
-    if(errorButton){
-        errorButton.hidden = NO;
-    } else {
-        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-        errorButton.backgroundColor = [UIColor lightGrayColor];
-        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
-        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [errorButton addTarget:self action:@selector(loadRecipesList) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:errorButton];
-    }
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    [refreshControl endRefreshing];
-}
+
 
 #pragma mark - UITableViewDelegate and UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -181,6 +170,22 @@
         RecipesListViewController *view = segue.destinationViewController;
         view.category = selectedCategory;
     }
+}
+
+#pragma mark - Server Error delegate methods
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLatestCategories) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 
 @end
