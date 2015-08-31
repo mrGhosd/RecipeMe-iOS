@@ -94,8 +94,20 @@
         [self loadRecipesList];
         [tableView finishInfiniteScroll];
     }];
+    [self initSearchBar];
     [self handleSockets];
     // Do any additional setup after loading the view.
+}
+
+- (void) initSearchBar{
+    searchResults = [NSMutableArray new];
+    searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
+    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
+    searchBarMain.delegate = self;
+    searchDisplayController.delegate = self;
+    searchDisplayController.searchResultsDelegate = self;
+    searchDisplayController.searchResultsDataSource = self;
+    searchBarMain.hidden = YES;
 }
 - (void) userSignedIn: (NSNotification *) notifictation{
     User *currentUser = [[User alloc] initWithParams:notifictation.object];
@@ -305,15 +317,17 @@
 #pragma mark - UISearchBarNavigation methods
 - (IBAction)showSearchBar:(id)sender {
 //    if(!searchBarMain){
-        searchResults = [NSMutableArray new];
-        searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
-        searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
-        searchBarMain.delegate = self;
-        searchDisplayController.delegate = self;
-        searchDisplayController.searchResultsDelegate = self;
-        searchDisplayController.searchResultsDataSource = self;
+//        searchResults = [NSMutableArray new];
+//        searchBarMain = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 64)];
+//        searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBarMain contentsController:self];
+//        searchBarMain.delegate = self;
+//        searchDisplayController.delegate = self;
+//        searchDisplayController.searchResultsDelegate = self;
+//        searchDisplayController.searchResultsDataSource = self;
+    self.tableView.tableHeaderView = searchBarMain;
+    searchBarMain.hidden = NO;
+    [searchBarMain becomeFirstResponder];
 
-        self.tableView.tableHeaderView = searchBarMain;
         
 //        [self.searchDisplayController.searchBar becomeFirstResponder];
 //    } else {
@@ -348,6 +362,9 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return YES;
 }
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBarMain resignFirstResponder];
+    self.tableView.tableHeaderView = nil;
+    searchBarMain.hidden = YES;
 //    self.tableView.tableHeaderView = nil;
 ////    [self.searchDisplayController.searchBar resignFirstResponder];
 //    searchResults = [NSMutableArray new];
