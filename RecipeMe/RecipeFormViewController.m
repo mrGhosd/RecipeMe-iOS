@@ -267,27 +267,29 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     NSString *imageableType;
     if([picker isEqual:recipePicker]){
-        self.recipeImage.image = chosenImage;
         imageableType = @"Recipe";
     }
     if([picker isEqual:stepPicker]){
-        selectedCell.stepImage.image = chosenImage;
         imageableType = @"Step";
     }
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     [connection uploadImage:chosenImage withParams:@{@"imageable_type": imageableType} andComplition:^(id data, BOOL success){
+        NSString *imageableType;
         if(success){
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             if([picker isEqual:recipePicker]){
+                self.recipeImage.image = chosenImage;
                 self.recipeImageId = data[@"id"];
             }
             if([picker isEqual:stepPicker]){
+                selectedCell.stepImage.image = chosenImage;
                 selectedCell.stepImageId = data[@"id"];
                 selectedCell.step.imageId = data[@"id"];
             }
         } else {
-            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"system-error-title", nil) message: NSLocalizedString(@"image_upload_failure_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
         }
     }];
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -432,6 +434,12 @@ numberOfRowsInComponent:(NSInteger)component{
         [self handleIngridientsErrors:errorMessage[@"ingridients"]];
     }
 }
+- (void) handleServerErrorWithError:(id) error{
+    if([[error status] isEqualToNumber:@0]){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"system-error-title", nil) message: NSLocalizedString(@"recipe_save_failure_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [av show];
+    }
+}
 - (void) handleRecipeErrors:(NSDictionary *) errors{
     if(errors[@"title"]) [self setColorToElement:self.recipeTitle withColor:[UIColor redColor]];
     if(errors[@"description"]) [self setColorToElement:self.recipeDescription withColor:[UIColor redColor]];
@@ -505,9 +513,6 @@ numberOfRowsInComponent:(NSInteger)component{
             cell.stepImage.layer.cornerRadius = 8.0;
         }
     }
-}
-- (void) handleServerErrorWithError:(id) error{
-
 }
 - (IBAction)dismissForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
