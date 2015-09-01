@@ -96,6 +96,9 @@
 "profile_save_form" = "Сохранить";
 "profile_cancel_form" = "Отмена";
 
+"profile_edit" = "Редактироват";
+"profile_sign_out" = "Выйти";
+
 /*FEED*/
 "feed_add_comment" = "Добавил комментарий к рецепту";
 "feed_add_recipe" = "Добавил рецепт";

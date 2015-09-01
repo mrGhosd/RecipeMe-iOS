@@ -401,7 +401,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-NR-yW8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-hV-qdV">
@@ -1092,7 +1092,7 @@
                     <connections>
                         <outlet property="innerView" destination="UAP-j0-42w" id="rfp-ai-LH4"/>
                         <outlet property="segmentControl" destination="jbj-Z4-hTA" id="Svm-fw-gAG"/>
-                        <segue destination="18E-LM-nup" kind="custom" identifier="userProfile" customClass="SWRevealViewControllerSeguePushController" id="Ghj-o6-u1a"/>
+                        <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="PLe-xR-LDH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsT-ln-d0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1170,7 +1170,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNV-Rl-qY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901" y="-916"/>
+            <point key="canvasLocation" x="3195" y="-1168"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ixX-IM-veb">
@@ -1200,12 +1200,12 @@
         <image name="user8.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xmi-lP-A8O"/>
-        <segue reference="KX8-mF-En4"/>
-        <segue reference="bf7-Zz-ZZF"/>
-        <segue reference="Kjn-bt-xIc"/>
-        <segue reference="3if-zo-Jsd"/>
-        <segue reference="9BR-nH-MKL"/>
+        <segue reference="de0-jY-TBw"/>
+        <segue reference="53N-ds-cc1"/>
         <segue reference="Fd9-B0-pdu"/>
+        <segue reference="bf7-Zz-ZZF"/>
+        <segue reference="3if-zo-Jsd"/>
+        <segue reference="PLe-xR-LDH"/>
+        <segue reference="9BR-nH-MKL"/>
     </inferredMetricsTieBreakers>
 </document>

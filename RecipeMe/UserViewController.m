@@ -26,6 +26,7 @@
 #import "ServerError.h"
 #import <LGPlusButtonsView.h>
 #import <LGDrawer.h>
+#import <UICKeyChainStore.h>
 
 @interface UserViewController (){
     NSString *panelID;
@@ -37,6 +38,7 @@
     Recipe *selectedRecipe;
     UIButton *errorButton;
     LGPlusButtonsView *buttonsView;
+    UICKeyChainStore *store;
 }
 @property SIOSocket *socket;
 @end
@@ -46,6 +48,7 @@
     [super viewDidLoad];
     connection = [ServerConnection sharedInstance];
     auth = [AuthorizationManager sharedInstance];
+    store = [UICKeyChainStore keyChainStore];
     [self.tableView registerClass:[UserOwnFeedTableViewCell class] forCellReuseIdentifier:@"feedCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"UserOwnFeedTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"feedCell"];
@@ -169,11 +172,15 @@
                                             actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
                    {
                        NSLog(@"%@, %@, %i", title, description, (int)index);
+                       if(index == 0){
+                           [self editProfile:buttonsView.buttons[index]];
+                       } else {
+                           [self signOut];
+                       }
                    }
                                   plusButtonActionHandler:nil];
-    
     [buttonsView setButtonsTitles:@[@"1", @"2"] forState:UIControlStateNormal];
-    [buttonsView setDescriptionsTexts:@[@"Edit profile", @"Sign out"]];
+    [buttonsView setDescriptionsTexts:@[NSLocalizedString(@"profile_edit", nil), NSLocalizedString(@"profile_sign_out", nil)]];
     buttonsView.position = LGPlusButtonsViewPositionTopRight;
     buttonsView.showWhenScrolling = NO;
     buttonsView.appearingAnimationType = LGPlusButtonsAppearingAnimationTypeCrossDissolveAndPop;
@@ -439,5 +446,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Button View action methods
+
+- (void) signOut{
+    [buttonsView hideAnimated:YES completionHandler:nil];
+    auth.currentUser = nil;
+    [store removeItemForKey:@"email"];
+    [store removeItemForKey:@"password"];
+    [store removeItemForKey:@"access_token"];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"signedOut"
+     object:self];
+    [self.tableView reloadData];
+}
 
 @end

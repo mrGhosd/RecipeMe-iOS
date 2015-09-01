@@ -95,6 +95,9 @@
 "profile_save_form" = "Save";
 "profile_cancel_form" = "Cancel";
 
+"profile_edit" = "Edit profile";
+"profile_sign_out" = "Sign out";
+
 
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";

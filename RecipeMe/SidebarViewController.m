@@ -39,7 +39,6 @@
     
 }
 - (void)viewDidLoad {
-//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     auth = [AuthorizationManager sharedInstance];
     store = [UICKeyChainStore keyChainStore];
     [self initSidebarData];
@@ -72,12 +71,10 @@
         menuItems = [NSMutableArray arrayWithArray:@[@"Profile", NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil), NSLocalizedString(@"news_feed", nil)]];
         menuIds = @[@"UserViewController", @"RecipesListViewController", @"CategoriesViewController", @"NewsFeedViewController"];
         menuIcons = @[@"auth.png", @"recipes.png", @"category.png", @"newsFeedIcon.png"];
-        self.signOutButton.hidden = NO;
     } else {
         menuItems = [NSMutableArray arrayWithArray:@[NSLocalizedString(@"auth", nil), NSLocalizedString(@"reg", nil),  NSLocalizedString(@"recipes", nil), NSLocalizedString(@"categories", nil)]];
-        menuIds = @[@"auth", @"reg", @"recipes", @"categories"];
+        menuIds = @[@"AuthorizationViewController", @"AuthorizationViewController", @"RecipesListViewController", @"CategoriesViewController"];
         menuIcons = @[@"auth.png", @"reg.png", @"recipes.png", @"category.png"];
-        self.signOutButton.hidden = YES;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -130,6 +127,16 @@
 }
 
 - (void) moveToView: (NSString *) viewControllerName{
+    if([viewControllerName isEqualToString:@"AuthorizationViewController"]){
+        NSIndexPath *path = [[self.tableView indexPathsForSelectedRows] firstObject];
+        AuthorizationViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
+        if([menuIcons[path.row] isEqualToString:@"auth.png"]){
+            viewController.type = @"auth";
+        } else {
+            viewController.type = @"reg";
+        }
+        [kNavigationController pushViewController:viewController animated:YES];
+    }
     if([viewControllerName isEqualToString:@"RecipesListViewController"]){
         RecipesListViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewControllerName];
             [kNavigationController pushViewController:viewController animated:YES];

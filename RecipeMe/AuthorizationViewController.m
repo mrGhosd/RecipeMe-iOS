@@ -12,6 +12,8 @@
 #import "AuthorizationView.h"
 #import "ServerError.h"
 #import "UserViewController.h"
+#import "MainViewController.h"
+#import "AppDelegate.h"
 
 @interface AuthorizationViewController (){
     AuthorizationView *authView;
@@ -24,10 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationPanel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorUserProfileDownload) name:@"errorUserProfileDownloadMessage" object:nil];
     [self setSegmentValue];
     [self setViews];
     [self setCurrentView:self.type];
+}
+
+-(void) setNavigationPanel{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-32.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showLeftMenu)];
+}
+
+- (void) showLeftMenu{
+    [kMainViewController setRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"]];
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 - (void) setSegmentValue{
     [self.segmentControl setTitle:NSLocalizedString(@"segment_auth", nil) forSegmentAtIndex:0];
@@ -79,7 +91,9 @@
     }
 }
 - (void) successAuthentication:(id)user{
-    [self performSegueWithIdentifier:@"userProfile" sender:self];
+    UserViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserViewController"];
+    viewController.user = [[AuthorizationManager sharedInstance] currentUser];
+    [kNavigationController pushViewController:viewController animated:YES];
 }
 - (void) failedAuthentication:(id)error{
     ServerError *serverError = [[ServerError alloc] initWithData:error];
