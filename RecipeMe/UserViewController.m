@@ -24,6 +24,8 @@
 #import "UserProfileFormViewController.h"
 #import <SIOSocket/SIOSocket.h>
 #import "ServerError.h"
+#import <LGPlusButtonsView.h>
+#import <LGDrawer.h>
 
 @interface UserViewController (){
     NSString *panelID;
@@ -34,6 +36,7 @@
     NSNumber *page;
     Recipe *selectedRecipe;
     UIButton *errorButton;
+    LGPlusButtonsView *buttonsView;
 }
 @property SIOSocket *socket;
 @end
@@ -145,17 +148,67 @@
 }
 
 - (void) setRightBarButtonItemWithText: (NSString *) text andImageName: (NSString *) imageName{
-    UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    [customButton setTitle:text forState:UIControlStateNormal];
-    [customButton sizeToFit];
+    
     if([self.user.id isEqualToNumber:auth.currentUser.id]){
-        [customButton addTarget:self action:@selector(editProfile:) forControlEvents:UIControlEventTouchUpInside];
+        [self customeButtonViewForUserProfile];
     } else {
+        UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [customButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [customButton setTitle:text forState:UIControlStateNormal];
+        [customButton sizeToFit];
         [customButton addTarget:self action:@selector(relationshipButton:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
+        self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
     }
-    UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
-    self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
+    
+}
+- (void) customeButtonViewForUserProfile{
+    buttonsView = [[LGPlusButtonsView alloc] initWithView:self.view
+                                          numberOfButtons:2
+                                          showsPlusButton:NO
+                                            actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
+                   {
+                       NSLog(@"%@, %@, %i", title, description, (int)index);
+                   }
+                                  plusButtonActionHandler:nil];
+    
+    [buttonsView setButtonsTitles:@[@"1", @"2"] forState:UIControlStateNormal];
+    [buttonsView setDescriptionsTexts:@[@"Edit profile", @"Sign out"]];
+    buttonsView.position = LGPlusButtonsViewPositionTopRight;
+    buttonsView.showWhenScrolling = NO;
+    buttonsView.appearingAnimationType = LGPlusButtonsAppearingAnimationTypeCrossDissolveAndPop;
+    [buttonsView setButtonsTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [buttonsView setButtonsAdjustsImageWhenHighlighted:NO];
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation);
+    CGFloat buttonSide = (isPortrait ? 44.f : 24.f);
+    CGFloat inset = (isPortrait ? 3.f : 2.f);
+    CGFloat buttonsFontSize = (isPortrait ? 30.f : 20.f);
+    CGFloat plusButtonFontSize = buttonsFontSize*1.5;
+    
+    buttonsView.buttonInset = UIEdgeInsetsMake(inset, inset, inset, inset);
+    buttonsView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset);
+    [buttonsView setButtonsTitleFont:[UIFont boldSystemFontOfSize:buttonsFontSize]];
+    
+    buttonsView.plusButton.titleLabel.font = [UIFont systemFontOfSize:plusButtonFontSize];
+    buttonsView.plusButton.titleOffset = CGPointMake(0.f, -plusButtonFontSize*0.1);
+    
+    buttonsView.buttonsSize = CGSizeMake(buttonSide, buttonSide);
+    [buttonsView setButtonsLayerCornerRadius:buttonSide/2];
+    [buttonsView setButtonsLayerBorderColor:[UIColor colorWithRed:0.f green:0.f blue:0.f alpha:0.1] borderWidth:1.f];
+    [buttonsView setButtonsLayerMasksToBounds:YES];
+    [buttonsView setButtonsBackgroundColor:[UIColor colorWithRed:0.f green:0.5 blue:1.f alpha:1.f] forState:UIControlStateNormal];
+    [buttonsView setButtonsBackgroundColor:[UIColor colorWithRed:0.2 green:0.7 blue:1.f alpha:1.f] forState:UIControlStateHighlighted];
+    [buttonsView setButtonsBackgroundColor:[UIColor colorWithRed:0.2 green:0.7 blue:1.f alpha:1.f] forState:UIControlStateHighlighted|UIControlStateSelected];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(showHideButtonsAction)];
+}
+- (void) showHideButtonsAction{
+    if (buttonsView.isShowing)
+        [buttonsView hideAnimated:YES completionHandler:nil];
+    else
+        [buttonsView
+         showAnimated:YES completionHandler:nil];
+
 }
 
 - (void) parseFollowingData: (id) data withRequest: (NSString *) request{
