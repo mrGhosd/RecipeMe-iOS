@@ -10,8 +10,8 @@
 #import "User.h"
 #import "UserDelegate.h"
 #import "FeedDelegate.h"
-
-@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UserDelegate, FeedDelegate>
+#import "ServerErrorDelegate.h"
+@interface UserViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UserDelegate, FeedDelegate, ServerErrorDelegate>
 @property(strong, nonatomic) User *user;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;

@@ -23,6 +23,7 @@
 #import "MainViewController.h"
 #import "UserProfileFormViewController.h"
 #import <SIOSocket/SIOSocket.h>
+#import "ServerError.h"
 
 @interface UserViewController (){
     NSString *panelID;
@@ -32,6 +33,7 @@
     NSMutableArray *feeds;
     NSNumber *page;
     Recipe *selectedRecipe;
+    UIButton *errorButton;
 }
 @property SIOSocket *socket;
 @end
@@ -131,7 +133,9 @@
         if(success){
             [self parseFollowingData:data withRequest:requestType];
         } else {
-            
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
         }
     }];
 }
@@ -175,9 +179,13 @@
                          animated:YES];
     [connection sendDataToURL:[NSString stringWithFormat: @"/users/%@", self.user.id ] parameters:[NSMutableDictionary new] requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
+            errorButton = nil;
             [self parseUserData:data];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
         }
     }];
 }
@@ -185,9 +193,17 @@
 - (void) loadUserFeedData{
     [connection sendDataToURL: @"/users/own_feed" parameters:[NSMutableDictionary dictionaryWithDictionary:@{@"id": self.user.id, @"page": page}] requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            if(errorButton){
+                errorButton.hidden = YES;
+                errorButton = nil;
+            }
             [self parseFeedData:data];
         } else {
-            
+            if(!errorButton){
+                ServerError *error = [[ServerError alloc] initWithData:data];
+                error.delegate = self;
+                [error handle];
+            }
         }
     }];
 }
@@ -343,6 +359,23 @@
         self.user.commentsCount = [NSNumber numberWithInteger:[self.user.commentsCount integerValue] + 1];
     }
     [self.tableView reloadData];
+}
+
+#pragma mark - UserView errors handlers
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLastData) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:errorButton];
+    }
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 /*
 #pragma mark - Navigation
