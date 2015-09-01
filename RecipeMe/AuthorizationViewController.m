@@ -14,6 +14,7 @@
 #import "UserViewController.h"
 #import "MainViewController.h"
 #import "AppDelegate.h"
+#import <MBProgressHUD.h>
 
 @interface AuthorizationViewController (){
     AuthorizationView *authView;
@@ -91,6 +92,7 @@
     }
 }
 - (void) successAuthentication:(id)user{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     UserViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserViewController"];
     viewController.user = [[AuthorizationManager sharedInstance] currentUser];
     [kNavigationController pushViewController:viewController animated:YES];
@@ -106,15 +108,19 @@
     [serverError handle];
 }
 - (void) handleServerErrorWithError:(id)error{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [error showErrorMessage:[error messageText]];
 }
 - (void) signInWithParams:(NSDictionary *)params{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[AuthorizationManager sharedInstance] signInUserWithEmail:params[@"email"] andPassword:params[@"password"]];
 }
 - (void) signUpWithParams:(NSDictionary *)params{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[AuthorizationManager sharedInstance] signUpWithParams:params];
 }
 -(void) handleServerFormErrorWithError:(id)error{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     if([[error status] isEqual:@401]){
         [error showErrorMessage:NSLocalizedString(@"user_empty_error", nil)];
     }

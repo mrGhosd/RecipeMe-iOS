@@ -110,8 +110,8 @@
 - (void) initRightBarButtonItem{
     NSString *img;
     NSString *title;
-    if([self.user.id isEqualToNumber:auth.currentUser.id]){
-        img = @"pen29.png";
+    if(!auth.currentUser){
+//        img = @"pen29.png";
     } else {
         if([auth.currentUser.followingIds containsObject:self.user.id]){
                 img = @"check-failed.png";
@@ -152,7 +152,7 @@
 
 - (void) setRightBarButtonItemWithText: (NSString *) text andImageName: (NSString *) imageName{
     
-    if([self.user.id isEqualToNumber:auth.currentUser.id]){
+    if(auth.currentUser && [self.user.id isEqualToNumber:auth.currentUser.id]){
         [self customeButtonViewForUserProfile];
     } else {
         UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -337,8 +337,10 @@
 }
 
 - (void) clickUserInfoPanel:(NSString *) panelIdentifier{
-    panelID = panelIdentifier;
-    [self performSegueWithIdentifier:@"detailList" sender:self];
+    if(auth.currentUser){
+        panelID = panelIdentifier;
+        [self performSegueWithIdentifier:@"detailList" sender:self];
+    }
 }
 
 #pragma mark - Navigation
@@ -450,6 +452,7 @@
 #pragma mark - Button View action methods
 
 - (void) signOut{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [buttonsView hideAnimated:YES completionHandler:nil];
     auth.currentUser = nil;
     [store removeItemForKey:@"email"];
@@ -459,6 +462,8 @@
      postNotificationName:@"signedOut"
      object:self];
     [self.tableView reloadData];
+    [self initRightBarButtonItem];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 @end
