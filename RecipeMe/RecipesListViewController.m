@@ -58,6 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignedIn:) name:@"currentUserWasReseived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recipeWasCreated:) name:@"recipeWasCreated" object:nil];
     viewController = [[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController];
     app = [UIApplication sharedApplication];
     auth = [AuthorizationManager sharedInstance];
@@ -114,6 +115,11 @@
     self.navigationItem.rightBarButtonItems = [NSArray new];
     [self setNavigationBarButtons];
 //    [self setVoteMark:self.recipe andUser:currentUser];
+}
+- (void) recipeWasCreated: (NSNotification *) notification{
+    Recipe *recipe = [[Recipe alloc] initWithParameters:notification.object];
+    [recipes setObject:recipe atIndexedSubscript:0];
+    [self.tableView reloadData];
 }
 - (LGDrawer *) setCustomArrowImage{
     return [LGDrawer drawArrowWithImageSize:CGSizeMake(11.f, 8.f)

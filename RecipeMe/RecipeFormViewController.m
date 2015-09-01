@@ -277,6 +277,7 @@
     [connection uploadImage:chosenImage withParams:@{@"imageable_type": imageableType} andComplition:^(id data, BOOL success){
         NSString *imageableType;
         if(success){
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             if([picker isEqual:recipePicker]){
                 self.recipeImage.image = chosenImage;
                 self.recipeImageId = data[@"id"];
@@ -415,6 +416,11 @@ numberOfRowsInComponent:(NSInteger)component{
     }
     [connection sendDataToURL:url parameters:[self getRecipeFormData] requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
+            if(requestType == @"POST"){
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"recipeWasCreated"
+                 object:data];
+            }
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             ServerError *error = [[ServerError alloc] initWithData:data];
