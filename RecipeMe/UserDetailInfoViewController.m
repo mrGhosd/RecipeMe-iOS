@@ -108,6 +108,7 @@
 - (void) loadLastData{
     userObjects = [NSMutableArray new];
     page = @1;
+    [self.tableView reloadData];
     [self loadUserInfoData];
 }
 - (void) parseRecipesData:(id) data{
