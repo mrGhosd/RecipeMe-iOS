@@ -77,13 +77,24 @@
     difficults = @[NSLocalizedString(@"recipes_difficult_easy", nil),
                    NSLocalizedString(@"recipes_difficult_medium", nil),
                    NSLocalizedString(@"recipes_difficult_hard", nil)];
+    [self setFormHeader];
     [self.recipeDescription sizeToFit];
     [self.recipeDescription layoutIfNeeded];
     [self setDifficultPickerView];
     [self setCategoryPickerView];
     
 }
-
+- (void) setFormHeader{
+    if(self.recipe){
+        [self.navigationBar.items[0] setTitle:NSLocalizedString(@"recipe_edit_form_title", nil)];
+    }else{
+        [self.navigationBar.items[0] setTitle:NSLocalizedString(@"recipe_new_form_title", nil)];
+    }
+    
+    [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
+    [self.cancelButton setTitle:NSLocalizedString(@"cancel_recipe", nil)];
+//    self.saveButton.title = ;
+}
 - (void) loadCategoriesList{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
@@ -128,7 +139,6 @@
     [self customizeTextField:self.recipePersons withIcon:@"recipePersonsIcon.png" andPlaceholder:NSLocalizedString(@"form_persons", nil)];
     [self customizeTextField:self.recipeDifficult withIcon:@"recipeDifficultIcon.png" andPlaceholder:NSLocalizedString(@"form_difficult", nil)];
     [self customizeTextField:self.recipeCategory withIcon:@"category.png" andPlaceholder:NSLocalizedString(@"form_category", nil)];
-    [self customizeTextField:self.recipeTags withIcon:@"recipeFormTags.png" andPlaceholder:NSLocalizedString(@"form_tags", nil)];
     [self setRecipeDescriptionApperance];
     [self setTableViewApperance];
 }
@@ -148,7 +158,6 @@
     self.recipeTitle.text = self.recipe.title;
     self.recipePersons.text = [NSString stringWithFormat:@"%@", self.recipe.persons];
     self.recipeTime.text = [NSString stringWithFormat:@"%@", self.recipe.time];
-    self.recipeTags.text = self.recipe.tags;
     self.recipeDescription.text = self.recipe.desc;
     [self setRecipeDifficultValue];
     [self setRecipeCategoryValue];
@@ -198,9 +207,6 @@
     self.recipeImage.clipsToBounds = YES;
 }
 - (void) setNamesForInputs{
-    [self.navigationBar.items[0] setTitle:@"Recipe Form"];
-    [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
-    [self.cancelButton setTitle:NSLocalizedString(@"cancel_recipe", nil)];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
     [self.recipeImage setUserInteractionEnabled:YES];
     [self.recipeImage addGestureRecognizer:singleTap];
@@ -362,7 +368,6 @@ numberOfRowsInComponent:(NSInteger)component{
     NSMutableDictionary *recipeParams = [NSMutableDictionary new];
     if(self.recipeTitle.text) [recipeParams setObject:self.recipeTitle.text forKey:@"title"];
     if(selectedCategory) [recipeParams setObject:selectedCategory forKey:@"category_id"];
-    if(self.recipeTags.text) [recipeParams setObject:self.recipeTags.text forKey:@"tag_list"];
     if(self.recipeDescription.text) [recipeParams setObject:self.recipeDescription.text forKey:@"description"];
     if(selectedDifficult) [recipeParams setObject:selectedDifficult forKey:@"difficult"];
     if(auth.currentUser.id) [recipeParams setObject:auth.currentUser.id forKey:@"user_id"];
@@ -414,6 +419,7 @@ numberOfRowsInComponent:(NSInteger)component{
         url = @"/recipes";
         requestType = @"POST";
     }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [connection sendDataToURL:url parameters:[self getRecipeFormData] requestType:requestType andComplition:^(id data, BOOL success){
         if(success){
             if(requestType == @"POST"){
@@ -421,8 +427,10 @@ numberOfRowsInComponent:(NSInteger)component{
                  postNotificationName:@"recipeWasCreated"
                  object:data];
             }
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             ServerError *error = [[ServerError alloc] initWithData:data];
             error.delegate = self;
             [error handle];
@@ -453,7 +461,6 @@ numberOfRowsInComponent:(NSInteger)component{
     if(errors[@"persons"]) [self setColorToElement:self.recipePersons withColor:[UIColor redColor]];
     if(errors[@"difficult"]) [self setColorToElement:self.recipeDifficult withColor:[UIColor redColor]];
     if(errors[@"category_id"]) [self setColorToElement:self.recipeCategory withColor:[UIColor redColor]];
-    if(errors[@"tags"]) [self setColorToElement:self.recipeTags withColor:[UIColor redColor]];
     if(errors[@"image"]) [self setColorToElement:self.recipeImage withColor:[UIColor redColor]];
 }
 - (void) setColorToElement: (id) field withColor: (UIColor *) color{
@@ -468,7 +475,6 @@ numberOfRowsInComponent:(NSInteger)component{
     self.recipeTime.layer.borderColor = [[UIColor clearColor] CGColor];
     self.recipeDifficult.layer.borderColor = [[UIColor clearColor] CGColor];
     self.recipeCategory.layer.borderColor = [[UIColor clearColor] CGColor];
-    self.recipeTags.layer.borderColor = [[UIColor clearColor] CGColor];
     self.recipeDescription.layer.borderColor = [[UIColor whiteColor] CGColor];
 }
 

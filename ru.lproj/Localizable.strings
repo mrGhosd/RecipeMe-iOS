@@ -47,9 +47,10 @@
 "comment_cancel_changes" = "Отменить";
 
 /*RECIPE FORM*/
-"recipe_form_title" = "Новый рецепт";
-"save_recipe" = "Создать";
-"cancel_recipe" = "Отменить";
+"recipe_new_form_title" = "Создать";
+"recipe_edit_form_title" = "Редактировать";
+"save_recipe" = "Сохранить";
+"cancel_recipe" = "Отмена";
 
 "recipe_image_collection" = "Из коллекции";
 "recipe_image_camera" = "С камеры";

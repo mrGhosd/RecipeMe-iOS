@@ -607,12 +607,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g1N-cu-EC2">
-                                                <rect key="frame" x="252" y="413" width="97" height="30"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPP-YH-5Ta">
                                                 <rect key="frame" x="180" y="451" width="240" height="39"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -690,13 +684,12 @@
                                             <constraint firstItem="8HO-XB-xMs" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="73O-xY-SIV"/>
                                             <constraint firstItem="wZs-EB-R3A" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" id="7B2-48-vok"/>
                                             <constraint firstAttribute="trailing" secondItem="5bh-cg-erz" secondAttribute="trailing" constant="10" id="87I-fS-gtW"/>
-                                            <constraint firstItem="g1N-cu-EC2" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="8kH-5Z-NXN"/>
                                             <constraint firstAttribute="trailing" secondItem="SFs-VV-zeU" secondAttribute="trailing" constant="10" id="92x-dH-bBX"/>
-                                            <constraint firstItem="TPP-YH-5Ta" firstAttribute="top" secondItem="g1N-cu-EC2" secondAttribute="bottom" constant="8" id="DI6-qj-3vo"/>
                                             <constraint firstAttribute="trailing" secondItem="x9Y-ae-mWZ" secondAttribute="trailing" constant="10" id="EYH-aG-2St"/>
                                             <constraint firstAttribute="trailing" secondItem="TPP-YH-5Ta" secondAttribute="trailing" constant="10" id="Fe3-IC-VTz"/>
                                             <constraint firstItem="SU0-Uf-s2z" firstAttribute="top" secondItem="Ep5-aJ-jMx" secondAttribute="bottom" constant="8" id="Fgg-Fm-Fus"/>
                                             <constraint firstAttribute="trailing" secondItem="8HO-XB-xMs" secondAttribute="trailing" constant="10" id="LhH-Jw-ayC"/>
+                                            <constraint firstItem="TPP-YH-5Ta" firstAttribute="top" secondItem="x9Y-ae-mWZ" secondAttribute="bottom" constant="8" id="QgS-Zu-tud"/>
                                             <constraint firstItem="x9Y-ae-mWZ" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="Scv-B1-qQM"/>
                                             <constraint firstAttribute="height" constant="600" id="Swk-GS-lcJ"/>
                                             <constraint firstAttribute="trailing" secondItem="b4x-dU-b6w" secondAttribute="trailing" constant="10" id="Zbi-3N-eig"/>
@@ -710,11 +703,9 @@
                                             <constraint firstItem="TPP-YH-5Ta" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="jKq-OX-ABa"/>
                                             <constraint firstItem="wZs-EB-R3A" firstAttribute="top" secondItem="H25-N2-NZh" secondAttribute="top" id="mvA-Dh-VeN"/>
                                             <constraint firstItem="SU0-Uf-s2z" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="tIK-vm-i6A"/>
-                                            <constraint firstAttribute="trailing" secondItem="g1N-cu-EC2" secondAttribute="trailing" constant="10" id="thd-hJ-xe0"/>
                                             <constraint firstItem="x9Y-ae-mWZ" firstAttribute="top" secondItem="SU0-Uf-s2z" secondAttribute="bottom" constant="8" id="txJ-Jd-m7I"/>
                                             <constraint firstAttribute="trailing" secondItem="wZs-EB-R3A" secondAttribute="trailing" id="wcF-gi-FXB"/>
                                             <constraint firstItem="b4x-dU-b6w" firstAttribute="leading" secondItem="H25-N2-NZh" secondAttribute="leading" constant="10" id="woh-jc-bFx"/>
-                                            <constraint firstItem="g1N-cu-EC2" firstAttribute="top" secondItem="x9Y-ae-mWZ" secondAttribute="bottom" constant="8" id="x5J-AO-wM1"/>
                                             <constraint firstItem="5bh-cg-erz" firstAttribute="top" secondItem="SFs-VV-zeU" secondAttribute="bottom" constant="8" id="x9a-x0-k9F"/>
                                             <constraint firstAttribute="trailing" secondItem="SU0-Uf-s2z" secondAttribute="trailing" constant="10" id="y1j-AM-117"/>
                                             <constraint firstItem="8HO-XB-xMs" firstAttribute="top" secondItem="b4x-dU-b6w" secondAttribute="bottom" constant="8" id="zTK-0e-Ss9"/>
@@ -760,7 +751,6 @@
                         <outlet property="recipeDifficult" destination="SU0-Uf-s2z" id="Iai-0m-kve"/>
                         <outlet property="recipeImage" destination="vJZ-fG-qG9" id="7Zm-pk-iCV"/>
                         <outlet property="recipePersons" destination="Ep5-aJ-jMx" id="Btn-Dy-596"/>
-                        <outlet property="recipeTags" destination="g1N-cu-EC2" id="g8p-0j-h9g"/>
                         <outlet property="recipeTime" destination="5bh-cg-erz" id="Jns-zD-uON"/>
                         <outlet property="recipeTitle" destination="SFs-VV-zeU" id="Lzp-bG-fhg"/>
                         <outlet property="saveButton" destination="edZ-VH-OWv" id="esp-pz-oUp"/>

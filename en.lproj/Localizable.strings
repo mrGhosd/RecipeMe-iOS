@@ -46,7 +46,8 @@
 "comment_cancel_changes" = "Cancel";
 
 /*RECIPE FORM*/
-"recipe_form_title" = "New recipe";
+"recipe_new_form_title" = "New recipe";
+"recipe_edit_form_title" = "Edit recipe";
 "save_recipe" = "Save";
 "cancel_recipe" = "Cancel";
 

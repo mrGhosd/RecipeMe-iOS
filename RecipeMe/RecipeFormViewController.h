@@ -18,7 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *recipePersons;
 @property (strong, nonatomic) IBOutlet UITextField *recipeDifficult;
 @property (strong, nonatomic) IBOutlet UITextField *recipeCategory;
-@property (strong, nonatomic) IBOutlet UITextField *recipeTags;
 @property (strong, nonatomic) IBOutlet UIView *formView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *formViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
