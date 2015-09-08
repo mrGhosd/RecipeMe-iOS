@@ -659,10 +659,13 @@ float const recipeCellInfoHeight = 250;
     CGRect keyboardFrame = [keyboardSize CGRectValue];
     int orientation = (int)[[UIDevice currentDevice] orientation];
     float prevViewHeight = self.viewHeightConstraint.constant;
-    keyboardHeight = keyboardFrame.size.height * 1.0;
-    self.viewHeightConstraint.constant += keyboardHeight;
-    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight);
-    [self.scrollView setContentOffset:bottomOffset animated:YES];
+    if(keyboardHeight == 0){
+        keyboardHeight = keyboardFrame.size.height * 1.0;
+        self.viewHeightConstraint.constant += keyboardHeight;
+        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }
+    
 }
 - (void) keyboardWillHide:(NSNotification *) notification{
     self.viewHeightConstraint.constant -= keyboardHeight;
