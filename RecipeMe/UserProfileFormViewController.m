@@ -10,6 +10,9 @@
 #import "UserViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import "ServerConnection.h"
+#import <MBProgressHUD.h>
+#import "ServerError.h"
+
 @interface UserProfileFormViewController (){
     UIActionSheet *userImagePopup;
     UIImagePickerController *avatarPicker;
@@ -134,11 +137,15 @@
     return params;
 }
 - (void) updateUserProfile: (UIButton *) button{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[ServerConnection sharedInstance] uploadDataWithParams:[self paramsForUser] url: @"/users/update_profile" image:self.userAvatar.image andComplition:^(id data, BOOL success){
         if(success){
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             [self.navigationController popViewControllerAnimated:YES];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [error showErrorMessage:NSLocalizedString(@"profile_update_error", nil)];
         }
     }];
 }

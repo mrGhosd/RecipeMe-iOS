@@ -278,6 +278,9 @@
     if(data != [NSNull null]){
         [self.user setParams:data];
     }
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"currentUserWasReseived"
+     object:data];
     [self.tableView reloadData];
     [self setViewTitle];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -303,7 +306,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 250;
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

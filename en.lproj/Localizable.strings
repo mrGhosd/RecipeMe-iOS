@@ -100,6 +100,8 @@
 "profile_edit" = "Edit profile";
 "profile_sign_out" = "Sign out";
 
+"profile_update_error" = "There is an error while updating profile. Please try laster.";
+
 
 /*FEED*/
 "feed_add_comment" = "Add a comment to recipe";
