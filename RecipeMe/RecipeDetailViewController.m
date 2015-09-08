@@ -307,8 +307,11 @@ float const recipeCellInfoHeight = 250;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if([tableView isEqual:self.stepsTableView] || [tableView isEqual:self.commentsTableView]){
-        [self rowWasSelected:tableView inIndexPath:indexPath];
+        if(indexPath.row != 0){
+                [self rowWasSelected:tableView inIndexPath:indexPath];
+        }
     }
+    [self.view endEditing:YES];
 }
 
 - (void) rowWasSelected: (UITableView *) tableView inIndexPath: (NSIndexPath *) indexPath{
@@ -472,6 +475,7 @@ float const recipeCellInfoHeight = 250;
     com = comment;
     switch (index) {
         case 0:{
+            [self.view endEditing:YES];
             [self performSegueWithIdentifier:@"editComment" sender:self];
             break;
         }
@@ -598,6 +602,7 @@ float const recipeCellInfoHeight = 250;
 
 #pragma mark - Recipe Detail View Actions
 - (void) complaintRecipeContent: (id) sender{
+    [self.view endEditing:YES];
     [connection sendDataToURL:@"/complaints" parameters:@{@"complaint": @{@"user_id": auth.currentUser.id, @"complaintable_id": self.recipe.id, @"complaintable_type": @"Recipe"}} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message", nil) message: NSLocalizedString(@"system-message-complaint", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -609,6 +614,7 @@ float const recipeCellInfoHeight = 250;
 }
 
 - (void) editRecipe: (id) sender{
+    [self.view endEditing:YES];
     [self performSegueWithIdentifier:@"editRecipe" sender:self];
 }
 
@@ -653,9 +659,9 @@ float const recipeCellInfoHeight = 250;
     CGRect keyboardFrame = [keyboardSize CGRectValue];
     int orientation = (int)[[UIDevice currentDevice] orientation];
     float prevViewHeight = self.viewHeightConstraint.constant;
-    keyboardHeight = keyboardFrame.size.height + 50;
+    keyboardHeight = keyboardFrame.size.height * 1.0;
     self.viewHeightConstraint.constant += keyboardHeight;
-    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight / 1.2);
+    CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight);
     [self.scrollView setContentOffset:bottomOffset animated:YES];
 }
 - (void) keyboardWillHide:(NSNotification *) notification{

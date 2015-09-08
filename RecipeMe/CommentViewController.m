@@ -85,7 +85,7 @@
 
 
 - (IBAction)cancelChanges:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) successUpdateCallback:(id)comment{
