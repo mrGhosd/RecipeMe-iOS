@@ -8,6 +8,7 @@
 
 #import "CommentViewController.h"
 #import "ServerError.h"
+#import <MBProgressHUD.h>
 
 @interface CommentViewController (){
     float keyboardHeight;
@@ -19,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.comment.delegate = self;
     self.commentTextView.text = self.comment.text;
     [self.saveButton setTitle:NSLocalizedString(@"comment_save_changes", nil) forState:UIControlStateNormal];
     [self.cancellButton setTitle:NSLocalizedString(@"comment_cancel_changes", nil) forState:UIControlStateNormal];
@@ -70,17 +72,28 @@
 */
 
 - (IBAction)saveChanges:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if([self.commentTextView.text isEqualToString:@""]){
         ServerError *error = [[ServerError alloc] init];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [error showErrorMessage:NSLocalizedString(@"comment_empty", nil)];
     } else {
         self.comment.text = self.commentTextView.text;
         [self.comment updateToServer];
-        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
+
 - (IBAction)cancelChanges:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) successUpdateCallback:(id)comment{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void) failureUpdateCallback:(id)error{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [error showErrorMessage:NSLocalizedString(@"comment_error", nil)];
 }
 @end

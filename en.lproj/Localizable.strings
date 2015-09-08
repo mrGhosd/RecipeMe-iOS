@@ -42,6 +42,7 @@
 
 /*COMMENT*/
 "comment_empty" = "Comment can't be empty";
+"comment_error" = "Ther is an error while updating comment. Please try later";
 "comment_save_changes" = "Save";
 "comment_cancel_changes" = "Cancel";
 

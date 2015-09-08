@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "Comment.h"
+#import "CommentDelegate.h"
 
-@interface CommentViewController : ViewController
+@interface CommentViewController : ViewController <CommentDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *commentTextView;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property(strong, nonatomic) Comment *comment;

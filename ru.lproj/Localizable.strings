@@ -43,6 +43,7 @@
 
 /*COMMENT*/
 "comment_empty" = "Комментарий не может быть пустым";
+"comment_error" = "Во время сохраниения комментария произошла ошибка. Попробуйте позже.";
 "comment_save_changes" = "Сохранить";
 "comment_cancel_changes" = "Отменить";
 

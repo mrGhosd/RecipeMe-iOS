@@ -484,6 +484,7 @@ float const recipeCellInfoHeight = 250;
         default:
             break;
     }
+    [cell hideUtilityButtonsAnimated:YES];
 }
 
 
