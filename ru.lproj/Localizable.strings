@@ -98,7 +98,7 @@
 "profile_save_form" = "Сохранить";
 "profile_cancel_form" = "Отмена";
 
-"profile_edit" = "Редактироват";
+"profile_edit" = "Редактировать";
 "profile_sign_out" = "Выйти";
 
 "profile_update_error" = "Во время обновления профиля возникла ошибка. Пожалуйста, попробуйте позже.";
