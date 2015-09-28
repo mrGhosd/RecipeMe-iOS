@@ -84,10 +84,7 @@
     [self.delegate keyboardWasShowOnField:focusedField withNotification:notification];
 
 }
-- (void) keyboardWillHide:(NSNotification *) notification{
-//    self.viewHeightConstraint.constant -= keyboardHeight;
-//    keyboardHeight = 0;
-}
+- (void) keyboardWillHide:(NSNotification *) notification{ }
 
 #pragma mark - UITextView delegates 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -96,7 +93,10 @@
         [self.emailField resignFirstResponder];
         [self.passwordField becomeFirstResponder];
     }
-    if([textField isEqual:self.passwordField]) { [self signIn:self]; }
+    if([textField isEqual:self.passwordField]) {
+        [self endEditing:YES];
+        [self signIn:self];
+    }
     return YES;
 }
 @end

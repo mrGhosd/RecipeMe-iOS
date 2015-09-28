@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AuthorizationDelegate.h"
 
-@interface RegistrationView : UIView
+@interface RegistrationView : UIView <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordConfirmationField;

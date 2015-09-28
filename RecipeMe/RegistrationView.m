@@ -10,6 +10,7 @@
 
 @implementation RegistrationView{
     NSString *errorMessage;
+    UITextField *focusedField;
 }
 
 /*
@@ -21,6 +22,10 @@
 */
 - (void) awakeFromNib{
     [super awakeFromNib];
+    [self setKeyboardNotifications];
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
+    self.passwordConfirmationField.delegate = self;
     self.backgroundColor = [UIColor clearColor];
     [self customizeTextField:self.emailField withIcon:@"authMailIcon.png" andPlaceholder:NSLocalizedString(@"email", nil)];
     [self customizeTextField:self.passwordField withIcon:@"authPasswordField.png" andPlaceholder:NSLocalizedString(@"password", nil)];
@@ -28,6 +33,12 @@
     [self.regButton setTitle:NSLocalizedString(@"sign_up_button", nil) forState:UIControlStateNormal];
     
     // Do any additional setup after loading the view.
+}
+
+- (void) setKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void) customizeTextField: (UITextField *) textField withIcon: (NSString *) iconName andPlaceholder: (NSString *) placeholder{
@@ -71,4 +82,35 @@
         return true;
     }
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    focusedField = textField;
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    [self.delegate keyboardWasShowOnField:focusedField withNotification:notification];
+}
+
+- (void) keyboardWillHide:(NSNotification *) notification{
+}
+
+
+#pragma mark - UITextView delegates
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if([textField isEqual:self.emailField]){
+        [self.emailField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+    }
+    if([textField isEqual:self.passwordField]) {
+        [self.passwordField resignFirstResponder];
+        [self.passwordConfirmationField becomeFirstResponder];
+    }
+    if ([textField isEqual:self.passwordConfirmationField]){
+        [self endEditing:YES];
+        [self signUp:self];
+    }
+    return YES;
+}
+
 @end
