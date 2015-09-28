@@ -46,6 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setCustomBarButtons];
     self.recipeTitle.delegate = self;
     categories = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
@@ -57,6 +58,58 @@
     // Do any additional setup after loading the view.
 }
 
+- (void) setCustomBarButtons{
+    UIButton* customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [customButton setImage:[UIImage imageNamed:@"success-check.png"] forState:UIControlStateNormal];
+    [customButton setTitle:NSLocalizedString(@"profile_save_form", nil) forState:UIControlStateNormal];
+    [customButton sizeToFit];
+    
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setImage:[UIImage imageNamed:@"check-failed.png"] forState:UIControlStateNormal];
+    [leftButton setTitle:NSLocalizedString(@"profile_cancel_form", nil) forState:UIControlStateNormal];
+    [leftButton sizeToFit];
+    [leftButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
+    [customButton addTarget:self action:@selector(submitForm:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* customBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
+    self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
+}
+
+- (void) submitForm: (UIButton *) button{
+    [self setDefaultApperanceForRecipeElements];
+    [self setDefaultCellApperanceForIngridientCells];
+    [self setDefaulCellApperanceForStepsCells];
+    NSString *url;
+    NSString *requestType;
+    if(self.recipe){
+        url = [NSString stringWithFormat:@"/recipes/%@", self.recipe.id];
+        requestType = @"PUT";
+    } else {
+        url = @"/recipes";
+        requestType = @"POST";
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [connection sendDataToURL:url parameters:[self getRecipeFormData] requestType:requestType andComplition:^(id data, BOOL success){
+        if(success){
+            if(requestType == @"POST"){
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"recipeWasCreated"
+                 object:data];
+            }
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            error.delegate = self;
+            [error handle];
+        }
+    }];
+}
+- (void) backButton: (UIButton *) button{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void) registerCellClasses{
     [self.ingridientsTableView registerClass:[IngridientsFormTableViewCell class] forCellReuseIdentifier:@"ingridientsCell"];
     [self.ingridientsTableView registerNib:[UINib nibWithNibName:@"IngridientsFormTableViewCell" bundle:nil]
