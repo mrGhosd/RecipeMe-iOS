@@ -82,18 +82,7 @@
 
 - (void)keyboardWillShow:(NSNotification*)notification {
     [self.delegate keyboardWasShowOnField:focusedField withNotification:notification];
-//    NSDictionary *keyboardValues = [notification userInfo];
-//    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
-//    CGRect keyboardFrame = [keyboardSize CGRectValue];
-//    int orientation = (int)[[UIDevice currentDevice] orientation];
-//    float prevViewHeight = self.viewHeightConstraint.constant;
-//    if(keyboardHeight == 0){
-//        keyboardHeight = keyboardFrame.size.height * 1.0;
-//        self.viewHeightConstraint.constant += keyboardHeight;
-//        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight);
-//        [self.scrollView setContentOffset:bottomOffset animated:YES];
-//    }
-    
+
 }
 - (void) keyboardWillHide:(NSNotification *) notification{
 //    self.viewHeightConstraint.constant -= keyboardHeight;
@@ -103,6 +92,11 @@
 #pragma mark - UITextView delegates 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if([textField isEqual:self.emailField]){
+        [self.emailField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+    }
+    if([textField isEqual:self.passwordField]) { [self signIn:self]; }
     return YES;
 }
 @end
