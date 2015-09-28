@@ -10,6 +10,7 @@
 
 @implementation AuthorizationView{
     NSString *errorMessage;
+    UITextField *focusedField;
 }
 
 /*
@@ -21,14 +22,21 @@
 */
 - (void) awakeFromNib{
     [super awakeFromNib];
+    [self setKeyboardNotifications];
     self.backgroundColor = [UIColor clearColor];
+    self.emailField.delegate = self;
+    self.passwordField.delegate = self;
     [self customizeTextField:self.emailField withIcon:@"authMailIcon.png" andPlaceholder:NSLocalizedString(@"email", nil)];
     [self customizeTextField:self.passwordField withIcon:@"authPasswordField.png" andPlaceholder:NSLocalizedString(@"password", nil)];
     [self.loginButton setTitle:NSLocalizedString(@"sign_in_button", nil) forState:UIControlStateNormal];
         
     // Do any additional setup after loading the view.
 }
-
+- (void) setKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
 - (void) customizeTextField: (UITextField *) textField withIcon: (NSString *) iconName andPlaceholder: (NSString *) placeholder{
     CALayer *border = [CALayer layer];
     CGFloat borderWidth = 2;
@@ -52,6 +60,8 @@
         [av show];
     }
 }
+
+
 - (BOOL) validForm{
     errorMessage = @"";
     if([self.emailField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]){
@@ -65,5 +75,34 @@
     } else {
         return true;
     }
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    focusedField = textField;
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    [self.delegate keyboardWasShowOnField:focusedField withNotification:notification];
+//    NSDictionary *keyboardValues = [notification userInfo];
+//    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+//    CGRect keyboardFrame = [keyboardSize CGRectValue];
+//    int orientation = (int)[[UIDevice currentDevice] orientation];
+//    float prevViewHeight = self.viewHeightConstraint.constant;
+//    if(keyboardHeight == 0){
+//        keyboardHeight = keyboardFrame.size.height * 1.0;
+//        self.viewHeightConstraint.constant += keyboardHeight;
+//        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height + keyboardHeight);
+//        [self.scrollView setContentOffset:bottomOffset animated:YES];
+//    }
+    
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+//    self.viewHeightConstraint.constant -= keyboardHeight;
+//    keyboardHeight = 0;
+}
+
+#pragma mark - UITextView delegates 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
 }
 @end

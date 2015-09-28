@@ -1105,6 +1105,7 @@
                     </view>
                     <connections>
                         <outlet property="innerView" destination="UAP-j0-42w" id="rfp-ai-LH4"/>
+                        <outlet property="scrollView" destination="cG4-Ka-0oq" id="Tff-Zp-dtV"/>
                         <outlet property="segmentControl" destination="jbj-Z4-hTA" id="Svm-fw-gAG"/>
                         <segue destination="iFd-uV-tHQ" kind="show" identifier="userProfile" id="PLe-xR-LDH"/>
                     </connections>

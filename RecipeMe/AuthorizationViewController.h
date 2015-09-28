@@ -17,4 +17,5 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 - (IBAction)switchViews:(id)sender;
 @property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @end

@@ -72,6 +72,10 @@
     }
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+}
 /*
 #pragma mark - Navigation
 
@@ -144,5 +148,24 @@
         UserViewController *controller = (UserViewController *)navController.topViewController;
         controller.user = [[AuthorizationManager sharedInstance] currentUser];
     }
+}
+
+- (void) keyboardWasShowOnField: (id) field withNotification: (id) notification{
+    CGRect kbRawRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect scrollViewFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    
+    // Calculate the area that is covered by the keyboard
+    CGRect coveredFrame = CGRectIntersection(scrollViewFrame, kbRawRect);
+    // Convert again to window coordinates to take rotations into account
+    coveredFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, coveredFrame.size.height - 100, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect activeFieldRect = [field convertRect:[field bounds] toView:self.scrollView];
+    [self.scrollView scrollRectToVisible:activeFieldRect animated:YES];
 }
 @end

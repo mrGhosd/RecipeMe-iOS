@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AuthorizationDelegate.h"
-@interface AuthorizationView : UIView
+@interface AuthorizationView : UIView <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
