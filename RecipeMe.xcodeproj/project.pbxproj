@@ -317,6 +317,7 @@
 		64D7D3EE1B4B256700F8061E /* CommentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentDelegate.h; sourceTree = "<group>"; };
 		64E295C31B81EFC100913399 /* libTTTAttributedLabel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTTTAttributedLabel.a; path = "Pods/../build/Debug-iphoneos/libTTTAttributedLabel.a"; sourceTree = "<group>"; };
 		64E295C51B8207DD00913399 /* FeedDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
+		64E6986B1BB9F976006738DF /* FormDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormDelegate.h; sourceTree = "<group>"; };
 		64ED43021B68ED7E00839F1F /* filledHeartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filledHeartIcon.png; sourceTree = "<group>"; };
 		64F7CB6E1B491F7200D543AC /* recipes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recipes.png; sourceTree = "<group>"; };
 		64F7CB701B4920DD00D543AC /* reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reg.png; sourceTree = "<group>"; };
@@ -722,6 +723,7 @@
 		64B3A9071B4305BE0050F328 /* delegates */ = {
 			isa = PBXGroup;
 			children = (
+				64E6986B1BB9F976006738DF /* FormDelegate.h */,
 				64B3A9081B4305D70050F328 /* RecipeCellDelegate.h */,
 				6402BC8A1B45E62300F0A6F8 /* StepCellDelegate.h */,
 				64BD17E51B45F28300DA2B36 /* UserDelegate.h */,

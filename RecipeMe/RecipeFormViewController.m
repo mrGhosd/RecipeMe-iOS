@@ -38,6 +38,7 @@
     UIImagePickerController *recipePicker;
     UIImagePickerController *stepPicker;
     float keyboardHeight;
+    UITextField *focusedField;
 }
 
 @end
@@ -47,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomBarButtons];
+    [self setFieldsDelegates];
     self.recipeTitle.delegate = self;
     categories = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
@@ -130,23 +132,11 @@
     difficults = @[NSLocalizedString(@"recipes_difficult_easy", nil),
                    NSLocalizedString(@"recipes_difficult_medium", nil),
                    NSLocalizedString(@"recipes_difficult_hard", nil)];
-    [self setFormHeader];
     [self.recipeDescription sizeToFit];
     [self.recipeDescription layoutIfNeeded];
     [self setDifficultPickerView];
     [self setCategoryPickerView];
     
-}
-- (void) setFormHeader{
-    if(self.recipe){
-        [self.navigationBar.items[0] setTitle:NSLocalizedString(@"recipe_edit_form_title", nil)];
-    }else{
-        [self.navigationBar.items[0] setTitle:NSLocalizedString(@"recipe_new_form_title", nil)];
-    }
-    
-    [self.saveButton setTitle:NSLocalizedString(@"save_recipe", nil)];
-    [self.cancelButton setTitle:NSLocalizedString(@"cancel_recipe", nil)];
-//    self.saveButton.title = ;
 }
 - (void) loadCategoriesList{
     [MBProgressHUD showHUDAddedTo:self.view
@@ -186,6 +176,14 @@
     categoriesPicker.dataSource = self;
     self.recipeCategory.inputView = categoriesPicker;
 }
+- (void) setFieldsDelegates{
+    self.recipeTitle.delegate = self;
+    self.recipeTime.delegate = self;
+    self.recipePersons.delegate = self;
+    self.recipeDifficult.delegate = self;
+    self.recipeCategory.delegate = self;
+}
+
 - (void) setInputPlaceholders{
     [self customizeTextField:self.recipeTitle withIcon:@"recipeTitleIcon.png" andPlaceholder:NSLocalizedString(@"form_title", nil)];
     [self customizeTextField:self.recipeTime withIcon:@"recipeTimeIcon.png" andPlaceholder:NSLocalizedString(@"form_time", nil)];
@@ -753,7 +751,30 @@ numberOfRowsInComponent:(NSInteger)component{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)keyboardWillShow:(NSNotification*)notification {
+- (void)keyboardWillShow:(NSNotification *)notification {
+    [self changeFormHeight:notification];
+    [self setFocusOnField: (NSNotification *) notification];
+}
+
+- (void) setFocusOnField: (NSNotification *) notification{
+    CGRect kbRawRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect scrollViewFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    
+    // Calculate the area that is covered by the keyboard
+    CGRect coveredFrame = CGRectIntersection(scrollViewFrame, kbRawRect);
+    // Convert again to window coordinates to take rotations into account
+    coveredFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    int offset = 100;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, coveredFrame.size.height - offset, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect activeFieldRect = [focusedField convertRect:focusedField.bounds toView:self.scrollView];
+    [self.scrollView scrollRectToVisible:activeFieldRect animated:YES];
+}
+- (void) changeFormHeight: (NSNotification *) notification{
     NSDictionary *keyboardValues = [notification userInfo];
     id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
     CGRect keyboardFrame = [keyboardSize CGRectValue];
@@ -766,12 +787,18 @@ numberOfRowsInComponent:(NSInteger)component{
     self.formViewHeightConstraint.constant -= keyboardHeight;
     keyboardHeight = 0;
 }
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    focusedField = textField;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    if([textField isEqual:self.recipeTitle]){
+        [self.recipeTitle resignFirstResponder];
+        [self.recipeTime becomeFirstResponder];
+    }
+    
     return YES;
 }
-- (void) textFieldDidBeginEditing:(UITextField *)textField{
-}
+
 
 @end
