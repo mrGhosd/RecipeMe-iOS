@@ -82,11 +82,13 @@ static ServerConnection *sharedSingleton_ = nil;
 - (NSString *)returnCorrectUrlPrefix:(NSString *)string{
     return [NSString stringWithFormat:@"%@%@", MAIN_URL, string];
 }
--(void)uploadImage: (UIImage *) image withParams: (NSDictionary *) params andComplition:(ResponseCopmlition) complition{
+-(void)uploadImage: (UIImage *) image withParams: (NSMutableDictionary *) params andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:MAIN_URL]];
     NSData *imageData = UIImagePNGRepresentation(image);
-    NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:params];
+    NSString *userLocale = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+    [parameters addEntriesFromDictionary:@{@"device_locale": userLocale}];
     
     AFHTTPRequestOperation *op = [manager POST:@"/api/v1/images" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //do not put image inside parameters dictionary as I did, but append it!
@@ -100,11 +102,13 @@ static ServerConnection *sharedSingleton_ = nil;
     [op start];
 }
 
--(void)uploadDataWithParams: (NSDictionary *) params url: (NSString *) url image: (UIImage *) image andComplition:(ResponseCopmlition) complition{
+-(void)uploadDataWithParams: (NSMutableDictionary *) params url: (NSString *) url image: (UIImage *) image andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:MAIN_URL]];
     NSData *imageData = UIImagePNGRepresentation(image);
-    NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:params];
+    NSString *userLocale = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+    [parameters addEntriesFromDictionary:@{@"device_locale": userLocale}];
     AFHTTPRequestOperation *op = [manager POST:[NSString stringWithFormat:@"/api/v1%@", url] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //do not put image inside parameters dictionary as I did, but append it!
         [formData appendPartWithFileData:imageData name:@"avatar" fileName:[NSString stringWithFormat:@"photo-%@.png", [NSDate date]] mimeType:@"image/png"];

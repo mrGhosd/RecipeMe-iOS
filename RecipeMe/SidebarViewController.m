@@ -170,12 +170,14 @@
     } else {
         static NSString *cellIdentifier = @"navigationCell";
         UIImageView *bgView = [[UIImageView alloc] init];
+
         [bgView setImage:[UIImage imageNamed:@"bgViewSmall.png"]];
         UITableViewCell *cell = (UITableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        bgView.frame = CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height);
         cell.textLabel.text = menuItems[indexPath.row];
-        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
-        cell.backgroundView = bgView;
+        [cell setBackgroundView:bgView];
         return cell;
     }
     

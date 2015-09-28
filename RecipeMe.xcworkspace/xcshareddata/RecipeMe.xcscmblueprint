@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C82E570E883C1EC861DF2DE59F31E9D11A3599E2" : 0,
+    "B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5FFC0F68-EAE0-4001-91A4-23176048F615",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C82E570E883C1EC861DF2DE59F31E9D11A3599E2" : "rails_projects\/RecipeMe",
+    "B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D" : "RecipeMe"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RecipeMe",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RecipeMe.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:mrGhosd\/RecipeMe-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B5293DCA4050A07CF01CFD74B22A32AD0FD97F1D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:mrGhosd\/RecipeMe.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C82E570E883C1EC861DF2DE59F31E9D11A3599E2"
+    }
+  ]
+}

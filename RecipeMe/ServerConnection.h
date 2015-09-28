@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
-#define MAIN_HOST @"http://188.166.99.8"
-//#define MAIN_HOST @"http://localhost"
-//#define MAIN_URL @"http://localhost:3000"
+//#define MAIN_HOST @"http://188.166.99.8"
+#define MAIN_HOST @"http://localhost"
+#define MAIN_URL @"http://localhost:3000"
 //#define MAIN_URL @"http://10.1.1.31:3000"
-#define MAIN_URL @"http://188.166.99.8"
+//#define MAIN_URL @"http://188.166.99.8"
 
 typedef void(^ResponseCopmlition)(id data, BOOL success);
 typedef void (^requestCompletedBlock)(id);

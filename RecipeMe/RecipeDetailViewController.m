@@ -509,6 +509,7 @@ float const recipeCellInfoHeight = 250;
 //    [self removeTitlesFromTables];
 //    [self setStepsArrayWithArray:steps ingridietnsArrayWithArray:ingridients andCommentsArraWithArray:comments];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.view endEditing:YES];
 }
 
 - (void) failureCommentCreationCallback:(id)error{
