@@ -62,6 +62,7 @@
 "form_difficult" = "Difficult";
 "form_category" = "Category";
 "form_tags" = "Tags";
+"form_description" = "Short description";
 
 "ingridient_name" = "Name";
 "ingridient_size" = "Size";

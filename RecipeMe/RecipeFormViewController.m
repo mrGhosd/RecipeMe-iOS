@@ -41,7 +41,6 @@
     UITextField *focusedField;
     NSString *descriptionPlaceholder;
 }
-
 @end
 
 @implementation RecipeFormViewController
@@ -62,7 +61,7 @@
     // Do any additional setup after loading the view.
 }
 - (void) addDescriptionPlaceholder{
-    descriptionPlaceholder = @"Краткое описание";
+    descriptionPlaceholder = NSLocalizedString(@"form_description", nil);
     self.recipeDescription.text = descriptionPlaceholder;
     self.recipeDescription.textColor = [UIColor lightGrayColor];
 }
