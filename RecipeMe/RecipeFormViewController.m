@@ -14,7 +14,7 @@
 #import "Ingridient.h"
 #import "StepsFormTableViewCell.h"
 #import "RMCategory.h"
-#import <UIImageView+AFNetworking.h>
+#import <UIpoView+AFNetworking.h>
 #import <MBProgressHUD.h>
 
 
