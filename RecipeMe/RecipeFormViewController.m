@@ -100,7 +100,7 @@
                  object:data];
             }
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             ServerError *error = [[ServerError alloc] initWithData:data];

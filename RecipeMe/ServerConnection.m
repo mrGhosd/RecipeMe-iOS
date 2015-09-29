@@ -85,7 +85,7 @@ static ServerConnection *sharedSingleton_ = nil;
 -(void)uploadImage: (UIImage *) image withParams: (NSMutableDictionary *) params andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:MAIN_URL]];
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
     NSString *userLocale = [[NSLocale preferredLanguages] objectAtIndex:0];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
     [parameters addEntriesFromDictionary:@{@"device_locale": userLocale}];

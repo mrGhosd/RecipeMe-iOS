@@ -238,7 +238,7 @@ float const recipeCellInfoHeight = 250;
         cell.delegate = self;
         return cell;
     } else if([tableView isEqual:self.ingridientsTableView]){
-        if(indexPath.row ==0){
+        if(indexPath.row == 0){
             static NSString *CellIdentifier = @"ingridientsHeaderCell";
             IngridientHeaderTableViewCell *cell = (IngridientHeaderTableViewCell *)[self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.title.text = ingridients[0];
