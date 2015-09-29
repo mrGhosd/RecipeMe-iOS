@@ -12,7 +12,7 @@
 #import "ServerError.h"
 #import "FormDelegate.h"
 
-@interface RecipeFormViewController : ViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UITextFieldDelegate, ServerErrorDelegate>
+@interface RecipeFormViewController : ViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, StepCellDelegate, UITextFieldDelegate, ServerErrorDelegate, FormDelegate>
 @property (strong, nonatomic) Recipe *recipe;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTitle;
 @property (strong, nonatomic) IBOutlet UITextField *recipeTime;

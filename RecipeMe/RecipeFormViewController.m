@@ -202,7 +202,6 @@
 }
 - (void) setRecipeDescriptionApperance{
     self.recipeDescription.backgroundColor = [UIColor clearColor];
-    self.recipeDescription.textColor = [UIColor whiteColor];
     self.recipeDescription.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.recipeDescription.layer.borderWidth = 2.0;
     self.recipeDescription.layer.cornerRadius = 8.0;
@@ -645,6 +644,7 @@ numberOfRowsInComponent:(NSInteger)component{
         static NSString *CellIdentifier = @"ingridientsCell";
         IngridientsFormTableViewCell *cell = (IngridientsFormTableViewCell *) [self.ingridientsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         Ingridient *ingridient = ingridients[indexPath.row];
         [cell setIngridientData:ingridient];
          [cell.deleteButton addTarget:self action:@selector(deleteButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -825,6 +825,10 @@ numberOfRowsInComponent:(NSInteger)component{
         self.recipeDescription.text = descriptionPlaceholder;
         [self.recipeDescription resignFirstResponder];
     }
+}
+- (void) keyboardWasShowOnField:(id)field withNotification:(id)notification{
+    focusedField = field;
+    [self setFocusOnField: (NSNotification *) notification];
 }
 
 @end

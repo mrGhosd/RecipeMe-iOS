@@ -8,9 +8,12 @@
 
 #import "IngridientsFormTableViewCell.h"
 
-@implementation IngridientsFormTableViewCell
+@implementation IngridientsFormTableViewCell{
+    UITextField *focusField;
+}
 
 - (void)awakeFromNib {
+    [self setKeyboardNotifications];
     self.ingridientName.delegate = self;
     self.ingridientSize.delegate = self;
     self.backgroundColor = [UIColor clearColor];
@@ -21,6 +24,31 @@
     
     // Initialization code
 }
+- (void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void) setKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+- (void) keyboardWillShow:(NSNotification *) notification{
+    if([self.ingridientName isFirstResponder] || [self.ingridientSize isFirstResponder]){
+        [self.delegate keyboardWasShowOnField:focusField withNotification:notification];
+    }
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+    if([textField isEqual:self.ingridientName]){
+        [self.ingridientName resignFirstResponder];
+        [self.ingridientSize becomeFirstResponder];
+    }
+    if([textField isEqual:self.ingridientSize]){
+        [self.ingridientSize resignFirstResponder];
+        [self endEditing:YES];
+    }
+    return YES;
+}
+
 - (void) setIngridientData: (Ingridient *) ingridient{
     self.ingridient = ingridient;
     if(self.ingridient.id){
@@ -37,6 +65,9 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+-(void) textFieldDidBeginEditing:(UITextField *)textField{
+    focusField = textField;
 }
 - (void) textFieldDidChange: (UITextField *) textField{
     if([textField isEqual:self.ingridientName]){
