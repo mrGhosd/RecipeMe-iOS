@@ -67,6 +67,7 @@
 "ingridient_name" = "Name";
 "ingridient_size" = "Size";
 
+"recipe_step_description" = "Step description";
 "image_upload_failure_message" = "Unfortunatelly, you can't upload image right now. Try it later.";
 "recipe_save_failure_message" = "Can't save recipe. Check internet connection and try again.";
 

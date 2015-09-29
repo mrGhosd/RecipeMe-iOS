@@ -759,7 +759,7 @@ numberOfRowsInComponent:(NSInteger)component{
     CGRect coveredFrame = CGRectIntersection(scrollViewFrame, kbRawRect);
     // Convert again to window coordinates to take rotations into account
     coveredFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
-    int offset = 100;
+    int offset = 120;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, coveredFrame.size.height - offset, 0.0);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;

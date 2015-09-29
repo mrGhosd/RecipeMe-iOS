@@ -11,11 +11,14 @@
 
 @implementation StepsFormTableViewCell{
     float previousTextHeight;
+    NSString *stepDescription;
 }
 
 - (void)awakeFromNib {
     // Initialization code
+    stepDescription = NSLocalizedString(@"recipe_step_description", nil);
     self.stepText.delegate = self;
+    [self setKeyboardNotifications];
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
     self.backgroundColor = [UIColor clearColor];
     self.stepImage.image = [UIImage imageNamed:@"stepImagePlaceholder.png"];
@@ -27,6 +30,8 @@
     [self.stepImage setUserInteractionEnabled:YES];
     [self.stepImage addGestureRecognizer:singleTap];
 }
+
+
 - (void) tapDetected: (id) sender{
     [self.delegate selectImageForCell:self];
 }
@@ -41,7 +46,12 @@
             self.stepImage.image = image;
         } failure:nil];
         self.stepImage.clipsToBounds = YES;
-        self.stepText.text = self.step.desc;
+        if([self.step.desc isEqualToString:@""]){
+            self.stepText.text = stepDescription;
+            self.stepText.textColor = [UIColor lightGrayColor];
+        } else {
+            self.stepText.text = self.step.desc;
+        }
     }
 }
 
@@ -50,7 +60,39 @@
 
     // Configure the view for the selected state
 }
+- (void) setKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void) keyboardWillShow:(NSNotification *) notification{
+    if([self.stepText isFirstResponder]){
+        [self.delegate keyboardWasShowOnField:self.stepText withNotification:notification];
+    }
+}
+
+#pragma mark UITextView placeholder
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView{
+    if([textView isEqual:self.stepText] && [textView.text isEqualToString:stepDescription]){
+        self.stepText.text = @"";
+        self.stepText.textColor = [UIColor whiteColor];
+    }
+    return YES;
+}
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    if([textView isEqual:self.stepText] && [textView.text isEqualToString:@""]){
+        self.stepText.textColor = [UIColor lightGrayColor];
+        self.stepText.text = stepDescription;
+    }
+}
+
 - (void) textViewDidChange:(UITextView *)textView{
     self.step.desc = textView.text;
+    
+    if(self.stepText.text.length == 0){
+        self.stepText.textColor = [UIColor lightGrayColor];
+        self.stepText.text = stepDescription;
+        [self.stepText resignFirstResponder];
+    }
 }
 @end

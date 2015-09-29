@@ -68,6 +68,7 @@
 "ingridient_name" = "Название";
 "ingridient_size" = "Размер";
 
+"recipe_step_description" = "Описание шага";
 "image_upload_failure_message" = "К сожалению, загрузить изображение не получилось. Попробуйте позже.";
 "recipe_save_failure_message" = "Невозможно сохранить рецепт. Проверьте соединение с интернетом и попробуйте еще.";
 
