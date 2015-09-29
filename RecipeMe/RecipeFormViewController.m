@@ -39,6 +39,7 @@
     UIImagePickerController *stepPicker;
     float keyboardHeight;
     UITextField *focusedField;
+    NSString *descriptionPlaceholder;
 }
 
 @end
@@ -49,6 +50,7 @@
     [super viewDidLoad];
     [self setCustomBarButtons];
     [self setFieldsDelegates];
+    [self addDescriptionPlaceholder];
     self.recipeTitle.delegate = self;
     categories = [NSMutableArray new];
     connection = [ServerConnection sharedInstance];
@@ -58,6 +60,11 @@
     [self loadCategoriesList];
     [self setNamesForInputs];
     // Do any additional setup after loading the view.
+}
+- (void) addDescriptionPlaceholder{
+    descriptionPlaceholder = @"Краткое описание";
+    self.recipeDescription.text = descriptionPlaceholder;
+    self.recipeDescription.textColor = [UIColor lightGrayColor];
 }
 
 - (void) setCustomBarButtons{
@@ -182,6 +189,7 @@
     self.recipePersons.delegate = self;
     self.recipeDifficult.delegate = self;
     self.recipeCategory.delegate = self;
+    self.recipeDescription.delegate = self;
 }
 
 - (void) setInputPlaceholders{
@@ -609,18 +617,6 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
-#pragma - mark UITextView delegate
-- (void) textViewDidChange:(UITextView *)textView{
-    if([textView isEqual:self.recipeDescription]){
-        if(previousDescHeight - self.recipeDescription.contentSize.height != 0){
-            previousDescHeight = self.recipeDescription.contentSize.height;
-            self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
-            self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 5;
-        }
-    }
-    
-}
-
 #pragma mark - UITableView Delegate and DataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 50;
@@ -800,5 +796,36 @@ numberOfRowsInComponent:(NSInteger)component{
     return YES;
 }
 
+#pragma mark UITextView placeholder
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView{
+    if([textView isEqual:self.recipeDescription] && [textView.text isEqualToString:descriptionPlaceholder]){
+        self.recipeDescription.text = @"";
+        self.recipeDescription.textColor = [UIColor whiteColor];
+    }
+    focusedField = textView;
+    return YES;
+}
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    if([textView isEqual:self.recipeDescription] && [textView.text isEqualToString:@""]){
+        self.recipeDescription.textColor = [UIColor lightGrayColor];
+        self.recipeDescription.text = descriptionPlaceholder;
+    }
+}
+-(void) textViewDidChange:(UITextView *)textView{
+    
+    if([textView isEqual:self.recipeDescription]){
+        if(previousDescHeight - self.recipeDescription.contentSize.height != 0){
+            previousDescHeight = self.recipeDescription.contentSize.height;
+            self.recipeDescriptionTextViewHeight.constant = self.recipeDescription.contentSize.height;
+            self.formViewHeightConstraint.constant += self.recipeDescription.contentSize.height / 5;
+        }
+    }
+
+    if(self.recipeDescription.text.length == 0){
+        self.recipeDescription.textColor = [UIColor lightGrayColor];
+        self.recipeDescription.text = descriptionPlaceholder;
+        [self.recipeDescription resignFirstResponder];
+    }
+}
 
 @end
