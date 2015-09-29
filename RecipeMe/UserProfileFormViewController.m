@@ -16,6 +16,7 @@
 @interface UserProfileFormViewController (){
     UIActionSheet *userImagePopup;
     UIImagePickerController *avatarPicker;
+    UITextField *focusField;
 }
 
 @end
@@ -38,6 +39,9 @@
 - (void) setDefaultData{
     [self setPlaceholders];
     [self setImageData];
+    self.surnameField.delegate = self;
+    self.nameField.delegate = self;
+    self.nickName.delegate = self;
     if(self.user.surname != [NSNull null]) self.surnameField.text = self.user.surname;
     if(self.user.name != [NSNull null]) self.nameField.text = self.user.name;
     if(self.user.nickname != [NSNull null]) self.nickName.text = self.user.nickname;
@@ -119,6 +123,56 @@
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftBarButton;
     self.navigationItem.rightBarButtonItem = customBarButtonItem; // or self.navigationItem.rightBarButtonItem
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    [self setFocusOnField: (NSNotification *) notification];
+}
+
+- (void) setFocusOnField: (NSNotification *) notification{
+    CGRect kbRawRect = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect scrollViewFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    
+    // Calculate the area that is covered by the keyboard
+    CGRect coveredFrame = CGRectIntersection(scrollViewFrame, kbRawRect);
+    // Convert again to window coordinates to take rotations into account
+    coveredFrame = [self.scrollView.window convertRect:self.scrollView.frame fromView:self.scrollView.superview];
+    int offset = 120;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, coveredFrame.size.height - offset, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect activeFieldRect = [focusField convertRect:focusField.bounds toView:self.scrollView];
+    [self.scrollView scrollRectToVisible:activeFieldRect animated:YES];
+}
+#pragma mark - UITextField delegates
+- (void) textFieldDidBeginEditing:(UITextField *)textField{
+    focusField = textField;
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+    if([textField isEqual:self.surnameField]){
+        [self.surnameField resignFirstResponder];
+        [self.nameField becomeFirstResponder];
+    }
+    if([textField isEqual:self.nameField]){
+        [self.nameField resignFirstResponder];
+        [self.nickName becomeFirstResponder];
+    }
+    if([textField isEqual:self.nickName]){
+        [self.nickName resignFirstResponder];
+        [self.view endEditing:YES];
+        [self updateUserProfile:nil];
+    }
+    return YES;
 }
 
 #pragma mark - BarButtomItems actions

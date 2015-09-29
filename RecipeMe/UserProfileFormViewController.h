@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "User.h"
 
-@interface UserProfileFormViewController : ViewController
+@interface UserProfileFormViewController : ViewController <UITextFieldDelegate>
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
